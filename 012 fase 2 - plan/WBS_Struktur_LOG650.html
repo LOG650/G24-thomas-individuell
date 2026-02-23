@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBS – LOG650 Bacheloroppgave</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+    background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    min-height: 100vh;
+    padding: 32px 16px;
+    overflow: auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .tree { display: flex; flex-direction: column; align-items: center; }
+
+  .node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    border-radius: 8px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 140px;
+    max-width: 180px;
+    position: relative;
+    transition: all 0.15s ease;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .card.clickable { cursor: pointer; }
+  .card.clickable:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+
+  .card.project {
+    background: #0f172a; border: 2px solid #334155; color: #f8fafc;
+    border-radius: 16px; padding: 16px 28px; min-width: auto; max-width: 520px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .card.phase { background: #1e3a5f; border: 2px solid #2563eb; color: #e0f2fe; }
+  .card.phase-active { background: #1d4ed8; border: 2px solid #60a5fa; color: #fff; }
+  .card.phase-done { background: #14532d; border: 2px solid #22c55e; color: #dcfce7; }
+
+  .card.workstream { background: #3b2f63; border: 2px solid #8b5cf6; color: #ede9fe; }
+
+  .card.milestone { background: #92400e; border: 2px solid #f59e0b; color: #fef3c7; border-radius: 12px; min-width: 130px; }
+  .card.milestone-done { background: #365314; border: 2px solid #84cc16; color: #ecfccb; border-radius: 12px; min-width: 130px; }
+
+  .card.task { background: #fff; border: 2px solid #cbd5e1; color: #1e293b; }
+  .card.task-crit { background: #fff1f2; border: 2px solid #e11d48; color: #881337; box-shadow: 0 2px 8px rgba(225,29,72,0.2); }
+  .card.task-done { background: #f0fdf4; border: 2px solid #86efac; color: #166534; }
+
+  .wbs-id {
+    font-size: 9px; font-weight: 600; opacity: 0.65;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 2px; letter-spacing: 0.5px;
+  }
+
+  .card-label { font-size: 11px; font-weight: 500; line-height: 1.3; }
+  .card.project .card-label { font-size: 16px; font-weight: 700; }
+  .card.phase .card-label, .card.phase-active .card-label, .card.phase-done .card-label { font-size: 13px; font-weight: 700; }
+  .card.milestone .card-label, .card.milestone-done .card-label { font-size: 11px; font-weight: 700; }
+
+  .card-subtitle { font-size: 9px; opacity: 0.7; margin-top: 3px; }
+
+  .meta { display: flex; gap: 6px; justify-content: center; margin-top: 4px; flex-wrap: wrap; }
+  .dur {
+    font-size: 9px; background: rgba(0,0,0,0.08); padding: 1px 6px;
+    border-radius: 3px; font-family: 'JetBrains Mono', monospace;
+  }
+  .note { font-size: 8px; opacity: 0.6; font-style: italic; padding: 1px 4px; }
+
+  .toggle { font-size: 8px; opacity: 0.5; margin-top: 4px; }
+
+  .badge {
+    position: absolute; top: -6px; font-size: 9px; font-weight: 700;
+    padding: 1px 5px; border-radius: 4px; color: #fff;
+  }
+  .badge-ks { right: -6px; background: #e11d48; font-size: 9px; letter-spacing: 0.5px; }
+  .badge-done { left: -6px; background: #16a34a; font-size: 10px; }
+  .badge-active {
+    left: -6px; background: #2563eb; font-size: 8px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+  .vline { width: 2px; height: 16px; opacity: 0.4; }
+  .vline-sm { width: 2px; height: 10px; opacity: 0.3; }
+
+  .children {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+    position: relative; padding: 0 8px;
+  }
+  .children.phase-children { gap: 12px; }
+
+  .hline {
+    position: absolute; top: 0; left: 15%; right: 15%;
+    height: 2px; opacity: 0.25;
+  }
+
+  .children.collapsed { display: none; }
+
+  .legend {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    padding: 16px; background: rgba(255,255,255,0.7); border-radius: 12px;
+    max-width: 700px; margin: 32px auto 0;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #475569; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; }
+
+  .footer { text-align: center; margin-top: 16px; font-size: 10px; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="header">Work Breakdown Structure</div>
+<div id="wbs"></div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch" style="background:#fff1f2;border:2px solid #e11d48"></div>Kritisk sti (KS)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#fef3c7;border:2px solid #f59e0b"></div>Milepæl</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#f0fdf4;border:2px solid #22c55e"></div>Ferdig</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#dbeafe;border:2px solid #60a5fa"></div>Aktiv fase</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ede9fe;border:2px solid #8b5cf6"></div>Arbeidsstrøm</div>
+</div>
+
+<div class="footer">72 arbeidsdager · 23 oppgaver på kritisk sti · 5 milepæler · Klikk for å utvide/kollapse</div>
+
+<script>
+const D = {
+  id:"0", label:"LOG650 Bacheloroppgave", subtitle:"AI-basert beslutningsstøtte for klassifisering av medisinsk forbruksmateriell", type:"project",
+  children:[
+    { id:"1", label:"Fase 1 – Initiering", subtitle:"Jan 2025 ✓", type:"phase", done:true, children:[
+      { id:"1.1", label:"Utarbeide prosjektforslag", dur:"5d", crit:true, done:true },
+      { id:"1.2", label:"Signere samarbeidsavtale", dur:"3d", crit:true, done:true },
+      { id:"1.3", label:"M1: Proposal godkjent", type:"milestone", crit:true, done:true }
+    ]},
+    { id:"2", label:"Fase 2 – Planlegging", subtitle:"Feb – 9. mars 2025", type:"phase", active:true, children:[
+      { id:"2.1", label:"Prosjektstyringsplan", dur:"10d", crit:true },
+      { id:"2.2", label:"GitHub-repository", dur:"1d" },
+      { id:"2.3", label:"SAP-dataspesifikasjon", dur:"5d" },
+      { id:"2.4", label:"Litteratursøk", dur:"7d" },
+      { id:"2.5", label:"Tidsplan i MS Project", dur:"2d", crit:true },
+      { id:"2.6", label:"M2: Plan godkjent", type:"milestone", crit:true }
+    ]},
+    { id:"3", label:"Fase 3 – Gjennomføring", subtitle:"10. mars – 2. mai 2025", type:"phase", children:[
+      { id:"3.1", label:"Forskning og teori", type:"workstream", children:[
+        { id:"3.1.1", label:"Litteraturgjennomgang", dur:"12d", note:"23 kilder" },
+        { id:"3.1.2", label:"Teorikapittel", dur:"5d" }
+      ]},
+      { id:"3.2", label:"Data og analyse", type:"workstream", children:[
+        { id:"3.2.1", label:"Datautrekk fra SAP", dur:"3d", crit:true, note:"11 filer" },
+        { id:"3.2.2", label:"Dataforbehandling", dur:"4d", crit:true, note:"7 kontroller" },
+        { id:"3.2.3", label:"ABC-analyse", dur:"3d", crit:true },
+        { id:"3.2.4", label:"XYZ-klassifisering", dur:"3d", crit:true },
+        { id:"3.2.5", label:"EOQ-avviksanalyse", dur:"3d", note:"TF=4d" },
+        { id:"3.2.6", label:"K-means klyngeanalyse", dur:"4d", crit:true, note:"KI" },
+        { id:"3.2.7", label:"Regelmotor & HVFS", dur:"4d", crit:true },
+        { id:"3.2.8", label:"Besparelsesberegning", dur:"2d", crit:true },
+        { id:"3.2.9", label:"M3: Analyse ferdig", type:"milestone", crit:true }
+      ]},
+      { id:"3.3", label:"Rapportskriving", type:"workstream", children:[
+        { id:"3.3.1", label:"Metodekapittel", dur:"4d" },
+        { id:"3.3.2", label:"Resultatkapittel", dur:"6d", crit:true },
+        { id:"3.3.3", label:"Diskusjonskapittel", dur:"4d", crit:true },
+        { id:"3.3.4", label:"Innledning & konklusjon", dur:"3d", crit:true },
+        { id:"3.3.5", label:"M4: Utkast ferdig", type:"milestone", crit:true }
+      ]}
+    ]},
+    { id:"4", label:"Fase 4 – Avslutning", subtitle:"3. – 20. mai 2025", type:"phase", children:[
+      { id:"4.1", label:"Fagfellevurdering", dur:"5d", crit:true },
+      { id:"4.2", label:"Revisjon", dur:"5d", crit:true },
+      { id:"4.3", label:"Buffer", dur:"3d", crit:true, note:"Absorberer forsinkelser" },
+      { id:"4.4", label:"Sluttkorrektur & APA 7", dur:"3d", crit:true },
+      { id:"4.5", label:"GitHub-opprydding", dur:"2d", note:"TF=4d" },
+      { id:"4.6", label:"M5: Innlevering", type:"milestone", crit:true }
+    ]}
+  ]
+};
+
+const borderColors = {
+  project:"#334155", phase:"#2563eb", "phase-active":"#60a5fa", "phase-done":"#22c55e",
+  workstream:"#8b5cf6", milestone:"#f59e0b", "milestone-done":"#84cc16",
+  task:"#cbd5e1", "task-crit":"#e11d48", "task-done":"#86efac"
+};
+
+function cls(n) {
+  if (n.type==="project") return "project";
+  if (n.type==="phase" && n.done) return "phase-done";
+  if (n.type==="phase" && n.active) return "phase-active";
+  if (n.type==="phase") return "phase";
+  if (n.type==="workstream") return "workstream";
+  if (n.type==="milestone" && n.done) return "milestone-done";
+  if (n.type==="milestone") return "milestone";
+  if (n.done) return "task-done";
+  if (n.crit) return "task-crit";
+  return "task";
+}
+
+function render(n, depth) {
+  const c = cls(n);
+  const bc = borderColors[c] || "#cbd5e1";
+  const hasKids = n.children && n.children.length;
+  const startOpen = depth < 2;
+
+  let html = `<div class="node">`;
+  html += `<div class="card ${c}${hasKids ? " clickable" : ""}" data-id="${n.id}">`;
+
+  if (n.crit && n.type!=="project" && n.type!=="phase" && n.type!=="workstream" && !n.active)
+    html += `<div class="badge badge-ks">KS</div>`;
+  if (n.done) html += `<div class="badge badge-done">✓</div>`;
+  if (n.active) html += `<div class="badge badge-active">NÅ</div>`;
+
+  if (n.id !== "0") html += `<div class="wbs-id">${n.id}</div>`;
+  html += `<div class="card-label">${n.type==="milestone" ? "◆ " : ""}${n.label}</div>`;
+  if (n.subtitle) html += `<div class="card-subtitle">${n.subtitle}</div>`;
+
+  if (n.dur || n.note) {
+    html += `<div class="meta">`;
+    if (n.dur) html += `<span class="dur">${n.dur}</span>`;
+    if (n.note) html += `<span class="note">${n.note}</span>`;
+    html += `</div>`;
+  }
+
+  if (hasKids) html += `<div class="toggle" data-toggle="${n.id}">${startOpen ? "▼" : "▶ " + n.children.length}</div>`;
+  html += `</div>`;
+
+  if (hasKids) {
+    html += `<div class="vline" style="background:${bc}"></div>`;
+    html += `<div class="children${n.type==="phase" ? " phase-children" : ""}${startOpen ? "" : " collapsed"}" data-children="${n.id}">`;
+    if (n.children.length > 1) html += `<div class="hline" style="background:${bc}"></div>`;
+    for (const kid of n.children) {
+      html += `<div class="node"><div class="vline-sm" style="background:${bc}"></div>${render(kid, depth+1)}</div>`;
+    }
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+document.getElementById("wbs").innerHTML = `<div class="tree">${render(D, 0)}</div>`;
+
+document.querySelectorAll(".card.clickable").forEach(card => {
+  card.addEventListener("click", () => {
+    const id = card.dataset.id;
+    const children = document.querySelector(`[data-children="${id}"]`);
+    const toggle = document.querySelector(`[data-toggle="${id}"]`);
+    if (!children) return;
+    const open = !children.classList.contains("collapsed");
+    children.classList.toggle("collapsed");
+    const node = findNode(D, id);
+    toggle.textContent = open ? `▶ ${node.children.length}` : "▼";
+  });
+});
+
+function findNode(n, id) {
+  if (n.id === id) return n;
+  if (n.children) for (const c of n.children) { const r = findNode(c, id); if (r) return r; }
+  return null;
+}
+</script>
+</body>
+</html>
