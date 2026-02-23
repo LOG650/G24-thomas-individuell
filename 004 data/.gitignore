@@ -1,0 +1,4 @@
+# Ingen datafiler skal committes – sensitive SAP-data lagres i Teams
+*
+!.gitignore
+!README.md

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /c/G24/G24-thomas-individuell/\"012 fase 2 - plan\"/*.html 2>/dev/null | head -5 && echo \"---\" && ls /c/G24/G24-thomas-individuell/\"013 fase 3 - review\"/ 2>/dev/null && ls /c/G24/G24-thomas-individuell/\"014 fase 4 - report\"/ 2>/dev/null)"
+    ]
+  }
+}
