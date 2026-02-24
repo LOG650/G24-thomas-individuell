@@ -10,10 +10,10 @@ Multikriterieklassifisering og klyngeanalyse for identifisering av overføringsk
 | **Utarbeidet av:** | Thomas Ekrem Jensen (prosjektleder) |
 | **Veileder:** | Bård Inge Austigard Pettersen |
 | **Bedrift:** | Helse Vest IKT |
-| **Dato:** | 2025-03-09 |
+| **Dato:** | 2026-02-24 |
 | **Versjon:** | 1.0 |
 
-*Autorisert av: [Veileder] – Dato: ____.____.2025*
+*Autorisert av: [Veileder] – Dato: ____.____.2026*
 
 ---
 

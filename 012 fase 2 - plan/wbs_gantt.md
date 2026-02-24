@@ -4,8 +4,8 @@
 *AI-basert beslutningsstøtte for klassifisering av medisinsk forbruksmateriell*
 
 **Thomas Ekrem Jensen**  
-Høgskolen i Molde – Vår 2025  
-Dato: Mars 2025 – Versjon 1.2 (CPM-verifisert)
+Høgskolen i Molde – Vår 2026  
+Dato: Feb 2026 – Versjon 1.0
 
 ---
 
