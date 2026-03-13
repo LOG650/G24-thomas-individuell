@@ -161,7 +161,7 @@ gantt
 - [ ] Besparelse beregnet (basisscenario)
 - [ ] Sensitivitetsanalyse gjennomført
 - [ ] Tornado-diagram generert (Figur 10)
-- [ ] Resultater dokumentert (Tabell 12) — mål ~13,7 MNOK/år
+- [ ] Resultater dokumentert (Tabell 12) — faktisk: kr 451 515/år (base case, g=75 %)
 
 ---
 
@@ -185,7 +185,7 @@ gantt
   - *«Lagerbinding i norske sykehus utgjør en betydelig kostnad for helseforetakene (Ref)...»*
   - *«[Kilde] har vist at ABC-XYZ-klassifisering kan redusere lagerkostnader med...»*
   - *«I denne oppgaven analyseres 709 artikler ved Helse Bergen (WERKS 3300) i SAP S/4HANA...»*
-  - *«Konklusjonen er at sentralisering av X artikler til HVFS kan gi en estimert besparelse på ~13,7 MNOK/år»*
+  - *«Konklusjonen er at sentralisering av X artikler til HVFS kan gi en estimert besparelse på ~451 kNOK/år»*
 - Henvis tilbake til innledningen *indirekte* gjennom hele oppgaven
 
 **Referanser å plassere her:**
@@ -1232,7 +1232,7 @@ sammenstilling = pd.DataFrame([
      'Litteratur sier': '> 0,3 anses akseptabelt',
      'Samsvar': '✅ Ja', 'Referanse': '[din kilde]'},
     {'Funn': 'Estimert besparelse',
-     'Ditt resultat': '~13,7 MNOK/år',
+     'Ditt resultat': '~451 kNOK/år',
      'Litteratur sier': '[sammenlign med tilsvarende studie]',
      'Samsvar': '[fyll inn]', 'Referanse': '[din kilde]'},
 ])
