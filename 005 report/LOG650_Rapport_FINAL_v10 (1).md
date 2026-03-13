@@ -7,6 +7,44 @@ supervisor: "Bård Inge Austigard Pettersen"
 date: "Mai 2026"
 ---
 
+# Figurliste
+
+| Nr. | Figur | Side |
+|-----|-------|------|
+| 0 | Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling | |
+| 1 | Lagerstruktur – Helse Vest forsyningskjede (forenklet) | |
+| 2 | Analysepipeline: fra SAP-rådata til HVFS-anbefaling | |
+| 3 | Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8) | |
+| 4 | ABC Pareto-kurve: kumulativ verdiandel for 709 artikler | |
+| 5 | ABC/XYZ-kryssmatrise: antall artikler per kombinasjon | |
+| 6 | EOQ-avvik: relativ frekvensavvik med terskel ved ±50 % | |
+| 7 | Silhouette-score for K = 2–7 (treningsdata, n = 389) | |
+| 8 | K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik | |
+| 9 | Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature | |
+| 10 | Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse | |
+
+# Tabelliste
+
+| Nr. | Tabell | Side |
+|-----|--------|------|
+| 1 | Litteraturoversikt: sentrale kilder med tema og relevans | |
+| 2 | Sammenligning av analysemetoder brukt i oppgaven | |
+| 3 | Nøkkeltall for casevirksomheten Helse Bergen, WERKS 3300 | |
+| 4 | Datagrunnlag: 14 SAP S/4HANA-tabeller hentet via SE16H | |
+| 5 | Datavalgsbeslutninger D-01–D-08 med begrunnelse | |
+| 6 | Modellparametere: ABC-klassifiseringsgrenser og analyseinnstillinger | |
+| 7 | Regelmotor: 8 beslutningsregler i prioritert rekkefølge | |
+| 8 | ABC-fordeling: antall artikler og verdiandel per klasse (n = 709) | |
+| 9 | XYZ-fordeling: antall artikler per klasse (n = 687) | |
+| 10 | SAP ZZXYZ-validering: samsvar mellom systemklasse og beregnet CV-klasse | |
+| 11 | EOQ-avviksresultater: fordeling etter ordrefrekvensavvik (n = 487) | |
+| 12 | K-means klyngeprofiler: gjennomsnittsverdier per klynge (K = 3) | |
+| 13 | HVFS-anbefalinger fra regelmotor: fordeling per kategori (n = 709) | |
+| 14 | Besparelsesestimater for tre scenarier (117 artikler, S = 750 NOK) | |
+| 15 | Sammenstilling av egne resultater mot funn i eksisterende litteratur | |
+
+---
+
 # Innholdsfortegnelse
 
 - [Forord](#forord)
@@ -620,7 +658,11 @@ K = 3 ga høyest silhouette-score på treningsdataene (0,383) og ble valgt som d
 
 ![Figur 8. K-means klyngeresultat (K = 3): artikler plottet langs z(ln CV) og z(ln verdi), farge etter klynge. K_OVERFØR-klyngen er markert med stjerne (★). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig08_Kmeans_Klynger.png)
 
-Figur 8 viser at de tre klyngene er rimelig separert i feature-rommet, særlig K\_OVERFØR-klyngen (grønn), som skiller seg fra de øvrige ved sin kombinasjon av lav CV og høy verdi. Klyngeprofiler med gjennomsnittsverdier for CV, verdi og $|\Delta TC|$ presenteres i Tabell 11 i kapittel 7.
+Figur 8 viser at de tre klyngene er rimelig separert i feature-rommet, særlig K\_OVERFØR-klyngen (grønn), som skiller seg fra de øvrige ved sin kombinasjon av lav CV og høy verdi. For å tolke innholdet i hver klynge viser Figur 9 gjennomsnittlig standardisert verdi per feature for de tre klyngene.
+
+![Figur 9. Klyngeprofiler for K-means (K=3): gjennomsnittlig z-score per feature per klynge. K\_OVERFØR-klyngen (grønn) kjennetegnes av lav CV og høy verdi. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig09_Kmeans_Profil.png)
+
+Figur 9 bekrefter at K\_OVERFØR-klyngen (Klynge 3, n = 227) har den laveste CV-verdien (stabil etterspørsel) og den høyeste verdiprofilen, mens Klynge 2 (n = 136) preges av høy CV og lavt kostnadsavvik. Klynge 1 (n = 26) er en liten gruppe med svært lav verdi. Fullstendige klyngeprofiler med gjennomsnittsverdier for CV, verdi og $|\Delta TC|$ presenteres i Tabell 11 i kapittel 7.
 
 ## 6.5 Regelmotor og HVFS-scoring
 
@@ -628,11 +670,11 @@ Regelmotoren ble kjørt sekvensielt på samtlige 709 artikler i den prioriterte 
 
 For alle artikler som fikk anbefalingen OVERFØR\_HVFS, ble besparelsesestimatet $\Delta TC_i \cdot g$ beregnet for tre scenarier (worst: $g = 50\,\%$, base: $g = 75\,\%$, best: $g = 100\,\%$) i henhold til formelen i avsnitt 5.3. Det er viktig å presisere at kun artikler som både er i OVERFØR\_HVFS-kategorien *og* har status FOR\_MANGE\_ORDRER inngår i besparelsesgrunnlaget, da $\Delta TC_i$ modellerer kostnadsavviket fra suboptimal ordrefrekvens — et avvik som adresseres direkte ved sentralisering til HVFS. Totalt inngår 117 artikler i dette grunnlaget.
 
-I tillegg til de tre scenariene ble det gjennomført en systematisk sensitivitetsanalyse med 27 kombinasjoner av $S$, $h$ og $g$, for å kartlegge robustheten av besparelsesestimatet overfor usikkerhet i modellantagelsene. Figur 9 viser den endelige fordelingen av regelmotor-anbefalinger, mens detaljerte besparelsestall og sensitivitetsintervaller presenteres i avsnitt 7.5–7.6.
+I tillegg til de tre scenariene ble det gjennomført en systematisk sensitivitetsanalyse med 27 kombinasjoner av $S$, $h$ og $g$, for å kartlegge robustheten av besparelsesestimatet overfor usikkerhet i modellantagelsene. Figur 10 viser den endelige fordelingen av regelmotor-anbefalinger og estimert EOQ-besparelse under tre scenarier, mens detaljerte besparelsestall og sensitivitetsintervaller presenteres i avsnitt 7.5–7.6.
 
-![Figur 9. Fordeling av HVFS-anbefalinger fra regelmotor: 709 artikler (WERKS 3300 / LGORT 3001). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig09_HVFS_Besparelse.png)
+![Figur 10. Regelmotor og besparelsesanalyse: fordeling av HVFS-anbefalinger (venstre) og estimert årlig EOQ-besparelse under tre realiseringsscenarier (høyre). 709 artikler, WERKS 3300 / LGORT 3001. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig10_Regelmotor_Besparelse.png)
 
-Figur 9 viser at 145 artikler (20,5 % av populasjonen) anbefales overført til HVFS, mens 257 artikler (36,2 %) beholdes lokalt basert på Z-klasse eller CY-kombinasjon. Kategorien TIL VURDERING er den største enkeltgruppen med 284 artikler (40,1 %), noe som reflekterer at mange artikler har en profil der de ulike analysene ikke gir entydige signaler. Dette er et forventet utfall gitt at regelmotoren er utformet for å unngå feilaktige overføringsanbefalinger: usikre tilfeller sendes til manuell vurdering fremfor å tvinges inn i en binær beslutning. Fordelingen av anbefalinger per regel er som følger: R1 (Z-override) fanget 144 artikler, R2 (CY) fanget 113, R3 (A/B + X + FOR\_MANGE) fanget 91, R4 (K\_OVERFØR + FOR\_MANGE) fanget 26, R5 (A/B + X/Y) fanget 28, og R6–R8 sendte de resterende 284 artiklene til manuell vurdering. At TIL\_VURDERING er den største enkeltgruppen er et bevisst designvalg: regelmotoren er utformet for høy presisjon i OVERFØR-anbefalingene, og aksepterer at dette medfører en større andel artikler som krever manuell gjennomgang. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
+Figur 10 viser at 145 artikler (20,5 % av populasjonen) anbefales overført til HVFS, mens 257 artikler (36,2 %) beholdes lokalt basert på Z-klasse eller CY-kombinasjon. Kategorien TIL VURDERING er den største enkeltgruppen med 284 artikler (40,1 %), noe som reflekterer at mange artikler har en profil der de ulike analysene ikke gir entydige signaler. Dette er et forventet utfall gitt at regelmotoren er utformet for å unngå feilaktige overføringsanbefalinger: usikre tilfeller sendes til manuell vurdering fremfor å tvinges inn i en binær beslutning. Fordelingen av anbefalinger per regel er som følger: R1 (Z-override) fanget 144 artikler, R2 (CY) fanget 113, R3 (A/B + X + FOR\_MANGE) fanget 91, R4 (K\_OVERFØR + FOR\_MANGE) fanget 26, R5 (A/B + X/Y) fanget 28, og R6–R8 sendte de resterende 284 artiklene til manuell vurdering. At TIL\_VURDERING er den største enkeltgruppen er et bevisst designvalg: regelmotoren er utformet for høy presisjon i OVERFØR-anbefalingene, og aksepterer at dette medfører en større andel artikler som krever manuell gjennomgang. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
 
 
 ---
@@ -725,7 +767,7 @@ Regelmotoren produserte en anbefaling for samtlige 709 artikler. Fordelingen er 
 
 145 artikler (20,5 %) anbefales overført til HVFS. Denne gruppen består av artikler som tilfredsstiller ett eller flere av de positive overføringsskriteriene: R3 fanget 91 artikler (A/B + X + FOR\_MANGE\_ORDRER), R4 fanget 26 artikler (K\_OVERFØR + FOR\_MANGE\_ORDRER), og R5 fanget 28 artikler (A/B + X/Y uten øvrige signaler). Av de 145 overførte artiklene har 117 status FOR\_MANGE\_ORDRER og inngår dermed i besparelsesberegningen i avsnitt 7.6; de resterende 28 artiklene er anbefalt overført basert på ABC/XYZ-profil alene.
 
-257 artikler (36,2 %) beholdes lokalt, primært grunnet Z-klassifisering (R1: 144 artikler) eller CY-profil (R2: 113 artikler). Z-override (R1) er den enkeltregelen som fanger flest artikler, noe som bekrefter at uforutsigbart forbruksmønster er den vanligste kontraindikasjonen mot sentralisering i dette sortimentet. 284 artikler (40,1 %) sendes til manuell vurdering — artikler der de kvantitative signalene fra ABC, XYZ, EOQ og K-means ikke er tilstrekkelig entydige til å generere en automatisert anbefaling. 23 artikler (3,2 %) mangler tilstrekkelig data for klassifisering. Fordelingen er visualisert i Figur 9 i kapittel 6.
+257 artikler (36,2 %) beholdes lokalt, primært grunnet Z-klassifisering (R1: 144 artikler) eller CY-profil (R2: 113 artikler). Z-override (R1) er den enkeltregelen som fanger flest artikler, noe som bekrefter at uforutsigbart forbruksmønster er den vanligste kontraindikasjonen mot sentralisering i dette sortimentet. 284 artikler (40,1 %) sendes til manuell vurdering — artikler der de kvantitative signalene fra ABC, XYZ, EOQ og K-means ikke er tilstrekkelig entydige til å generere en automatisert anbefaling. 23 artikler (3,2 %) mangler tilstrekkelig data for klassifisering. Fordelingen er visualisert i Figur 10 i kapittel 6.
 
 ## 7.6 Besparelse og sensitivitet
 
