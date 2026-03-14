@@ -14,9 +14,17 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn, nsdecls
 from docx.oxml import parse_xml, OxmlElement
 
+import latex2mathml.converter
+from lxml import etree
+
 TEMPLATE = '../000 templates/Mal prosjekt LOG650 v2.docx'
+XSLT_PATH = r'C:\Program Files\Microsoft Office\root\Office16\MML2OMML.XSL'
+
+# Førebu XSLT-transformasjon for matte
+_xslt = etree.parse(XSLT_PATH)
+_math_transform = etree.XSLT(_xslt)
 MD_FILE = 'LOG650_Rapport_FINAL_v10 (1).md'
-OUTPUT = 'LOG650_Rapport_FINAL_word.docx'
+OUTPUT = 'LOG650_Rapport_v5.docx'
 
 doc = Document(TEMPLATE)
 
@@ -218,43 +226,154 @@ print(f"  Fjerna {len(to_remove)} plasshaldar-element")
 # ════════════════════════════════════════════════════
 # STEG 5: Legg til kapittelinnhald frå MD
 # ════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════
+# STEG 5: Legg til kapittelinnhald
+# ════════════════════════════════════════════════════
 print("Steg 5: Legg til kapittelinnhald...")
+
+# ── Figurliste og Tabelliste ──
+print("  Legg til Figurliste og Tabelliste...")
+
+figurliste = [
+    'Figur 0. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling',
+    'Figur 1. Lagerstruktur – Helse Vest forsyningskjede (forenklet)',
+    'Figur 2. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
+    'Figur 3. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
+    'Figur 4. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler',
+    'Figur 5. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon',
+    'Figur 6. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5',
+    'Figur 7. Silhouette-score for K = 2–7 (treningsdata, n = 389)',
+    'Figur 8. K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik',
+    'Figur 9. Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature',
+    'Figur 10. Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse',
+]
+tabelliste = [
+    'Tabell 1. Litteraturoversikt: sentrale kilder med tema og relevans',
+    'Tabell 2. Sammenligning av analysemetoder brukt i oppgaven',
+    'Tabell 3. Nøkkeltall for casevirksomheten Helse Bergen, WERKS 3300',
+    'Tabell 4. Datagrunnlag: 14 SAP S/4HANA-tabeller hentet via SE16H',
+    'Tabell 5. Datavalgsbeslutninger D-01–D-08 med begrunnelse',
+    'Tabell 6. Modellparametere: ABC-klassifiseringsgrenser og analyseinnstillinger',
+    'Tabell 7. Regelmotor: 8 beslutningsregler i prioritert rekkefølge',
+    'Tabell 8. ABC-fordeling: antall artikler og verdiandel per klasse (n = 709)',
+    'Tabell 9. XYZ-fordeling: antall artikler per klasse (n = 687)',
+    'Tabell 10. SAP ZZXYZ-validering: samsvar mellom systemklasse og beregnet CV-klasse',
+    'Tabell 11. EOQ-avviksresultater: fordeling etter ordrefrekvensavvik (n = 487)',
+    'Tabell 12. K-means klyngeprofiler: gjennomsnittsverdier per klynge (K = 3)',
+    'Tabell 13. HVFS-anbefalinger fra regelmotor: fordeling per kategori (n = 709)',
+    'Tabell 14. Besparelsesestimater for tre scenarier (117 artikler, S = 750 NOK)',
+    'Tabell 15. Sammenstilling av egne resultater mot funn i eksisterende litteratur',
+]
+
+# ── Kapittelinnhald (figurliste/tabelliste vert lagt til etter funksjonsdefinisjonar) ──
 
 # Finn start av kapittelinnhald i MD
 kap_start = md_all.find('# Kapittel 1')
 chapter_md = md_all[kap_start:]
 lines = chapter_md.split('\n')
 
+def latex_to_omml(latex_str):
+    """Konverter LaTeX til OMML XML-element for Word."""
+    try:
+        # Rens LaTeX litt
+        clean = latex_str.strip()
+        if not clean:
+            return None
+        mathml = latex2mathml.converter.convert(clean)
+        mathml_tree = etree.fromstring(mathml.encode('utf-8'))
+        omml_tree = _math_transform(mathml_tree)
+        return omml_tree.getroot()
+    except Exception as e:
+        print(f"  Math-feil: {e} for '{latex_str[:40]}'")
+        return None
+
+def add_math_paragraph(doc, latex_str):
+    """Legg til ein sentrert matteblokk (display math)."""
+    para = doc.add_paragraph()
+    para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    para.paragraph_format.line_spacing = 1.5
+    omml = latex_to_omml(latex_str)
+    if omml is not None:
+        para._element.append(omml)
+    else:
+        # Fallback: vanleg tekst
+        r = para.add_run(latex_str)
+        r.font.name = 'Cambria Math'
+        r.font.size = Pt(11)
+    return para
+
+def wrap_plain_math(text):
+    """Pre-prosessor: wrap plain-text matematiske uttrykk i $...$."""
+    # S = 750, h = 20, K = 3, g = 75, n = 487 osv.
+    text = re.sub(r'(?<!\$)\b(S\s*=\s*\d[\d\s]*)', r'$\1$', text)
+    text = re.sub(r'(?<!\$)\b(h\s*=\s*\d[\d\s,\.%]*%)', r'$\1$', text)
+    text = re.sub(r'(?<!\$)\b(K\s*=\s*\d+)', r'$\1$', text)
+    text = re.sub(r'(?<!\$)\b(g\s*=\s*\d[\d\s]*\s*%)', r'$\1$', text)
+    text = re.sub(r'(?<!\$)\b(n\s*=\s*\d[\d\s]*)', r'$n = \1$'.replace('$n = n', '$n'), text)
+    # CV < 0,5 etc.
+    text = re.sub(r'(?<!\$)(CV\s*[<>≤≥]\s*[\d,]+)', r'$\1$', text)
+    # τ_f = 1,5
+    text = re.sub(r'(?<!\$)(τ_f\s*=\s*[\d,]+)', r'$\1$', text)
+    # D_ANNUAL, UNIT_PRICE etc. som variabelnamn
+    text = re.sub(r'(?<!\$)\b(D_ANNUAL\s*[=><]\s*\d+)', r'$\1$', text)
+    # Fjern doble dollar-teikn som kan oppstå
+    text = re.sub(r'\$\$([^$]+)\$\$', r'$$\1$$', text)
+    return text
+
+def set_run_font(run, name='Times New Roman', size=12):
+    """Sett font på ein run."""
+    run.font.name = name
+    run.font.size = Pt(size)
+    rpr = run._element.get_or_add_rPr()
+    rf = rpr.find(qn('w:rFonts'))
+    if rf is None:
+        rf = OxmlElement('w:rFonts')
+        rpr.insert(0, rf)
+    rf.set(qn('w:ascii'), name)
+    rf.set(qn('w:hAnsi'), name)
+    rf.set(qn('w:cs'), name)
+
 def add_formatted_para(doc, text):
-    """Legg til avsnitt med enkel inline-formatering."""
+    """Legg til avsnitt med inline-formatering og inline-matte."""
     para = doc.add_paragraph()
     para.paragraph_format.line_spacing = 1.5
 
-    # Fjern $ math markers for enkel visning
-    text = re.sub(r'\$\$(.+?)\$\$', r'\1', text)
+    # Pre-prosesser: wrap plain-text math i $...$
+    text = wrap_plain_math(text)
 
-    # Del opp i bold/italic/normal segment
-    parts = re.split(r'(\*\*.*?\*\*|\*.*?\*)', text)
-    for part in parts:
-        if part.startswith('**') and part.endswith('**'):
-            r = para.add_run(part[2:-2])
-            r.font.bold = True
-        elif part.startswith('*') and part.endswith('*'):
-            r = para.add_run(part[1:-1])
-            r.font.italic = True
+    # Del opp i: inline math $...$ | bold **...** | italic *...*
+    segments = re.split(r'(\$[^$]+?\$)', text)
+
+    for seg in segments:
+        if seg.startswith('$') and seg.endswith('$') and len(seg) > 2:
+            # Inline math — konverter til OMML
+            latex = seg[1:-1]
+            omml = latex_to_omml(latex)
+            if omml is not None:
+                para._element.append(omml)
+                math_counter[0] += 1
+            else:
+                r = para.add_run(latex)
+                r.font.name = 'Cambria Math'
+                r.font.size = Pt(12)
+                r.font.italic = True
         else:
-            r = para.add_run(part)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(12)
-        # rFonts
-        rpr = r._element.get_or_add_rPr()
-        rf = rpr.find(qn('w:rFonts'))
-        if rf is None:
-            rf = OxmlElement('w:rFonts')
-            rpr.insert(0, rf)
-        rf.set(qn('w:ascii'), 'Times New Roman')
-        rf.set(qn('w:hAnsi'), 'Times New Roman')
-        rf.set(qn('w:cs'), 'Times New Roman')
+            # Vanleg tekst — handter bold/italic
+            parts = re.split(r'(\*\*.*?\*\*|\*[^*]+?\*)', seg)
+            for part in parts:
+                if not part:
+                    continue
+                if part.startswith('**') and part.endswith('**'):
+                    r = para.add_run(part[2:-2])
+                    r.font.bold = True
+                    set_run_font(r)
+                elif part.startswith('*') and part.endswith('*') and len(part) > 2:
+                    r = para.add_run(part[1:-1])
+                    r.font.italic = True
+                    set_run_font(r)
+                else:
+                    r = para.add_run(part)
+                    set_run_font(r)
     return para
 
 def add_heading_formatted(doc, text, level):
@@ -278,23 +397,61 @@ def add_heading_formatted(doc, text, level):
             r.font.size = Pt(14)
     return h
 
-def set_table_borders(table):
-    """Legg til kantlinjer."""
+def set_threeline_borders(table):
+    """Tre-linje tabellformat (booktabs):
+    - Linje over header
+    - Linje under header
+    - Linje under siste rad
+    - Ingen vertikale linjer, ingen bakgrunn
+    """
     tbl = table._tbl
-    tblPr = tbl.tblPr if tbl.tblPr is not None else OxmlElement('w:tblPr')
+    tblPr = tbl.tblPr
+    if tblPr is None:
+        tblPr = OxmlElement('w:tblPr')
+        tbl.insert(0, tblPr)
+
+    # Fjern eksisterande borders
     for old in tblPr.findall(qn('w:tblBorders')):
         tblPr.remove(old)
+
+    # Tabellnivå: top og bottom = single, alt anna = nil
     borders = parse_xml(
         f'<w:tblBorders {nsdecls("w")}>'
-        '<w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
-        '<w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
-        '<w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
-        '<w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
-        '<w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
-        '<w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
+        '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000"/>'
+        '<w:left w:val="nil"/>'
+        '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="000000"/>'
+        '<w:right w:val="nil"/>'
+        '<w:insideH w:val="nil"/>'
+        '<w:insideV w:val="nil"/>'
         '</w:tblBorders>'
     )
     tblPr.append(borders)
+
+    # Header-rad: legg til botn-linje på kvar celle
+    if len(table.rows) > 0:
+        for cell in table.rows[0].cells:
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            # Fjern eksisterande tcBorders
+            for old in tcPr.findall(qn('w:tcBorders')):
+                tcPr.remove(old)
+            cell_borders = parse_xml(
+                f'<w:tcBorders {nsdecls("w")}>'
+                '<w:top w:val="single" w:sz="8" w:space="0" w:color="000000"/>'
+                '<w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/>'
+                '<w:left w:val="nil"/>'
+                '<w:right w:val="nil"/>'
+                '</w:tcBorders>'
+            )
+            tcPr.append(cell_borders)
+
+    # Fjern bakgrunnsfarge frå alle celler
+    for row in table.rows:
+        for cell in row.cells:
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            for shd in tcPr.findall(qn('w:shd')):
+                tcPr.remove(shd)
 
 # Figurstiar
 fig_map = {
@@ -312,8 +469,35 @@ fig_map = {
 }
 plots_dir = os.path.abspath('../006 Analyse/plots')
 
+# ── Sett inn Figurliste og Tabelliste ──
+print("  Legg til Figurliste og Tabelliste...")
+h = add_heading_formatted(doc, 'Figurliste', 1)
+pPr = h._element.get_or_add_pPr()
+pb = OxmlElement('w:pageBreakBefore')
+pb.set(qn('w:val'), 'true')
+pPr.append(pb)
+for fig in figurliste:
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.5
+    r = p.add_run(fig)
+    set_run_font(r)
+
+h = add_heading_formatted(doc, 'Tabelliste', 1)
+pPr = h._element.get_or_add_pPr()
+pb = OxmlElement('w:pageBreakBefore')
+pb.set(qn('w:val'), 'true')
+pPr.append(pb)
+for tab in tabelliste:
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.5
+    r = p.add_run(tab)
+    set_run_font(r)
+
+print("  Legg til kapittel 1–9...")
 table_count = 0
 fig_count = 0
+math_counter = [0]  # Liste for mutabilitet i nested scope
+pending_caption = None  # Lagrar tabelltittel til etter tabellen
 i = 0
 
 while i < len(lines):
@@ -388,7 +572,7 @@ while i < len(lines):
             table = doc.add_table(rows=nrows, cols=ncols)
             table.alignment = WD_TABLE_ALIGNMENT.CENTER
 
-            # Header
+            # Header (bold, ingen bakgrunnsfarge)
             for j, h in enumerate(headers):
                 if j < ncols:
                     cell = table.rows[0].cells[j]
@@ -396,13 +580,8 @@ while i < len(lines):
                     p = cell.paragraphs[0]
                     r = p.add_run(h.replace('\\', ''))
                     r.font.name = 'Times New Roman'
-                    r.font.size = Pt(10)
+                    r.font.size = Pt(11)
                     r.font.bold = True
-                    # Skuggelegging
-                    tc = cell._element
-                    tcPr = tc.get_or_add_tcPr()
-                    shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="D9E2F3" w:val="clear"/>')
-                    tcPr.append(shd)
 
             # Data
             for ri, row_data in enumerate(data_rows):
@@ -414,19 +593,28 @@ while i < len(lines):
                         clean = ct.replace('\\', '').replace('**', '')
                         r = p.add_run(clean)
                         r.font.name = 'Times New Roman'
-                        r.font.size = Pt(10)
+                        r.font.size = Pt(11)
 
-            set_table_borders(table)
+            set_threeline_borders(table)
             table_count += 1
 
-    # ── Tabelltittel (kursiv med asterisk) ──
-    elif stripped.startswith('*Tabell') or stripped.startswith('*Figur'):
-        caption_text = stripped.strip('*')
-        p = doc.add_paragraph()
-        r = p.add_run(caption_text)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(10)
-        r.font.italic = True
+            # Sett inn tabelltittel UNDER tabellen
+            if pending_caption:
+                cap_p = doc.add_paragraph()
+                r = cap_p.add_run(pending_caption)
+                r.font.name = 'Times New Roman'
+                r.font.size = Pt(10)
+                r.font.italic = True
+                pending_caption = None
+
+    # ── Tabelltittel (lagre til etter tabellen) ──
+    elif stripped.startswith('*Tabell'):
+        # Lagre caption — vert sett inn ETTER neste tabell
+        pending_caption = stripped.strip('*')
+
+    # ── Figurtittel (skip — bildetekst er allereie i ![...]) ──
+    elif stripped.startswith('*Figur'):
+        pass
 
     # ── Blokkitat ──
     elif stripped.startswith('> '):
@@ -442,7 +630,7 @@ while i < len(lines):
         if '**' in quote:
             r.font.bold = True
 
-    # ── Matteblokk ──
+    # ── Matteblokk (display math) ──
     elif stripped.startswith('$$'):
         math = stripped
         if not stripped.endswith('$$') or stripped == '$$':
@@ -452,12 +640,8 @@ while i < len(lines):
                 i += 1
             if i < len(lines):
                 math += ' ' + lines[i].strip()
-        p = doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r = p.add_run(math.replace('$$', '').strip())
-        r.font.name = 'Cambria Math'
-        r.font.size = Pt(11)
-        r.font.italic = True
+        latex = math.replace('$$', '').strip()
+        add_math_paragraph(doc, latex)
 
     # ── HTML (skip) ──
     elif stripped.startswith('<') and stripped.endswith('>'):
@@ -469,7 +653,7 @@ while i < len(lines):
 
     i += 1
 
-print(f"  Lagt til {table_count} tabellar, {fig_count} figurar")
+print(f"  Lagt til {table_count} tabellar, {fig_count} figurar, {math_counter[0]} math-uttrykk")
 
 # ════════════════════════════════════════════════════
 # STEG 6: Global formatering
@@ -497,6 +681,31 @@ ns = doc.styles['Normal']
 ns.font.name = 'Times New Roman'
 ns.font.size = Pt(12)
 ns.paragraph_format.line_spacing = 1.5
+
+# ── Sidenummerering i footer ──
+for section in doc.sections:
+    footer = section.footer
+    footer.is_linked_to_previous = False
+    fp = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+    fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    fp.clear()
+    # PAGE-felt
+    run = fp.add_run()
+    fldChar1 = OxmlElement('w:fldChar')
+    fldChar1.set(qn('w:fldCharType'), 'begin')
+    run._element.append(fldChar1)
+    run2 = fp.add_run()
+    instrText = OxmlElement('w:instrText')
+    instrText.set(qn('xml:space'), 'preserve')
+    instrText.text = ' PAGE '
+    run2._element.append(instrText)
+    run3 = fp.add_run()
+    fldChar2 = OxmlElement('w:fldChar')
+    fldChar2.set(qn('w:fldCharType'), 'end')
+    run3._element.append(fldChar2)
+    for r in [run, run2, run3]:
+        r.font.name = 'Times New Roman'
+        r.font.size = Pt(10)
 
 # ════════════════════════════════════════════════════
 # STEG 7: Lagre

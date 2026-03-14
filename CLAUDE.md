@@ -18,7 +18,12 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 002 meetings/           – Meeting notes, one subfolder per meeting (dd.mm.2026)
 003 references/         – Academic PDFs and the APA 7 reference list (Kildeliste_LOG650_APA7.md)
 004 data/               – SAP data exports
-005 report/             – Final report (LOG650_Rapport_FINAL_v10 (1).md)
+005 report/             – Final report source (MD) and Word output
+  LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown)
+  LOG650_Rapport_v5.docx           – Final Word document (generated from template)
+  build_word.py                    – Script: builds DOCX from template + MD
+  format_docx.py                   – Script: post-processes pandoc output
+  retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
 006 analyse/            – Python analysis scripts, MASTERFILE, and generated figures
   plot_*.py             – 11 figure-generating scripts (Fig00–Fig10)
   plots/                – Generated PNG figures (300 dpi)
@@ -89,6 +94,17 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 | Fase 2 – Planlegging | ✅ Complete | Project management plan |
 | Fase 3 – Gjennomføring | ✅ Complete | Analysis pipeline, all figures, results |
 | Fase 4 – Avslutning | In progress | Final report editing, submission |
+
+## Word Document Generation
+
+`005 report/build_word.py` generates the final DOCX from the HiMolde template:
+- **Base:** `000 templates/Mal prosjekt LOG650 v2.docx` (cover pages, declarations, privacy, publishing agreement)
+- **Content:** Parsed from `LOG650_Rapport_FINAL_v10 (1).md`
+- **Math:** LaTeX → MathML (`latex2mathml`) → OMML (`MML2OMML.XSL`) → Word equations
+- **Tables:** Three-line format (booktabs): top border, header-bottom border, table-bottom border, no vertical lines
+- **Table captions:** Italic, placed UNDER tables (per kompendiet kap. 3.5)
+- **Figures:** 11 PNGs from `006 Analyse/plots/`, caption under (italic)
+- **Run:** `cd "005 report" && py build_word.py`
 
 ## Critical Constraints
 
