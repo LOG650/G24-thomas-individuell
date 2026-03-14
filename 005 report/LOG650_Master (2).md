@@ -6,10 +6,9 @@
 
 ---
 
-## 📍 Kort status
+## Kort status
 
-Prosjektet er i fase 3 – Gjennomføring. Fase 1 og 2 er ferdigstilt. Datautrekk (14 SAP-tabeller) og dataforbehandling (D-01–D-08) er fullført — MASTERFILE_V1.xlsx klar med 709 aktive artikler. ABC-analyse (3.2.3) og litteraturgjennomgang (3.1.1) pågår.
-**Kritisk nå:** Lukke ABC-analyse → XYZ og EOQ kan ikke starte før den er ferdig.
+**Statusdato: 2026-03-14.** Prosjektet er i fase 4 – Avslutning. Fase 1–3 er ferdigstilt. Alle analyser (ABC, XYZ, EOQ, K-means, regelmotor, besparelse) er kjørt i LOG650_analyse_v2_7.py. Rapport v10 er skrevet med alle 11 figurer og 15 tabeller. Gjenstår: sluttkorrektur, fagfellevurdering og innlevering.
 
 ---
 
@@ -19,8 +18,8 @@ Prosjektet er i fase 3 – Gjennomføring. Fase 1 og 2 er ferdigstilt. Datautrek
 |---|---|---|
 | M1: Proposal godkjent | 12.02.26 | ✅ Oppnådd |
 | M2: Prosjektstyringsplan godkjent | 02.03.26 | ✅ Oppnådd |
-| M3: Dataanalyse og Python-verktøy ferdigstilt | 02.04.26 | ⏳ Planlagt |
-| M4: Komplett rapportutkast ferdig for review | 21.04.26 | ⏳ Planlagt |
+| M3: Dataanalyse og Python-verktøy ferdigstilt | 02.04.26 | ✅ Oppnådd (v2.7) |
+| M4: Komplett rapportutkast ferdig for review | 21.04.26 | ✅ Oppnådd (v10) |
 | M5: Endelig rapport innlevert | 13.05.26 | ⏳ Planlagt |
 
 ---
@@ -113,55 +112,54 @@ gantt
 - [x] Konsolidert til MASTERFILE_V1.xlsx
 - [x] Alle datavalgsbeslutninger dokumentert
 
-### 🔄 ABC-analyse med Pareto-diagram (3.2.3)
+### ✅ ABC-analyse med Pareto-diagram (3.2.3)
 - [x] Kumulativ verdi per artikkel beregnet
 - [x] Artikler sortert etter synkende årsverdi
-- [ ] ABC-grenser satt (80 % / 95 %)
-- [ ] Pareto-diagram generert (Figur 3)
-- [ ] Søylediagram fordeling generert (Figur 4)
-- [ ] Resultater dokumentert (Tabell 6)
-- [ ] Aktivitet lukket
+- [x] ABC-grenser satt (80 % / 95 %) → A:182, B:184, C:338
+- [x] Pareto-diagram generert (Fig04_ABC_Pareto.png)
+- [x] Resultater dokumentert (Tabell 8 i rapport)
+- [x] Aktivitet lukket
 
-### 🔄 Litteraturgjennomgang (3.1.1)
+### ✅ Litteraturgjennomgang (3.1.1)
 - [x] Referanseliste etablert (23 kilder)
 - [x] Nøkkelkilder identifisert
-- [ ] Alle 23 kilder gjennomgått
-- [ ] Sammendrag per kilde skrevet
-- [ ] Litteratur koblet til problemstillingen
+- [x] Alle kilder gjennomgått
+- [x] Litteratur koblet til problemstillingen (Tabell 1 i rapport)
+- [x] Aktivitet lukket
 
-### ⏭️ XYZ-klassifisering (3.2.4)
-- [ ] CV beregnet per artikkel
-- [ ] XYZ-grenser satt (0,5 / 1,0)
-- [ ] Validert mot SAP MRP-type
-- [ ] CV-histogram generert (Figur 5)
-- [ ] ABC/XYZ-heatmap generert (Figur 6)
-- [ ] Resultater dokumentert (Tabell 7 og 8)
+### ✅ XYZ-klassifisering (3.2.4)
+- [x] CV beregnet per artikkel (687 av 709)
+- [x] XYZ-grenser satt (0,5 / 1,0) → X:350, Y:193, Z:144
+- [x] Validert mot SAP ZZXYZ (33 % samsvar, dokumentert)
+- [x] ABC/XYZ-matrise generert (Fig05_ABC_XYZ_Matrise.png)
+- [x] Resultater dokumentert (Tabell 9 og 10 i rapport)
 
-### ⏭️ EOQ-avviksanalyse (3.2.5)
-- [ ] EOQ beregnet (√(2DS/H))
-- [ ] Faktisk ordrekvantum hentet fra SAP MARC
-- [ ] Topp-20 avvik identifisert
-- [ ] EOQ scatter generert (Figur 7)
-- [ ] Resultater dokumentert (Tabell 9)
+### ✅ EOQ-avviksanalyse (3.2.5)
+- [x] EOQ beregnet (S=750, H=20 %, 2-årsperiode)
+- [x] Frekvensavvik beregnet (±50 % terskel) → 356/100/31
+- [x] EOQ-avvik figur generert (Fig06_EOQ_Avvik.png)
+- [x] Resultater dokumentert (Tabell 11 i rapport)
 
-### ⏭️ K-means klyngeanalyse (3.2.6)
-- [ ] Features normalisert (StandardScaler)
-- [ ] Elbow-metode kjørt (K=2–9)
-- [ ] K=3 kjørt og silhouette beregnet
-- [ ] Elbow-kurve generert (Figur 8)
-- [ ] Scatter PCA generert (Figur 9)
-- [ ] Klyngeresultat dokumentert (Tabell 10)
+### ✅ K-means klyngeanalyse (3.2.6)
+- [x] Features normalisert (StandardScaler, kun tren)
+- [x] Silhouette-metode kjørt (K=2–7) → K=3 best
+- [x] K=3 kjørt: Sil tren=0.383, Sil test=0.368
+- [x] Silhouette-figur generert (Fig07_Silhouette.png)
+- [x] Scatter-figur generert (Fig08_Kmeans_Klynger.png)
+- [x] Klyngeprofil-figur generert (Fig09_Kmeans_Profil.png)
+- [x] Klyngeresultat dokumentert (Tabell 12 i rapport)
 
-### ⏭️ Regelmotor og HVFS-anbefalinger (3.2.7)
-- [ ] Beslutningsregler definert per ABC/XYZ-kombinasjon
-- [ ] Regelmotor kjørt på 709 artikler
-- [ ] Output dokumentert (Tabell 11)
+### ✅ Regelmotor og HVFS-anbefalinger (3.2.7)
+- [x] 8 beslutningsregler definert (R1–R8) med K_OVERFØR
+- [x] Regelmotor kjørt på 709 artikler → 145 OVERFØR, 257 BEHOLD, 284 VURDER, 23 MANGLER
+- [x] Regelmotor-flytdiagram generert (Fig03_Regelmotor.png)
+- [x] Output dokumentert (Tabell 13 i rapport)
 
-### ⏭️ Besparelsesberegning og sensitivitetsanalyse (3.2.8)
-- [ ] Besparelse beregnet (basisscenario)
-- [ ] Sensitivitetsanalyse gjennomført
-- [ ] Tornado-diagram generert (Figur 10)
-- [ ] Resultater dokumentert (Tabell 12) — faktisk: kr 451 515/år (base case, g=75 %)
+### ✅ Besparelsesberegning og sensitivitetsanalyse (3.2.8)
+- [x] Besparelse beregnet: kr 451 515/år (base case, g=75 %)
+- [x] 27-scenario sensitivitetsanalyse gjennomført
+- [x] Besparelsesfigur generert (Fig10_Regelmotor_Besparelse.png)
+- [x] Resultater dokumentert (Tabell 14 i rapport)
 
 ---
 
@@ -244,14 +242,13 @@ Tilpassede eksempler:
 
 ### ☑️ Sjekkliste – Kapittel 1
 
-- [ ] Tema presentert og aktualisert med referanse
-- [ ] Tidligere forskning nevnt med referanser (minst 2–3 nøkkelkilder)
-- [ ] Problemstilling formulert som «hvordan»- eller «hvorfor»-spørsmål
-- [ ] Avgrensninger begrunnet — ingen «mangel på tid»
-- [ ] Antagelser dokumentert med konsekvenser
-- [ ] Rød tråd til resten av oppgaven etablert
-- [ ] Valgfri: Strukturfigur satt inn med figurtekst
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Tema presentert og aktualisert med referanse
+- [x] Tidligere forskning nevnt med referanser (minst 2–3 nøkkelkilder)
+- [x] Problemstilling formulert som «hvordan»-spørsmål
+- [x] Avgrensninger begrunnet — ingen «mangel på tid»
+- [x] Antagelser dokumentert med konsekvenser
+- [x] Rød tråd til resten av oppgaven etablert
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -410,16 +407,14 @@ print("✅ Figur 0 – Konseptuelt rammeverk lagret")
 
 ### ☑️ Sjekkliste – Kapittel 2
 
-- [ ] Alle 23 kilder gjennomgått og notert
-- [ ] Sammendrag/notat per kilde skrevet
-- [ ] Hvert bidrag koblet til problemstillingen
-- [ ] Gap i eksisterende forskning formulert
-- [ ] Uenigheter i litteraturen belyst der de finnes
-- [ ] Alle teorier forklart med referanse (ABC, XYZ, EOQ, K-means, lager helse)
-- [ ] Tabell 1: Litteraturoversikt generert og satt inn i rapport
-- [ ] Tabell 2: Modellsammenligning generert og satt inn i rapport
-- [ ] Figur 0: Konseptuelt rammeverk generert og satt inn i rapport
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Alle kilder gjennomgått
+- [x] Hvert bidrag koblet til problemstillingen
+- [x] Gap i eksisterende forskning formulert
+- [x] Alle teorier forklart med referanse (ABC, XYZ, EOQ, K-means, lager helse)
+- [x] Tabell 1: Litteraturoversikt i rapport
+- [x] Tabell 2: Modellsammenligning i rapport
+- [x] Figur 0: Konseptuelt rammeverk i rapport
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -529,13 +524,13 @@ print("✅ Figur 1 – Lagerstruktur lagret")
 
 ### ☑️ Sjekkliste – Kapittel 3
 
-- [ ] Helse Bergen og WERKS 3300 presentert med referanse
-- [ ] HVFS og LIBRA-prosjektet forklart med referanse
-- [ ] Problemet (lagerbinding, suboptimal sortering) beskrevet
-- [ ] Kun kontekstuell informasjon — ingen analyseresultater
-- [ ] Tabell 3: Nøkkeltall generert og satt inn i rapport
-- [ ] Figur 1: Lagerstruktur generert og satt inn i rapport
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Helse Bergen og WERKS 3300 presentert med referanse
+- [x] HVFS og LIBRA-prosjektet forklart med referanse
+- [x] Problemet (lagerbinding, suboptimal sortering) beskrevet
+- [x] Kun kontekstuell informasjon — ingen analyseresultater
+- [x] Tabell 3: Nøkkeltall i rapport
+- [x] Figur 1: Lagerstruktur i rapport
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -683,16 +678,17 @@ print("✅ Figur 2 – Analysepipeline lagret")
 
 ### ☑️ Sjekkliste – Kapittel 4
 
-- [ ] Forskningsdesign beskrevet med referanse (case-studie, kvantitativ)
-- [ ] SAP S/4HANA som datakilde forklart
-- [ ] Utvalgskriterier og -størrelse begrunnet (709 aktive artikler)
-- [ ] Alle analysemetoder beskrevet med litteraturreferanse
-- [ ] Etiske vurderinger tatt opp
-- [ ] Potensielle feilkilder nevnt
-- [ ] Tabell 4: SAP-uttrekk generert og satt inn i rapport
-- [ ] Tabell 5: Datakvalitetskontroller generert og satt inn i rapport
-- [ ] Figur 2: Analysepipeline generert og satt inn i rapport
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Forskningsdesign beskrevet med referanse (case-studie, kvantitativ)
+- [x] SAP S/4HANA som datakilde forklart
+- [x] Utvalgskriterier og -størrelse begrunnet (709 aktive artikler)
+- [x] Alle analysemetoder beskrevet med litteraturreferanse
+- [x] Etiske vurderinger tatt opp
+- [x] Potensielle feilkilder nevnt
+- [x] Tabell 4: SAP-uttrekk i rapport
+- [x] Tabell 5: Datakvalitetskontroller D-01–D-08 i rapport
+- [x] Figur 2: Analysepipeline i rapport
+- [x] KI-verktøy dokumentert (4.5)
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -1146,42 +1142,43 @@ S_ORDRE_KOSTNAD = 750
 
 ---
 
-### ☑️ Sjekkliste – Kapittel 5
+### ☑️ Sjekkliste – Kapittel 5 (Modellering) og 6 (Analyse)
 
-**ABC**
-- [ ] Grenser (80/95 %) begrunnet med referanse
-- [ ] Tabell 6: ABC-fordeling generert og satt inn i rapport
-- [ ] Figur 3: Pareto-diagram generert og satt inn i rapport
-- [ ] Figur 4: Søylediagram generert og satt inn i rapport
+> Merk: Rapport v10 splitter dette i Kap. 5 (Modellering) og Kap. 6 (Analyse).
 
-**XYZ**
-- [ ] CV-grenser (0,5 / 1,0) begrunnet med referanse
-- [ ] Tabell 7: XYZ-fordeling generert og satt inn i rapport
-- [ ] Tabell 8: ABC/XYZ-kryssmatrise generert og satt inn i rapport
-- [ ] Figur 5: CV-histogram generert og satt inn i rapport
-- [ ] Figur 6: Heatmap generert og satt inn i rapport
+**ABC** ✅
+- [x] Grenser (80/95 %) begrunnet med referanse
+- [x] Figur 4: Pareto-diagram i rapport
+- [x] Resultater dokumentert (Tabell 8)
 
-**EOQ**
-- [ ] Formel og parametre (S=250, h=20 %) dokumentert med referanse
-- [ ] Tabell 9: Topp-20 EOQ-avvik generert og satt inn i rapport
-- [ ] Figur 7: EOQ scatter generert og satt inn i rapport
+**XYZ** ✅
+- [x] CV-grenser (0,5 / 1,0) begrunnet med referanse
+- [x] Figur 5: ABC/XYZ-matrise i rapport
+- [x] Resultater dokumentert (Tabell 9, 10)
 
-**K-means**
-- [ ] Train/test-split gjort FØR trening (80/20, random_state=42)
-- [ ] StandardScaler fittet kun på treningsdata (ingen datalekkasje)
-- [ ] Features, normalisering og K-valg forklart med referanse
-- [ ] Elbow-metode kjørt på treningsdata
-- [ ] Silhouette score rapportert for både tren og testdata
-- [ ] Tabell 10: Klyngeoppsummering generert og satt inn i rapport
-- [ ] Figur 8: Elbow-kurve generert og satt inn i rapport
-- [ ] Figur 9: K-means scatter (PCA, tren + test vist) generert og satt inn i rapport
+**EOQ** ✅
+- [x] Formel og parametre (S=750, h=20 %) dokumentert med referanse
+- [x] Figur 6: EOQ-avvik i rapport
+- [x] Resultater dokumentert (Tabell 11)
 
-**Regelmotor og besparelse**
-- [ ] Beslutningsregler begrunnet faglig med referanse
-- [ ] Tabell 11: HVFS-anbefalinger generert og satt inn i rapport
-- [ ] Tabell 12: Sensitivitetsscenarier generert og satt inn i rapport
-- [ ] Figur 10: Tornado-diagram generert og satt inn i rapport
-- [ ] Ingen tolkninger — kun objektiv presentasjon
+**K-means** ✅
+- [x] Train/test-split gjort FØR trening (80/20, random_state=42)
+- [x] StandardScaler fittet kun på treningsdata (ingen datalekkasje)
+- [x] Features, normalisering og K-valg forklart med referanse
+- [x] Silhouette-metode kjørt (K=2–7), ikkje elbow
+- [x] Silhouette score rapportert for både tren (0.383) og test (0.368)
+- [x] Figur 7: Silhouette-score i rapport
+- [x] Figur 8: K-means scatter i rapport
+- [x] Figur 9: Klyngeprofiler i rapport
+- [x] Klyngeresultat dokumentert (Tabell 12)
+
+**Regelmotor og besparelse** ✅
+- [x] 8 beslutningsregler begrunnet faglig
+- [x] Figur 3: Regelmotor-flytdiagram i rapport
+- [x] Figur 10: Regelmotor + besparelse i rapport
+- [x] Tabell 13: HVFS-anbefalinger i rapport
+- [x] Tabell 14: Besparelsesestimater i rapport
+- [x] Sensitivitetsanalyse (27 scenario) dokumentert
 
 ---
 
@@ -1246,17 +1243,18 @@ print(sammenstilling.to_string(index=False))
 
 ---
 
-### ☑️ Sjekkliste – Kapittel 6
+### ☑️ Sjekkliste – Kapittel 8 (Diskusjon i v10)
 
-- [ ] Resultater diskutert opp mot problemstillingen
-- [ ] Forventede funn kommentert med referanse
-- [ ] Uventede funn kommentert og forklart med referanse
-- [ ] Tabell 13: Resultater vs. litteratur generert og satt inn
-- [ ] Metodekritikk: reliabilitet, validitet, generaliserbarhet
-- [ ] Praktisk betydning for Helse Bergen og HVFS diskutert
-- [ ] Svakheter og begrensninger nevnt ærlig
-- [ ] Ingen nye data, tabeller eller figurer introdusert
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Resultater diskutert opp mot problemstillingen
+- [x] Forventede funn kommentert med referanse (8.1)
+- [x] Uventede funn kommentert (XYZ-samsvar 33 %)
+- [x] Tabell 15: Resultater vs. litteratur i rapport
+- [x] Metodekritikk: reliabilitet, validitet, generaliserbarhet (8.2)
+- [x] Praktisk betydning for Helse Bergen, HVFS og LIBRA (8.3)
+- [x] Generalisering til andre varegrupper og sjukehus (8.3)
+- [x] K-means scaling-sensitivitet og CV-svakheit (8.4)
+- [x] Svakheter og begrensninger (8.4)
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -1312,15 +1310,14 @@ print(oppsummering.to_string(index=False))
 
 ---
 
-### ☑️ Sjekkliste – Kapittel 7
+### ☑️ Sjekkliste – Kapittel 9 (Konklusjon i v10)
 
-- [ ] Problemstillingen gjentatt innledningsvis
-- [ ] Hvert (del-)forskningsspørsmål besvart direkte
-- [ ] Praktiske anbefalinger til Helse Bergen formulert
-- [ ] Forslag til videre forskning inkludert
-- [ ] Ingen nye data eller referanser introdusert
-- [ ] Valgfri: Tabell 14 generert og satt inn
-- [ ] Tekst ferdig og satt inn i Word-rapporten
+- [x] Problemstillingen gjentatt innledningsvis (9.1)
+- [x] Forskningsspørsmål besvart direkte med tall (9.1)
+- [x] Praktiske anbefalinger til Helse Bergen formulert (9.2, 4 stk)
+- [x] Forslag til videre forskning inkludert (9.3, 3 stk)
+- [x] Ingen nye data eller referanser introdusert
+- [x] Tekst ferdig i rapport v10
 
 ---
 
@@ -1333,12 +1330,12 @@ print(oppsummering.to_string(index=False))
 
 *(Fyll inn dine 23 kilder her)*
 
-### ☑️ Sjekkliste – Bibliografi
+### ☑️ Sjekkliste – Referanseliste
 
-- [ ] Alle 23 kilder inkludert
-- [ ] APA 7-format gjennomgående
-- [ ] Alle in-text-referanser har oppføring i listen
-- [ ] Alle oppføringer er faktisk sitert i teksten
+- [x] Referanseliste inkludert i rapport v10
+- [ ] APA 7-format gjennomgående — **treng sluttsjekk**
+- [ ] Alle in-text-referanser har oppføring i listen — **treng sluttsjekk**
+- [ ] Alle oppføringer er faktisk sitert i teksten — **treng sluttsjekk**
 - [ ] DOI/URL lagt til der tilgjengelig
 - [ ] Alfabetisk rekkefølge etter førsteforfatter
 
@@ -1350,10 +1347,14 @@ print(oppsummering.to_string(index=False))
 
 ### ☑️ Sjekkliste – Sluttkorrektur
 
-- [ ] Alle figurer nummerert løpende (0–10), figurtekst *under* figuren
-- [ ] Alle tabeller nummerert løpende (1–14), tabelltittel *over* tabellen
-- [ ] Innholdsfortegnelse oppdatert i Word
-- [ ] Sidetall korrekte
-- [ ] Alle referanser i APA 7 dobbeltsjekket
-- [ ] Python-skript og CSV/PNG-output lastet opp til GitHub
+- [x] Alle figurer nummerert løpende (0–10), figurtekst under figuren
+- [x] Alle tabeller nummerert løpende (1–15), tabelltittel over tabellen
+- [x] Figurliste og tabelliste lagt inn før innhaldfortegnelsen
+- [ ] Innholdsfortegnelse oppdatert i Word — **gjenstår**
+- [ ] Sidetall korrekte — **gjenstår (Word-formatering)**
+- [ ] Alle referanser i APA 7 dobbeltsjekket — **gjenstår**
+- [x] Python-skript lastet opp til GitHub
+- [ ] Fagfellevurdering — **gjenstår**
+- [ ] Siste korrekturlesing — **gjenstår**
+- [ ] Konvertering til Word/PDF for innlevering — **gjenstår**
 - [ ] Endelig rapport innlevert innen **13.05.2026**
