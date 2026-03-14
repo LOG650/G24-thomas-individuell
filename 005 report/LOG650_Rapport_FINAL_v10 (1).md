@@ -152,6 +152,10 @@ Tabell 15. Sammenstilling av egne resultater mot funn i eksisterende litteratur
   - [9.2 Anbefalinger til Helse Bergen](#92-anbefalinger-til-helse-bergen)
   - [9.3 Forslag til videre forskning](#93-forslag-til-videre-forskning)
 - [Referanseliste](#referanseliste)
+- [Vedlegg](#vedlegg)
+  - [Vedlegg A – SAP-dataspesifikasjon](#vedlegg-a--sap-dataspesifikasjon)
+  - [Vedlegg B – Python-analyseverktøy](#vedlegg-b--python-analyseverktøy)
+  - [Vedlegg C – Erklæring om bruk av kunstig intelligens](#vedlegg-c--erklæring-om-bruk-av-kunstig-intelligens)
 
 ---
 
@@ -481,7 +485,7 @@ Alle data er hentet fra SAP S/4HANA via transaksjonen SE16H, som gir direkte les
 | 13 | T023T | Varegruppenavn (WGBEZ) | Supplerende |
 | 14 | T024 | Innkjøpsgrupper (EKGRP) | Supplerende |
 
-Råuttrekket inneholder 1 006 unike artikkelnumre. Populasjonsavgrensningen beskrives i detalj i avsnitt 4.3 nedenfor, og reduserer dette til 709 aktive artikler. For forbruksdata er det benyttet bevegelsestyper (BWART) 201 og 647 fra MSEG, som representerer henholdsvis vareforbruk til kostnadssted og spesialforbruk. Disse to bevegelsesstypene fanger det reelle forbruket ut fra lager og utelukker interne overføringer og returer som ville ha forvrengt etterspørselsestimatet. Innkjøpsdata er hentet fra EKKO/EKPO/EKBE, som gir faktiske ordrelinjer og varemottak; disse benyttes for ABC-verdibeRegning og for estimering av faktisk ordrefrekvens. Leveringstidsdata er hentet fra EINE (feltet WETAG), men dekker kun 6 % av artiklene; se beslutning D-05 under.
+Råuttrekket inneholder 1 006 unike artikkelnumre. Populasjonsavgrensningen beskrives i detalj i avsnitt 4.3 nedenfor, og reduserer dette til 709 aktive artikler. For forbruksdata er det benyttet bevegelsestyper (BWART) 201 og 647 fra MSEG, som representerer henholdsvis vareforbruk til kostnadssted og spesialforbruk. Disse to bevegelsesstypene fanger det reelle forbruket ut fra lager og utelukker interne overføringer og returer som ville ha forvrengt etterspørselsestimatet. Innkjøpsdata er hentet fra EKKO/EKPO/EKBE, som gir faktiske ordrelinjer og varemottak; disse benyttes for ABC-verdiberegning og for estimering av faktisk ordrefrekvens. Leveringstidsdata er hentet fra EINE (feltet WETAG), men dekker kun 6 % av artiklene; se beslutning D-05 under.
 
 ## 4.3 Dataforbehandling
 
@@ -1041,3 +1045,15 @@ Analyseverktøyet er implementert i Python 3.13 og består av to hovudkomponenta
 **Reproduserbarheit:** Alle scripts brukar `random_state=42` for deterministisk output. Gjentatt kjøring med same inputdata gir identiske resultat.
 
 Fullstendig kildekode er tilgjengeleg i prosjektets GitHub-repository.
+
+## Vedlegg C – Erklæring om bruk av kunstig intelligens
+
+I denne oppgåva er KI-verktøyet Claude (Anthropic, 2026) brukt som støtteverktøy i tre delar av arbeidet, i samsvar med Høgskolen i Molde sine retningslinjer for bruk av KI på hjemmeeksamen.
+
+**1. Kode og algoritmar.** Claude vart brukt til kodestøtte og feilsøking i Python-scriptet (`LOG650_analyse_v2_7.py`) som implementerer ABC-, XYZ-, EOQ- og K-means-analysen. Verktøyet vart brukt til å forstå kodelogikk, feilsøke syntaksfeil og generere foreløpige kodeutdrag som seinare vart tilpassa og integrert. All kode er gjennomgått, testa og modifisert av forfattaren for å sikre korrektheit. Den endelege implementasjonen, tolkinga av resultat og presentasjonen av numeriske verdiar er forfattarens ansvar. Alle scripts brukar `random_state=42` for deterministisk og reproduserbar output.
+
+**2. Figurar og tabellar.** Alle 11 figurar (Fig00–Fig10) er genererte med matplotlib-scripts der Claude bidrog til utforming av layout, fargepalett og aksetitlar. Figurane er basert på analyseresultat produsert av Python-scriptet frå SAP-kildedata — KI-verktøyet har ikkje produsert eller modifisert nokon dataverdiar. Kvar figur er merka «Generert med støtte fra Claude (Anthropic, 2026)» i bildeteksten. Tabellar er formaterte med støtte frå Claude, men alle verdiar kjem direkte frå analysescriptet.
+
+**3. Tekststrukturering og språkleg bearbeiding.** Claude vart brukt til å strukturere rapportteksten og forbetre språkleg klarheit. Verktøyet foreslo disposisjon, avsnittsinndeling og formuleringar som forfattaren vurderte kritisk og reviderte. Alle faglege påstandar, argument og konklusjonar er forfattarens eigne. Claude er ikkje brukt som fagkjelde og er ikkje sitert som belegg for faglege påstandar.
+
+**Avgrensing.** Rådata frå SAP vart ikkje lagt inn i KI-verktøyet. Alle datatransformasjonar er dokumenterte i D-01–D-08 (avsnitt 4.3) og køyrde lokalt i Python. Ingen pasientdata eller personopplysningar er brukte i studien.
