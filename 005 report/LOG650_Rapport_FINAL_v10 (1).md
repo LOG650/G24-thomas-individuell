@@ -9,39 +9,59 @@ date: "Mai 2026"
 
 # Figurliste
 
-| Nr. | Figur | Side |
-|-----|-------|------|
-| 0 | Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling | |
-| 1 | Lagerstruktur – Helse Vest forsyningskjede (forenklet) | |
-| 2 | Analysepipeline: fra SAP-rådata til HVFS-anbefaling | |
-| 3 | Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8) | |
-| 4 | ABC Pareto-kurve: kumulativ verdiandel for 709 artikler | |
-| 5 | ABC/XYZ-kryssmatrise: antall artikler per kombinasjon | |
-| 6 | EOQ-avvik: relativ frekvensavvik med terskel ved ±50 % | |
-| 7 | Silhouette-score for K = 2–7 (treningsdata, n = 389) | |
-| 8 | K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik | |
-| 9 | Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature | |
-| 10 | Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse | |
+Figur 0. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling
+
+Figur 1. Lagerstruktur – Helse Vest forsyningskjede (forenklet)
+
+Figur 2. Analysepipeline: fra SAP-rådata til HVFS-anbefaling
+
+Figur 3. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)
+
+Figur 4. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler
+
+Figur 5. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon
+
+Figur 6. EOQ-avvik: relativ frekvensavvik med terskel ved ±50 %
+
+Figur 7. Silhouette-score for K = 2–7 (treningsdata, n = 389)
+
+Figur 8. K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik
+
+Figur 9. Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature
+
+Figur 10. Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse
 
 # Tabelliste
 
-| Nr. | Tabell | Side |
-|-----|--------|------|
-| 1 | Litteraturoversikt: sentrale kilder med tema og relevans | |
-| 2 | Sammenligning av analysemetoder brukt i oppgaven | |
-| 3 | Nøkkeltall for casevirksomheten Helse Bergen, WERKS 3300 | |
-| 4 | Datagrunnlag: 14 SAP S/4HANA-tabeller hentet via SE16H | |
-| 5 | Datavalgsbeslutninger D-01–D-08 med begrunnelse | |
-| 6 | Modellparametere: ABC-klassifiseringsgrenser og analyseinnstillinger | |
-| 7 | Regelmotor: 8 beslutningsregler i prioritert rekkefølge | |
-| 8 | ABC-fordeling: antall artikler og verdiandel per klasse (n = 709) | |
-| 9 | XYZ-fordeling: antall artikler per klasse (n = 687) | |
-| 10 | SAP ZZXYZ-validering: samsvar mellom systemklasse og beregnet CV-klasse | |
-| 11 | EOQ-avviksresultater: fordeling etter ordrefrekvensavvik (n = 487) | |
-| 12 | K-means klyngeprofiler: gjennomsnittsverdier per klynge (K = 3) | |
-| 13 | HVFS-anbefalinger fra regelmotor: fordeling per kategori (n = 709) | |
-| 14 | Besparelsesestimater for tre scenarier (117 artikler, S = 750 NOK) | |
-| 15 | Sammenstilling av egne resultater mot funn i eksisterende litteratur | |
+Tabell 1. Litteraturoversikt: sentrale kilder med tema og relevans
+
+Tabell 2. Sammenligning av analysemetoder brukt i oppgaven
+
+Tabell 3. Nøkkeltall for casevirksomheten Helse Bergen, WERKS 3300
+
+Tabell 4. Datagrunnlag: 14 SAP S/4HANA-tabeller hentet via SE16H
+
+Tabell 5. Datavalgsbeslutninger D-01–D-08 med begrunnelse
+
+Tabell 6. Modellparametere: ABC-klassifiseringsgrenser og analyseinnstillinger
+
+Tabell 7. Regelmotor: 8 beslutningsregler i prioritert rekkefølge
+
+Tabell 8. ABC-fordeling: antall artikler og verdiandel per klasse (n = 709)
+
+Tabell 9. XYZ-fordeling: antall artikler per klasse (n = 687)
+
+Tabell 10. SAP ZZXYZ-validering: samsvar mellom systemklasse og beregnet CV-klasse
+
+Tabell 11. EOQ-avviksresultater: fordeling etter ordrefrekvensavvik (n = 487)
+
+Tabell 12. K-means klyngeprofiler: gjennomsnittsverdier per klynge (K = 3)
+
+Tabell 13. HVFS-anbefalinger fra regelmotor: fordeling per kategori (n = 709)
+
+Tabell 14. Besparelsesestimater for tre scenarier (117 artikler, S = 750 NOK)
+
+Tabell 15. Sammenstilling av egne resultater mot funn i eksisterende litteratur
 
 ---
 
@@ -833,6 +853,10 @@ Den største enkeltgruppen er artikler som regelmotoren sender til manuell vurde
 
 Besparelsesestimatet forutsetter at HVFS-overføringen faktisk fører til endret bestillingspraksis og redusert ordrefrekvens. Dette er ikke automatisk: dersom SAP MM-parametere ikke justeres, vil systemet fortsette å generere ordrer med eksisterende frekvens. Gevinstrealisering krever dermed aktiv oppfølging i SAP – noe som igjen understreker at den kvantitative analysen er ett steg i en lengre implementeringsprosess, ikke et selvstendig endepunkt.
 
+For LIBRA-prosjektet spesifikt innebærer resultatene at det nå foreligger et kvantitativt, reproduserbart beslutningsgrunnlag som kan integreres i den regionale utrullingen av sentralisert forsyning. Rammeverket kan brukes som mal for tilsvarende analyser ved de øvrige helseforetakene (Helse Stavanger, Helse Fonna, Helse Førde) etter hvert som de kobles på HVFS via SAP S/4HANA. Dersom LIBRA velger å implementere periodisk reklassifisering – for eksempel årlig – vil analysescriptet kunne kjøres på oppdaterte data uten metodisk tilpasning, noe som gir HVFS et verktøy for kontinuerlig porteføljeoptimalisering.
+
+Metoderammeverket er utviklet for medisinsk forbruksmateriell, men den underliggende logikken – verdiklassifisering, etterspørselsstabilitet, ordrefrekvensavvik og klyngebasert gruppering – er i prinsippet generaliserbar til andre varegrupper med tilsvarende datastruktur i SAP. Teknisk utstyr, kontorrekvisita eller laboratorieforbruk ved helseforetakene har samme type transaksjonsdata i EKPO, MSEG og MARD. Det er likevel viktig å påpeke at parameterverdiene (S, h, ABC-grenser, CV-terskler) må rekalibreres for hver varegruppe, da kostnadsstruktur og forbruksmønstre varierer vesentlig mellom sortimenter.
+
 ## 8.4 Svakheter og begrensninger
 
 Besparelsesformelen $B = \sum \Delta TC_i \times g$ benytter g som en antatt realiseringsgrad for den teoretiske EOQ-gevinsten. Det er avgjørende å presisere at g ikke er empirisk estimert fra historiske data, men er et scenarioparameter valgt for å reflektere ulike grader av implementeringssuksess. En realiseringsgrad på 75 % (base case) er et plausibelt anslag, men ikke en prognose. Den faktiske gevinsten vil avhenge av gjennomføringskvaliteten i HVFS-implementeringen, leverandørenes evne til å levere i henhold til konsoliderte ordrer og Helse Bergens interne kapasitet til å revidere SAP-parametere. Analysen identifiserer et klart besparelsespotensial, men implementering krever organisatorisk endring — herunder revidering av innkjøpsprosesser, oppdatering av SAP MM-parametere og forankring hos klinisk personell og logistikkfunksjon. Sensitivitetsanalysen over 27 scenarier synliggjør bredden i dette usikkerhetsintervallet og er ment å kompensere for at g ikke er empirisk fundert.
@@ -841,7 +865,9 @@ Leveringstidsfallbacken på 14 dager gjelder 94 % av artiklene og er den enkelta
 
 Analyseperioden 2024–2025 er valgt for å reflektere normal drift, men det kan ikke utelukkes at forbruksmønstre i denne perioden fortsatt er påvirket av ettervirkninger fra COVID-19-pandemien, som medførte betydelige forstyrrelser i forsyningskjeder og forbruksmønstre i helsesektoren (Volland et al., 2017). Artikler som ble hamstret eller substituert under pandemien kan ha unormalt høy eller lav CV i analyseperioden, noe som kan gi misvisende XYZ-klassifisering for disse spesifikke artiklene.
 
-K-means er kjent for å være sensitiv overfor valget av K, og ulike K-verdier vil gi ulike klyngeprofiler og dermed ulike K_OVERFØR-populasjoner (Srinivasan & Moon, 1999). Det automatiske K-valget via silhouette minimerer analytisk bias, men eliminerer ikke usikkerheten: med K = 2 eller K = 4 ville klyngestrukturen og den tilhørende overføringslisten sett annerledes ut. Sensitiviteten overfor K-valg bør anerkjennes som en begrensning ved tolkning av K_OVERFØR-signalet i regelmotoren.
+K-means er kjent for å være sensitiv overfor valget av K, og ulike K-verdier vil gi ulike klyngeprofiler og dermed ulike K_OVERFØR-populasjoner (Srinivasan & Moon, 1999). Det automatiske K-valget via silhouette minimerer analytisk bias, men eliminerer ikke usikkerheten: med K = 2 eller K = 4 ville klyngestrukturen og den tilhørende overføringslisten sett annerledes ut. Sensitiviteten overfor K-valg bør anerkjennes som en begrensning ved tolkning av K_OVERFØR-signalet i regelmotoren. I tillegg er K-means sensitiv overfor feature-scaling: standardiseringen via z-score gir de tre featurene lik vekt i klyngingen, men dette er en normativ beslutning — ikke en empirisk begrunnet vekting. Dersom verdi burde tillegges større vekt enn CV i en klinisk kontekst, ville klyngestrukturen endres tilsvarende.
+
+CV-koeffisienten som grunnlag for XYZ-klassifisering har en kjent svakhet ved lav etterspørsel: artikler med svært lavt forbruksvolum kan få kunstig lav CV dersom de har jevnt, men minimalt forbruk, eller kunstig høy CV fra én enkelt utlevering i en ellers stille periode. For de 144 artiklene som er klassifisert som Z (CV > 1,0) bør det derfor ikke utelukkes at enkelte av disse har uregelmessig CV primært grunnet lavt volum fremfor genuint uforutsigbart forbruksmønster.
 
 For 204 artikler uten EKPO-data er ABC-verdien beregnet, ikke observert. Dersom UNIT_PRICE for disse artiklene avviker fra faktisk innkjøpspris, vil ABC-rangeringen for dem være upresis. I verste fall kan en artikkel med faktisk høy innkjøpsverdi mangle EKPO-data nettopp fordi den anskaffes utenfor standard innkjøpsprosess – for eksempel som hastebestilling – noe som vil underestimere verdien og potensielt klassifisere den feil i ABC-hierarkiet. Denne begrensningen anbefales adressert ved å sikre at samtlige artikler i LGORT 3001 har fullstendige EKPO-oppføringer i SAP.
 
