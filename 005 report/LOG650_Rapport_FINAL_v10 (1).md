@@ -52,7 +52,7 @@ Figur 4. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler
 
 Figur 5. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon
 
-Figur 6. EOQ-avvik: relativ frekvensavvik med terskel ved ±50 %
+Figur 6. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5
 
 Figur 7. Silhouette-score for K = 2–7 (treningsdata, n = 389)
 
@@ -518,7 +518,7 @@ Datapipelinen fra rådata til analyseklar datasett er illustrert i figuren neden
 
 ---
 
-![Figur 2. Analysepipeline: fra SAP-radata til HVFS-anbefaling. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig02_Analysepipeline.png)
+![Figur 2. Analysepipeline: fra SAP-rådata til HVFS-anbefaling. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig02_Analysepipeline.png)
 
 ## 4.4 Etiske betraktninger og begrensninger
 
@@ -656,7 +656,7 @@ Regelmotoren kombinerer utfallene fra de fire foregående modellene – ABC-klas
 
 Sekvenslogikken er utformet slik at de to første reglene fungerer som overordnede frastøtingsregler: enhver Z-artikkel beholdes lokalt uavhengig av ABC-klasse (R1), og CY-artikler beholdes lokalt som standard (R2). Disse reglene reflekterer den grunnleggende innsikten at uforutsigbart forbruksmønster er den sterkeste kontraindikasjon mot sentralisering, fordi HVFS-modellen med APL-leveranse forutsetter planbar etterspørsel for å opprettholde tilfredsstillende servicenivå (Bijvank & Vis, 2012; Fragapane et al., 2019).
 
-Reglene 3–5 definerer positivt overføringssignal med to krav: artikkelen må ha høy verdi (A/B) og stabilt forbruk (X eller Y), og i tillegg enten dokumentert overbestilling (R3: FOR\_MANGE\_ORDRER) eller klyngetilhørighet som bekrefter HVFS-egnethet (R4 og R5: K\_OVERFØR). K\_OVERFØR-kravet i R4 og R5 er et bevisst designvalg for å sikre at overføringsanbefalinger for artikler uten EOQ-avvikssignal er forankret i klyngeanalysen — dette gir regelmotoren høyere presisjon på bekostning av recall, og er grunnen til at VURDER-kategorien er den største enkeltgruppen. Reglene 6–7 sender A/B-artikler med stabil etterspørsel, men uten K\_OVERFØR-signal, til manuell vurdering. Regel 8 fanger opp alle øvrige artikler, inkludert C + X (lav verdi, stabilt forbruk), som sendes til vurdering. Figuren nedenfor illustrerer regelmotorens beslutningsflyt.
+Reglene 3–5 definerer positivt overføringssignal med to krav: artikkelen må ha høy verdi (A/B) og stabilt forbruk (X eller Y), og i tillegg enten dokumentert overbestilling (R3: FOR\_MANGE\_ORDRER) eller klyngetilhørighet som bekrefter HVFS-egnethet (R4 og R5: K\_OVERFØR). K\_OVERFØR-kravet i R4 og R5 er et bevisst designvalg for å sikre at overføringsanbefalinger for artikler uten EOQ-avvikssignal er forankret i klyngeanalysen — dette gir regelmotoren høyere presisjon på bekostning av recall, og er grunnen til at VURDER-kategorien er den største enkeltgruppen. Regel 6 sender A/B-artikler med XYZ = X, men uten K\_OVERFØR-signal, til manuell vurdering; regel 7 gjør det samme for A/B-artikler med XYZ = Y. Regel 8 fanger opp alle øvrige artikler, inkludert C + X (lav verdi, stabilt forbruk), som sendes til vurdering. Figuren nedenfor illustrerer regelmotorens beslutningsflyt.
 
 ![Figur 3. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig03_Regelmotor.png)
 
@@ -681,7 +681,7 @@ XYZ-klassifiseringen tok utgangspunkt i månedlig MSEG-forbruk per artikkel over
 
 Etter beregning ble CV-grensene fra Tabell 6 (kap. 5) anvendt: X (CV < 0,5), Y (0,5 ≤ CV < 1,0) og Z (CV ≥ 1,0). XYZ-analysen ble deretter kryssvalidert mot SAP-feltet ZZXYZ, som representerer systemets eksisterende klassifisering. Samsvaret mellom beregnet og systemregistrert klasse ble kvantifisert som andelen av artikler der de to klassifiseringene er identiske; dette resultatet presenteres i kapittel 7. Det lave samsvaret som ble observert, bekrefter at ZZXYZ-feltet ikke er systematisk vedlikeholdt i takt med faktiske forbruksendringer, noe som motiverer bruken av CV-beregning som primær klassifiseringsmetode (beslutning D-04, avsnitt 4.3).
 
-ABC- og XYZ-klassifiseringene ble kombinert til en ni-felts kryssmatrise, som vist i Figur 5. Matrisen gir et øyeblikksbilde av populasjonens sammensetning langs de to dimensjonene og danner inngangsdataene for regelmotoren i avsnitt 6.5. Fullstendige celleanntall presenteres i Tabell 9 i kapittel 7.
+ABC- og XYZ-klassifiseringene ble kombinert til en ni-felts kryssmatrise, som vist i Figur 5. Matrisen gir et øyeblikksbilde av populasjonens sammensetning langs de to dimensjonene og danner inngangsdataene for regelmotoren i avsnitt 6.5. Fullstendige celleanntall er gjengitt i Figur 5; univariate XYZ-fordelingar presenteres i Tabell 9 i kapittel 7.
 
 ![Figur 5. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon (709 artikler, WERKS 3300 / LGORT 3001). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig05_ABC_XYZ_Matrise.png)
 
@@ -691,7 +691,7 @@ Matrisen viser at A- og B-artikler i stor grad er konsentrert i X-kolonnen (stab
 
 EOQ-avviksanalysen ble gjennomført for alle artikler der tilstrekkelig data forelå for beregning av optimal ordrefrekvens $f^*$, det vil si artikler med $D_i > 0$, $\text{UNIT\_PRICE}_i > 0$ og tilgjengelig LEAD\_TIME. Den optimale frekvensen $f^* = \sqrt{DH / 2S}$ ble beregnet med $S = 750$ NOK og $H = 0{,}20 \times \text{UNIT\_PRICE}_i$ som modellparametere (se Tabell 6, kap. 5). Faktisk ordrefrekvens $f_{\text{obs}}$ ble hentet fra EKBE og annualisert i henhold til beslutning D-08: ACTUAL\_FREQ = ORDER\_COUNT $\times$ (12/24).
 
-Det relative frekvensavviket FREQ\_AVVIK$_i = (f_{\text{obs},i} - f^*_i) / f^*_i$ ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 6 nedenfor. Terskelen $\tau_f = 1{,}5$ ble lagt inn for å skille artikler med vesentlig overbestilling (FOR\_MANGE\_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad $\Delta TC_i = TC(f_{\text{obs}}) - TC(f^*)$ beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 10 og avsnitt 7.3.
+Det relative frekvensavviket FREQ\_AVVIK$_i = (f_{\text{obs},i} - f^*_i) / f^*_i$ ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 6 nedenfor. Terskelen $\tau_f = 1{,}5$ ble lagt inn for å skille artikler med vesentlig overbestilling (FOR\_MANGE\_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad $\Delta TC_i = TC(f_{\text{obs}}) - TC(f^*)$ beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 11 og avsnitt 7.3.
 
 ![Figur 6. EOQ-avvik: relativ frekvensavvik (FREQ_AVVIK) for artikler med tilstrekkelige data, med terskel ved τ_f = 1,5. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig06_EOQ_Avvik.png)
 
@@ -715,7 +715,7 @@ Figur 8 viser at de tre klyngene er rimelig separert i feature-rommet, særlig K
 
 ![Figur 9. Klyngeprofiler for K-means (K=3): gjennomsnittlig z-score per feature per klynge. K\_OVERFØR-klyngen (grønn) kjennetegnes av lav CV og høy verdi. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig09_Kmeans_Profil.png)
 
-Figur 9 bekrefter at K\_OVERFØR-klyngen (Klynge 3, n = 281 totalt: 227 tren + 54 test) har den laveste CV-verdien (stabil etterspørsel) og den høyeste verdiprofilen, mens Klynge 2 (n = 175: 136 tren + 39 test) preges av høy CV og lavt kostnadsavvik. Klynge 1 (n = 31: 26 tren + 5 test) er en liten gruppe med svært lav verdi. Fullstendige klyngeprofiler med gjennomsnittsverdier for CV, verdi og $|\Delta TC|$ presenteres i Tabell 11 i kapittel 7.
+Figur 9 bekrefter at K\_OVERFØR-klyngen (Klynge 3, n = 281 totalt: 227 tren + 54 test) har den laveste CV-verdien (stabil etterspørsel) og den høyeste verdiprofilen, mens Klynge 2 (n = 175: 136 tren + 39 test) preges av høy CV og lavt kostnadsavvik. Klynge 1 (n = 31: 26 tren + 5 test) er en liten gruppe med svært lav verdi. Fullstendige klyngeprofiler med gjennomsnittsverdier for CV, verdi og $|\Delta TC|$ presenteres i Tabell 12 i kapittel 7.
 
 ## 6.5 Regelmotor og HVFS-scoring
 
