@@ -93,8 +93,8 @@ rules = [
     ("R1: XYZ = Z?",                        "right", "BEHOLD\nLOKALT",    C_BEHOLD),
     ("R2: ABC = C og XYZ = Y?",             "right", "BEHOLD\nLOKALT",    C_BEHOLD),
     ("R3: A/B + X +\nFOR_MANGE_ORDRER?",    "left",  "OVERFØR\nHVFS",     C_OVERFOR),
-    ("R4: K_OVERFØR +\nFOR_MANGE_ORDRER?",  "left",  "OVERFØR\nHVFS",     C_OVERFOR),
-    ("R5: A/B + X/Y?",                      "left",  "OVERFØR\nHVFS",     C_OVERFOR),
+    ("R4: A/B + X +\nK_OVERFØR?",           "left",  "OVERFØR\nHVFS",     C_OVERFOR),
+    ("R5: A/B + Y +\nK_OVERFØR?",           "left",  "OVERFØR\nHVFS",     C_OVERFOR),
     ("R6/R7/R8:\nResterende artikler",       "right", "TIL VURDERING\n(manuell)", C_VURDER),
 ]
 
