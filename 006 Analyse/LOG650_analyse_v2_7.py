@@ -178,8 +178,10 @@ print(f"   → {n_total} artikler lastet inn, {len(df)} aktive (IS_ACTIVE=True)"
 # ─────────────────────────────────────────────
 print("\n[2/7] Modul 1: ABC-analyse...")
 
-# Bruk TOTAL_NETWR, fyll med D_ANNUAL * UNIT_PRICE der mangler
+# Bruk TOTAL_NETWR, fyll med D_ANNUAL * UNIT_PRICE der mangler eller <= 0
 df['ABC_VALUE'] = df['TOTAL_NETWR'].copy()
+# D-07: Nullstill ugyldige verdiar (0 og negative) slik at fallback triggar
+df.loc[df['ABC_VALUE'] <= 0, 'ABC_VALUE'] = np.nan
 mask_beregnet = df['ABC_VALUE'].isna() & df['D_ANNUAL'].notna() & df['UNIT_PRICE'].notna()
 df.loc[mask_beregnet, 'ABC_VALUE'] = df.loc[mask_beregnet, 'D_ANNUAL'] * df.loc[mask_beregnet, 'UNIT_PRICE']
 
@@ -208,7 +210,7 @@ df = df.merge(df_abc[['MATNR','ABC_CUM_PCT','ABC_CLASS']], on='MATNR', how='left
 abc_summary = df_abc.groupby('ABC_CLASS').agg(
     ANTALL=('MATNR','count'),
     TOTAL_VERDI=('ABC_VALUE','sum')
-).reindex(['A','B','C'])
+).reindex(['A','B','C']).fillna(0)
 abc_summary['VERDI_PCT'] = abc_summary['TOTAL_VERDI'] / total_value * 100
 abc_summary['ANTALL_PCT'] = abc_summary['ANTALL'] / len(df_abc) * 100
 
@@ -238,7 +240,7 @@ val_pct = match / len(df_val) * 100 if len(df_val) > 0 else 0
 xyz_summary = df_xyz.groupby('XYZ_CLASS').agg(
     ANTALL=('MATNR','count'),
     CV_SNITT=('CV','mean')
-).reindex(['X','Y','Z'])
+).reindex(['X','Y','Z']).fillna(0)
 
 print(f"   → XYZ ferdig: {len(df_xyz)} artikler")
 for cls in ['X','Y','Z']:
@@ -601,9 +603,9 @@ for S_val in S_VALS:
             n_faa   = (status == 'FOR_FÅ_ORDRER').sum()
 
             # HVFS-kandidater med denne parameterkombinen:
-            # Rekn ΔTC for OVERFØR-artiklar med FOR_MANGE_ORDRER under denne (S, h)
-            # Regelmotor-anbefalinga endrast ikkje av S/h/τ, men TC-avviket gjer det
-            overfør_mask = df_eoq['MATNR'].isin(df_hvfs['MATNR'])
+            # Bruk alle OVERFØR_HVFS (frå regelmotor) ∩ FOR_MANGE under dette scenarioet
+            overfør_mask = df_eoq['MATNR'].isin(
+                df.loc[df['HVFS_ANBEFALING'] == 'OVERFØR_HVFS', 'MATNR'])
             tc_avvik_sens = (tc_act - tc_opt).clip(lower=0)
             b_total   = (tc_avvik_sens[overfør_mask & (status == 'FOR_MANGE_ORDRER')]
                          * G_REALISERING['base']).sum()
@@ -754,7 +756,7 @@ print("   ✅ 03_EOQ_Avvik.png")
 # ── VIS 4: K-means klyngeplot – faktisk feature-rom med tren/test-markering ──
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
-cluster_colors = ['#1565C0','#FB8C00','#43A047','#E53935','#7B1FA2','#D81B60']
+cluster_colors = ['#1565C0','#FB8C00','#43A047','#E53935','#7B1FA2','#D81B60','#00897B']
 
 # Rekonstruer z-score-verdier i kombinert rekkefølge for plotting
 z_ln_cv  = X_scaled[np.argsort(idx_combined), 0]
