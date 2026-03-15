@@ -1,5 +1,5 @@
 """
-Genererer Fig06_EOQ_Avvik.png
+Genererer Fig07_EOQ_Avvik.png
 EOQ-avviksanalyse – Helse Bergen 2024–2025
 To paneler: scatterplot + statusfordeling
 """
@@ -14,6 +14,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
     "axes.spines.top": False,
     "axes.spines.right": False,
 })
@@ -83,17 +84,17 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5),
 # ── Panel 1: Scatterplot ────────────────────────────────────────
 
 # Bakgrunnssoner – teikna først (zorder=0)
-ax1.axhspan(-THRESHOLD, THRESHOLD, color="#E8E8E8", alpha=0.5,
+ax1.axhspan(-THRESHOLD, THRESHOLD, color="#E8E8E8", alpha=0.4,
             zorder=0, label="OK-sone (±50 %)")
-ax1.axhspan(THRESHOLD, CLIP_HI + 50, color=C_FOR_MANGE, alpha=0.06,
+ax1.axhspan(THRESHOLD, CLIP_HI + 50, color=C_FOR_MANGE, alpha=0.04,
             zorder=0)
-ax1.axhspan(CLIP_LO - 50, -THRESHOLD, color=C_FOR_FAA, alpha=0.06,
+ax1.axhspan(CLIP_LO - 50, -THRESHOLD, color=C_FOR_FAA, alpha=0.04,
             zorder=0)
 
 # Scatterpunktar
 ax1.scatter(
     d.index, d["DEV_PLOT"],
-    c=d["COLOR"], s=20, alpha=0.6, edgecolors="none", zorder=2,
+    c=d["COLOR"], s=16, alpha=0.6, edgecolors="none", zorder=2,
 )
 
 # Referanselinjer
@@ -112,10 +113,10 @@ ax1.set_xlim(-5, len(d) + 5)
 ax1.set_ylim(CLIP_LO - 10, CLIP_HI + 10)
 ax1.yaxis.set_major_locator(mticker.MultipleLocator(100))
 
-ax1.grid(axis="y", alpha=0.20, linewidth=0.6)
+ax1.grid(axis="y", alpha=0.10, linewidth=0.4, linestyle=":")
 ax1.set_axisbelow(True)
 
-ax1.legend(fontsize=8, framealpha=0.85, edgecolor="#CCCCCC",
+ax1.legend(fontsize=8, framealpha=0.75, edgecolor="#CCCCCC", fancybox=True,
            loc="upper left", borderpad=0.4, handlelength=1.8)
 
 # ── Panel 2: Stolpediagram ──────────────────────────────────────
@@ -124,7 +125,7 @@ counts = [n_mange, n_ok, n_faa]
 bar_colors = [C_FOR_MANGE, C_OK, C_FOR_FAA]
 
 bars = ax2.bar(categories, counts, color=bar_colors, width=0.6,
-               alpha=0.75, edgecolor="white", linewidth=0.8, zorder=2)
+               alpha=0.82, edgecolor="white", linewidth=0.8, zorder=2)
 
 # Verdiar over kvar stolpe
 for bar, val in zip(bars, counts):
@@ -137,18 +138,18 @@ ax2.set_title("EOQ-statusfordeling", fontsize=11, fontweight="bold",
               color=C_TITLE, pad=8)
 ax2.set_ylim(0, max(counts) * 1.15)
 
-ax2.grid(axis="y", alpha=0.20, linewidth=0.6)
+ax2.grid(axis="y", alpha=0.10, linewidth=0.4, linestyle=":")
 ax2.set_axisbelow(True)
 
 # ── Hovudtittel ──────────────────────────────────────────────────
 fig.suptitle(
     "EOQ-avviksanalyse – Helse Bergen 2024–2025",
-    fontsize=12, fontweight="bold", color=C_TITLE, y=0.98,
+    fontsize=11.5, fontweight="bold", color=C_TITLE, y=0.98,
 )
 
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout(rect=[0, 0, 1, 0.93])
-out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig06_EOQ_Avvik.png"
+out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig07_EOQ_Avvik.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")

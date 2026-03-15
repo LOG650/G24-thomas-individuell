@@ -11,6 +11,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
 })
 
 fig, ax = plt.subplots(figsize=(12, 3.0))
@@ -67,7 +68,7 @@ for z in zones:
         (x0, y0), x1 - x0, y1 - y0,
         boxstyle="round,pad=0.08",
         facecolor=z["color"], edgecolor=z["edge"],
-        linewidth=0.8, linestyle="--", alpha=0.55, zorder=0,
+        linewidth=0.8, linestyle="--", alpha=0.35, zorder=0,
     )
     ax.add_patch(rect)
 
@@ -89,9 +90,9 @@ for i, label in enumerate(steps):
 
     rect = mpatches.FancyBboxPatch(
         (x, y), box_w, box_h,
-        boxstyle="round,pad=0.10",
+        boxstyle="round,pad=0.12",
         facecolor=blues[i], edgecolor="#2A5A8C",
-        linewidth=1.2, zorder=2,
+        linewidth=0.8, zorder=2,
     )
     ax.add_patch(rect)
 
@@ -108,8 +109,8 @@ for i, label in enumerate(steps):
 arrow_props = dict(
     arrowstyle="-|>",
     color="#2A5A8C",
-    lw=1.6,
-    mutation_scale=14,
+    lw=1.2,
+    mutation_scale=12,
     connectionstyle="arc3,rad=0",
     zorder=4,
 )

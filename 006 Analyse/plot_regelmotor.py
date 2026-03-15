@@ -11,6 +11,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
 })
 
 fig, ax = plt.subplots(figsize=(12, 9.5))
@@ -30,9 +31,9 @@ C_SUMMARY = "#2C3E50"   # oppsummering
 def box(ax, cx, cy, w, h, label, fc, tc="white", fs=9, zorder=2):
     rect = mpatches.FancyBboxPatch(
         (cx - w/2, cy - h/2), w, h,
-        boxstyle="round,pad=0.08",
+        boxstyle="round,pad=0.12",
         facecolor=fc, edgecolor="#1A2A44",
-        linewidth=1.1, zorder=zorder,
+        linewidth=0.8, zorder=zorder,
     )
     ax.add_patch(rect)
     ax.text(cx, cy, label, ha="center", va="center",
@@ -47,7 +48,7 @@ def arrow_v(ax, x1, y1, h1, x2, y2, h2, label=None):
     yt = y2 + h2/2
     ax.annotate("", xy=(x2, yt), xytext=(x1, yf),
                 arrowprops=dict(arrowstyle="-|>", color="#2A5A8C",
-                                lw=1.4, mutation_scale=13, zorder=3))
+                                lw=1.2, mutation_scale=12, zorder=3))
     if label:
         mx = (x1 + x2) / 2
         my = (yf + yt) / 2
@@ -65,7 +66,7 @@ def arrow_h(ax, cx, cy, hw, direction, tx, ty, th, label=None):
         xt = tx + th/2
     ax.annotate("", xy=(xt, ty), xytext=(xf, cy),
                 arrowprops=dict(arrowstyle="-|>", color="#2A5A8C",
-                                lw=1.4, mutation_scale=13, zorder=3))
+                                lw=1.2, mutation_scale=12, zorder=3))
     if label:
         mx = (xf + xt) / 2
         my = cy + 0.12

@@ -11,6 +11,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
 })
 
 fig, ax = plt.subplots(figsize=(12, 5.0))
@@ -26,9 +27,9 @@ def draw_box(ax, cx, cy, w, h, label, facecolor, textcolor="#1A2A44",
     y = cy - h / 2
     rect = mpatches.FancyBboxPatch(
         (x, y), w, h,
-        boxstyle="round,pad=0.10",
+        boxstyle="round,pad=0.12",
         facecolor=facecolor, edgecolor="#2A5A8C",
-        linewidth=1.2, zorder=zorder,
+        linewidth=0.8, zorder=zorder,
     )
     ax.add_patch(rect)
     ax.text(cx, cy, label,
@@ -46,8 +47,8 @@ def draw_arrow(ax, x1, y1, h1, x2, y2, h2, label=None, label_side="right"):
     ax.annotate(
         "", xy=(x2, y_to), xytext=(x1, y_from),
         arrowprops=dict(
-            arrowstyle="-|>", color="#2A5A8C", lw=1.6,
-            mutation_scale=14, connectionstyle="arc3,rad=0",
+            arrowstyle="-|>", color="#2A5A8C", lw=1.2,
+            mutation_scale=12, connectionstyle="arc3,rad=0",
             zorder=4,
         ),
     )

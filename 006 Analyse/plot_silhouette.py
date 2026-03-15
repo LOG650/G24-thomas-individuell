@@ -1,5 +1,5 @@
 """
-Genererer Fig07_Silhouette.png
+Genererer Fig08_Silhouette.png
 Silhouette-score for K = 2–7 (treningsdata, n = 389)
 Brukt til å begrunne val av optimalt antal klynger.
 """
@@ -13,6 +13,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
     "axes.spines.top": False,
     "axes.spines.right": False,
 })
@@ -39,13 +40,13 @@ bar_colors = [C_BEST if i == best_idx else C_BAR for i in range(len(K_values))]
 
 # Stolpediagram
 bars = ax.bar(
-    K_values, scores, color=bar_colors, width=0.6,
-    alpha=0.80, edgecolor="white", linewidth=1.0, zorder=2,
+    K_values, scores, color=bar_colors, width=0.55,
+    alpha=0.82, edgecolor="white", linewidth=1.0, zorder=2,
 )
 
 # Forbindelseslinje mellom score-punkt
 ax.plot(
-    K_values, scores, color=C_LINE, linewidth=1.3,
+    K_values, scores, color=C_LINE, linewidth=1.0,
     marker="o", markersize=5, markerfacecolor=C_LINE,
     alpha=0.7, zorder=3,
 )
@@ -103,19 +104,19 @@ ax.set_ylim(0.25, 0.43)
 ax.yaxis.set_major_locator(mticker.MultipleLocator(0.02))
 
 # Diskret horisontalt rutenett
-ax.grid(axis="y", alpha=0.20, linewidth=0.6)
+ax.grid(axis="y", alpha=0.10, linewidth=0.4, linestyle=":")
 ax.set_axisbelow(True)
 
 # ── Tittel ───────────────────────────────────────────────────────
 ax.set_title(
     "Silhouette-score for K = 2–7\n"
     "(treningsdata, n = 389)",
-    fontsize=12, fontweight="bold", color=C_TITLE, pad=10,
+    fontsize=11.5, fontweight="bold", color=C_TITLE, pad=12,
 )
 
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout()
-out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig07_Silhouette.png"
+out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig08_Silhouette.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")

@@ -1,5 +1,5 @@
 """
-Genererer Fig10_Regelmotor_Besparelse.png
+Genererer Fig11_Regelmotor_Besparelse.png
 Panel 1: Fordeling av HVFS-anbefalingar frå regelmotoren
 Panel 2: Estimert EOQ-besparelse under tre scenario
 """
@@ -13,6 +13,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
     "axes.spines.top": False,
     "axes.spines.right": False,
 })
@@ -50,7 +51,7 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5),
 # ── Panel 1: Fordeling av anbefalingar ──────────────────────────
 bars1 = ax1.barh(
     regel_labels, regel_counts, color=regel_colors,
-    height=0.6, alpha=0.80, edgecolor="white", linewidth=1.0, zorder=2,
+    height=0.6, alpha=0.82, edgecolor="white", linewidth=1.0, zorder=2,
 )
 
 # Verdiar og prosent til høgre for kvar stolpe
@@ -68,13 +69,13 @@ ax1.set_title("Fordeling av HVFS-anbefalingar", fontsize=11,
 ax1.set_xlim(0, max(regel_counts) * 1.35)
 ax1.invert_yaxis()
 
-ax1.grid(axis="x", alpha=0.20, linewidth=0.6)
+ax1.grid(axis="x", alpha=0.10, linewidth=0.4, linestyle=":")
 ax1.set_axisbelow(True)
 
 # ── Panel 2: EOQ-besparelse ─────────────────────────────────────
 bars2 = ax2.bar(
     scenario_labels, scenario_values, color=scenario_colors,
-    width=0.55, alpha=0.80, edgecolor="white", linewidth=1.0, zorder=2,
+    width=0.55, alpha=0.82, edgecolor="white", linewidth=1.0, zorder=2,
 )
 
 # Verdiar over kvar stolpe
@@ -94,18 +95,18 @@ ax2.yaxis.set_major_formatter(mticker.FuncFormatter(
     lambda x, _: f"{x:.0f}"
 ))
 
-ax2.grid(axis="y", alpha=0.20, linewidth=0.6)
+ax2.grid(axis="y", alpha=0.10, linewidth=0.4, linestyle=":")
 ax2.set_axisbelow(True)
 
 # ── Hovudtittel ──────────────────────────────────────────────────
 fig.suptitle(
     "Regelmotor og besparelsesanalyse \u2013 Helse Bergen",
-    fontsize=12, fontweight="bold", color=C_TITLE, y=0.98,
+    fontsize=11.5, fontweight="bold", color=C_TITLE, y=0.98,
 )
 
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout(rect=[0, 0, 1, 0.93])
-out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig10_Regelmotor_Besparelse.png"
+out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig11_Regelmotor_Besparelse.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")

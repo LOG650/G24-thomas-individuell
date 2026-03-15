@@ -1,5 +1,5 @@
 """
-Genererer Fig08_Kmeans_Klynger.png
+Genererer Fig09_Kmeans_Klynger.png
 K-means klyngeanalyse (K=3) – to paneler:
   Panel 1: Forbruksstabilitet vs Verdi
   Panel 2: Forbruksstabilitet vs Kostnadsavvik
@@ -18,6 +18,7 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
     "axes.spines.top": False,
     "axes.spines.right": False,
 })
@@ -87,7 +88,7 @@ def scatter_panel(ax, x_col, y_col, y_label, title):
         mask_tr = train["CLUSTER"] == cl
         ax.scatter(
             train.loc[mask_tr, x_col], train.loc[mask_tr, y_col],
-            c=color, s=24, alpha=0.55, edgecolors="none",
+            c=color, s=20, alpha=0.55, edgecolors="none",
             zorder=2, label=f"{name} tren ({nt})",
         )
 
@@ -103,7 +104,7 @@ def scatter_panel(ax, x_col, y_col, y_label, title):
         # Centroid
         ax.scatter(
             centroids[cl, feat_idx_x], centroids[cl, feat_idx_y],
-            marker="X", s=120, c=color,
+            marker="X", s=130, c=color,
             edgecolors=C_TITLE, linewidths=0.8,
             zorder=4,
         )
@@ -118,7 +119,7 @@ def scatter_panel(ax, x_col, y_col, y_label, title):
     ax.set_ylabel(y_label, fontsize=10)
     ax.set_title(title, fontsize=10.5, fontweight="bold", color=C_TITLE, pad=8)
 
-    ax.grid(alpha=0.15, linewidth=0.5)
+    ax.grid(alpha=0.10, linewidth=0.4, linestyle=":")
     ax.set_axisbelow(True)
 
 
@@ -161,7 +162,7 @@ handles.append(mlines.Line2D(
 
 ax1.legend(
     handles=handles, loc="lower left",
-    fontsize=7.5, framealpha=0.85, edgecolor="#CCCCCC",
+    fontsize=7.5, framealpha=0.75, edgecolor="#CCCCCC", fancybox=True,
     ncol=2, columnspacing=0.8, handletextpad=0.3,
     borderpad=0.4, labelspacing=0.3,
 )
@@ -176,7 +177,7 @@ fig.suptitle(
 
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout(rect=[0, 0, 1, 0.94])
-out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig08_Kmeans_Klynger.png"
+out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig09_Kmeans_Klynger.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")

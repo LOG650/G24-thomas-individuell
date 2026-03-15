@@ -1,5 +1,5 @@
 """
-Genererer Fig05_ABC_XYZ_Matrise.png
+Genererer Fig06_ABC_XYZ_Matrise.png
 ABC/XYZ klassifiseringsmatrise
 Helse Bergen WERKS 3300 LGORT 3001
 """
@@ -14,6 +14,9 @@ plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
     "font.size": 10,
+    "axes.linewidth": 0.5,
+    "axes.spines.top": False,
+    "axes.spines.right": False,
 })
 
 # ── Fargar (same som regelmotor) ────────────────────────────────
@@ -115,7 +118,7 @@ for row_i, abc in enumerate(abc_labels):
         rect = FancyBboxPatch(
             (x, y), cell, cell,
             boxstyle="square,pad=0",
-            facecolor=color, edgecolor="white", linewidth=2.5,
+            facecolor=color, edgecolor="white", linewidth=1.5,
         )
         ax.add_patch(rect)
 
@@ -178,7 +181,7 @@ ax.text(
     gx0 + grid_w / 2, 0.05,
     "ABC/XYZ klassifiseringsmatrise\nHelse Bergen WERKS 3300 LGORT 3001",
     ha="center", va="top",
-    fontsize=12, fontweight="bold", color=C_TITLE,
+    fontsize=11.5, fontweight="bold", color=C_TITLE,
 )
 
 # ── Legende ──────────────────────────────────────────────────────
@@ -189,12 +192,12 @@ legend_elements = [
 ]
 ax.legend(
     handles=legend_elements, loc="lower right",
-    fontsize=8.5, framealpha=0.9, edgecolor="#CCCCCC",
+    fontsize=8.5, framealpha=0.75, edgecolor="#CCCCCC", fancybox=True,
     bbox_to_anchor=(1.0, 0.0),
 )
 
 # ── Eksporter ────────────────────────────────────────────────────
-out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig05_ABC_XYZ_Matrise.png"
+out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig06_ABC_XYZ_Matrise.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")
