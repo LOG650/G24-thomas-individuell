@@ -18,7 +18,24 @@ import latex2mathml.converter
 from lxml import etree
 
 TEMPLATE = '../000 templates/Mal prosjekt LOG650 v2.docx'
-XSLT_PATH = r'C:\Program Files\Microsoft Office\root\Office16\MML2OMML.XSL'
+_XSLT_CANDIDATES = [
+    r'C:\Program Files\Microsoft Office\root\Office16\MML2OMML.XSL',
+    r'C:\Program Files (x86)\Microsoft Office\root\Office16\MML2OMML.XSL',
+    r'C:\Program Files\Microsoft Office\Office16\MML2OMML.XSL',
+    r'C:\Program Files\Microsoft Office\Office15\MML2OMML.XSL',
+]
+
+XSLT_PATH = None
+for _candidate in _XSLT_CANDIDATES:
+    if os.path.isfile(_candidate):
+        XSLT_PATH = _candidate
+        break
+if XSLT_PATH is None:
+    sys.exit(
+        'FEIL: Fann ikkje MML2OMML.XSL. '
+        'Legg til rett sti i _XSLT_CANDIDATES i build_word.py.\n'
+        f'Søkte i: {_XSLT_CANDIDATES}'
+    )
 
 # Førebu XSLT-transformasjon for matte
 _xslt = etree.parse(XSLT_PATH)

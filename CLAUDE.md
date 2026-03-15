@@ -20,10 +20,10 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
   LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown), includes reference list
   LOG650_Rapport_v5.docx           – Final Word document (generated from template)
   build_word.py                    – Script: builds DOCX from template + MD
-  format_docx.py                   – Script: post-processes pandoc output
+  format_docx.py                   – UTDATERT: post-prosessering av pandoc-output (ikkje i bruk, erstatta av build_word.py)
   wordcount.py                     – Script: counts words in report
   retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
-006 analyse/            – Python analysis scripts, MASTERFILE, and generated figures
+006 Analyse/            – Python analysis scripts, MASTERFILE, and generated figures
   LOG650_analyse_v2_7.py – Main analysis script (ABC, XYZ, EOQ, K-means, regelmotor)
   plot_*.py             – 12 figure-generating scripts (Fig00–Fig11)
   plots/                – Generated PNG figures (300 dpi)
@@ -37,7 +37,7 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 
 ## Data
 
-- **MASTERFILE V1.xlsx** – Main data source in `006 analyse/`. Read with `pd.read_excel(..., sheet_name="MASTERFILE", header=9)`. Contains 709 active articles with columns: MATNR, MAKTX, MTART, MATKL, WGBEZ, MEINS, ZZABC, ZZXYZ, MARC_ABC, UNIT_PRICE, TOTAL_STOCK, D_ANNUAL, ACTIVE_MONTHS, CV, MSEG_STATUS, TOTAL_NETWR, ORDER_COUNT, AVG_ORDER_QTY, NET_RECEIVED, LEAD_TIME_DAYS, SUPPLIER_COUNT.
+- **MASTERFILE V1.xlsx** – Main data source in `006 Analyse/`. Read with `pd.read_excel(..., sheet_name="MASTERFILE", header=9)`. Contains 709 active articles with columns: MATNR, MAKTX, MTART, MATKL, WGBEZ, MEINS, ZZABC, ZZXYZ, MARC_ABC, UNIT_PRICE, TOTAL_STOCK, D_ANNUAL, ACTIVE_MONTHS, CV, MSEG_STATUS, TOTAL_NETWR, ORDER_COUNT, AVG_ORDER_QTY, NET_RECEIVED, LEAD_TIME_DAYS, SUPPLIER_COUNT.
 - **K-means CSV files** – Pre-split train (389) / test (98) sets with computed features: LN_CV, LN_V, LN_DTCABS.
 
 ## Analysis Pipeline (implemented)
@@ -49,7 +49,7 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 5. **Rule engine** – 8 rules (R1–R8): 145 OVERFØR, 257 BEHOLD, 284 TIL VURDERING, 23 MANGLER DATA.
 6. **Savings** – Base case kr 452 T/year (g = 75 %), worst kr 301 T, best kr 602 T.
 
-## Figures (12 scripts in `006 analyse/`)
+## Figures (12 scripts in `006 Analyse/`)
 
 All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, title color `#1A2A44`, 300 dpi export.
 

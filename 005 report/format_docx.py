@@ -1,12 +1,9 @@
 """
-Post-prosessering av pandoc-generert DOCX for HiMolde LOG650-rapport.
-Formaterer etter kompendiet og Word-malen:
-- Times New Roman 12pt, 1.5 linjeavstand
-- Heading 1: 18pt bold, Heading 2: 16pt bold
-- Margar: L=3.0, R=2.5, T=2.5, B=2.5 cm
-- Tabellar med kantlinjer og tittel under
-- Figurar skalert til sidebreidde
-- Sideskift før kvart kapittel (Heading 1)
+UTDATERT – dette skriptet er ikkje lenger i bruk.
+Erstatta av build_word.py som byggjer DOCX direkte frå MD + HiMolde-mal.
+
+Opphavleg funksjon: Post-prosessering av pandoc-generert DOCX.
+NB: Peikar til LOG650_Rapport_FINAL.docx som ikkje finst i repoet.
 """
 
 from docx import Document
