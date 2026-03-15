@@ -96,7 +96,7 @@ rules = [
     ("R3: A/B + X +\nFOR_MANGE_ORDRER?",    "left",  "OVERFØR\nHVFS",     C_OVERFOR),
     ("R4: A/B + X +\nK_OVERFØR?",           "left",  "OVERFØR\nHVFS",     C_OVERFOR),
     ("R5: A/B + Y +\nK_OVERFØR?",           "left",  "OVERFØR\nHVFS",     C_OVERFOR),
-    ("R6/R7/R8:\nResterende artikler",       "right", "TIL VURDERING\n(manuell)", C_VURDER),
+    ("R6/R7/R8:\nResterende artikler",       "right", "VURDER\nNÆRMERE", C_VURDER),
 ]
 
 prev = inp
@@ -121,7 +121,7 @@ for i, (label, side, res_label, res_color) in enumerate(rules):
 # ── Oppsummeringsboks ────────────────────────────────────────────
 y_sum = y_rule - dy * 0.95
 summary = box(ax, cx, y_sum, 9.0, 0.55,
-              "145 OVERFØR  |  257 BEHOLD  |  284 TIL VURDERING  |  23 MANGLER DATA",
+              "145 OVERFØR  |  257 BEHOLD  |  284 VURDER NÆRMERE  |  23 MANGLER DATA",
               C_SUMMARY, fs=9)
 
 # Pil ned til oppsummering

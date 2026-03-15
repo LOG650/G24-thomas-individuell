@@ -185,11 +185,11 @@ Denne studien analyserer hvilke artikler ved Helse Bergens forsyningslager (WERK
 
 Datagrunnlaget består av 709 aktive artikler hentet fra 14 tabeller i SAP S/4HANA via transaksjonen SE16H, for perioden 2024–2025. Av totalt 1 006 unike artikkelnumre i LGORT 3001 ble 297 artikler ekskludert fordi de ikke hadde registrert forbruk og ikke hadde lagerbeholdning i analyseperioden — operasjonelt inaktive artikler etter aktivitetskriteriet i D-01. Dataforbehandlingen er dokumentert gjennom åtte eksplisitte datavalgsbeslutninger (D-01 til D-08) og gjennomføres med et deterministisk Python-script for full reproduserbarhet.
 
-Analysen kombinerer fire metoder i en integrert rørledning: ABC-klassifisering basert på Pareto-prinsippet, XYZ-klassifisering basert på variasjonskoeffisient (CV), EOQ-avviksanalyse med parametere S = 750 kr og h = 20 % av enhetspris, og K-means klyngeanalyse med automatisk K-valg via silhouette-score. Resultatene sammenstilles i en regelmotor med åtte beslutningsregler som klassifiserer hver artikkel i én av tre kategorier: OVERFØR_HVFS, BEHOLD_LOKALT eller TIL_VURDERING.
+Analysen kombinerer fire metoder i en integrert rørledning: ABC-klassifisering basert på Pareto-prinsippet, XYZ-klassifisering basert på variasjonskoeffisient (CV), EOQ-avviksanalyse med parametere S = 750 kr og h = 20 % av enhetspris, og K-means klyngeanalyse med automatisk K-valg via silhouette-score. Resultatene sammenstilles i en regelmotor med åtte beslutningsregler som klassifiserer hver artikkel i én av tre kategorier: OVERFØR_HVFS, BEHOLD_LOKALT eller VURDER_NÆRMERE.
 
 ABC-analysen viser at 182 artikler (25,7 %) tilhører A-kategorien og bærer om lag 80 % av den totale verdibindingen; 184 tilhører B og 338 tilhører C — de resterende 5 artiklene kunne ikke ABC-klassifiseres grunnet manglende verdidata. XYZ-analysen klassifiserer 350 artikler som X (stabilt forbruk, CV < 0,5), 193 som Y og 144 som Z; 22 artikler ble ikke XYZ-klassifisert grunnet utilstrekkelig forbrukshistorikk. K-means-analysen identifiserer K = 3 distinkte klynger med silhouette-score 0,383 på treningsdata og 0,368 på testdata, noe som bekrefter en akseptabel klyngestruktur. Regelmotoren anbefaler overføring av 145 artikler (20,5 % av populasjonen), mens 257 artikler beholdes lokalt og 284 sendes til manuell vurdering. Det estimerte besparelsespotensialet er kr 451 515 per år i base case (realiseringsgrad g = 75 % av teoretisk totalkostnavvik $\sum \Delta TC_i$), med et pessimistisk scenario på kr 301 010 og et optimistisk på kr 602 020.
 
-Studien konkluderer med at multikriterieklassifisering og klyngeanalyse av SAP-transaksjonsdata gir et operasjonelt anvendbart grunnlag for å identifisere HVFS-overføringskandidater ved Helse Bergen. Sentralisering anbefales, men forutsetter aktiv justering av SAP MM-parametere og en strukturert manuell gjennomgang av TIL VURDERING-gruppen for å realisere det estimerte besparelsespotensialet.
+Studien konkluderer med at multikriterieklassifisering og klyngeanalyse av SAP-transaksjonsdata gir et operasjonelt anvendbart grunnlag for å identifisere HVFS-overføringskandidater ved Helse Bergen. Sentralisering anbefales, men forutsetter aktiv justering av SAP MM-parametere og en strukturert manuell gjennomgang av VURDER NÆRMERE-gruppen for å realisere det estimerte besparelsespotensialet.
 
 ---
 
@@ -671,7 +671,7 @@ I tillegg til de tre scenariene ble det gjennomført en systematisk sensitivitet
 
 ![Figur 11. Regelmotor og besparelsesanalyse: fordeling av HVFS-anbefalinger (venstre) og estimert årlig EOQ-besparelse under tre realiseringsscenarier (høyre). 709 artikler, WERKS 3300 / LGORT 3001. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig11_Regelmotor_Besparelse.png)
 
-Figur 10 viser at 145 artikler (20,5 % av populasjonen) anbefales overført til HVFS, mens 257 artikler (36,2 %) beholdes lokalt basert på Z-klasse eller CY-kombinasjon. Kategorien TIL VURDERING er den største enkeltgruppen med 284 artikler (40,1 %), noe som reflekterer at mange artikler har en profil der de ulike analysene ikke gir entydige signaler. Dette er et forventet utfall gitt at regelmotoren er utformet for å unngå feilaktige overføringsanbefalinger: usikre tilfeller sendes til manuell vurdering fremfor å tvinges inn i en binær beslutning. Fordelingen av anbefalinger per regel er som følger: R1 (Z-override) fanget 144 artikler, R2 (CY) fanget 113, R3 (A/B + X + FOR\_MANGE) fanget 91, R4 (A/B + X + K\_OVERFØR) fanget 26, R5 (A/B + Y + K\_OVERFØR) fanget 28, og R6–R8 sendte de resterende 284 artiklene til manuell vurdering. At TIL\_VURDERING er den største enkeltgruppen er et bevisst designvalg: regelmotoren er utformet for høy presisjon i OVERFØR-anbefalingene, og aksepterer at dette medfører en større andel artikler som krever manuell gjennomgang. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
+Figur 11 viser at 145 artikler (20,5 % av populasjonen) anbefales overført til HVFS, mens 257 artikler (36,2 %) beholdes lokalt basert på Z-klasse eller CY-kombinasjon. Kategorien VURDER NÆRMERE er den største enkeltgruppen med 284 artikler (40,1 %), noe som reflekterer at mange artikler har en profil der de ulike analysene ikke gir entydige signaler. Dette er et forventet utfall gitt at regelmotoren er utformet for å unngå feilaktige overføringsanbefalinger: usikre tilfeller sendes til manuell vurdering fremfor å tvinges inn i en binær beslutning. Fordelingen av anbefalinger per regel er som følger: R1 (Z-override) fanget 144 artikler, R2 (CY) fanget 113, R3 (A/B + X + FOR\_MANGE) fanget 91, R4 (A/B + X + K\_OVERFØR) fanget 26, R5 (A/B + Y + K\_OVERFØR) fanget 28, og R6–R8 sendte de resterende 284 artiklene til manuell vurdering. At VURDER\_NÆRMERE er den største enkeltgruppen er et bevisst designvalg: regelmotoren er utformet for høy presisjon i OVERFØR-anbefalingene, og aksepterer at dette medfører en større andel artikler som krever manuell gjennomgang. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
 
 
 ---
@@ -758,7 +758,7 @@ Regelmotoren produserte en anbefaling for samtlige 709 artikler. Fordelingen er 
 |----------|--------|-------|-------------|
 | OVERFØR\_HVFS | 145 | 20,5 % | Anbefales overført til HVFS |
 | BEHOLD\_LOKALT | 257 | 36,2 % | Beholdes lokalt (Z-klasse eller CY) |
-| TIL\_VURDERING | 284 | 40,1 % | Krever manuell vurdering |
+| VURDER\_NÆRMERE | 284 | 40,1 % | Krever manuell vurdering |
 | MANGLER\_DATA | 23 | 3,2 % | Utilstrekkelig data for klassifisering |
 | **Totalt** | **709** | **100 %** | |
 
@@ -863,7 +863,7 @@ Basert på studiens funn rettes følgende fire anbefalinger til Helse Bergen og 
 **1. Iverksett pilotoverføring for K_OVERFØR-klyngen og AX/BX-artiklene.**
 De 145 artiklene som er anbefalt overført bør ikke overføres samlet i én operasjon. En pilotfase bør prioritere artiklene i skjæringspunktet mellom K_OVERFØR-klyngen og AX/BX-kategoriene, da disse har den sterkeste kombinasjonen av analysesignaler og lavest risiko for servicesvikt. En gradvis overføring gir mulighet til å verifisere at HVFS og NorEngros håndterer artiklene i henhold til APL-leveransemodellen før hele porteføljen flyttes.
 
-**2. Gjennomgå de 284 artiklene i TIL VURDERING manuelt.**
+**2. Gjennomgå de 284 artiklene i VURDER NÆRMERE manuelt.**
 Denne gruppen er for stor og sammensatt til å håndteres med et enkelt kvantitativt signal. En strukturert gjennomgang bør inkludere innkjøpsfaglig og klinisk kompetanse for å vurdere forsyningssikkerhet, leverandørforbindelser og artikkelkritikalitet. Målet er å redusere VURDER-gruppen til en endelig fordeling mellom OVERFØR og BEHOLD innen utgangen av pilotfasen.
 
 **3. Oppdater SAP MM-parametere for overførte artikler.**
@@ -965,7 +965,7 @@ Analyseverktøyet er implementert i Python 3.13 og består av to hovudkomponenta
 
 **Hovudscript:** `LOG650_analyse_v2_7.py` — deterministisk analysepipeline som les MASTERFILE V1.xlsx og produserer alle klassifiseringar, K-means-modellen, regelmotoranbefalingar og besparelsesestimater. Outputformat: Excel (LOG650_Resultater.xlsx) med separate ark for kvart analysesteg.
 
-**Figurscripts:** 11 separate Python-scripts (`plot_*.py`) som genererer figurane Fig00–Fig10 i konsistent stil (serif-font, 300 dpi, felles fargepalett).
+**Figurscripts:** 12 separate Python-scripts (`plot_*.py`) som genererer figurane Fig00–Fig11 i konsistent stil (serif-font, 300 dpi, felles fargepalett).
 
 **Nøkkelbibliotek:** pandas 2.x (datastrukturar), scikit-learn 1.x (KMeans, StandardScaler, silhouette_score), matplotlib 3.x (visualisering), openpyxl (Excel I/O).
 
