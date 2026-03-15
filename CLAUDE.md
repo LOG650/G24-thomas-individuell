@@ -14,25 +14,25 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 
 ```
 000 templates/          – Report templates (Word), reference style guide (APA 7 Norwegian)
-001 info/               – Organisational info
-002 meetings/           – Meeting notes, one subfolder per meeting (dd.mm.2026)
-003 references/         – Academic PDFs and the APA 7 reference list (Kildeliste_LOG650_APA7.md)
-004 data/               – SAP data exports
+003 references/         – Academic PDFs (23 stk) with per-source .md summaries and OVERSIKT.md
+004 data/               – SAP data exports (original MASTERFILE)
 005 report/             – Final report source (MD) and Word output
-  LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown)
+  LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown), includes reference list
   LOG650_Rapport_v5.docx           – Final Word document (generated from template)
   build_word.py                    – Script: builds DOCX from template + MD
   format_docx.py                   – Script: post-processes pandoc output
+  wordcount.py                     – Script: counts words in report
   retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
 006 analyse/            – Python analysis scripts, MASTERFILE, and generated figures
-  plot_*.py             – 11 figure-generating scripts (Fig00–Fig10)
+  LOG650_analyse_v2_7.py – Main analysis script (ABC, XYZ, EOQ, K-means, regelmotor)
+  plot_*.py             – 12 figure-generating scripts (Fig00–Fig11)
   plots/                – Generated PNG figures (300 dpi)
-  MASTERFILE V1.xlsx    – Main data file (709 articles, sheet MASTERFILE, header row 9)
+  MASTERFILE V1.xlsx    – Working data file (709 articles, sheet MASTERFILE, header row 9)
+  LOG650_Resultater.xlsx – Generated results (ABC, XYZ, K-means, regelmotor, besparelse)
   LOG650_kmeans_train.csv / _test.csv – Train/test split for K-means
 011 fase 1 - proposal/  – Approved project proposal (proposal.md)
 012 fase 2 - plan/      – Project management plan, WBS/Gantt
 013 fase 3 - review/    – Execution phase
-014 fase 4 - report/    – (legacy location, moved to 005 report/)
 ```
 
 ## Data
@@ -49,7 +49,7 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 5. **Rule engine** – 8 rules (R1–R8): 145 OVERFØR, 257 BEHOLD, 284 TIL VURDERING, 23 MANGLER DATA.
 6. **Savings** – Base case kr 452 T/year (g = 75 %), worst kr 301 T, best kr 602 T.
 
-## Figures (11 scripts in `006 analyse/`)
+## Figures (12 scripts in `006 analyse/`)
 
 All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, title color `#1A2A44`, 300 dpi export.
 
@@ -59,13 +59,14 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 | `plot_lagerstruktur.py` | Fig01_Lagerstruktur.png | Warehouse hierarchy diagram |
 | `plot_analysepipeline.py` | Fig02_Analysepipeline.png | Analysis pipeline diagram |
 | `plot_regelmotor.py` | Fig03_Regelmotor.png | Rule engine flowchart (R1–R8) |
-| `plot_abc_pareto.py` | Fig04_ABC_Pareto.png | ABC Pareto diagram |
-| `plot_abc_xyz_matrise.py` | Fig05_ABC_XYZ_Matrise.png | ABC/XYZ 3×3 classification matrix |
-| `plot_eoq_avvik.py` | Fig06_EOQ_Avvik.png | EOQ deviation scatter + bar |
-| `plot_silhouette.py` | Fig07_Silhouette.png | Silhouette score K=2–7 |
-| `plot_kmeans_klynger.py` | Fig08_Kmeans_Klynger.png | K-means scatter (2 panels) |
-| `plot_kmeans_profil.py` | Fig09_Kmeans_Profil.png | Cluster profile line chart |
-| `plot_regelmotor_besparelse.py` | Fig10_Regelmotor_Besparelse.png | Rule engine results + savings |
+| `plot_dataoversikt.py` | Fig04_Dataoversikt.png | Data overview diagram |
+| `plot_abc_pareto.py` | Fig05_ABC_Pareto.png | ABC Pareto diagram |
+| `plot_abc_xyz_matrise.py` | Fig06_ABC_XYZ_Matrise.png | ABC/XYZ 3×3 classification matrix |
+| `plot_eoq_avvik.py` | Fig07_EOQ_Avvik.png | EOQ deviation scatter + bar |
+| `plot_silhouette.py` | Fig08_Silhouette.png | Silhouette score K=2–7 |
+| `plot_kmeans_klynger.py` | Fig09_Kmeans_Klynger.png | K-means scatter (2 panels) |
+| `plot_kmeans_profil.py` | Fig10_Kmeans_Profil.png | Cluster profile line chart |
+| `plot_regelmotor_besparelse.py` | Fig11_Regelmotor_Besparelse.png | Rule engine results + savings |
 
 **Colour palette (consistent across all figures):**
 - Green `#1E7D45` – positive / HVFS candidate / optimal
@@ -103,7 +104,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 - **Math:** LaTeX → MathML (`latex2mathml`) → OMML (`MML2OMML.XSL`) → Word equations
 - **Tables:** Three-line format (booktabs): top border, header-bottom border, table-bottom border, no vertical lines
 - **Table captions:** Italic, placed UNDER tables (per kompendiet kap. 3.5)
-- **Figures:** 11 PNGs from `006 Analyse/plots/`, caption under (italic)
+- **Figures:** 12 PNGs from `006 Analyse/plots/` (Fig00–Fig11), caption under (italic)
 - **Run:** `cd "005 report" && py build_word.py`
 
 ## Critical Constraints
