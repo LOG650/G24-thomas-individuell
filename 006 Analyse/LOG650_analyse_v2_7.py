@@ -135,7 +135,7 @@ STYLE = {
 }
 
 print("=" * 60)
-print("LOG650 – Helse Bergen Lageranalyse v2.5")
+print("LOG650 – Helse Bergen Lageranalyse v2.7")
 print("=" * 60)
 
 # ─────────────────────────────────────────────
@@ -164,7 +164,7 @@ df['IS_ACTIVE'] = (
     (pd.to_numeric(df['TOTAL_STOCK'], errors='coerce').fillna(0) > 0)
 )
 
-# D-03: Fyll blanke MSEG_STATUS med 'AKTIV' (normal drift)
+# D-06: Fyll blanke MSEG_STATUS med 'AKTIV' (normal drift)
 df['MSEG_STATUS'] = df['MSEG_STATUS'].fillna('AKTIV')
 
 n_total = len(df)
@@ -589,22 +589,24 @@ for S_val in S_VALS:
                        + (df_eoq['D_ANNUAL'] / (2 * df_eoq['ACTUAL_FREQ'].clip(lower=0.1))) * H_cost)
             tc_avvik = (tc_act - tc_opt)
 
-            # EOQ_STATUS med τ_f
+            # EOQ_STATUS med τ_f – rekn frekvensavvik på nytt for denne (S, h)-kombinen
+            freq_avvik_pct = ((df_eoq['ACTUAL_FREQ'] - f_star) / f_star * 100)
             tau_pct = (tau_val - 1) * 100   # τ_f=1.5 → 50 %
             status = pd.Series('OK', index=df_eoq.index)
-            status[df_eoq['FREQ_AVVIK_PCT'] >  tau_pct] = 'FOR_MANGE_ORDRER'
-            status[df_eoq['FREQ_AVVIK_PCT'] < -tau_pct] = 'FOR_FÅ_ORDRER'
+            status[freq_avvik_pct >  tau_pct] = 'FOR_MANGE_ORDRER'
+            status[freq_avvik_pct < -tau_pct] = 'FOR_FÅ_ORDRER'
 
             n_mange = (status == 'FOR_MANGE_ORDRER').sum()
             n_ok    = (status == 'OK').sum()
             n_faa   = (status == 'FOR_FÅ_ORDRER').sum()
 
             # HVFS-kandidater med denne parameterkombinen:
-            # bruk base-case regelmotor-output (anbefaling endres ikke av S/h/τ,
-            # kun besparelsesbeløpet og statusfordelingen)
-            df_hvfs_s = df_hvfs.copy()
-            freq_col  = df_hvfs_s['ACTUAL_FREQ']
-            b_total   = (freq_col * S_val * R_BASE).sum()
+            # Rekn ΔTC for OVERFØR-artiklar med FOR_MANGE_ORDRER under denne (S, h)
+            # Regelmotor-anbefalinga endrast ikkje av S/h/τ, men TC-avviket gjer det
+            overfør_mask = df_eoq['MATNR'].isin(df_hvfs['MATNR'])
+            tc_avvik_sens = (tc_act - tc_opt).clip(lower=0)
+            b_total   = (tc_avvik_sens[overfør_mask & (status == 'FOR_MANGE_ORDRER')]
+                         * G_REALISERING['base']).sum()
 
             sens_rows.append({
                 'S (kr/ordre)':          S_val,
@@ -614,16 +616,16 @@ for S_val in S_VALS:
                 'OK (n)':                n_ok,
                 'For få ordrer (n)':     n_faa,
                 'ΔTC total (kr/år)':     round(tc_avvik.sum()),
-                'B_total base (kr/år)':  round(b_total),
+                'B_HVFS base g=75% (kr/år)': round(b_total),
             })
 
 df_sens = pd.DataFrame(sens_rows)
 
 # Oppsummering: vis variasjon langs hver akse
 print(f"   → {len(df_sens)} scenariokombiner (3×3×3)")
-print(f"   → B_total (r=12%): "
-      f"min kr {df_sens['B_total base (kr/år)'].min():,.0f} – "
-      f"maks kr {df_sens['B_total base (kr/år)'].max():,.0f}")
+print(f"   → B_HVFS (g=75%): "
+      f"min kr {df_sens['B_HVFS base g=75% (kr/år)'].min():,.0f} – "
+      f"maks kr {df_sens['B_HVFS base g=75% (kr/år)'].max():,.0f}")
 print(f"   → ΔTC total: "
       f"min kr {df_sens['ΔTC total (kr/år)'].min():,.0f} – "
       f"maks kr {df_sens['ΔTC total (kr/år)'].max():,.0f}")
@@ -989,9 +991,9 @@ with pd.ExcelWriter(OUTPUT_XLSX, engine='xlsxwriter') as writer:
     ws_sens.write(0, 0, 'Sensitivitetsanalyse – 27 scenariokombiner (S × h × τ_f)', title_fmt)
     ws_sens.write(1, 0,
         f'S ∈ {{500, 750, 1000}} kr  |  h ∈ {{0,15, 0,20, 0,25}}  |  τ_f ∈ {{1,25, 1,50, 2,00}}'
-        f'  |  r = {R_BASE*100:.0f}% (base case)')
+        f'  |  g = 75% (base case)')
     ws_sens.set_column('A:H', 26)
-    # Betinget formattering: fargeskala på B_total-kolonnen (kolonne H, index 7)
+    # Betinget formattering: fargeskala på B_HVFS-kolonnen (kolonne H, index 7)
     ws_sens.conditional_format(4, 7, 3 + len(df_sens), 7, {
         'type': '3_color_scale',
         'min_color': '#fee2e2',
