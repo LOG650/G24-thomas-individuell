@@ -51,7 +51,8 @@ labels = [str(n)[:25] + "…" if len(str(n)) > 25 else str(n) for n in topp10.in
 ax.set_yticklabels(labels, fontsize=8)
 ax.set_xlabel("Antall artiklar")
 ax.set_title("(a) Artiklar per varegruppe", pad=10)
-ax.grid(axis="x")  # barh treng x-grid
+ax.yaxis.grid(False)
+ax.xaxis.grid(True)  # barh treng x-grid
 for bar, val in zip(bars, topp10.values):
     ax.text(val + 1, bar.get_y() + bar.get_height() / 2,
             str(val), va="center", fontsize=8, color=COLORS["title"])

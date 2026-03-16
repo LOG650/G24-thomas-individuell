@@ -51,7 +51,7 @@ n_train = train["CLUSTER"].value_counts().sort_index()
 n_test = test["CLUSTER"].value_counts().sort_index()
 
 # ── Plot ─────────────────────────────────────────────────────────
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
 def scatter_panel(ax, x_col, y_col, y_label, title):
     feat_idx_x = features.index("LN_CV")
@@ -136,9 +136,10 @@ ax1.legend(
 )
 
 # ── Tittel og eksport ────────────────────────────────────────────
-plt.tight_layout()
+plt.tight_layout(rect=[0, 0, 1, 0.88])
 fig_title(fig, "K-means klyngeanalyse",
           f"Helse Bergen \u2013 Sil tren = {sil_train:.3f} | Sil test = {sil_test:.3f}")
+fig.subplots_adjust(top=0.83)  # ekstra plass under undertittel
 
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig09_Kmeans_Klynger.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
