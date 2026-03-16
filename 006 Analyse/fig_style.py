@@ -135,7 +135,22 @@ def fig_title(fig, headline, subtitle=None):
       - Undertittel i regular, grå
 
     Kall ETTER fig.tight_layout() / plt.tight_layout().
+    Brukar fysiske avstandar (tommer) slik at layout fungerer
+    uavhengig av figurhøgd.
     """
+    fig_h = fig.get_size_inches()[1]
+
+    # Fysiske avstandar (tommer) → figurkoordinatar
+    y_headline = 0.97 - 0.10 / fig_h       # 0.10" under topplinja
+    sub_gap = 0.24 / fig_h                  # 0.24" mellom tittel og undertittel
+
+    # Topp-margin: skyv aksane ned
+    if subtitle:
+        top_margin = 1.0 - 0.65 / fig_h    # ~0.65" tittelområde
+    else:
+        top_margin = 1.0 - 0.40 / fig_h    # ~0.40" tittelområde
+    fig.subplots_adjust(top=top_margin)
+
     # Blå topplinje – full breidd, 3pt tjukk
     fig.patches.append(mpatches.FancyBboxPatch(
         (0.0, 0.97), 1.0, 0.03,
@@ -146,7 +161,6 @@ def fig_title(fig, headline, subtitle=None):
     ))
 
     # Hovudtittel – bold, mørk
-    y_headline = 0.94
     fig.text(
         0.02, y_headline, headline,
         fontsize=14, fontweight="bold", color=COLORS["title"],
@@ -157,7 +171,7 @@ def fig_title(fig, headline, subtitle=None):
     # Undertittel – regular, grå
     if subtitle:
         fig.text(
-            0.02, y_headline - 0.04, subtitle,
+            0.02, y_headline - sub_gap, subtitle,
             fontsize=10, fontweight="normal", color=COLORS["subtitle"],
             ha="left", va="top",
             transform=fig.transFigure, zorder=11,

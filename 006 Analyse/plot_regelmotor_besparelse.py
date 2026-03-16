@@ -68,7 +68,7 @@ ax2.yaxis.set_major_formatter(mticker.FuncFormatter(
 ))
 
 # ── Tittel og eksport ────────────────────────────────────────────
-plt.tight_layout(rect=[0, 0, 1, 0.90])
+plt.tight_layout()
 fig_title(fig, "Regelmotor og besparelsesanalyse", "Helse Bergen")
 
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig11_Regelmotor_Besparelse.png"

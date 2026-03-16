@@ -10,7 +10,7 @@ from fig_style import apply_style, fig_title, COLORS, BLUE_GRADIENT, DIAGRAM_COL
 
 apply_style()
 
-fig, ax = plt.subplots(figsize=(12, 3.0))
+fig, ax = plt.subplots(figsize=(12, 3.6))
 ax.set_xlim(-0.3, 12.3)
 ax.set_ylim(-0.15, 2.6)
 ax.axis("off")

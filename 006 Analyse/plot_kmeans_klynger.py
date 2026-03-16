@@ -136,7 +136,7 @@ ax1.legend(
 )
 
 # ── Tittel og eksport ────────────────────────────────────────────
-plt.tight_layout(rect=[0, 0, 1, 0.90])
+plt.tight_layout()
 fig_title(fig, "K-means klyngeanalyse",
           f"Helse Bergen \u2013 Sil tren = {sil_train:.3f} | Sil test = {sil_test:.3f}")
 

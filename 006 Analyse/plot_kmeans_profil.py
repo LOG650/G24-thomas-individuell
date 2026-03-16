@@ -28,7 +28,7 @@ km.fit(X_train)
 centroids = km.cluster_centers_
 
 # ── Plot ─────────────────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(8, 4))
+fig, ax = plt.subplots(figsize=(8, 4.5))
 
 x_pos = np.arange(len(features))
 
