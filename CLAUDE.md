@@ -83,7 +83,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 
 ## Writing Conventions
 
-- **Language:** Norwegian (Bokmål) throughout – all document text, comments in code, and commit messages.
+- **Language:** Norwegian (Bokmål) throughout – all document text, comments in code, and commit messages. Do NOT use nynorsk forms (e.g. "ikkje", "fordelingar", "variablar") — use bokmål consistently ("ikke", "fordelinger", "variabler").
 - **References:** APA 7th edition, Norwegian style.
 - **Excluded scope:** Pharmaceuticals, implants, and expensive equipment are out of scope. Only medical consumables at Helse Bergen.
 

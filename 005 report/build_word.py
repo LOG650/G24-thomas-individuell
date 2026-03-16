@@ -252,18 +252,18 @@ print("Steg 5: Legg til kapittelinnhald...")
 print("  Legg til Figurliste og Tabelliste...")
 
 figurliste = [
-    'Figur 0. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling',
-    'Figur 1. Lagerstruktur – Helse Vest forsyningskjede (forenklet)',
-    'Figur 2. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
-    'Figur 3. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
-    'Figur 4. Dataoversikt: fordeling av nøkkelvariablar for 709 artiklar',
-    'Figur 5. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler',
-    'Figur 6. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon',
-    'Figur 7. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5',
-    'Figur 8. Silhouette-score for K = 2–7 (treningsdata, n = 389)',
-    'Figur 9. K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik',
-    'Figur 10. Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature',
-    'Figur 11. Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse',
+    'Figur 1. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling',
+    'Figur 2. Lagerstruktur – Helse Vest forsyningskjede (forenklet)',
+    'Figur 3. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
+    'Figur 4. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
+    'Figur 5. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler',
+    'Figur 6. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler',
+    'Figur 7. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon',
+    'Figur 8. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5',
+    'Figur 9. Silhouette-score for K = 2–7 (treningsdata, n = 389)',
+    'Figur 10. K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik',
+    'Figur 11. Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature',
+    'Figur 12. Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse',
 ]
 tabelliste = [
     'Tabell 1. Litteraturoversikt: sentrale kilder med tema og relevans',
