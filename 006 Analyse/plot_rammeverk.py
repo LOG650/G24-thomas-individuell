@@ -6,14 +6,9 @@ Konseptuelt analyserammeverk – fra SAP-data til HVFS-anbefaling
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+from fig_style import apply_style, fig_title, COLORS, BLUE_GRADIENT, DIAGRAM_COLORS
 
-# ── Konfigurasjon ────────────────────────────────────────────────
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
-    "font.size": 10,
-    "axes.linewidth": 0.5,
-})
+apply_style()
 
 fig, ax = plt.subplots(figsize=(12, 3.0))
 ax.set_xlim(-0.3, 12.3)
@@ -30,9 +25,6 @@ steps = [
     ("Regelmotor\nHVFS-regler",5),
     ("HVFS-\nanbefaling",      6),
 ]
-
-# ── Fargar: blå gradient (lys → mørk) ───────────────────────────
-blues = ["#D6EAFF", "#B3D4F7", "#82BBF0", "#519DE0", "#2E7FCA", "#1A5FAA", "#0B3D8C"]
 
 # ── Plassering ───────────────────────────────────────────────────
 n = len(steps)
@@ -56,11 +48,11 @@ zone_pad_y_bot = 0.28
 
 zones = [
     {"label": "DATAGRUNNLAG",      "start": 0, "end": 0,
-     "color": "#E8F0FE", "edge": "#B8CDE8"},
+     "color": DIAGRAM_COLORS["zone_1"], "edge": DIAGRAM_COLORS["zone_edge_1"]},
     {"label": "ANALYSEMODELLER",   "start": 1, "end": 4,
-     "color": "#E0ECFA", "edge": "#A8BFE0"},
+     "color": DIAGRAM_COLORS["zone_2"], "edge": DIAGRAM_COLORS["zone_edge_2"]},
     {"label": "BESLUTNINGSLOGIKK", "start": 5, "end": 6,
-     "color": "#D4E2F5", "edge": "#94ABCF"},
+     "color": DIAGRAM_COLORS["zone_3"], "edge": DIAGRAM_COLORS["zone_edge_3"]},
 ]
 
 for z in zones:
@@ -83,7 +75,7 @@ for z in zones:
         z["label"],
         ha="center", va="top",
         fontsize=7.5, fontweight="bold",
-        color="#3A5A8C", style="italic",
+        color=DIAGRAM_COLORS["zone_label"], style="italic",
         zorder=5,
     )
 
@@ -93,13 +85,13 @@ for i, (label, _idx) in enumerate(steps):
     y = y_center - box_h / 2
 
     # Bestem tekstfarge: kvit tekst på mørk bakgrunn
-    text_color = "white" if i >= 5 else "#1A2A44"
+    text_color = "white" if i >= 5 else COLORS["title"]
 
     rect = mpatches.FancyBboxPatch(
         (x, y), box_w, box_h,
-        boxstyle="round,pad=0.12",
-        facecolor=blues[i], edgecolor="#2A5A8C",
-        linewidth=0.8, zorder=2,
+        boxstyle="round,pad=0.14",
+        facecolor=BLUE_GRADIENT[i], edgecolor=COLORS["edge"],
+        linewidth=1.0, zorder=2,
     )
     ax.add_patch(rect)
 
@@ -115,9 +107,9 @@ for i, (label, _idx) in enumerate(steps):
 # ── Piler mellom boksar ──────────────────────────────────────────
 arrow_props = dict(
     arrowstyle="-|>",
-    color="#2A5A8C",
-    lw=1.2,
-    mutation_scale=12,
+    color=COLORS["edge"],
+    lw=1.4,
+    mutation_scale=14,
     connectionstyle="arc3,rad=0",
     zorder=4,
 )
@@ -132,15 +124,9 @@ for i in range(n - 1):
         arrowprops=arrow_props,
     )
 
-# ── Tittel ───────────────────────────────────────────────────────
-ax.set_title(
-    "Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling",
-    fontsize=12, fontweight="bold", pad=8,
-    color="#1A2A44",
-)
-
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout()
+fig_title(fig, "Konseptuelt rammeverk", "Fra SAP-data til HVFS-anbefaling")
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig00_Konseptuelt_Rammeverk.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()

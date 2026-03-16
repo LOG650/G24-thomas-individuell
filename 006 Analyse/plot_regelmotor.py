@@ -5,14 +5,9 @@ Regelmotor – sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from fig_style import apply_style, fig_title, COLORS, DIAGRAM_COLORS
 
-# ── Konfigurasjon ────────────────────────────────────────────────
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
-    "font.size": 10,
-    "axes.linewidth": 0.5,
-})
+apply_style()
 
 fig, ax = plt.subplots(figsize=(12, 9.5))
 ax.set_xlim(0, 12)
@@ -20,20 +15,20 @@ ax.set_ylim(0, 10)
 ax.axis("off")
 
 # ── Fargar ───────────────────────────────────────────────────────
-C_INPUT   = "#0B3D8C"   # datainngang
-C_RULE    = "#3D5A80"   # beslutningsregel
-C_BEHOLD  = "#B03A2E"   # raud – behold lokalt
-C_OVERFOR = "#1E7D45"   # grøn – overfør HVFS
-C_VURDER  = "#D68910"   # oransje – til vurdering
-C_SUMMARY = "#2C3E50"   # oppsummering
+C_INPUT   = DIAGRAM_COLORS["input"]
+C_RULE    = DIAGRAM_COLORS["rule"]
+C_BEHOLD  = COLORS["red"]
+C_OVERFOR = COLORS["green"]
+C_VURDER  = COLORS["orange"]
+C_SUMMARY = DIAGRAM_COLORS["summary"]
 
 # ── Hjelpefunksjonar ─────────────────────────────────────────────
 def box(ax, cx, cy, w, h, label, fc, tc="white", fs=9, zorder=2):
     rect = mpatches.FancyBboxPatch(
         (cx - w/2, cy - h/2), w, h,
-        boxstyle="round,pad=0.12",
-        facecolor=fc, edgecolor="#1A2A44",
-        linewidth=0.8, zorder=zorder,
+        boxstyle="round,pad=0.14",
+        facecolor=fc, edgecolor=COLORS["title"],
+        linewidth=1.0, zorder=zorder,
     )
     ax.add_patch(rect)
     ax.text(cx, cy, label, ha="center", va="center",
@@ -47,13 +42,14 @@ def arrow_v(ax, x1, y1, h1, x2, y2, h2, label=None):
     yf = y1 - h1/2
     yt = y2 + h2/2
     ax.annotate("", xy=(x2, yt), xytext=(x1, yf),
-                arrowprops=dict(arrowstyle="-|>", color="#2A5A8C",
-                                lw=1.2, mutation_scale=12, zorder=3))
+                arrowprops=dict(arrowstyle="-|>", color=COLORS["edge"],
+                                lw=1.4, mutation_scale=14, zorder=3))
     if label:
         mx = (x1 + x2) / 2
         my = (yf + yt) / 2
         ax.text(mx + 0.12, my, label, ha="left", va="center",
-                fontsize=7.5, color="#3A5A8C", fontstyle="italic", zorder=5)
+                fontsize=7.5, color=DIAGRAM_COLORS["zone_label"],
+                fontstyle="italic", zorder=5)
 
 
 def arrow_h(ax, cx, cy, hw, direction, tx, ty, th, label=None):
@@ -65,13 +61,14 @@ def arrow_h(ax, cx, cy, hw, direction, tx, ty, th, label=None):
         xf = cx - hw/2
         xt = tx + th/2
     ax.annotate("", xy=(xt, ty), xytext=(xf, cy),
-                arrowprops=dict(arrowstyle="-|>", color="#2A5A8C",
-                                lw=1.2, mutation_scale=12, zorder=3))
+                arrowprops=dict(arrowstyle="-|>", color=COLORS["edge"],
+                                lw=1.4, mutation_scale=14, zorder=3))
     if label:
         mx = (xf + xt) / 2
         my = cy + 0.12
         ax.text(mx, my, label, ha="center", va="bottom",
-                fontsize=7.5, color="#3A5A8C", fontstyle="italic", zorder=5)
+                fontsize=7.5, color=DIAGRAM_COLORS["zone_label"],
+                fontstyle="italic", zorder=5)
 
 
 # ── Dimensjonar ──────────────────────────────────────────────────
@@ -127,14 +124,9 @@ summary = box(ax, cx, y_sum, 9.0, 0.55,
 # Pil ned til oppsummering
 arrow_v(ax, prev[0], prev[1], prev[3], cx, y_sum, 0.55)
 
-# ── Tittel ───────────────────────────────────────────────────────
-ax.set_title(
-    "Regelmotor – sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)",
-    fontsize=12, fontweight="bold", pad=10, color="#1A2A44",
-)
-
 # ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout()
+fig_title(fig, "Regelmotor", "Sekvensiell beslutningsflyt for HVFS-anbefaling (R1\u2013R8)")
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig03_Regelmotor.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()

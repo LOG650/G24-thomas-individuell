@@ -8,29 +8,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
+from fig_style import apply_style, fig_title, COLORS
 
-# ── Konfigurasjon ────────────────────────────────────────────────
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
-    "font.size": 10,
-    "axes.linewidth": 0.5,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
-})
-
-# ── Fargar (same som regelmotor) ────────────────────────────────
-C_GREEN  = "#1E7D45"   # Klare HVFS-kandidatar
-C_ORANGE = "#D68910"   # Vurder nærmare
-C_RED    = "#B03A2E"   # Behold lokalt
-C_TITLE  = "#1A2A44"
+apply_style()
 
 # Fargematrise [ABC-rad][XYZ-kolonne]
-#              X           Y           Z
+#              X                Y                Z
 COLOR_MAP = [
-    [C_GREEN,  C_GREEN,  C_ORANGE],   # A
-    [C_GREEN,  C_ORANGE, C_RED],      # B
-    [C_ORANGE, C_RED,    C_RED],      # C
+    [COLORS["green"],  COLORS["green"],  COLORS["orange"]],   # A
+    [COLORS["green"],  COLORS["orange"], COLORS["red"]],      # B
+    [COLORS["orange"], COLORS["red"],    COLORS["red"]],      # C
 ]
 
 # ── Les data ─────────────────────────────────────────────────────
@@ -117,7 +104,7 @@ for row_i, abc in enumerate(abc_labels):
 
         rect = FancyBboxPatch(
             (x, y), cell, cell,
-            boxstyle="square,pad=0",
+            boxstyle="round,pad=0.02",
             facecolor=color, edgecolor="white", linewidth=1.5,
         )
         ax.add_patch(rect)
@@ -145,7 +132,7 @@ for i, lbl in enumerate(y_labels):
     ax.text(
         gx0 - 0.12, gy0 + i * cell + cell / 2, lbl,
         ha="right", va="center",
-        fontsize=10, fontweight="bold", color=C_TITLE,
+        fontsize=10, fontweight="bold", color=COLORS["title"],
     )
 
 # ── X-akselablar (XYZ – etterspørselsvariasjon) ────────────────
@@ -159,7 +146,7 @@ for i, lbl in enumerate(x_labels):
     ax.text(
         gx0 + i * cell + cell / 2, y_xlabel, lbl,
         ha="center", va="top",
-        fontsize=9, fontweight="bold", color=C_TITLE,
+        fontsize=9, fontweight="bold", color=COLORS["title"],
     )
 
 # ── Aksetitlar ──────────────────────────────────────────────────
@@ -167,36 +154,31 @@ ax.text(
     gx0 + grid_w / 2, y_xlabel + 0.65,
     "Etterspørselsvariasjon",
     ha="center", va="top",
-    fontsize=11, fontweight="bold", color=C_TITLE,
+    fontsize=11, fontweight="bold", color=COLORS["title"],
 )
 ax.text(
     gx0 - 1.55, gy0 + grid_h / 2,
     "Verdi (ABC)",
     ha="center", va="center",
-    fontsize=11, fontweight="bold", color=C_TITLE, rotation=90,
-)
-
-# ── Tittel ───────────────────────────────────────────────────────
-ax.text(
-    gx0 + grid_w / 2, 0.05,
-    "ABC/XYZ klassifiseringsmatrise\nHelse Bergen WERKS 3300 LGORT 3001",
-    ha="center", va="top",
-    fontsize=11.5, fontweight="bold", color=C_TITLE,
+    fontsize=11, fontweight="bold", color=COLORS["title"], rotation=90,
 )
 
 # ── Legende ──────────────────────────────────────────────────────
 legend_elements = [
-    mpatches.Patch(facecolor=C_GREEN,  label="Klare HVFS-kandidatar"),
-    mpatches.Patch(facecolor=C_ORANGE, label="Vurder nærmare"),
-    mpatches.Patch(facecolor=C_RED,    label="Behold lokalt"),
+    mpatches.Patch(facecolor=COLORS["green"],  label="Klare HVFS-kandidatar"),
+    mpatches.Patch(facecolor=COLORS["orange"], label="Vurder nærmare"),
+    mpatches.Patch(facecolor=COLORS["red"],    label="Behold lokalt"),
 ]
 ax.legend(
     handles=legend_elements, loc="lower right",
-    fontsize=8.5, framealpha=0.75, edgecolor="#CCCCCC", fancybox=True,
+    fontsize=8.5,
     bbox_to_anchor=(1.0, 0.0),
 )
 
-# ── Eksporter ────────────────────────────────────────────────────
+# ── Tittel og eksport ────────────────────────────────────────────
+plt.tight_layout()
+fig_title(fig, "ABC/XYZ klassifiseringsmatrise", "Helse Bergen WERKS 3300 LGORT 3001")
+
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig06_ABC_XYZ_Matrise.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()

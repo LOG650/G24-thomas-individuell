@@ -9,25 +9,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+from fig_style import apply_style, fig_title, COLORS, CLUSTER_COLORS
 
-# ── Konfigurasjon ────────────────────────────────────────────────
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Times New Roman", "Georgia", "DejaVu Serif"],
-    "font.size": 10,
-    "axes.linewidth": 0.5,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
-})
+apply_style()
 
-C_TITLE = "#1A2A44"
-CLUSTER_COLORS = {
-    0: "#0B3D8C",   # blå  – K1
-    1: "#D68910",   # oransje – K2
-    2: "#1E7D45",   # grøn – K3
-}
-
-# ── Les data og køyr K-means ────────────────────────────────────
 train = pd.read_csv(
     r"C:\G24\G24-thomas-individuell\006 analyse\LOG650_kmeans_train.csv"
 )
@@ -40,7 +25,7 @@ X_train = scaler.fit_transform(train[features])
 km = KMeans(n_clusters=3, random_state=42, n_init=10)
 km.fit(X_train)
 
-centroids = km.cluster_centers_  # (3, 3) – standardiserte centroidar
+centroids = km.cluster_centers_
 
 # ── Plot ─────────────────────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -51,41 +36,27 @@ for cl in sorted(CLUSTER_COLORS):
     color = CLUSTER_COLORS[cl]
     ax.plot(
         x_pos, centroids[cl],
-        marker="o", markersize=8, markerfacecolor=color,
-        markeredgecolor="white", markeredgewidth=1.0,
-        color=color, linewidth=1.6, alpha=0.85,
+        marker="o", markersize=9, markerfacecolor=color,
+        markeredgecolor="white", markeredgewidth=1.2,
+        color=color, linewidth=2.0,
         label=f"Klynge {cl + 1} (n={int((km.labels_ == cl).sum())})",
         zorder=3,
     )
-    ax.fill_between(x_pos, 0, centroids[cl], color=color, alpha=0.05, zorder=1)
+    ax.fill_between(x_pos, 0, centroids[cl], color=color, alpha=0.07, zorder=1)
 
-# Referanselinje ved 0
-ax.axhline(y=0, color="#AAAAAA", linewidth=0.9, linestyle="--",
+ax.axhline(y=0, color=COLORS["grey"], linewidth=0.9, linestyle="--",
            alpha=0.6, zorder=1)
 
-# ── Akseformatering ──────────────────────────────────────────────
 ax.set_xticks(x_pos)
-ax.set_xticklabels(feature_labels, fontsize=10)
-ax.set_ylabel("Standardisert gjennomsnitt (z-score)", fontsize=10.5)
+ax.set_xticklabels(feature_labels)
+ax.set_ylabel("Standardisert gjennomsnitt (z-score)")
 ax.set_xlim(-0.3, len(features) - 0.7)
 
-ax.grid(axis="y", alpha=0.10, linewidth=0.4, linestyle=":")
-ax.set_axisbelow(True)
+ax.legend(loc="best", borderpad=0.4, handlelength=2.0)
 
-# ── Legende ──────────────────────────────────────────────────────
-ax.legend(
-    fontsize=9, framealpha=0.75, edgecolor="#CCCCCC", fancybox=True,
-    loc="best", borderpad=0.4, handlelength=2.0,
-)
-
-# ── Tittel ───────────────────────────────────────────────────────
-ax.set_title(
-    "Klyngeprofiler for K-means (K=3) \u2013 Helse Bergen",
-    fontsize=11.5, fontweight="bold", color=C_TITLE, pad=12,
-)
-
-# ── Eksporter ────────────────────────────────────────────────────
 plt.tight_layout()
+fig_title(fig, "Klyngeprofiler for K-means (K=3)", "Helse Bergen")
+
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig10_Kmeans_Profil.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
