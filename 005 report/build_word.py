@@ -327,7 +327,7 @@ def wrap_plain_math(text):
     text = re.sub(r'(?<!\$)\b(h\s*=\s*\d[\d\s,\.%]*%)', r'$\1$', text)
     text = re.sub(r'(?<!\$)\b(K\s*=\s*\d+)', r'$\1$', text)
     text = re.sub(r'(?<!\$)\b(g\s*=\s*\d[\d\s]*\s*%)', r'$\1$', text)
-    text = re.sub(r'(?<!\$)\b(n\s*=\s*\d[\d\s]*)', r'$n = \1$'.replace('$n = n', '$n'), text)
+    text = re.sub(r'(?<!\$)\b(n\s*=\s*\d[\d\s]*)', r'$\1$', text)
     # CV < 0,5 etc.
     text = re.sub(r'(?<!\$)(CV\s*[<>≤≥]\s*[\d,]+)', r'$\1$', text)
     # τ_f = 1,5
@@ -516,7 +516,7 @@ print("  Legg til kapittel 1–9...")
 table_count = 0
 fig_count = 0
 math_counter = [0]  # Liste for mutabilitet i nested scope
-pending_caption = None  # Lagrar tabelltittel til etter tabellen
+pending_caption = None  # Ubrukt — tabelltittel vert no sett inn FØR tabellen
 i = 0
 
 while i < len(lines):
@@ -617,19 +617,16 @@ while i < len(lines):
             set_threeline_borders(table)
             table_count += 1
 
-            # Sett inn tabelltittel UNDER tabellen
-            if pending_caption:
-                cap_p = doc.add_paragraph()
-                r = cap_p.add_run(pending_caption)
-                r.font.name = 'Times New Roman'
-                r.font.size = Pt(10)
-                r.font.italic = True
-                pending_caption = None
+            # Tabelltittel vert no sett inn FØR tabellen (sjå *Tabell-blokka nedanfor)
 
-    # ── Tabelltittel (lagre til etter tabellen) ──
+    # ── Tabelltittel (sett inn OVER tabellen, per kompendiet kap. 3.5.2) ──
     elif stripped.startswith('*Tabell'):
-        # Lagre caption — vert sett inn ETTER neste tabell
-        pending_caption = stripped.strip('*')
+        cap_text = stripped.strip('*')
+        cap_p = doc.add_paragraph()
+        r = cap_p.add_run(cap_text)
+        r.font.name = 'Times New Roman'
+        r.font.size = Pt(10)
+        r.font.italic = True
 
     # ── Figurtittel (skip — bildetekst er allereie i ![...]) ──
     elif stripped.startswith('*Figur'):
