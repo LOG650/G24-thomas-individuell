@@ -254,9 +254,9 @@ print("  Legg til Figurliste og Tabelliste...")
 figurliste = [
     'Figur 1. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling',
     'Figur 2. Lagerstruktur – Helse Vest forsyningskjede (forenklet)',
-    'Figur 3. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
-    'Figur 4. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
-    'Figur 5. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler',
+    'Figur 3. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler',
+    'Figur 4. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
+    'Figur 5. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
     'Figur 6. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler',
     'Figur 7. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon',
     'Figur 8. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5',
