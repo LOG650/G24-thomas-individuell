@@ -484,9 +484,7 @@ Leveringstids-fallbacken på 14 dager (D-05) dekker 94 % av artiklene, og er den
 
 ## 4.5 Bruk av KI-verktøy
 
-Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med retningslinjene i kursets skrivekompendium (Rekdal & Pettersen, 2025). Claude (Anthropic, 2026) ble anvendt til tre konkrete formål: (1) kodestøtte og feilsøking i Python-scriptet for ABC-, XYZ-, EOQ- og K-means-analysen; (2) generering av alle datavisualiseringer — Pareto-kurve, kryssmatrise, EOQ-avviksplott, silhouette-profil, scatterplott og regelmotor-fordeling — på grunnlag av analyseresultater produsert av scriptet; og (3) strukturering og språklig bearbeiding av rapportteksten. Alle figurer generert med støtte fra Claude er merket «Generert med støtte fra Claude (Anthropic, 2026)» i bildeteksten.
-
-Claude ble ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. Alle numeriske resultater, tabellverdier og analytiske konklusjoner er produsert av Python-scriptet fra SAP-kildedata og er uavhengige av KI-verktøyet. Rådata fra SAP ble ikke modifisert i noen fase av arbeidet; alle transformasjoner er dokumentert i D-01–D-08 (avsnitt 4.3) og implementert deterministisk i scriptet.
+Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med retningslinjene i kursets skrivekompendium (Rekdal & Pettersen, 2025). Claude (Anthropic, 2026) ble anvendt til kodestøtte, generering av datavisualiseringer og språklig bearbeiding av rapportteksten. KI-verktøyet er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. Detaljert beskrivelse av bruken finnes i Vedlegg C.
 
 
 ---
