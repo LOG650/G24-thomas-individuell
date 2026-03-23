@@ -20,7 +20,7 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
   LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown), includes reference list
   LOG650_Rapport_v5.docx           – Final Word document (generated from template)
   build_word.py                    – Script: builds DOCX from template + MD
-  format_docx.py                   – UTDATERT: post-prosessering av pandoc-output (ikkje i bruk, erstatta av build_word.py)
+  format_docx.py                   – UTDATERT: ikke i bruk, erstattet av build_word.py
   wordcount.py                     – Script: counts words in report
   retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
 006 Analyse/            – Python analysis scripts, MASTERFILE, and generated figures
@@ -96,6 +96,15 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 | Fase 3 – Gjennomføring | ✅ Complete | Analysis pipeline, all figures, results |
 | Fase 4 – Avslutning | In progress | Final report editing, submission |
 
+## Report Structure
+
+- **Forord** – kort og konsist, ingen detaljert prosjektbeskrivelse
+- **Sammendrag** – forkortet, 5 avsnitt, fokus på metode, resultater og konklusjon
+- **Abstract** – SLETTET, brukes ikke
+- **Kapittel 1–9** – hovedinnhold (se MD-fil for full struktur)
+- **Referanseliste** – APA 7, norsk stil
+- **Vedlegg A–C** – SAP-dataspesifikasjon, Python-verktøy, KI-erklæring
+
 ## Word Document Generation
 
 `005 report/build_word.py` generates the final DOCX from the HiMolde template:
@@ -106,6 +115,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 - **Table captions:** Italic, placed UNDER tables (per kompendiet kap. 3.5)
 - **Figures:** 12 PNGs from `006 Analyse/plots/` (Fig00–Fig11), caption under (italic)
 - **Run:** `cd "005 report" && py build_word.py`
+- **Workflow:** MD-filen er kilden. Ved endringer: oppdater MD først, kjør `build_word.py` etterpå.
 
 ## Critical Constraints
 
