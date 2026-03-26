@@ -3,11 +3,32 @@ Genererer Fig03_Regelmotor.png
 Regelmotor – sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)
 """
 
+import sys
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import pandas as pd
 from fig_style import apply_style, fig_title, COLORS, DIAGRAM_COLORS
 
 apply_style()
+
+# ── Les analyseresultater ──────────────────────────────────────
+DATA_DIR = Path(__file__).resolve().parent
+RESULTATER_XLSX = DATA_DIR / "LOG650_Resultater.xlsx"
+
+if not RESULTATER_XLSX.exists():
+    print(f"FEIL: Finner ikke {RESULTATER_XLSX}")
+    print("Kjør LOG650_analyse_v2_7.py først for å generere resultatfilen.")
+    sys.exit(1)
+
+df = pd.read_excel(RESULTATER_XLSX, sheet_name="RESULTATER", header=1)
+counts = df["HVFS_ANBEFALING"].value_counts()
+n_total   = len(df)
+n_overfor = counts.get("OVERFØR_HVFS", 0)
+n_behold  = counts.get("BEHOLD_LOKALT", 0)
+n_vurder  = counts.get("VURDER_NÆRMERE", 0)
+n_mangler = counts.get("MANGLER_DATA", 0)
 
 fig, ax = plt.subplots(figsize=(12, 9.5))
 ax.set_xlim(0, 12)
@@ -84,7 +105,7 @@ rx_left = 2.2     # resultat venstre
 
 # ── Startboks ────────────────────────────────────────────────────
 y = 9.3
-inp = box(ax, cx, y, rw, 0.62, "Artikkel inn\n(709 stk)", C_INPUT, fs=10)
+inp = box(ax, cx, y, rw, 0.62, f"Artikkel inn\n({n_total} stk)", C_INPUT, fs=10)
 
 # ── Regler ───────────────────────────────────────────────────────
 rules = [
@@ -118,7 +139,7 @@ for i, (label, side, res_label, res_color) in enumerate(rules):
 # ── Oppsummeringsboks ────────────────────────────────────────────
 y_sum = y_rule - dy * 0.95
 summary = box(ax, cx, y_sum, 9.0, 0.55,
-              "145 OVERFØR  |  257 BEHOLD  |  284 VURDER NÆRMERE  |  23 MANGLER DATA",
+              f"{n_overfor} OVERFØR  |  {n_behold} BEHOLD  |  {n_vurder} VURDER NÆRMERE  |  {n_mangler} MANGLER DATA",
               C_SUMMARY, fs=9)
 
 # Pil ned til oppsummering

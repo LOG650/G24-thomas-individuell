@@ -4,22 +4,45 @@ Panel 1: Fordeling av HVFS-anbefalingar frå regelmotoren
 Panel 2: Estimert EOQ-besparelse under tre scenario
 """
 
+import sys
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
+import pandas as pd
 from fig_style import apply_style, fig_title, COLORS
 
 apply_style()
 
+# ── Les analyseresultater ──────────────────────────────────────
+DATA_DIR = Path(__file__).resolve().parent
+RESULTATER_XLSX = DATA_DIR / "LOG650_Resultater.xlsx"
+
+if not RESULTATER_XLSX.exists():
+    print(f"FEIL: Finner ikke {RESULTATER_XLSX}")
+    print("Kjør LOG650_analyse_v2_7.py først for å generere resultatfilen.")
+    sys.exit(1)
+
+df = pd.read_excel(RESULTATER_XLSX, sheet_name="RESULTATER", header=1)
+counts = df["HVFS_ANBEFALING"].value_counts()
+
+df_bes = pd.read_excel(RESULTATER_XLSX, sheet_name="BESPARELSE", header=3)
+
 # ── Data ─────────────────────────────────────────────────────────
 regel_labels = ["VURDER\nNÆRMERE", "BEHOLD\nLOKALT", "OVERFØR\nHVFS", "MANGLER\nDATA"]
-regel_counts = [284, 257, 145, 23]
+regel_counts = [
+    counts.get("VURDER_NÆRMERE", 0),
+    counts.get("BEHOLD_LOKALT", 0),
+    counts.get("OVERFØR_HVFS", 0),
+    counts.get("MANGLER_DATA", 0),
+]
 regel_total  = sum(regel_counts)
 regel_pcts   = [c / regel_total * 100 for c in regel_counts]
 regel_colors = [COLORS["orange"], COLORS["red"], COLORS["green"], COLORS["grey"]]
 
 scenario_labels = ["Worst case\n(g = 50 %)", "Base case\n(g = 75 %)", "Best case\n(g = 100 %)"]
-scenario_values = [301, 452, 602]
+scenario_values = [int(v) for v in df_bes["B_HVFS (TNOK/år)"].tolist()]
 scenario_colors = [COLORS["red"], COLORS["orange"], COLORS["green"]]
 
 # ── Plot ─────────────────────────────────────────────────────────

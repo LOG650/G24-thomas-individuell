@@ -1,19 +1,44 @@
 """
 Genererer Fig08_Silhouette.png
-Silhouette-score for K = 2–7 (treningsdata, n = 389)
+Silhouette-score for K = 2–7 (treningsdata)
 Brukt til å begrunne val av optimalt antal klynger.
 """
+
+import sys
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from sklearn.preprocessing import StandardScaler
 from fig_style import apply_style, fig_title, COLORS
 
 apply_style()
 
-# ── Data ─────────────────────────────────────────────────────────
-K_values = [2, 3, 4, 5, 6, 7]
-scores   = [0.362, 0.383, 0.341, 0.318, 0.305, 0.291]
+# ── Les treningsdata og beregn silhouette-scorer ─────────────────
+DATA_DIR = Path(__file__).resolve().parent
+TRAIN_CSV = DATA_DIR / "LOG650_kmeans_train.csv"
+
+if not TRAIN_CSV.exists():
+    print(f"FEIL: Finner ikke {TRAIN_CSV}")
+    print("Kjør LOG650_analyse_v2_7.py først for å generere treningsdata.")
+    sys.exit(1)
+
+train = pd.read_csv(TRAIN_CSV)
+features = ["LN_CV", "LN_V", "LN_DTCABS"]
+X = StandardScaler().fit_transform(train[features])
+n_train = len(train)
+
+K_values = list(range(2, 8))
+scores = []
+for k in K_values:
+    km = KMeans(n_clusters=k, random_state=42, n_init=50)
+    labels = km.fit_predict(X)
+    scores.append(round(silhouette_score(X, labels), 3))
+
 best_idx = int(np.argmax(scores))
 THRESHOLD = 0.30
 
@@ -68,7 +93,7 @@ for bar, val, i in zip(bars, scores, range(len(K_values))):
 
 # Annotasjon for beste K
 ax.annotate(
-    "K = 3 valgt\n(høyest score)",
+    f"K = {K_values[best_idx]} valgt\n(høyest score)",
     xy=(K_values[best_idx], scores[best_idx]),
     xytext=(K_values[best_idx] + 1.4, scores[best_idx] + 0.025),
     fontsize=9, color=COLORS["title"], fontstyle="italic",
@@ -90,7 +115,7 @@ ax.yaxis.set_major_locator(mticker.MultipleLocator(0.02))
 
 # ── Tittel og eksport ────────────────────────────────────────────
 plt.tight_layout()
-fig_title(fig, "Silhouette-score for K = 2–7", "Treningsdata, n = 389")
+fig_title(fig, "Silhouette-score for K = 2–7", f"Treningsdata, n = {n_train}")
 
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig08_Silhouette.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")

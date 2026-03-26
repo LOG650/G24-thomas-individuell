@@ -3,11 +3,28 @@ Genererer Fig02_Analysepipeline.png
 Analysepipeline: fra SAP-rådata til HVFS-anbefaling
 """
 
+import sys
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import pandas as pd
 from fig_style import apply_style, fig_title, COLORS, BLUE_GRADIENT, DIAGRAM_COLORS
 
 apply_style()
+
+# ── Les analyseresultater ──────────────────────────────────────
+DATA_DIR = Path(__file__).resolve().parent
+RESULTATER_XLSX = DATA_DIR / "LOG650_Resultater.xlsx"
+
+if not RESULTATER_XLSX.exists():
+    print(f"FEIL: Finner ikke {RESULTATER_XLSX}")
+    print("Kjør LOG650_analyse_v2_7.py først for å generere resultatfilen.")
+    sys.exit(1)
+
+df = pd.read_excel(RESULTATER_XLSX, sheet_name="RESULTATER", header=1)
+n_total   = len(df)
+n_overfor = (df["HVFS_ANBEFALING"] == "OVERFØR_HVFS").sum()
 
 fig, ax = plt.subplots(figsize=(12, 3.6))
 ax.set_xlim(-0.3, 12.3)
@@ -18,11 +35,11 @@ ax.axis("off")
 steps = [
     "SAP S/4HANA\n14 tabeller",
     "Cleaning\nD-01–D-08",
-    "MASTERFILE\n709 artikler",
+    f"MASTERFILE\n{n_total} artikler",
     "ABC / XYZ\nEOQ",
     "K-means\nK = 3",
     "Regelmotor\n8 regler",
-    "HVFS-anbefaling\n145 art.",
+    f"HVFS-anbefaling\n{n_overfor} art.",
 ]
 
 # ── Plassering ───────────────────────────────────────────────────
