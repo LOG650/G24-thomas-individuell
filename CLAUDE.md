@@ -17,10 +17,9 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 003 references/         – Academic PDFs (23 stk) with per-source .md summaries and OVERSIKT.md
 004 data/               – SAP data exports (original MASTERFILE)
 005 report/             – Final report source (MD) and Word output
-  LOG650_Rapport_FINAL_v10 (1).md  – Master source (Markdown), includes reference list
-  LOG650_Rapport_v5.docx           – Final Word document (generated from template)
+  LOG650_Rapport_FINAL.md          – Master source (Markdown), includes reference list
+  LOG650_Rapport.docx              – Final Word document (generated from template)
   build_word.py                    – Script: builds DOCX from template + MD
-  format_docx.py                   – UTDATERT: ikke i bruk, erstattet av build_word.py
   wordcount.py                     – Script: counts words in report
   retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
 006 Analyse/            – Python analysis scripts, MASTERFILE, and generated figures
@@ -109,7 +108,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 
 `005 report/build_word.py` generates the final DOCX from the HiMolde template:
 - **Base:** `000 templates/Mal prosjekt LOG650 v2.docx` (cover pages, declarations, privacy, publishing agreement)
-- **Content:** Parsed from `LOG650_Rapport_FINAL_v10 (1).md`
+- **Content:** Parsed from `LOG650_Rapport_FINAL.md`
 - **Math:** LaTeX → MathML (`latex2mathml`) → OMML (`MML2OMML.XSL`) → Word equations
 - **Tables:** Three-line format (booktabs): top border, header-bottom border, table-bottom border, no vertical lines
 - **Table captions:** Italic, placed UNDER tables (per kompendiet kap. 3.5)

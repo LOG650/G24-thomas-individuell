@@ -40,8 +40,8 @@ if XSLT_PATH is None:
 # Førebu XSLT-transformasjon for matte
 _xslt = etree.parse(XSLT_PATH)
 _math_transform = etree.XSLT(_xslt)
-MD_FILE = 'LOG650_Rapport_FINAL_v10 (1).md'
-OUTPUT = 'LOG650_Rapport_v5.docx'
+MD_FILE = 'LOG650_Rapport_FINAL.md'
+OUTPUT = 'LOG650_Rapport.docx'
 
 doc = Document(TEMPLATE)
 

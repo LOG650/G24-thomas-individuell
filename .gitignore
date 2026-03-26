@@ -10,6 +10,9 @@ __pycache__/
 ~$*.docx
 ~$*.xlsx
 
+# Store referansefiler (PDF-samling)
+005 report/Bachelor- og masteroppgaver/
+
 # OS
 Thumbs.db
 .DS_Store
