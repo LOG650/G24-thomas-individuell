@@ -29,10 +29,11 @@ Denne filen gir en samlet oversikt over alle gjennomgåtte artikler i litteratur
 | 21 | Suryaputri, Z., Gabriel, D. S. & Nurcahyo, R. | 2022 | Integration of ABC-XYZ Analysis in Inventory Management Optimization: Health Industry | IEOM Conference | [suryaputri_2022_abc_xyz_health_industry.md](suryaputri_2022_abc_xyz_health_industry.md) |
 | 22 | Silaen, R. T. | 2023 | Implementation of the ABC Analysis to the Inventory Management | IJSTM | [silaen_2023_abc_analysis_implementation.md](silaen_2023_abc_analysis_implementation.md) |
 | 23 | Nowotyńska, I. | 2013 | An Application of XYZ Analysis in Company Stock Management | Modern Management Review | [nowotynska_2013_xyz_analysis_stock_management.md](nowotynska_2013_xyz_analysis_stock_management.md) |
+| 24 | Rousseeuw, P. J. | 1987 | Silhouettes: A Graphical Aid to the Interpretation and Validation of Cluster Analysis | J. Computational and Applied Mathematics | [rousseeuw_1987_silhouettes.md](rousseeuw_1987_silhouettes.md) |
 
 ---
 
-**Totalt:** 23 artikler gjennomgått
+**Totalt:** 24 artikler gjennomgått
 
 **Tematisk fordeling** (noen artikler kan tilhøre flere temaer – summen overskrider 23 grunnet tematisk overlapp):
 - Sykehuslagerstyring og helselogistikk: 10 artikler (#5, #7, #9, #10, #14, #16, #17, #18, #19, #20)
