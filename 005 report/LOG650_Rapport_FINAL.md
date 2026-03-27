@@ -499,7 +499,7 @@ Klassifiseringsgrensene er satt i henhold til standard ABC-litteratur (Silaen et
 | XYZ X-grense | CV < 0,5 | Nowotyńska (2013) |
 | XYZ Y-grense | 0,5 ≤ CV < 1,0 | Nowotyńska (2013) |
 | XYZ Z-grense | CV ≥ 1,0 | Nowotyńska (2013) |
-| Ordrekostnad S | 750 NOK | Kelle et al. (2012); Bijvank & Vis (2012) |
+| Ordrekostnad S | 750 NOK | Bijvank & Vis (2012); Kelle et al. (2012) |
 | Holdesats h | 20 % av UNIT\_PRICE | Ketkar & Vaidya (2014) |
 | Leveringstid standardverdi | 14 dager | Bransjepraksis (D-05) |
 | EOQ-terskel τ\_f | 1,5 ($f_{\text{obs}} > 1{,}5 \cdot f^*$, dvs. FREQ\_AVVIK > 0,5) | Operasjonelt vesentlig avvik |
