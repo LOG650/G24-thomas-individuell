@@ -152,7 +152,7 @@ for para in doc.paragraphs:
         insert_text_after(para, sammendrag_text)
     elif para.text.strip() == 'Abstract':
         # Sett inn ei enkel melding
-        insert_text_after(para, '(Sammendrag på norsk — sjå avsnittet over.)')
+        insert_text_after(para, '(Sammendrag på norsk – sjå avsnittet over.)')
 
 # Sett inn Forord mellom "Antall ord"/"Forfattererklæring" og "Sammendrag"
 # Finn sammendrag-paragrafen og set inn Forord-heading + tekst FØR den
@@ -240,50 +240,21 @@ for elem in to_remove:
 
 print(f"  Fjerna {len(to_remove)} plasshaldar-element")
 
-# ════════════════════════════════════════════════════
-# STEG 5: Legg til kapittelinnhald frå MD
-# ════════════════════════════════════════════════════
+# Fjern malens statiske TOC-oppføringar (toc 1, toc 2 osv.)
+toc_remove = []
+for para in list(doc.paragraphs):
+    if para.style and para.style.name in ('toc 1', 'toc 2', 'toc 3', 'TOC Heading'):
+        toc_remove.append(para._element)
+for elem in toc_remove:
+    body.remove(elem)
+print(f"  Fjerna {len(toc_remove)} statiske TOC-oppføringar frå malen")
+
 # ════════════════════════════════════════════════════
 # STEG 5: Legg til kapittelinnhald
 # ════════════════════════════════════════════════════
 print("Steg 5: Legg til kapittelinnhald...")
 
-# ── Figurliste og Tabelliste ──
-print("  Legg til Figurliste og Tabelliste...")
-
-figurliste = [
-    'Figur 1. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling',
-    'Figur 2. Lagerstruktur – Helse Vest forsyningskjede (forenklet)',
-    'Figur 3. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler',
-    'Figur 4. Analysepipeline: fra SAP-rådata til HVFS-anbefaling',
-    'Figur 5. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8)',
-    'Figur 6. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler',
-    'Figur 7. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon',
-    'Figur 8. EOQ-avvik: relativ frekvensavvik med terskel ved τ_f = 1,5',
-    'Figur 9. Silhouette-score for K = 2–7 (treningsdata, n = 389)',
-    'Figur 10. K-means klyngeresultat (K = 3): forbruksstabilitet vs verdi og kostnadsavvik',
-    'Figur 11. Klyngeprofiler for K-means (K = 3): gjennomsnittlig z-score per feature',
-    'Figur 12. Regelmotor og besparelsesanalyse: HVFS-anbefalinger og EOQ-besparelse',
-]
-tabelliste = [
-    'Tabell 1. Litteraturoversikt: sentrale kilder med tema og relevans',
-    'Tabell 2. Sammenligning av analysemetoder brukt i oppgaven',
-    'Tabell 3. Nøkkeltall for casevirksomheten Helse Bergen, WERKS 3300',
-    'Tabell 4. Datagrunnlag: 14 SAP S/4HANA-tabeller hentet via SE16H',
-    'Tabell 5. Datavalgsbeslutninger D-01–D-08 med begrunnelse',
-    'Tabell 6. Modellparametere: ABC-klassifiseringsgrenser og analyseinnstillinger',
-    'Tabell 7. Regelmotor: 8 beslutningsregler i prioritert rekkefølge',
-    'Tabell 8. ABC-fordeling: antall artikler og verdiandel per klasse (n = 709)',
-    'Tabell 9. XYZ-fordeling: antall artikler per klasse (n = 687)',
-    'Tabell 10. SAP ZZXYZ-validering: samsvar mellom systemklasse og beregnet CV-klasse',
-    'Tabell 11. EOQ-avviksresultater: fordeling etter ordrefrekvensavvik (n = 487)',
-    'Tabell 12. K-means klyngeprofiler: gjennomsnittsverdier per klynge (K = 3)',
-    'Tabell 13. HVFS-anbefalinger fra regelmotor: fordeling per kategori (n = 709)',
-    'Tabell 14. Besparelsesestimater for tre scenarier (117 artikler, S = 750 NOK)',
-    'Tabell 15. Sammenstilling av egne resultater mot funn i eksisterende litteratur',
-]
-
-# ── Kapittelinnhald (figurliste/tabelliste vert lagt til etter funksjonsdefinisjonar) ──
+# (Figurliste og Tabelliste er no auto-genererte Word-felt, sjå nedanfor)
 
 # Finn start av kapittelinnhald i MD
 kap_start = md_all.find('# Kapittel 1')
@@ -355,15 +326,44 @@ def add_formatted_para(doc, text):
     """Legg til avsnitt med inline-formatering og inline-matte."""
     para = doc.add_paragraph()
     para.paragraph_format.line_spacing = 1.5
+    para.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+    # Erstatt em dash (—) med en dash (–)
+    text = text.replace('—', '–')
+
+    # Pre-prosesser: slå saman WORD$_subscript...$ til $\text{WORD}_subscript...$
+    text = re.sub(
+        r'([A-Za-z][A-Za-z0-9]*(?:\\?_[A-Za-z0-9]+)*)\$(_[^$]*)\$',
+        lambda m: r'$\text{' + m.group(1).replace('\\', '').replace('_', r'\_') + '}' + m.group(2) + '$',
+        text
+    )
 
     # Pre-prosesser: wrap plain-text math i $...$
     text = wrap_plain_math(text)
 
-    # Del opp i: inline math $...$ | bold **...** | italic *...*
-    segments = re.split(r'(\$[^$]+?\$)', text)
+    # Del opp i: inline code `...` | inline math $...$ | bold **...** | italic *...*
+    segments = re.split(r'(`[^`]+?`|\$[^$]+?\$)', text)
 
     for seg in segments:
-        if seg.startswith('$') and seg.endswith('$') and len(seg) > 2:
+        if seg.startswith('`') and seg.endswith('`') and len(seg) > 2:
+            # Inline code — Consolas monospace med grå bakgrunn
+            code_text = seg[1:-1]
+            r = para.add_run(code_text)
+            r.font.size = Pt(10)
+            # Sett font via rFonts-element (unngå duplikat)
+            rpr = r._element.get_or_add_rPr()
+            rf = OxmlElement('w:rFonts')
+            rf.set(qn('w:ascii'), 'Consolas')
+            rf.set(qn('w:hAnsi'), 'Consolas')
+            rf.set(qn('w:cs'), 'Consolas')
+            rpr.insert(0, rf)
+            # Grå bakgrunn
+            shd = OxmlElement('w:shd')
+            shd.set(qn('w:val'), 'clear')
+            shd.set(qn('w:color'), 'auto')
+            shd.set(qn('w:fill'), 'F4F4F4')
+            rpr.append(shd)
+        elif seg.startswith('$') and seg.endswith('$') and len(seg) > 2:
             # Inline math — konverter til OMML
             latex = seg[1:-1]
             omml = latex_to_omml(latex)
@@ -394,8 +394,50 @@ def add_formatted_para(doc, text):
                     set_run_font(r)
     return para
 
+def add_cell_content(para, text, font_size=11, bold=False):
+    """Legg til celleinnhald med inline-matte ($...$) og bold (**...**)."""
+    text = text.replace('—', '–')
+    # Pre-prosesser: slå saman WORD$_subscript...$ til $\text{WORD}_subscript...$
+    text = re.sub(
+        r'([A-Za-z][A-Za-z0-9]*(?:\\?_[A-Za-z0-9]+)*)\$(_[^$]*)\$',
+        lambda m: r'$\text{' + m.group(1).replace('\\', '').replace('_', r'\_') + '}' + m.group(2) + '$',
+        text
+    )
+    # Del opp i inline math $...$ og resten
+    segments = re.split(r'(\$[^$]+?\$)', text)
+    for seg in segments:
+        if seg.startswith('$') and seg.endswith('$') and len(seg) > 2:
+            latex = seg[1:-1]
+            omml = latex_to_omml(latex)
+            if omml is not None:
+                para._element.append(omml)
+                math_counter[0] += 1
+            else:
+                r = para.add_run(latex)
+                r.font.name = 'Cambria Math'
+                r.font.size = Pt(font_size)
+                r.font.italic = True
+        else:
+            # Rens escaped underscores og bold
+            clean = seg.replace('\\', '').replace('—', '–')
+            parts = re.split(r'(\*\*.*?\*\*)', clean)
+            for part in parts:
+                if not part:
+                    continue
+                if part.startswith('**') and part.endswith('**'):
+                    r = para.add_run(part[2:-2])
+                    r.font.name = 'Times New Roman'
+                    r.font.size = Pt(font_size)
+                    r.font.bold = True
+                else:
+                    r = para.add_run(part)
+                    r.font.name = 'Times New Roman'
+                    r.font.size = Pt(font_size)
+                    r.font.bold = bold
+
 def add_heading_formatted(doc, text, level):
     """Legg til overskrift med Times New Roman."""
+    text = text.replace('—', '–')
     h = doc.add_heading(text, level=level)
     for r in h.runs:
         r.font.name = 'Times New Roman'
@@ -471,6 +513,64 @@ def set_threeline_borders(table):
             for shd in tcPr.findall(qn('w:shd')):
                 tcPr.remove(shd)
 
+def add_field(paragraph, instr_text):
+    """Set inn eit Word-felt (TOC, SEQ etc.) med fldChar begin/instrText/separate/end."""
+    # Begin
+    run_begin = paragraph.add_run()
+    fld_begin = OxmlElement('w:fldChar')
+    fld_begin.set(qn('w:fldCharType'), 'begin')
+    run_begin._element.append(fld_begin)
+    # InstrText
+    run_instr = paragraph.add_run()
+    instr = OxmlElement('w:instrText')
+    instr.set(qn('xml:space'), 'preserve')
+    instr.text = instr_text
+    run_instr._element.append(instr)
+    # Separate
+    run_sep = paragraph.add_run()
+    fld_sep = OxmlElement('w:fldChar')
+    fld_sep.set(qn('w:fldCharType'), 'separate')
+    run_sep._element.append(fld_sep)
+    # Plasshaldartekst
+    run_ph = paragraph.add_run('Oppdater felt: Ctrl+A, F9')
+    run_ph.font.name = 'Times New Roman'
+    run_ph.font.size = Pt(10)
+    run_ph.font.color.rgb = RGBColor(128, 128, 128)
+    # End
+    run_end = paragraph.add_run()
+    fld_end = OxmlElement('w:fldChar')
+    fld_end.set(qn('w:fldCharType'), 'end')
+    run_end._element.append(fld_end)
+
+def add_seq_field_to_para(paragraph, seq_name, font_name='Times New Roman', font_size=10):
+    """Set inn eit SEQ-felt inline i ein paragraf (for auto-nummerering av figurar/tabellar)."""
+    # Begin
+    run_begin = paragraph.add_run()
+    fld_begin = OxmlElement('w:fldChar')
+    fld_begin.set(qn('w:fldCharType'), 'begin')
+    run_begin._element.append(fld_begin)
+    # InstrText
+    run_instr = paragraph.add_run()
+    instr = OxmlElement('w:instrText')
+    instr.set(qn('xml:space'), 'preserve')
+    instr.text = f' SEQ {seq_name} \\* ARABIC '
+    run_instr._element.append(instr)
+    # Separate
+    run_sep = paragraph.add_run()
+    fld_sep = OxmlElement('w:fldChar')
+    fld_sep.set(qn('w:fldCharType'), 'separate')
+    run_sep._element.append(fld_sep)
+    # Plasshaldarnummer
+    run_num = paragraph.add_run('N')
+    run_num.font.name = font_name
+    run_num.font.size = Pt(font_size)
+    run_num.font.italic = True
+    # End
+    run_end = paragraph.add_run()
+    fld_end = OxmlElement('w:fldChar')
+    fld_end.set(qn('w:fldCharType'), 'end')
+    run_end._element.append(fld_end)
+
 # Figurstiar
 fig_map = {
     'Fig00': 'Fig00_Konseptuelt_Rammeverk.png',
@@ -488,35 +588,45 @@ fig_map = {
 }
 plots_dir = os.path.abspath('../006 Analyse/plots')
 
-# ── Sett inn Figurliste og Tabelliste ──
-print("  Legg til Figurliste og Tabelliste...")
+# ── Innholdsfortegnelse (auto-generert Word TOC-felt) ──
+print("  Legg til Innholdsfortegnelse...")
+h = add_heading_formatted(doc, 'Innholdsfortegnelse', 1)
+pPr = h._element.get_or_add_pPr()
+pb = OxmlElement('w:pageBreakBefore')
+pb.set(qn('w:val'), 'true')
+pPr.append(pb)
+toc_para = doc.add_paragraph()
+toc_para.paragraph_format.line_spacing = 1.5
+add_field(toc_para, r' TOC \o "1-3" \h \z \u ')
+
+# ── Figurliste (auto-generert frå SEQ Figur-felt) ──
+print("  Legg til Figurliste...")
 h = add_heading_formatted(doc, 'Figurliste', 1)
 pPr = h._element.get_or_add_pPr()
 pb = OxmlElement('w:pageBreakBefore')
 pb.set(qn('w:val'), 'true')
 pPr.append(pb)
-for fig in figurliste:
-    p = doc.add_paragraph()
-    p.paragraph_format.line_spacing = 1.5
-    r = p.add_run(fig)
-    set_run_font(r)
+fig_toc_para = doc.add_paragraph()
+fig_toc_para.paragraph_format.line_spacing = 1.5
+add_field(fig_toc_para, r' TOC \h \z \c "Figur" ')
 
+# ── Tabelliste (auto-generert frå SEQ Tabell-felt) ──
+print("  Legg til Tabelliste...")
 h = add_heading_formatted(doc, 'Tabelliste', 1)
 pPr = h._element.get_or_add_pPr()
 pb = OxmlElement('w:pageBreakBefore')
 pb.set(qn('w:val'), 'true')
 pPr.append(pb)
-for tab in tabelliste:
-    p = doc.add_paragraph()
-    p.paragraph_format.line_spacing = 1.5
-    r = p.add_run(tab)
-    set_run_font(r)
+tab_toc_para = doc.add_paragraph()
+tab_toc_para.paragraph_format.line_spacing = 1.5
+add_field(tab_toc_para, r' TOC \h \z \c "Tabell" ')
 
 print("  Legg til kapittel 1–9...")
 table_count = 0
 fig_count = 0
 math_counter = [0]  # Liste for mutabilitet i nested scope
 pending_caption = None  # Ubrukt — tabelltittel vert no sett inn FØR tabellen
+in_referanseliste = False  # Flagg for APA 7 hengende innrykk
 i = 0
 
 while i < len(lines):
@@ -526,6 +636,11 @@ while i < len(lines):
     # ── Heading 1 ──
     if line.startswith('# ') and not line.startswith('## '):
         text = line[2:].strip()
+        # Oppdater referanseliste-flagg for APA 7 hengende innrykk
+        if text == 'Referanseliste':
+            in_referanseliste = True
+        elif in_referanseliste:
+            in_referanseliste = False
         h = add_heading_formatted(doc, text, 1)
         # Sideskift før kapittel
         if any(kw in text for kw in ['Kapittel', 'Referanseliste', 'Vedlegg']):
@@ -550,20 +665,32 @@ while i < len(lines):
     elif stripped.startswith('!['):
         m = re.match(r'!\[(.+?)\]\((.+?)\)', stripped)
         if m:
-            caption = m.group(1)
+            caption = m.group(1).replace('—', '–')
             rel_path = m.group(2)
             # Finn biletet
             abs_path = os.path.abspath(os.path.join('.', rel_path))
             if os.path.exists(abs_path):
                 doc.add_picture(abs_path, width=Cm(15))
                 fig_count += 1
-                # Bildetekst under
+                # Bildetekst under med SEQ-felt for auto-nummerering
                 cap_p = doc.add_paragraph()
                 cap_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                r = cap_p.add_run(caption)
-                r.font.name = 'Times New Roman'
-                r.font.size = Pt(10)
-                r.font.italic = True
+                cap_m = re.match(r'(Figur)\s+(\d+)\.\s*(.*)', caption)
+                if cap_m:
+                    r_label = cap_p.add_run('Figur ')
+                    r_label.font.name = 'Times New Roman'
+                    r_label.font.size = Pt(10)
+                    r_label.font.italic = True
+                    add_seq_field_to_para(cap_p, 'Figur')
+                    r_rest = cap_p.add_run('. ' + cap_m.group(3))
+                    r_rest.font.name = 'Times New Roman'
+                    r_rest.font.size = Pt(10)
+                    r_rest.font.italic = True
+                else:
+                    r = cap_p.add_run(caption)
+                    r.font.name = 'Times New Roman'
+                    r.font.size = Pt(10)
+                    r.font.italic = True
             else:
                 print(f"  ÅTVARING: Fann ikkje {abs_path}")
 
@@ -597,36 +724,42 @@ while i < len(lines):
                     cell = table.rows[0].cells[j]
                     cell.text = ''
                     p = cell.paragraphs[0]
-                    r = p.add_run(h.replace('\\', ''))
-                    r.font.name = 'Times New Roman'
-                    r.font.size = Pt(11)
-                    r.font.bold = True
+                    add_cell_content(p, h, font_size=11, bold=True)
 
-            # Data
+            # Data (med inline-matte)
             for ri, row_data in enumerate(data_rows):
                 for j, ct in enumerate(row_data):
                     if j < ncols:
                         cell = table.rows[ri + 1].cells[j]
                         cell.text = ''
                         p = cell.paragraphs[0]
-                        clean = ct.replace('\\', '').replace('**', '')
-                        r = p.add_run(clean)
-                        r.font.name = 'Times New Roman'
-                        r.font.size = Pt(11)
+                        add_cell_content(p, ct, font_size=11)
 
             set_threeline_borders(table)
             table_count += 1
 
             # Tabelltittel vert no sett inn FØR tabellen (sjå *Tabell-blokka nedanfor)
 
-    # ── Tabelltittel (sett inn OVER tabellen, per kompendiet kap. 3.5.2) ──
+    # ── Tabelltittel med SEQ-felt (sett inn OVER tabellen, per kompendiet kap. 3.5.2) ──
     elif stripped.startswith('*Tabell'):
-        cap_text = stripped.strip('*')
+        cap_text = stripped.strip('*').replace('—', '–')
         cap_p = doc.add_paragraph()
-        r = cap_p.add_run(cap_text)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(10)
-        r.font.italic = True
+        tab_m = re.match(r'(Tabell)\s+(\d+)\.\s*(.*)', cap_text)
+        if tab_m:
+            r_label = cap_p.add_run('Tabell ')
+            r_label.font.name = 'Times New Roman'
+            r_label.font.size = Pt(10)
+            r_label.font.italic = True
+            add_seq_field_to_para(cap_p, 'Tabell')
+            r_rest = cap_p.add_run('. ' + tab_m.group(3))
+            r_rest.font.name = 'Times New Roman'
+            r_rest.font.size = Pt(10)
+            r_rest.font.italic = True
+        else:
+            r = cap_p.add_run(cap_text)
+            r.font.name = 'Times New Roman'
+            r.font.size = Pt(10)
+            r.font.italic = True
 
     # ── Figurtittel (skip — bildetekst er allereie i ![...]) ──
     elif stripped.startswith('*Figur'):
@@ -634,10 +767,11 @@ while i < len(lines):
 
     # ── Blokkitat ──
     elif stripped.startswith('> '):
-        quote = stripped[2:]
+        quote = stripped[2:].replace('—', '–')
         p = doc.add_paragraph()
         p.paragraph_format.left_indent = Cm(1.0)
         p.paragraph_format.line_spacing = 1.5
+        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         # Fjern markdown
         clean = re.sub(r'\*\*(.+?)\*\*', r'\1', quote)
         r = p.add_run(clean)
@@ -665,7 +799,12 @@ while i < len(lines):
 
     # ── Vanleg avsnitt ──
     elif stripped and not stripped.startswith('```'):
-        add_formatted_para(doc, stripped)
+        p = add_formatted_para(doc, stripped)
+        if in_referanseliste:
+            p.paragraph_format.left_indent = Cm(1.27)
+            p.paragraph_format.first_line_indent = Cm(-1.27)
+            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.line_spacing = 1.0
 
     i += 1
 
@@ -691,12 +830,19 @@ for name, size in [('Heading 1', 18), ('Heading 2', 16), ('Heading 3', 14)]:
         s.font.size = Pt(size)
         s.font.bold = True
         s.font.color.rgb = RGBColor(0, 0, 0)
+        # Fjern automatisk nummerering frå malen
+        pPr = s.element.find(qn('w:pPr'))
+        if pPr is not None:
+            numPr = pPr.find(qn('w:numPr'))
+            if numPr is not None:
+                pPr.remove(numPr)
 
 # Normal-stil
 ns = doc.styles['Normal']
 ns.font.name = 'Times New Roman'
 ns.font.size = Pt(12)
 ns.paragraph_format.line_spacing = 1.5
+ns.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
 # ── Sidenummerering i footer ──
 for section in doc.sections:
@@ -730,3 +876,5 @@ doc.save(OUTPUT)
 print(f"\nFerdig! Lagra som: {OUTPUT}")
 print(f"  Totalt avsnitt: {len(doc.paragraphs)}")
 print(f"  Tabellar: {len(doc.tables)}")
+print("\n  VIKTIG: Opne dokumentet i Word, trykk Ctrl+A -> F9 for å oppdatere")
+print("  innholdsfortegnelse, figurliste og tabelliste med sidenummer.")
