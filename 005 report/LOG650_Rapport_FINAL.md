@@ -261,7 +261,7 @@ Den dominerende tilnærmingen i litteraturen er ABC-analyse basert på Pareto-pr
 
 XYZ-analyse, basert på variasjonskoeffisienten til etterspørselen, fremstår som det mest naturlige komplementet til ABC. Nowotyńska (2013) og Suryaputri et al. (2022) viser at ABC/XYZ-matrisen gir differensierte styringsanbefalinger for ni varekategorier, med dokumentert merverdi i helseindustrien.
 
-Flerkriterietilnærminger som EDAS (Keshavarz Ghorabaee et al., 2015) krever subjektiv vekting, noe som svekker etterprøvbarheten. Denne oppgaven benytter derfor objektivt beregnbare kriterier (verdi, CV, EOQ-avvik). Klyngeanalyse representerer et datadrevet alternativ som fanger sammensatte mønstre uten forhåndsdefinerte terskelverdier (Srinivasan & Moon, 1999). Kombinasjonen av K-means med regelbaserte beslutningssystemer er lite dokumentert i sykehuskontekst, og utgjør oppgavens metodiske bidrag.
+Flerkriterietilnærminger som EDAS (Keshavarz Ghorabaee et al., 2015) krever subjektiv vekting, noe som svekker etterprøvbarheten. Denne oppgaven benytter derfor objektivt beregnbare kriterier (verdi, CV, EOQ-avvik). Klyngeanalyse representerer et datadrevet alternativ som fanger sammensatte mønstre uten forhåndsdefinerte terskelverdier (Srinivasan & Moon, 1999). Kombinasjonen av K-means med regelbaserte beslutningssystemer er lite dokumentert i sykehuskontekst, og utgjør et utforskende element i oppgavens metoderammeverk.
 
 van Kampen et al. (2012) identifiserer tre hoveddimensjoner for SKU-klassifisering: karakteristikker (verdi, variabilitet, kritikalitet), klassifiseringsteknikk (ABC, clustering, MCDM) og operasjonalisering i styringssystemer. Denne oppgaven opererer i krysningspunktet mellom alle tre.
 
@@ -337,7 +337,7 @@ Tabell 2 oppsummerer styrker, svakheter og forutsetninger for de fire analysemet
 
 Denne oppgaven opererer innenfor et konseptuelt rammeverk som beskriver en sekvensiell analysemodell fra rådata til beslutningsanbefaling. Modellen kombinerer deterministisk klassifisering (ABC og XYZ) med eksplorativ segmentering (K-means): de regelbaserte metodene produserer reproduserbare klasser ut fra forhåndsdefinerte grenseverdier, mens K-means avdekker datadrevne gruppestrukturer uten forhåndsbestemte grenser. Rammeverket er illustrert i Figur 1 og setter de fire metodene i et logisk avhengighetsforhold: ABC og XYZ er uavhengige analysedimensjoner som beregnes parallelt fra henholdsvis innkjøpsdata (EKPO/EKBE) og forbruksdata (MSEG). EOQ-avviksanalysen supplerer med en tredje dimensjon — kostnadseffektiviteten av nåværende bestillingspraksis. K-means klyngeanalyse er eksplorativ og avdekker datadrevne gruppestrukturer som ikke er forhåndsbestemt av regelgrenser. Regelmotor-trinnet integrerer alle fire dimensjoner til én anbefaling per artikkel: *overfør til HVFS*, *behold lokalt* eller *krever nærmere vurdering*. Estimert besparelse beregnes som summen av EOQ-kostnadsavvik for HVFS-anbefalte artikler, justert for gevinstrealiseringsgrad.
 
-![Figur 1. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig00_Konseptuelt_Rammeverk.png)
+![Figur 1. Konseptuelt rammeverk – fra SAP-data til HVFS-anbefaling. Generert med støtte fra Claude.](../006 Analyse/plots/Fig00_Konseptuelt_Rammeverk.png)
 
 Den detaljerte matematiske formuleringen av alle modellkomponenter — parameterdefinisjonene, formlene og grenseverdiene — presenteres i kapittel 5. Rammeverket anvendes på en konkret sykehuskontekst som beskrives i neste kapittel.
 
@@ -369,7 +369,7 @@ Helse Bergen er i SAP S/4HANA registrert under anleggskode (WERKS) 3300. Det ope
 | Innkjøpsgruppe | 300 / 3000 | SAP MM |
 | Bestillingstype | ZNB (lokal bestillingstype) | SAP MM |
 
-![Figur 2. Lagerstruktur – Helse Vest forsyningskjede (forenklet). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig01_Lagerstruktur.png)
+![Figur 2. Lagerstruktur – Helse Vest forsyningskjede (forenklet). Generert med støtte fra Claude.](../006 Analyse/plots/Fig01_Lagerstruktur.png)
 
 ## 3.2 HVFS og LIBRA-prosjektet
 
@@ -430,7 +430,7 @@ Alle data er hentet fra SAP S/4HANA via transaksjonen SE16H, som gir direkte les
 
 Råuttrekket inneholder 1 006 unike artikkelnumre. Populasjonsavgrensningen beskrives i detalj i avsnitt 4.3 nedenfor, og reduserer dette til 709 aktive artikler. For forbruksdata er det benyttet bevegelsestyper (BWART) 201 og 647 fra MSEG, som representerer henholdsvis vareforbruk til kostnadssted og spesialforbruk. Disse to bevegelsesstypene fanger det reelle forbruket ut fra lager og utelukker interne overføringer og returer som ville ha forvrengt etterspørselsestimatet. Innkjøpsdata er hentet fra EKKO/EKPO/EKBE, som gir faktiske ordrelinjer og varemottak; disse benyttes for ABC-verdiberegning og for estimering av faktisk ordrefrekvens. Leveringstidsdata er hentet fra EINE (feltet WETAG), men dekker kun 6 % av artiklene; se beslutning D-05 under. Figur 3 gir en samlet oversikt over fordelingen av nøkkelvariabler i det endelige datasettet på 709 artikler.
 
-![Figur 3. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler ved WERKS 3300, LGORT 3001. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig04_Dataoversikt.png)
+![Figur 3. Dataoversikt: fordeling av nøkkelvariabler for 709 artikler ved WERKS 3300, LGORT 3001. Generert med støtte fra Claude.](../006 Analyse/plots/Fig04_Dataoversikt.png)
 
 ## 4.3 Dataforbehandling
 
@@ -455,7 +455,7 @@ Figur 4 nedenfor illustrerer den samlede datapipelinen fra rådata til analysekl
 
 ---
 
-![Figur 4. Analysepipeline: fra SAP-rådata til HVFS-anbefaling. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig02_Analysepipeline.png)
+![Figur 4. Analysepipeline: fra SAP-rådata til HVFS-anbefaling. Generert med støtte fra Claude.](../006 Analyse/plots/Fig02_Analysepipeline.png)
 
 ## 4.4 Etiske betraktninger og begrensninger
 
@@ -465,9 +465,9 @@ Parametervalgene S og h er begrunnet i avsnitt 1.4 og testes i sensitivitetsanal
 
 Standardverdien for leveringstid på 14 dager (D-05) dekker 94 % av artiklene, og er den enkeltbeslutningen som potensielt har størst effekt på bestillingspunkt-beregninger. Ettersom EOQ-avviksanalysen i denne studien er basert på ordrefrekvens snarere enn bestillingspunkt, er den direkte innvirkningen på analyseresultatene begrenset; likevel bør en eventuell oppfølgingsstudie prioritere å berike EINE-tabellen med faktiske leveringstider. Alle modellenes matematiske spesifikasjon og parametersetting beskrives i kapittel 5.
 
-## 4.5 Bruk av KI-verktøy
+## 4.5 Bruk av kunstig intelligens
 
-Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med retningslinjene i kursets skrivekompendium (Rekdal & Pettersen, 2025). Claude (Anthropic, 2026) ble anvendt til kodestøtte, generering av datavisualiseringer og språklig bearbeiding av rapportteksten. KI-verktøyet er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. All KI-generert kode og tekst er kritisk gjennomgått og revidert av forfatteren; en refleksjon over KI-brukens påvirkning på arbeidsprosessen er gitt i Vedlegg C.
+Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med retningslinjene i kursets skrivekompendium (Rekdal & Pettersen, 2025). Claude ble anvendt til kodestøtte, generering av datavisualiseringer og språklig bearbeiding av rapportteksten. KI-verktøyet er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. All KI-generert kode og tekst er kritisk gjennomgått og revidert av forfatteren; en refleksjon over KI-brukens påvirkning på arbeidsprosessen er gitt i Vedlegg C.
 
 
 ---
@@ -597,7 +597,7 @@ Sekvenslogikken er utformet slik at de to første reglene fungerer som overordne
 
 Reglene 3–5 definerer positivt overføringssignal med to krav: artikkelen må ha høy verdi (A/B) og stabilt forbruk (X eller Y), og i tillegg enten dokumentert overbestilling (R3: FOR\_MANGE\_ORDRER) eller klyngetilhørighet som bekrefter HVFS-egnethet (R4 og R5: K\_OVERFØR). K\_OVERFØR-kravet i R4 og R5 er et bevisst designvalg for å sikre at overføringsanbefalinger for artikler uten EOQ-avvikssignal er forankret i klyngeanalysen — dette gir regelmotoren høyere presisjon på bekostning av recall, og er grunnen til at VURDER-kategorien er den største enkeltgruppen. Regel 6 sender A/B-artikler med XYZ = X, men uten K\_OVERFØR-signal, til manuell vurdering; regel 7 gjør det samme for A/B-artikler med XYZ = Y. Regel 8 fanger opp alle øvrige artikler, inkludert C + X (lav verdi, stabilt forbruk), som sendes til vurdering. Regelmotorens sekvensielle beslutningsflyt er illustrert i Figur 5.
 
-![Figur 5. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig03_Regelmotor.png)
+![Figur 5. Regelmotor: sekvensiell beslutningsflyt for HVFS-anbefaling (R1–R8). Generert med støtte fra Claude.](../006 Analyse/plots/Fig03_Regelmotor.png)
 
 Artikler som ikke fanges opp av noen av de åtte reglene – typisk fordi CV-data eller verdidata mangler – klassifiseres som MANGLER\_DATA. Disse inngår ikke i besparelsesestimatet, men rapporteres separat for å synliggjøre datakvalitetsproblemer i kildedataene. Det understrekes at regelmotoren er et normativt beslutningsstøtteverktøy: den produserer en datadrevet anbefaling per artikkel, men erstatter ikke innkjøpsfaglig skjønn. Alle anbefalinger bør valideres i en begrenset pilot mot ekspertvurdering fra innkjøpsfunksjonen ved Helse Bergen før implementering i full skala. Alle beregnede anbefalinger, klyngeprofiler og besparelsesestimater presenteres som sluttresultater i kapittel 7. Kapittel 6 beskriver den analytiske gjennomføringen av modellene fra kapittel 5 på de 709 artiklene i LGORT 3001.
 
@@ -612,7 +612,7 @@ ABC-analysen ble gjennomført ved å sortere samtlige 709 aktive artikler i synk
 
 Pareto-grensene 80 % og 95 % ble deretter lagt på den kumulative kurven, som vist i Figur 6 nedenfor. Kurvens form — en bratt stigning tidlig etterfulgt av en lang flat hale — bekrefter at verdikonsentrasjonen følger Pareto-mønsteret. Endelig fordeling mellom A-, B- og C-artikler presenteres i Tabell 8 i kapittel 7.
 
-![Figur 6. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler rangert etter årsverdi, med grenser ved 80 % (A/B) og 95 % (B/C). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig05_ABC_Pareto.png)
+![Figur 6. ABC Pareto-kurve: kumulativ verdiandel for 709 artikler rangert etter årsverdi, med grenser ved 80 % (A/B) og 95 % (B/C). Generert med støtte fra Claude.](../006 Analyse/plots/Fig05_ABC_Pareto.png)
 
 ## 6.2 XYZ-klassifisering
 
@@ -622,7 +622,7 @@ Etter beregning ble CV-grensene fra Tabell 6 (kap. 5) anvendt: X (CV < 0,5), Y (
 
 ABC- og XYZ-klassifiseringene ble kombinert til en ni-felts kryssmatrise, som vist i Figur 7. Matrisen gir et øyeblikksbilde av populasjonens sammensetning langs de to dimensjonene og danner inngangsdataene for regelmotoren i avsnitt 6.5. Fullstendige celleantall er gjengitt i Figur 7; univariate XYZ-fordelinger presenteres i Tabell 9 i kapittel 7.
 
-![Figur 7. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon (687 klassifiserte artikler, WERKS 3300 / LGORT 3001). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig06_ABC_XYZ_Matrise.png)
+![Figur 7. ABC/XYZ-kryssmatrise: antall artikler per kombinasjon (687 klassifiserte artikler, WERKS 3300 / LGORT 3001). Generert med støtte fra Claude.](../006 Analyse/plots/Fig06_ABC_XYZ_Matrise.png)
 
 Matrisen viser at A- og B-artikler i stor grad er konsentrert i X-kolonnen (stabilt forbruk), mens Z-kolonnen er dominert av C-artikler. AZ- og BZ-kategoriene er relativt små. De ni cellene i matrisen danner det primære inngangssignalet for regelmotorens beslutningslogikk i avsnitt 6.5.
 
@@ -632,7 +632,7 @@ EOQ-avviksanalysen ble gjennomført for alle artikler der tilstrekkelig data for
 
 Det relative frekvensavviket $\text{FREQ\_AVVIK}_i = (f_{\text{obs},i} - f^*_i) / f^*_i$ ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 8 nedenfor. Terskelen $\tau_f = 1{,}5$ (dvs. FREQ\_AVVIK > 0,5) ble lagt inn for å skille artikler med vesentlig overbestilling (FOR\_MANGE\_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad $\Delta TC_i = TC(f_{\text{obs}}) - TC(f^*)$ beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 11 og avsnitt 7.3.
 
-![Figur 8. EOQ-avvik: relativ frekvensavvik (FREQ_AVVIK) for artikler med tilstrekkelige data, med terskel ved τ_f = 1,5. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig07_EOQ_Avvik.png)
+![Figur 8. EOQ-avvik: relativ frekvensavvik (FREQ_AVVIK) for artikler med tilstrekkelige data, med terskel ved τ_f = 1,5. Generert med støtte fra Claude.](../006 Analyse/plots/Fig07_EOQ_Avvik.png)
 
 Figur 8 viser at fordelingen er sterkt høyreskjev: majoriteten av artiklene med EOQ-data har et FREQ\_AVVIK over terskelen på 0,5. Fordeling etter avviksstatus og totale $\Delta TC$-summer presenteres i Tabell 11 og avsnitt 7.3.
 
@@ -642,17 +642,17 @@ Figur 8 viser at fordelingen er sterkt høyreskjev: majoriteten av artiklene med
 
 **K-valg via silhouette.** KMeans-modellen ble trent for K = 2, 3, 4, 5, 6 og 7 på treningsdataene. For hvert K ble gjennomsnittlig silhouette-score beregnet. Figur 9 viser silhouette-profilen over K-søket.
 
-![Figur 9. Silhouette-score for K = 2–7 (treningsdata, n = 389): K = 3 gir høyest score (0,383). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig08_Silhouette.png)
+![Figur 9. Silhouette-score for K = 2–7 (treningsdata, n = 389): K = 3 gir høyest score (0,383). Generert med støtte fra Claude.](../006 Analyse/plots/Fig08_Silhouette.png)
 
 K = 3 ga høyest silhouette-score og ble valgt som det endelige antallet klynger. For K = 4 og oppover falt scoren monotont, noe som indikerer at tre klynger representerer den mest naturlige gruppestrukturen i featurerommet. KMeans-modellen ble trent endelig med K = 3, `n_init=50` og `max_iter=300`. Testdataene (n = 98) ble predikert til nærmeste sentroid for å evaluere generaliserbarhet. Silhouette-scorer for trenings- og testdata presenteres i avsnitt 7.4.
 
 **Klyngeprofiler.** Etter at KMeans-modellen var trent på treningsdataene, ble samtlige 487 artikler med tilstrekkelig data predikert til én av de tre klyngene. Klyngene ble karakterisert langs de tre featuredimensjonene, og én klynge ble identifisert som K\_OVERFØR basert på lavest gjennomsnittlig CV (stabilt forbruksmønster) og høyest gjennomsnittlig artikkelverdi. Figur 10 visualiserer klyngestrukturen i en todimensjonal projeksjon langs de to mest informative featurene.
 
-![Figur 10. K-means klyngeresultat (K = 3): artikler plottet langs z(ln CV) og z(ln verdi), farge etter klynge. K_OVERFØR-klyngen er markert med stjerne (★). Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig09_Kmeans_Klynger.png)
+![Figur 10. K-means klyngeresultat (K = 3): artikler plottet langs z(ln CV) og z(ln verdi), farge etter klynge. K_OVERFØR-klyngen er markert med stjerne (★). Generert med støtte fra Claude.](../006 Analyse/plots/Fig09_Kmeans_Klynger.png)
 
 Figur 10 viser at de tre klyngene er rimelig separert i featurerommet, særlig K\_OVERFØR-klyngen (grønn), som skiller seg fra de øvrige ved sin kombinasjon av lav CV og høy verdi. For å tolke innholdet i hver klynge viser Figur 11 gjennomsnittlig standardisert verdi per feature for de tre klyngene.
 
-![Figur 11. Klyngeprofiler for K-means (K=3): gjennomsnittlig z-score per feature per klynge. K\_OVERFØR-klyngen (grønn) kjennetegnes av lav CV og høy verdi. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig10_Kmeans_Profil.png)
+![Figur 11. Klyngeprofiler for K-means (K=3): gjennomsnittlig z-score per feature per klynge. K\_OVERFØR-klyngen (grønn) kjennetegnes av lav CV og høy verdi. Generert med støtte fra Claude.](../006 Analyse/plots/Fig10_Kmeans_Profil.png)
 
 Figur 11 bekrefter at K\_OVERFØR-klyngen har den laveste CV-verdien og den høyeste verdiprofilen. Fullstendige klyngeprofiler med gjennomsnittsverdier for CV, verdi og $|\Delta TC|$ presenteres i Tabell 12 i kapittel 7.
 
@@ -664,7 +664,7 @@ For alle artikler som fikk anbefalingen OVERFØR\_HVFS, ble besparelsesestimatet
 
 I tillegg til de tre scenariene ble det gjennomført en systematisk sensitivitetsanalyse med 27 kombinasjoner av $S$, $h$ og $\tau_f$, for å kartlegge robustheten av besparelsesestimatet overfor usikkerhet i modellantagelsene. Figur 12 viser den endelige fordelingen av regelmotor-anbefalinger og estimert EOQ-besparelse under tre scenarier, mens detaljerte besparelsestall og sensitivitetsintervaller presenteres i avsnitt 7.5–7.6.
 
-![Figur 12. Regelmotor og besparelsesanalyse: fordeling av HVFS-anbefalinger (venstre) og estimert årlig EOQ-besparelse under tre realiseringsscenarier (høyre). 709 artikler, WERKS 3300 / LGORT 3001. Generert med støtte fra Claude (Anthropic, 2026).](../006 Analyse/plots/Fig11_Regelmotor_Besparelse.png)
+![Figur 12. Regelmotor og besparelsesanalyse: fordeling av HVFS-anbefalinger (venstre) og estimert årlig EOQ-besparelse under tre realiseringsscenarier (høyre). 709 artikler, WERKS 3300 / LGORT 3001. Generert med støtte fra Claude.](../006 Analyse/plots/Fig11_Regelmotor_Besparelse.png)
 
 Figur 12 viser den endelige fordelingen av HVFS-anbefalinger og estimert besparelse. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
 
@@ -867,7 +867,7 @@ Studien konkluderer dermed med at SAP-transaksjonsdata – hentet fra 14 tabelle
 Basert på studiens funn rettes følgende fire anbefalinger til Helse Bergen og Helse Vest IKT:
 
 **1. Iverksett pilotoverføring for K_OVERFØR-klyngen og AX/BX-artiklene.**
-De 145 artiklene som er identifisert som prioriterte overføringskandidater bør ikke overføres samlet i én operasjon. En pilotfase bør prioritere artiklene i skjæringspunktet mellom K_OVERFØR-klyngen og AX/BX-kategoriene, da disse har den sterkeste kombinasjonen av analysesignaler og lavest risiko for servicesvikt. En gradvis overføring gir mulighet til å verifisere at HVFS og NorEngros håndterer artiklene i henhold til APL-leveransemodellen før hele porteføljen flyttes.
+De 145 artiklene som er identifisert som prioriterte overføringskandidater bør ikke overføres samlet i én operasjon. En pilotfase bør prioritere artiklene i skjæringspunktet mellom K_OVERFØR-klyngen og AX/BX-kategoriene, da disse har den sterkeste kombinasjonen av analysesignaler og lavest forbruksvariasjon. Pilotvalideringen bør suppleres med en klinisk kritikalitetsvurdering (jf. avsnitt 8.4) for å sikre at ingen artikler med høy pasientrisiko overføres uten tilstrekkelig forsyningssikkerhet. En gradvis overføring gir mulighet til å verifisere at HVFS og NorEngros håndterer artiklene i henhold til APL-leveransemodellen før hele porteføljen flyttes.
 
 **2. Gjennomgå de 284 artiklene i VURDER NÆRMERE manuelt.**
 Denne gruppen er for stor og sammensatt til å håndteres med et enkelt kvantitativt signal. En strukturert gjennomgang bør inkludere innkjøpsfaglig og klinisk kompetanse for å vurdere forsyningssikkerhet, leverandørforbindelser og artikkelkritikalitet. Målet er å redusere VURDER-gruppen til en endelig fordeling mellom OVERFØR og BEHOLD innen utgangen av pilotfasen.
@@ -885,8 +885,6 @@ Studien åpner for tre retninger innen videre forskning: (1) En **ROP-modul** so
 ---
 
 # Referanseliste
-
-Anthropic. (2026). *Claude* [Stor språkmodell]. https://claude.ai
 
 Bijvank, M., & Vis, I. F. A. (2012). Inventory control for point-of-use locations in hospitals. *Journal of the Operational Research Society*, *63*(4), 497–510. https://doi.org/10.1057/jors.2011.52
 
@@ -960,14 +958,26 @@ Fullstendig kildekode er tilgjengelig i prosjektets GitHub-repository.
 
 ## Vedlegg C – Erklæring om bruk av kunstig intelligens
 
-I denne rapporten er KI-verktøyet Claude (Anthropic, 2026) brukt som støtteverktøy i tre deler av arbeidet, i samsvar med Høgskolen i Molde sine retningslinjer for bruk av KI på hjemmeeksamen.
+I denne rapporten er KI-verktøyet Claude brukt som støtteverktøy i tre deler av arbeidet, i samsvar med Høgskolen i Molde sine retningslinjer for bruk av KI på hjemmeeksamen.
 
 **1. Kode og algoritmer.** Claude ble brukt til kodestøtte og feilsøking i Python-scriptet (`LOG650_analyse_v2_7.py`) som implementerer ABC-, XYZ-, EOQ- og K-means-analysen. Verktøyet ble brukt til å forstå kodelogikk, feilsøke syntaksfeil og generere foreløpige kodeutdrag som senere ble tilpasset og integrert. All kode er gjennomgått, testet og modifisert av forfatteren for å sikre korrekthet. Den endelige implementasjonen, tolkningen av resultater og presentasjonen av numeriske verdier er forfatterens ansvar. Alle scripts bruker `random_state=42` for deterministisk og reproduserbar output.
 
-**2. Figurer og tabeller.** Alle 12 figurer (Fig00–Fig11) er generert med matplotlib-scripts der Claude bidro til utforming av layout, fargepalett og aksetitler. Figurene er basert på analyseresultater produsert av Python-scriptet fra SAP-kildedata — KI-verktøyet har ikke produsert eller modifisert noen dataverdier. Hver figur er merket «Generert med støtte fra Claude (Anthropic, 2026)» i bildeteksten. Tabeller er formatert med støtte fra Claude, men alle verdier kommer direkte fra analysescriptet.
+**2. Figurer og tabeller.** Alle 12 figurer (Fig00–Fig11) er generert med matplotlib-scripts der Claude bidro til utforming av layout, fargepalett og aksetitler. Figurene er basert på analyseresultater produsert av Python-scriptet fra SAP-kildedata — KI-verktøyet har ikke produsert eller modifisert noen dataverdier. Hver figur er merket «Generert med støtte fra Claude» i bildeteksten. Tabeller er formatert med støtte fra Claude, men alle verdier kommer direkte fra analysescriptet.
 
 **3. Tekststrukturering og språklig bearbeiding.** Claude ble brukt til å strukturere rapportteksten og forbedre språklig klarhet. Verktøyet foreslo disposisjon, avsnittsinndeling og formuleringer som forfatteren vurderte kritisk og reviderte. Alle faglige påstander, argumenter og konklusjoner er forfatterens egne. Claude er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander.
 
 **4. Refleksjon over KI-brukens påvirkning.** Bruken av Claude påvirket arbeidsprosessen på to vesentlige måter. For det første akselererte kodestøtten iterasjonshastigheten i Python-utviklingen, noe som muliggjorde flere eksperimentelle kjøringer og raskere feilsøking enn manuell utvikling alene ville tillatt. For det andre bidro den språklige bearbeidingen til mer konsise formuleringer, men krevde aktiv overvåking for å unngå at faglig presisjon gikk tapt til fordel for språklig eleganse. Den analytiske retningen — valg av metoder, regelutforming og tolkning av resultater — er ikke påvirket av KI-verktøyet.
 
 **Avgrensning.** Rådata fra SAP ble ikke lagt inn i KI-verktøyet. Alle datatransformasjoner er dokumentert i D-01–D-08 (avsnitt 4.3) og kjørt lokalt i Python. Ingen pasientdata eller personopplysninger er brukt i studien.
+
+---
+
+**Signatur:**
+
+Sted og dato: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Navn: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Studentnummer: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Jeg bekrefter at opplysningene ovenfor er korrekte, og at all bruk av kunstig intelligens i dette arbeidet er beskrevet fullstendig og ærlig.
