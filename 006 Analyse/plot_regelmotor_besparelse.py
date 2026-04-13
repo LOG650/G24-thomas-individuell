@@ -1,6 +1,6 @@
 """
 Genererer Fig11_Regelmotor_Besparelse.png
-Panel 1: Fordeling av HVFS-anbefalingar frå regelmotoren
+Panel 1: Fordeling av HVFS-anbefalinger fra regelmotoren
 Panel 2: Estimert EOQ-besparelse under tre scenario
 """
 
@@ -49,7 +49,7 @@ scenario_colors = [COLORS["red"], COLORS["orange"], COLORS["green"]]
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5),
                                 gridspec_kw={"width_ratios": [1.2, 1]})
 
-# ── Panel 1: Fordeling av anbefalingar ──────────────────────────
+# ── Panel 1: Fordeling av anbefalinger ──────────────────────────
 bars1 = ax1.barh(
     regel_labels, regel_counts, color=regel_colors,
     height=0.6, alpha=0.92, edgecolor="none", zorder=2,
@@ -64,7 +64,7 @@ for bar, count, pct in zip(bars1, regel_counts, regel_pcts):
     )
 
 ax1.set_xlabel("Antall artikler")
-ax1.set_title("Fordeling av HVFS-anbefalingar")
+ax1.set_title("Fordeling av HVFS-anbefalinger")
 ax1.set_xlim(0, max(regel_counts) * 1.35)
 ax1.invert_yaxis()
 ax1.grid(axis="x")
@@ -83,7 +83,7 @@ for bar, val in zip(bars2, scenario_values):
         fontsize=11, fontweight="bold", color=COLORS["title"],
     )
 
-ax2.set_ylabel("Estimert årleg besparelse (TNOK)")
+ax2.set_ylabel("Estimert årlig besparelse (TNOK)")
 ax2.set_title("EOQ-besparelse – tre scenario")
 ax2.set_ylim(0, max(scenario_values) * 1.18)
 ax2.yaxis.set_major_formatter(mticker.FuncFormatter(

@@ -42,14 +42,14 @@ df_abc.loc[
     (df_abc["CUM_PCT"] > 0.80) & (df_abc["CUM_PCT"] <= 0.95), "ABC_CLASS"
 ] = "B"
 
-# XYZ-klassifisering frå CV
+# XYZ-klassifisering fra CV
 df_abc["XYZ_CLASS"] = pd.cut(
     df_abc["CV"],
     bins=[-0.001, 0.5, 1.0, float("inf")],
     labels=["X", "Y", "Z"],
 )
 
-# Filtrer til rader med begge klassifiseringar
+# Filtrer til rader med begge klassifiseringer
 both = df_abc[df_abc["ABC_CLASS"].notna() & df_abc["XYZ_CLASS"].notna()].copy()
 total = len(both)
 
@@ -66,13 +66,13 @@ ct = ct.loc[["A", "B", "C"], ["X", "Y", "Z"]]
 # ── Plot ─────────────────────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(8, 7))
 
-# Grid-dimensjonar i datakoordinatar
+# Grid-dimensjoner i datakoordinater
 cell = 1.0
 cols, rows = 3, 3
 grid_w = cols * cell
 grid_h = rows * cell
 
-# Margins rundt grid (i datakoordinatar)
+# Margins rundt grid (i datakoordinater)
 margin_left = 2.2
 margin_top = 0.6
 margin_bottom = 1.8
@@ -122,7 +122,7 @@ for row_i, abc in enumerate(abc_labels):
             fontsize=12, color="white", alpha=0.92,
         )
 
-# ── Y-akselablar (ABC – verdi) ─────────────────────────────────
+# ── Y-akselabeler (ABC – verdi) ─────────────────────────────────
 y_labels = [
     "A – Høy verdi",
     "B – Middels verdi",
@@ -135,7 +135,7 @@ for i, lbl in enumerate(y_labels):
         fontsize=10, fontweight="bold", color=COLORS["title"],
     )
 
-# ── X-akselablar (XYZ – etterspørselsvariasjon) ────────────────
+# ── X-akselabeler (XYZ – etterspørselsvariasjon) ────────────────
 x_labels = [
     "X – Stabil\n(CV < 0,5)",
     "Y – Variabel\n(CV 0,5–1,0)",
@@ -165,8 +165,8 @@ ax.text(
 
 # ── Legende ──────────────────────────────────────────────────────
 legend_elements = [
-    mpatches.Patch(facecolor=COLORS["green"],  label="Klare HVFS-kandidatar"),
-    mpatches.Patch(facecolor=COLORS["orange"], label="Vurder nærmare"),
+    mpatches.Patch(facecolor=COLORS["green"],  label="Klare HVFS-kandidater"),
+    mpatches.Patch(facecolor=COLORS["orange"], label="Vurder nærmere"),
     mpatches.Patch(facecolor=COLORS["red"],    label="Behold lokalt"),
 ]
 ax.legend(
@@ -183,4 +183,4 @@ out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig06_ABC_XYZ_Matrise.pn
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 plt.close()
 print(f"Lagret: {out}")
-print(f"Totalt klassifisert: {total} artiklar")
+print(f"Totalt klassifisert: {total} artikler")

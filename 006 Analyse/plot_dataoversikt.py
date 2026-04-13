@@ -1,6 +1,6 @@
 """
 Genererer Fig04_Dataoversikt.png
-Dataoversikt: fordeling av nøkkelvariablar for 709 artiklar
+Dataoversikt: fordeling av nøkkelvariabler for 709 artikler
 Helse Bergen WERKS 3300 LGORT 3001 (2024–2025)
 """
 
@@ -35,7 +35,7 @@ df["ABC_CLASS"] = df["MATNR"].map(abc_map)
 fig, axes = plt.subplots(2, 3, figsize=(16, 9))
 fig.subplots_adjust(hspace=0.38, wspace=0.30)
 
-# ── (a) Artiklar per varegruppe – topp 10 ────────────────────────
+# ── (a) Artikler per varegruppe – topp 10 ────────────────────────
 ax = axes[0, 0]
 grp = df["WGBEZ"].value_counts()
 topp10 = grp.head(10)
@@ -49,15 +49,15 @@ bars = ax.barh(range(len(topp10)), topp10.values, color=COLORS["blue"],
 ax.set_yticks(range(len(topp10)))
 labels = [str(n)[:25] + "…" if len(str(n)) > 25 else str(n) for n in topp10.index]
 ax.set_yticklabels(labels, fontsize=8)
-ax.set_xlabel("Antall artiklar")
-ax.set_title("(a) Artiklar per varegruppe", pad=10)
+ax.set_xlabel("Antall artikler")
+ax.set_title("(a) Artikler per varegruppe", pad=10)
 ax.yaxis.grid(False)
-ax.xaxis.grid(True)  # barh treng x-grid
+ax.xaxis.grid(True)  # barh trenger x-grid
 for bar, val in zip(bars, topp10.values):
     ax.text(val + 1, bar.get_y() + bar.get_height() / 2,
             str(val), va="center", fontsize=8, color=COLORS["title"])
 
-# ── (b) Einingspris-fordeling (log-skala) ────────────────────────
+# ── (b) Enhetspris-fordeling (log-skala) ────────────────────────
 ax = axes[0, 1]
 prices = df["UNIT_PRICE"].dropna()
 prices = prices[prices > 0]
@@ -66,9 +66,9 @@ ax.hist(np.log10(prices), bins=30, color=COLORS["blue"], alpha=0.85,
 xticks = [0, 1, 2, 3, 4, 5]
 ax.set_xticks(xticks)
 ax.set_xticklabels([f"{10**x:,.0f}" for x in xticks], fontsize=8)
-ax.set_xlabel("Einingspris (NOK, log-skala)")
-ax.set_ylabel("Antall artiklar")
-ax.set_title("(b) Einingspris-fordeling", pad=10)
+ax.set_xlabel("Enhetspris (NOK, log-skala)")
+ax.set_ylabel("Antall artikler")
+ax.set_title("(b) Enhetspris-fordeling", pad=10)
 med = np.log10(prices.median())
 ax.axvline(med, color=COLORS["orange"], linestyle="--", linewidth=1.5, alpha=0.8)
 ax.text(med + 0.1, ax.get_ylim()[1] * 0.9,
@@ -83,8 +83,8 @@ ax.hist(np.log10(demand), bins=30, color=COLORS["blue"], alpha=0.85,
 xticks_d = [0, 1, 2, 3, 4, 5]
 ax.set_xticks(xticks_d)
 ax.set_xticklabels([f"{10**x:,.0f}" for x in xticks_d], fontsize=8)
-ax.set_xlabel("Årsforbruk (einingar, log-skala)")
-ax.set_ylabel("Antall artiklar")
+ax.set_xlabel("Årsforbruk (enheter, log-skala)")
+ax.set_ylabel("Antall artikler")
 ax.set_title("(c) Årsforbruk-fordeling", pad=10)
 med_d = np.log10(demand.median())
 ax.axvline(med_d, color=COLORS["orange"], linestyle="--", linewidth=1.5, alpha=0.8)
@@ -124,7 +124,7 @@ ax.text(1.5, ymax * 0.80, f"n={n_z}", fontsize=8, color=COLORS["red"],
         ha="center", va="top", zorder=5)
 
 ax.set_xlabel("Variasjonskoeffisient (CV)")
-ax.set_ylabel("Antall artiklar")
+ax.set_ylabel("Antall artikler")
 ax.set_title("(d) CV-fordeling med XYZ-grenser", pad=10)
 
 # ── (e) ABC-fordeling med verdiandel ─────────────────────────────
@@ -143,7 +143,7 @@ for bar, cnt, vpct in zip(bars, abc_counts.values, abc_val_pct.values):
             fontsize=9, fontweight="bold", color=COLORS["title"])
 
 ax.set_xlabel("ABC-klasse")
-ax.set_ylabel("Antall artiklar")
+ax.set_ylabel("Antall artikler")
 ax.set_title("(e) ABC-fordeling og verdiandel", pad=10)
 ax.set_ylim(0, abc_counts.max() * 1.25)
 
@@ -159,8 +159,8 @@ bars = ax.bar(range(len(supp_grouped)), supp_grouped.values, color=COLORS["blue"
               alpha=0.92, edgecolor="none", zorder=3)
 ax.set_xticks(range(len(supp_grouped)))
 ax.set_xticklabels([str(x) for x in supp_grouped.index])
-ax.set_xlabel("Antall leverandørar")
-ax.set_ylabel("Antall artiklar")
+ax.set_xlabel("Antall leverandører")
+ax.set_ylabel("Antall artikler")
 ax.set_title("(f) Leverandørkonsentrasjon", pad=10)
 for bar, val in zip(bars, supp_grouped.values):
     ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 2,
@@ -168,7 +168,7 @@ for bar, val in zip(bars, supp_grouped.values):
 
 # ── Tittel og eksport ────────────────────────────────────────────
 plt.tight_layout(rect=[0, 0, 1, 0.90])
-fig_title(fig, "Dataoversikt", "709 artiklar ved Helse Bergen WERKS 3300, LGORT 3001 (2024–2025)")
+fig_title(fig, "Dataoversikt", "709 artikler ved Helse Bergen WERKS 3300, LGORT 3001 (2024–2025)")
 
 out = r"C:\G24\G24-thomas-individuell\006 analyse\plots\Fig04_Dataoversikt.png"
 fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
