@@ -500,7 +500,7 @@ Klassifiseringsgrensene er satt i henhold til standard ABC-litteratur (Silaen et
 | Ordrekostnad S | 750 NOK | Bijvank & Vis (2012); Kelle et al. (2012) |
 | Holdesats h | 20 % av UNIT\_PRICE | Ketkar & Vaidya (2014) |
 | Leveringstid standardverdi | 14 dager | Bransjepraksis (D-05) |
-| EOQ-terskel τ\_f | 1,5 ($f_{\text{obs}} > 1{,}5 \cdot f^*$, dvs. FREQ\_AVVIK > 0,5) | Operasjonelt vesentlig avvik |
+| EOQ-terskel τ\_f | 1,5 ($f_{\text{obs},i} > 1{,}5 \cdot f^*_i$, dvs. FREQ\_AVVIK > 0,5) | Operasjonelt vesentlig avvik |
 | K-means K-søk | K ∈ {2, 3, 4, 5, 6, 7} | Silhouette-optimering |
 | K-means n\_init | 50 | Robust initialisering |
 | Random state | 42 | Reproduserbarhet |
@@ -534,7 +534,7 @@ $$f^* = \frac{D}{Q^*} = \sqrt{\frac{D H}{2 S}}$$
 
 $$\text{FREQ\_AVVIK}_i = \frac{f_{\text{obs},i} - f^*_i}{f^*_i}$$
 
-En artikkel klassifiseres som FOR\_MANGE\_ORDRER dersom $f_{\text{obs}} > \tau_f \cdot f^*$, der $\tau_f = 1{,}5$. Dette tilsvarer FREQ\_AVVIK $> 0{,}5$, det vil si at faktisk ordrefrekvens er mer enn 50 % høyere enn EOQ-optimal frekvens. Symmetrisk klassifiseres artikler med FREQ\_AVVIK $< -0{,}5$ som FOR\_FÅ\_ORDRER, mens artikler i intervallet $[-0{,}5;\; 0{,}5]$ klassifiseres som OK. Terskelen $\tau_f$ er satt for å fokusere analysen på de artiklene der avviket er operasjonelt vesentlig, og ikke bare statistisk merkbart. Differansen i totalkostnad mellom faktisk og optimal drift for en artikkel er:
+En artikkel klassifiseres som FOR\_MANGE\_ORDRER dersom $f_{\text{obs},i} > \tau_f \cdot f^*_i$, der $\tau_f = 1{,}5$. Dette tilsvarer FREQ\_AVVIK $> 0{,}5$, det vil si at faktisk ordrefrekvens er mer enn 50 % høyere enn EOQ-optimal frekvens. Symmetrisk klassifiseres artikler med FREQ\_AVVIK $< -0{,}5$ som FOR\_FÅ\_ORDRER, mens artikler i intervallet $[-0{,}5;\; 0{,}5]$ klassifiseres som OK. Terskelen $\tau_f$ er satt for å fokusere analysen på de artiklene der avviket er operasjonelt vesentlig, og ikke bare statistisk merkbart. Differansen i totalkostnad mellom faktisk og optimal drift for en artikkel er:
 
 $$\Delta TC_i = TC(f_{\text{obs},i}) - TC(f^*_i)$$
 
@@ -628,7 +628,7 @@ Matrisen viser at A- og B-artikler i stor grad er konsentrert i X-kolonnen (stab
 
 EOQ-avviksanalysen ble gjennomført for alle artikler der tilstrekkelig data forelå for beregning av optimal ordrefrekvens $f^*$, det vil si artikler med $D_i > 0$, $\text{UNIT\_PRICE}_i > 0$ og tilgjengelig LEAD\_TIME. Den optimale frekvensen $f^* = \sqrt{DH / 2S}$ ble beregnet med $S = 750$ NOK og $H = 0{,}20 \times \text{UNIT\_PRICE}_i$ som modellparametere (se Tabell 6, kap. 5). Faktisk ordrefrekvens $f_{\text{obs}}$ ble hentet fra EKBE og annualisert i henhold til beslutning D-08: ACTUAL\_FREQ = ORDER\_COUNT $\times$ (12/24).
 
-Det relative frekvensavviket $\text{FREQ\_AVVIK}_i = (f_{\text{obs},i} - f^*_i) / f^*_i$ ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 8 nedenfor. Terskelen $\tau_f = 1{,}5$ (dvs. FREQ\_AVVIK > 0,5) ble lagt inn for å skille artikler med vesentlig overbestilling (FOR\_MANGE\_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad $\Delta TC_i = TC(f_{\text{obs}}) - TC(f^*)$ beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 11 og avsnitt 7.3.
+Det relative frekvensavviket $\text{FREQ\_AVVIK}_i = (f_{\text{obs},i} - f^*_i) / f^*_i$ ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 8 nedenfor. Terskelen $\tau_f = 1{,}5$ (dvs. FREQ\_AVVIK > 0,5) ble lagt inn for å skille artikler med vesentlig overbestilling (FOR\_MANGE\_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad $\Delta TC_i = TC(f_{\text{obs},i}) - TC(f^*_i)$ beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 11 og avsnitt 7.3.
 
 ![Figur 8. EOQ-avvik: relativ frekvensavvik (FREQ_AVVIK) for artikler med tilstrekkelige data, med terskel ved τ_f = 1,5. Generert med støtte fra Claude.](../006 Analyse/plots/Fig07_EOQ_Avvik.png)
 
@@ -761,7 +761,7 @@ Regelmotoren produserte en anbefaling for samtlige 709 artikler. Fordelingen er 
 
 ## 7.6 Besparelse og sensitivitet
 
-Besparelsesestimatet er beregnet for de 117 artiklene som oppfyller begge kriteriene OVERFØR\_HVFS og FOR\_MANGE\_ORDRER. Formelen er $B = \sum_i \Delta TC_i \times g$, der $g$ er antatt realiseringsgrad for den teoretiske EOQ-besparelsen. Tabell 14 viser resultatene for de tre scenariene.
+Besparelsesestimatet er beregnet for de 117 artiklene som oppfyller begge kriteriene OVERFØR\_HVFS og FOR\_MANGE\_ORDRER. Formelen er $B_{\text{HVFS}} = \sum_{i \in \text{OVERFØR}} \Delta TC_i \cdot g$, der $g$ er antatt realiseringsgrad for den teoretiske EOQ-besparelsen. Tabell 14 viser resultatene for de tre scenariene.
 
 *Tabell 14. Besparelsesestimater for tre scenarier: 117 artikler (OVERFØR\_HVFS ∩ FOR\_MANGE\_ORDRER), S = 750 NOK.*
 
