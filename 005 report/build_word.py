@@ -99,6 +99,21 @@ forord_text = forord_m.group(1).strip() if forord_m else ''
 sammendrag_m = re.search(r'^# Sammendrag\s*\n(.*?)(?=\n---)', md_all, re.DOTALL | re.MULTILINE)
 sammendrag_text = sammendrag_m.group(1).strip() if sammendrag_m else ''
 
+# Hent ut Figurliste og Tabelliste (statiske oppføringar frå MD)
+def _extract_list_section(md, heading):
+    m = re.search(r'^# ' + re.escape(heading) + r'\s*\n(.*?)(?=\n# )', md, re.DOTALL | re.MULTILINE)
+    if not m:
+        return []
+    items = []
+    for line in m.group(1).split('\n'):
+        line = line.strip()
+        if line and not line.startswith('#') and line != '---':
+            items.append(line)
+    return items
+
+figurliste_items = _extract_list_section(md_all, 'Figurliste')
+tabelliste_items = _extract_list_section(md_all, 'Tabelliste')
+
 # ════════════════════════════════════════════════════
 # STEG 3: Sett inn Sammendrag-tekst etter "Sammendrag"-overskrifta
 # ════════════════════════════════════════════════════
@@ -542,35 +557,6 @@ def add_field(paragraph, instr_text):
     fld_end.set(qn('w:fldCharType'), 'end')
     run_end._element.append(fld_end)
 
-def add_seq_field_to_para(paragraph, seq_name, font_name='Times New Roman', font_size=10):
-    """Set inn eit SEQ-felt inline i ein paragraf (for auto-nummerering av figurar/tabellar)."""
-    # Begin
-    run_begin = paragraph.add_run()
-    fld_begin = OxmlElement('w:fldChar')
-    fld_begin.set(qn('w:fldCharType'), 'begin')
-    run_begin._element.append(fld_begin)
-    # InstrText
-    run_instr = paragraph.add_run()
-    instr = OxmlElement('w:instrText')
-    instr.set(qn('xml:space'), 'preserve')
-    instr.text = f' SEQ {seq_name} \\* ARABIC '
-    run_instr._element.append(instr)
-    # Separate
-    run_sep = paragraph.add_run()
-    fld_sep = OxmlElement('w:fldChar')
-    fld_sep.set(qn('w:fldCharType'), 'separate')
-    run_sep._element.append(fld_sep)
-    # Plasshaldarnummer
-    run_num = paragraph.add_run('N')
-    run_num.font.name = font_name
-    run_num.font.size = Pt(font_size)
-    run_num.font.italic = True
-    # End
-    run_end = paragraph.add_run()
-    fld_end = OxmlElement('w:fldChar')
-    fld_end.set(qn('w:fldCharType'), 'end')
-    run_end._element.append(fld_end)
-
 # Figurstiar
 fig_map = {
     'Fig00': 'Fig00_Konseptuelt_Rammeverk.png',
@@ -599,27 +585,33 @@ toc_para = doc.add_paragraph()
 toc_para.paragraph_format.line_spacing = 1.5
 add_field(toc_para, r' TOC \o "1-3" \h \z \u ')
 
-# ── Figurliste (auto-generert frå SEQ Figur-felt) ──
-print("  Legg til Figurliste...")
+# ── Figurliste (statisk tekst frå MD; sidetall settes manuelt i Word) ──
+print(f"  Legg til Figurliste ({len(figurliste_items)} oppføringar)...")
 h = add_heading_formatted(doc, 'Figurliste', 1)
 pPr = h._element.get_or_add_pPr()
 pb = OxmlElement('w:pageBreakBefore')
 pb.set(qn('w:val'), 'true')
 pPr.append(pb)
-fig_toc_para = doc.add_paragraph()
-fig_toc_para.paragraph_format.line_spacing = 1.5
-add_field(fig_toc_para, r' TOC \h \z \c "Figur" ')
+for item in figurliste_items:
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.5
+    r = p.add_run(item)
+    r.font.name = 'Times New Roman'
+    r.font.size = Pt(12)
 
-# ── Tabelliste (auto-generert frå SEQ Tabell-felt) ──
-print("  Legg til Tabelliste...")
+# ── Tabelliste (statisk tekst frå MD; sidetall settes manuelt i Word) ──
+print(f"  Legg til Tabelliste ({len(tabelliste_items)} oppføringar)...")
 h = add_heading_formatted(doc, 'Tabelliste', 1)
 pPr = h._element.get_or_add_pPr()
 pb = OxmlElement('w:pageBreakBefore')
 pb.set(qn('w:val'), 'true')
 pPr.append(pb)
-tab_toc_para = doc.add_paragraph()
-tab_toc_para.paragraph_format.line_spacing = 1.5
-add_field(tab_toc_para, r' TOC \h \z \c "Tabell" ')
+for item in tabelliste_items:
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.5
+    r = p.add_run(item)
+    r.font.name = 'Times New Roman'
+    r.font.size = Pt(12)
 
 print("  Legg til kapittel 1–9...")
 table_count = 0
@@ -672,25 +664,18 @@ while i < len(lines):
             if os.path.exists(abs_path):
                 doc.add_picture(abs_path, width=Cm(15))
                 fig_count += 1
-                # Bildetekst under med SEQ-felt for auto-nummerering
+                # Bildetekst under (statisk nummer, italic, sentrert)
                 cap_p = doc.add_paragraph()
                 cap_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 cap_m = re.match(r'(Figur)\s+(\d+)\.\s*(.*)', caption)
                 if cap_m:
-                    r_label = cap_p.add_run('Figur ')
-                    r_label.font.name = 'Times New Roman'
-                    r_label.font.size = Pt(10)
-                    r_label.font.italic = True
-                    add_seq_field_to_para(cap_p, 'Figur')
-                    r_rest = cap_p.add_run('. ' + cap_m.group(3))
-                    r_rest.font.name = 'Times New Roman'
-                    r_rest.font.size = Pt(10)
-                    r_rest.font.italic = True
+                    text = f'Figur {fig_count}. {cap_m.group(3)}'
                 else:
-                    r = cap_p.add_run(caption)
-                    r.font.name = 'Times New Roman'
-                    r.font.size = Pt(10)
-                    r.font.italic = True
+                    text = caption
+                r = cap_p.add_run(text)
+                r.font.name = 'Times New Roman'
+                r.font.size = Pt(10)
+                r.font.italic = True
             else:
                 print(f"  ÅTVARING: Fann ikkje {abs_path}")
 
@@ -740,23 +725,31 @@ while i < len(lines):
 
             # Tabelltittel vert no sett inn FØR tabellen (sjå *Tabell-blokka nedanfor)
 
-    # ── Tabelltittel med SEQ-felt (sett inn OVER tabellen, per kompendiet kap. 3.5.2) ──
+    # ── Tabelltittel over tabellen i APA 7 to-linjers format ──
+    # Input: *Tabell N. Beskrivelse.*  →  to paragrafar:
+    #   P1: "Tabell N" (fet)
+    #   P2: "Beskrivelse" (italic, utan punktum på slutten)
     elif stripped.startswith('*Tabell'):
         cap_text = stripped.strip('*').replace('—', '–')
-        cap_p = doc.add_paragraph()
-        tab_m = re.match(r'(Tabell)\s+(\d+)\.\s*(.*)', cap_text)
+        # Fjern innleiande/avsluttande whitespace og eskapte understrek i beskrivelsen
+        tab_m = re.match(r'(Tabell)\s+(\d+)\.\s*(.*?)\.?\s*$', cap_text)
         if tab_m:
-            r_label = cap_p.add_run('Tabell ')
-            r_label.font.name = 'Times New Roman'
-            r_label.font.size = Pt(10)
-            r_label.font.italic = True
-            add_seq_field_to_para(cap_p, 'Tabell')
-            r_rest = cap_p.add_run('. ' + tab_m.group(3))
-            r_rest.font.name = 'Times New Roman'
-            r_rest.font.size = Pt(10)
-            r_rest.font.italic = True
+            # P1: "Tabell N" fet
+            p_num = doc.add_paragraph()
+            r_num = p_num.add_run(f'Tabell {tab_m.group(2)}')
+            r_num.font.name = 'Times New Roman'
+            r_num.font.size = Pt(10)
+            r_num.font.bold = True
+            # P2: beskrivelse italic utan trailing punktum
+            p_desc = doc.add_paragraph()
+            desc = tab_m.group(3).replace('\\_', '_').rstrip('.')
+            r_desc = p_desc.add_run(desc)
+            r_desc.font.name = 'Times New Roman'
+            r_desc.font.size = Pt(10)
+            r_desc.font.italic = True
         else:
-            r = cap_p.add_run(cap_text)
+            p = doc.add_paragraph()
+            r = p.add_run(cap_text)
             r.font.name = 'Times New Roman'
             r.font.size = Pt(10)
             r.font.italic = True
