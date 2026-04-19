@@ -1,0 +1,33 @@
+[Overskrift2] 2.1 Litteraturgjennomgang
+================================================================================
+Forskning på lagerklassifisering i sykehus har økt i omfang siden 2000-tallet, drevet av erkjennelsen om at helseforetak binder store ressurser i logistikk og materialhåndtering. Volland et al. (2017) identifiserte i en systematisk gjennomgang av 145 publikasjoner fra 1998 til 2014 at lagerstyring er den mest publiserte kategorien innen sykehuslogistikk, med over 66 artikler. Til tross for dette volumet er det begrenset forskning som kobler klassifiseringsmetoder direkte til sentralisering av forsyningskjeden – noe denne oppgaven adresserer.
+Den dominerende tilnærmingen i litteraturen er ABC-analyse basert på Pareto-prinsippet. Silaen et al. (2023) viser at enkeltkriterieanalyse på forbruksverdi er bredt adoptert i praksis, men påpeker at metoden alene ikke fanger opp variabilitet i etterspørsel eller kritikalitet for forsyningssikkerhet. Gupta et al. (2007) demonstrerer dette i en militærmedisinsk studie der ABC kombineres med VED-analyse for å differensiere mellom høyverdiartikler og artikler med kritisk klinisk betydning.
+XYZ-analyse, basert på variasjonskoeffisienten til etterspørselen, fremstår som det mest naturlige komplementet til ABC. Nowotyńska (2013) og Suryaputri et al. (2022) viser at ABC/XYZ-matrisen gir differensierte styringsanbefalinger for ni varekategorier, med dokumentert merverdi i helseindustrien.
+Flerkriterietilnærminger som EDAS (Keshavarz Ghorabaee et al., 2015) krever subjektiv vekting, noe som svekker etterprøvbarheten. Denne oppgaven benytter derfor objektivt beregnbare kriterier (verdi, CV, EOQ-avvik). Klyngeanalyse representerer et datadrevet alternativ som fanger sammensatte mønstre uten forhåndsdefinerte terskelverdier (Srinivasan & Moon, 1999). Kombinasjonen av K-means med regelbaserte beslutningssystemer er lite dokumentert i sykehuskontekst, og utgjør et utforskende element i oppgavens metoderammeverk.
+van Kampen et al. (2012) identifiserer tre hoveddimensjoner for SKU-klassifisering: karakteristikker (verdi, variabilitet, kritikalitet), klassifiseringsteknikk (ABC, clustering, MCDM) og operasjonalisering i styringssystemer. Denne oppgaven opererer i krysningspunktet mellom alle tre.
+Et identifisert gap i litteraturen er den begrensede forekomsten av kvantitative casestudier som kombinerer ABC, XYZ, EOQ-avviksanalyse og klyngeanalyse i en samlet analysemodell koblet mot faktiske SAP-transaksjonsdata, med besparelsesestimat som eksplisitt output. Saha og Ray (2019) konkluderer i sin gjennomgang av 137 artikler at det er behov for empiriske studier som kobler kvantitative klassifiseringsmodeller til konkrete beslutninger i reelle sykehussystemer. Denne oppgaven søker å fylle dette gapet.
+Tabell 1 gir en samlet oversikt over de sentrale kildene i litteraturgjennomgangen, organisert etter hovedtema og med kopling til denne oppgavens problemstilling.
+Tabell 1
+Litteraturoversikt: sentrale kilder med tema og relevans for oppgaven.
+[TABELL]
+Forfatter(e) | År | Hovedtema | Relevans for oppgaven
+Bijvank & Vis | 2012 | Lagerstyring ved brukssted i sykehus | Lost-sales-modell, forsyningssikkerhet
+de Vries | 2011 | Interessentanalyse, lageromstilling i helse | Organisatoriske barrierer ved sentralisering
+Fragapane et al. | 2019 | Forsyning til brukssted (APL) | APL-leveransemodell, sentraliseringskrav
+Gupta et al. | 2007 | ABC- og VED-analyse, militærmedisinsk | ABC i sykehuskontekst med SAP-data
+Gurumurthy et al. | 2021 | Hybrid lagerklassifisering, lean i sykehus | K-means i sykehuslogistikk
+Hautaniemi & Pirttilä | 1999 | Påfyllingspolicyer i MRP-miljø | EOQ-forutsetninger, lot sizing
+Kelle et al. | 2012 | Farmasøytisk forsyningskjede, sykehus | Ordrekostnad S, sykehusinnkjøp
+Keshavarz Ghorabaee et al. | 2015 | EDAS flerkriterieklassifisering | Alternativ til ABC, avstandsmetode
+Ketkar & Vaidya | 2014 | Bestillingspolicy, flerklassifisering | Holdesats ℎ = 20 %, ABC/XYZ-kombinasjon
+Moons et al. | 2019 | Ytelsesmåling, intern sykehusforsyning | Flerkriteriebaserte ytelsesmål
+Nowotyńska | 2013 | XYZ-analyse, lagerstyring | CV-grenser X/Y/Z, metodegrunnlag
+Pujawan | 2004 | Lot sizing, ordrevariabilitet | Bullwhip-effekt, EOQ-relevans
+Saha & Ray | 2019 | Lagermodeller i helsesektoren (review, 137 art.) | Gap: empiriske SAP-casestudier mangler
+Silaen et al. | 2023 | ABC-analyse, implementering | ABC-grenser 80/95 %, Pareto-prinsippet
+Srinivasan & Moon | 1999 | Klyngeanalyse, forsyningskjedenettverk | K-means i SCM, nær-optimale løsninger
+Suryaputri et al. | 2022 | ABC-XYZ-integrasjon, helseindustri | ABC/XYZ-matrise, bestillingspolicy
+van Kampen et al. | 2012 | SKU-klassifiseringsrammeverk | Tre hoveddimensjoner, posisjonering
+Volland et al. | 2017 | Materiallogistikk i sykehus (review, 145 pub.) | Lagerstyring dominerer, 30–40 % av drift
+[/TABELL]
+

@@ -1,0 +1,11 @@
+[Overskrift2] 5.3 EOQ-modellen og besparelsesformelen
+================================================================================
+Wilson EOQ-modell. Den klassiske Wilson-formelen gir den ordrekvantum Q* som minimerer den totale lagerholde- og ordrekostnaden per år (Hautaniemi & Pirttilä, 1999):
+der D er årsforbruk (enheter/år), S = 750 NOK er ordrekostnad per bestilling og H=ℎ×UNIT_PRICE er holdekostnad per enhet per år, med holdesats ℎ = 20 %. Den optimale ordrefrekvensen følger direkte:
+Avviksformel. Faktisk ordrefrekvens f_obs er annualisert fra EKBE-data via D-08. Relativt frekvensavvik er definert som:
+En artikkel klassifiseres som FOR_MANGE_ORDRER dersom f_obs,i > τ_f · f*_i, der τ_f = 1,5. Dette tilsvarer FREQ_AVVIK >0,5, det vil si at faktisk ordrefrekvens er mer enn 50 % høyere enn EOQ-optimal frekvens. Symmetrisk klassifiseres artikler med FREQ_AVVIK < −0,5 som FOR_FÅ_ORDRER, mens artikler i intervallet [−0,5; 0,5] klassifiseres som OK. Terskelen τ_f er satt for å fokusere analysen på de artiklene der avviket er operasjonelt vesentlig, og ikke bare statistisk merkbart. Differansen i totalkostnad mellom faktisk og optimal drift for en artikkel er:
+der totalkostnaden ved frekvens f er:
+Parametervalgene S = 750 NOK og ℎ = 20 % er begrunnet i avsnitt 1.4. Sensitivitetsanalysen i kapittel 7.6 tester robustheten ved systematisk variasjon i S, ℎ og τ_f.
+Besparelsesformel. Besparelsesformelen estimerer den reduksjonen i totalkostnad som kan realiseres ved overføring til HVFS og konsolidering av ordrefrekvens mot EOQ-optimalt nivå. Formelen bygger direkte på ΔTC_i:
+der g er en gevinstrealiseringsgrad som reflekterer at ikke alle teoretiske besparelser lar seg realisere fullt ut i praksis – blant annet som følge av implementeringsfriksjon, endrede leverandøravtaler og SAP-parameterjusteringer. Tre scenarier er definert: worst case (g = 50 %), base case (g = 75 %) og best case (g = 100 %). Kun artikler som både er i OVERFØR_HVFS-kategorien og har status FOR_MANGE_ORDRER inngår i besparelsesgrunnlaget, da ΔTC_i modellerer kostnadsavviket fra suboptimal ordrefrekvens – en avvik som nettopp adresseres ved sentralisering til HVFS. Sensitivitetsanalysen i kapittel 7 undersøker robustheten av dette estimatet ved systematisk variasjon i S, ℎ og τ_f, mens g varieres separat gjennom tre scenarier (worst/base/best).
+

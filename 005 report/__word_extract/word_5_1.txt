@@ -1,0 +1,27 @@
+[Overskrift2] 5.1 ABC-modellen
+================================================================================
+ABC-analyse er en rangerings- og klassifiseringsmetode basert på Pareto-prinsippet, som postulerer at en liten andel av artiklene i et lager typisk står for hoveddelen av den totale verdibindingen (Gupta et al., 2007). Metoden gir en strukturert tilnærming til å skille artikler som krever tett styring fra artikler der en enklere tilnærming er tilstrekkelig (van Kampen et al., 2012).
+For hver artikkel i beregnes en årsverdi v_i som produktet av årsforbruk og enhetspris:
+Der D_i er annualisert forbruk (enheter/år) og UNIT_PRICE_i er PEINH-korrigert standardpris (NOK/enhet), jf. beslutning D-02 og D-03 i avsnitt 4.3. Artiklene sorteres deretter i synkende rekkefølge etter v_i, og kumulativ verdiandel C_i beregnes som:
+der V_tot = Σ_{j=1}^{N} v_j er total årsverdi over alle N artikler. En artikkel tilhører A-klassen dersom C_i ≤ 0,80, B-klassen dersom 0,80 < C_i ≤ 0,95, og C-klassen ellers.
+Klassifiseringsgrensene er satt i henhold til standard ABC-litteratur (Silaen et al., 2023):
+Tabell 6
+Modellparametere: ABC-klassifiseringsgrenser og øvrige analyseinnstillinger.
+[TABELL]
+Parameter | Verdi | Kilde/Begrunnelse
+ABC A-grense | 80 % kumulativ verdi | Silaen et al. (2023)
+ABC B-grense | 95 % kumulativ verdi | Silaen et al. (2023)
+XYZ X-grense | CV < 0,5 | Nowotyńska (2013)
+XYZ Y-grense | 0,5 ≤ CV < 1,0 | Nowotyńska (2013)
+XYZ Z-grense | CV ≥ 1,0 | Nowotyńska (2013)
+Ordrekostnad S | 750 NOK | Bijvank & Vis (2012); Kelle et al. (2012)
+Holdesats h | 20 % av UNIT_PRICE | Ketkar & Vaidya (2014)
+Leveringstid standardverdi | 14 dager | Bransjepraksis (D-05)
+EOQ-terskel τ_f | 1,5 (f_obs,i > 1,5·f*_i, dvs. FREQ_AVVIK > 0,5) | Operasjonelt vesentlig avvik
+K-means K-søk | K ∈ {2, 3, 4, 5, 6, 7} | Silhouette-optimering
+K-means n_init | 50 | Robust initialisering
+Random state | 42 | Reproduserbarhet
+Train/test split | 80/20 | Standard validering
+[/TABELL]
+Grensene 80 % og 95 % er i tråd med den klassiske Pareto-inndelingen og er konsistente med anbefalingene i van Kampen et al. (2012). Sorteringen og kumulative beregningene er implementert med pandas (McKinney, 2010), og ingen manuell justering av enkeltartikler er foretatt.
+

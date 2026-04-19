@@ -1,0 +1,14 @@
+## 6.5 Regelmotor og HVFS-scoring
+
+Regelmotoren ble kjørt sekvensielt på samtlige 709 artikler i den prioriterte rekkefølgen beskrevet i Tabell 7 (kap. 5). For hver artikkel ble inngangssignalene ABC-klasse, XYZ-klasse, EOQ-avviksstatus (FOR\_MANGE\_ORDRER) og K-means klyngetilhørighet (K\_OVERFØR) hentet fra de foregående analysemodulene. Den første regelen med treff avgjorde artiklens anbefaling; artikler uten treff på noen regel, typisk grunnet manglende CV- eller verdidata, ble tildelt kategorien MANGLER\_DATA.
+
+For alle artikler som fikk anbefalingen OVERFØR\_HVFS, ble besparelsesestimatet $\Delta TC_i \cdot g$ beregnet for tre scenarier (worst: $g = 50\,\%$, base: $g = 75\,\%$, best: $g = 100\,\%$) i henhold til formelen i avsnitt 5.3. Kun artikler som både er i OVERFØR\_HVFS-kategorien *og* har status FOR\_MANGE\_ORDRER inngår i besparelsesgrunnlaget, da $\Delta TC_i$ modellerer kostnadsavviket fra suboptimal ordrefrekvens — et avvik som adresseres direkte ved sentralisering til HVFS. Totalt inngår 117 artikler i dette grunnlaget.
+
+I tillegg til de tre scenariene ble det gjennomført en systematisk sensitivitetsanalyse med 27 kombinasjoner av $S$, $h$ og $\tau_f$, for å kartlegge robustheten av besparelsesestimatet overfor usikkerhet i modellantagelsene. Figur 12 viser den endelige fordelingen av regelmotor-anbefalinger og estimert EOQ-besparelse under tre scenarier, mens detaljerte besparelsestall og sensitivitetsintervaller presenteres i avsnitt 7.5–7.6.
+
+![Figur 12. Regelmotor og besparelsesanalyse: fordeling av HVFS-anbefalinger (venstre) og estimert årlig EOQ-besparelse under tre realiseringsscenarier (høyre). 709 artikler, WERKS 3300 / LGORT 3001. Generert med støtte fra Claude.](../006 Analyse/plots/Fig11_Regelmotor_Besparelse.png)
+
+Figur 12 viser den endelige fordelingen av HVFS-anbefalinger og estimert besparelse. Fullstendige resultat- og besparelsestabeller presenteres i kapittel 7.
+
+
+---

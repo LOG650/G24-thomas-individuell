@@ -1,0 +1,7 @@
+[Overskrift2] 6.3 EOQ-avviksberegning
+================================================================================
+EOQ-avviksanalysen ble gjennomført for alle artikler der tilstrekkelig data forelå for beregning av optimal ordrefrekvens f*, det vil si artikler med D_i > 0, UNIT_PRICE_i > 0 og tilgjengelig LEAD_TIME. Den optimale frekvensen f* = √(D·H / 2S) ble beregnet med S = 750 NOK og H=0,20×UNIT_PRICE_i som modellparametere (se Tabell 6, kap. 5). Faktisk ordrefrekvens f_obs ble hentet fra EKBE og annualisert i henhold til beslutning D-08: ACTUAL_FREQ = ORDER_COUNT × (12/24).
+Det relative frekvensavviket FREQ_AVVIK_i = (f_obs,i − f*_i) / f*_i ble beregnet per artikkel. Fordelingen av dette avviket er illustrert i Figur 8 nedenfor. Terskelen τ_f = 1,5 (dvs. FREQ_AVVIK > 0,5) ble lagt inn for å skille artikler med vesentlig overbestilling (FOR_MANGE_ORDRER) fra artikler innenfor akseptabelt avvik. I tillegg ble differansen i totalkostnad ΔTC_i = TC(f_obs,i) − TC(f*_i) beregnet per artikkel, og summert til et samlet EOQ-avvikstall for hele populasjonen. Disse resultatene presenteres i sin helhet i Tabell 11 og avsnitt 7.3.
+Figur 8. EOQ-avvik: relativ frekvensavvik (FREQ_AVVIK) for artikler med tilstrekkelige data, med terskel ved τ_f = 1,5. Generert med støtte fra Claude.
+Figur 8 viser at fordelingen er sterkt høyreskjev: majoriteten av artiklene med EOQ-data har et FREQ_AVVIK over terskelen på 0,5. Fordeling etter avviksstatus og totale ΔTC-summer presenteres i Tabell 11 og avsnitt 7.3.
+

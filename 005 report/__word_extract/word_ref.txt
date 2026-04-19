@@ -1,0 +1,25 @@
+[Overskrift1] Referanseliste
+================================================================================
+Bijvank, M., & Vis, I. F. A. (2012). Inventory control for point-of-use locations in hospitals. Journal of the Operational Research Society, 63(4), 497–510. https://doi.org/10.1057/jors.2011.52
+de Vries, J. (2011). The shaping of inventory systems in health services: A stakeholder analysis. International Journal of Production Economics, 133(1), 60–69. https://doi.org/10.1016/j.ijpe.2009.10.029
+Fragapane, G. I., Bertnum, A. B., Hvolby, H.-H., & Strandhagen, J. O. (2019). Medical supplies to the point-of-use in hospitals. I IFIP International Conference on Advances in Production Management Systems (APMS) (s. 248–255). Springer. https://doi.org/10.1007/978-3-030-29996-5_29
+Gupta, R., Gupta, K. K., Jain, B. R., & Garg, R. K. (2007). ABC and VED analysis in medical stores inventory control. Medical Journal Armed Forces India, 63(4), 325–327. https://doi.org/10.1016/S0377-1237(07)80005-2
+Gurumurthy, A., Nair, V. K., & Vinodh, S. (2021). Application of a hybrid selective inventory control technique in a hospital: A precursor for inventory reduction through lean thinking. The TQM Journal, 33(3), 568–595. https://doi.org/10.1108/TQM-06-2020-0123
+Hautaniemi, P., & Pirttilä, T. (1999). The choice of replenishment policies in an MRP environment. International Journal of Production Economics, 59(1–3), 85–92. https://doi.org/10.1016/S0925-5273(98)00026-7
+Kelle, P., Woosley, J., & Schneider, H. (2012). Pharmaceutical supply chain specifics and inventory solutions for a hospital case. Operations Research for Health Care, 1(2–3), 54–63. https://doi.org/10.1016/j.orhc.2012.07.001
+Keshavarz Ghorabaee, M., Zavadskas, E. K., Olfat, L., & Turskis, Z. (2015). Multi-criteria inventory classification using a new method of evaluation based on distance from average solution (EDAS). Informatica, 26(3), 435–451. https://doi.org/10.15388/Informatica.2015.57
+Ketkar, M., & Vaidya, O. S. (2014). Developing ordering policy based on multiple inventory classification schemes. Procedia – Social and Behavioral Sciences, 133, 180–188. https://doi.org/10.1016/j.sbspro.2014.04.183
+McKinney, W. (2010). Data structures for statistical computing in Python. I S. van der Walt & J. Millman (Red.), Proceedings of the 9th Python in Science Conference (s. 56–61). https://doi.org/10.25080/Majora-92bf1922-00a
+Moons, K., Waeyenbergh, G., & Pintelon, L. (2019). Measuring the logistics performance of internal hospital supply chains – A literature study. Omega, 82, 205–217. https://doi.org/10.1016/j.omega.2018.01.007
+Nowotyńska, I. (2013). An application of XYZ analysis in company stock management. Modern Management Review, XVIII(20), 77–86.
+Partovi, F. Y., & Burton, J. (1993). Using the analytic hierarchy process for ABC analysis. International Journal of Operations and Production Management, 13(9), 29–44. https://doi.org/10.1108/01443579310043619
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html
+Pujawan, I. N. (2004). The effect of lot sizing rules on order variability. European Journal of Operational Research, 159(3), 617–635. https://doi.org/10.1016/S0377-2217(03)00419-3
+Rousseeuw, P. J. (1987). Silhouettes: A graphical aid to the interpretation and validation of cluster analysis. Journal of Computational and Applied Mathematics, 20, 53–65. https://doi.org/10.1016/0377-0427(87)90125-7
+Saha, E., & Ray, P. K. (2019). Modelling and analysis of inventory management systems in healthcare: A review and reflections. Computers & Industrial Engineering, 137, 106051. https://doi.org/10.1016/j.cie.2019.106051
+Silaen, B. R., Nasution, M., & Muti'ah, R. (2023). Implementation of the ABC analysis to the inventory management. International Journal of Science, Technology & Management, 4(4), 815–822. https://doi.org/10.46729/ijstm.v4i4.886
+Srinivasan, M., & Moon, Y. B. (1999). A comprehensive clustering algorithm for strategic analysis of supply chain networks. Computers & Industrial Engineering, 36, 615–633. https://doi.org/10.1016/S0360-8352(99)00155-2
+Suryaputri, Z., Gabriel, D. S., & Nurcahyo, R. (2022). Integration of ABC-XYZ analysis in inventory management optimization: A case study in the health industry. I Proceedings of the International Conference on Industrial Engineering and Operations Management (s. 351–360). IEOM Society International.
+van Kampen, T. J., Akkerman, R., & van Donk, D. P. (2012). SKU classification: A literature review and conceptual framework. International Journal of Operations and Production Management, 32(7), 850–876. https://doi.org/10.1108/01443571211250112
+Volland, J., Fügener, A., Schoenfelder, J., & Brunner, J. O. (2017). Material logistics in hospitals: A literature review. Omega, 69, 82–101. https://doi.org/10.1016/j.omega.2016.08.004
+
