@@ -203,11 +203,11 @@ Norske helseforetak forvalter store mengder medisinsk forbruksmateriell spredt o
 
 Helse Vest Forsyningssenter (HVFS) er under etablering som regionalt sentrallager for medisinsk forbruksmateriell i Helse Vest-regionen, med NorEngros som operatør. Frem mot 2029 skal sortimentet utvides og avdelingspakkede leveranser (APL) innføres — det vil si ferdigpakkede leveranser direkte til avdeling uten mellomlagring. Parallelt pågår LIBRA-prosjektet, en regional implementering av SAP S/4HANA i regi av Helse Vest IKT, som legger det tekniske grunnlaget for felles dataplattform på tvers av helseforetakene.
 
-Helse Bergen er det største helseforetaket i Helse Vest og drifter i dag et lokalt forsyningslager registrert som WERKS 3300 i SAP S/4HANA, med primærlagersted LGORT 3001. Lageret håndterer over 700 aktive artikler, men det mangler et systematisk, datadrevet grunnlag for å avgjøre hvilke av disse som egner seg for overføring til HVFS. Beslutningene tas i dag i stor grad basert på erfaring og skjønn, noe de Vries (2011) identifiserer som en typisk utfordring i sykehuslogistikk: interessentkonflikter og manglende informasjonssystemer hindrer rasjonell lageromstilling. Denne oppgaven adresserer dette gapet ved å anvende velprøvde klassifiseringsmetoder fra lagerstyringslitteraturen — ABC, XYZ og EOQ — kombinert med K-means klyngeanalyse, på operasjonelle transaksjonsdata fra SAP.
+Helse Bergen er det største helseforetaket i Helse Vest og drifter i dag et lokalt forsyningslager registrert som WERKS 3300 i SAP S/4HANA, med primærlagersted LGORT 3001. Lageret håndterer over 700 aktive artikler, men det mangler et systematisk, datadrevet grunnlag for å avgjøre hvilke av disse som egner seg for overføring til HVFS. Beslutningene tas i dag i stor grad basert på erfaring og skjønn, noe de Vries (2011) identifiserer som en typisk utfordring i sykehuslogistikk: interessentkonflikter og manglende informasjonssystemer hindrer rasjonell lageromstilling. Denne oppgaven adresserer dette gapet ved å anvende velprøvde klassifiseringsmetoder fra lagerstyringslitteraturen — ABC, XYZ og EOQ — kombinert med K-means klyngeanalyse, på operasjonelle transaksjonsdata fra SAP. Faglig plasserer arbeidet seg dermed i skjæringspunktet mellom **lagerstyring** (klassifisering og lokaliseringsbeslutninger) og **innkjøpsoptimalisering** (ordrefrekvens og kostnadsavvik mot EOQ).
 
 ## 1.2 Problemstilling
 
-Oppgaven besvarer følgende forskningsspørsmål:
+Oppgavens overordnede problemstilling er hvordan datadrevet klassifisering av eksisterende SAP-transaksjonsdata kan understøtte beslutningen om hvilke artikler som bør sentraliseres til HVFS, og hva en slik sentralisering er verdt økonomisk. Denne problemstillingen operasjonaliseres gjennom følgende forskningsspørsmål, som gjør klassifiseringen, identifikasjonen og kvantifiseringen empirisk testbar:
 
 > **Hvordan kan multikriterieklassifisering og klyngeanalyse av SAP-transaksjonsdata identifisere hvilke artikler ved Helse Bergens forsyningslager (WERKS 3300, LGORT 3001) som er kandidater for overføring til Helse Vest Forsyningssenter, og hva er det estimerte besparelsespotensialet ved en slik overføring?**
 
@@ -351,7 +351,7 @@ Den detaljerte matematiske formuleringen av alle modellkomponenter — parameter
 
 ## 3.1 Helse Bergen og Helse Vest
 
-Helse Bergen HF er det største helseforetaket i Helse Vest RHF og drifter Haukeland Universitetssykehus med ansvar for spesialisthelsetjenester til et opptaksområde på nær en halv million innbyggere. Helse Vest koordinerer fire helseforetak (Bergen, Stavanger, Fonna, Førde), og en regionalt harmonisert tilnærming til materialforvaltning har fått økt prioritet for å oppnå stordriftsfordeler.
+Helse Bergen HF er det største helseforetaket i Helse Vest RHF og drifter Haukeland Universitetssykehus med ansvar for spesialisthelsetjenester til et opptaksområde på nær en halv million innbyggere. Helse Vest koordinerer fire helseforetak (Bergen, Stavanger, Fonna, Førde), og en regionalt harmonisert tilnærming til materialforvaltning har fått økt prioritet for å oppnå stordriftsfordeler. Forsyningsstrukturen organiserer seg langs to nivåer: et **regionalt sentrallager** (HVFS) og **lokale forsyningslagre / lokallagre** ved hvert helseforetak. Denne oppgaven analyserer Helse Bergens lokallager ved WERKS 3300 og kandidater for sentralisering opp til HVFS.
 
 Helse Bergen er i SAP S/4HANA registrert under anleggskode (WERKS) 3300. Det operative forsyningslageret for medisinsk forbruksmateriell er tilordnet lagersted (LGORT) 3001 under dette anlegget. Lageret håndterer anskaffelse, mottak, lagring og distribusjon av forbruksartikler til kliniske avdelinger. Innkjøp gjennomføres via innkjøpsgruppe 300 og 3000 i SAP, med bestillingstype ZNB som er Helse Bergens lokale bestillingstype for forsyningslageret. Alle varebevegelser — forbruk ut til avdeling (BWART 201 og 647) og varemottak inn fra leverandør (BWART 101) — er registrert som transaksjonsdata i SAP og utgjør det primære datagrunnlaget for denne oppgaven. Foretakets organisasjonsmessige plassering i Helse Vest og SAP-strukturen er illustrert i Figur 2. Tabell 3 oppsummerer nøkkeltallene for casevirksomheten.
 
@@ -403,6 +403,10 @@ Studien er rent kvantitativ — det benyttes ingen spørreundersøkelser, interv
 
 Studien er deskriptiv-analytisk: den klassifiserer eksisterende artikler og kombinerer resultatene i en regelbasert beslutningsmodell (van Kampen et al., 2012). Generaliserbarhet er begrenset til sammenlignbare sykehuslagre med SAP-infrastruktur; studien gir et reproduserbart metoderammeverk som kan tilpasses andre WERKS-enheter innenfor Helse Vest.
 
+De fem analytiske teknikkene som anvendes har ulik metodisk natur, og det er ikke hensiktsmessig å presse dem inn i én felles modellmal. ABC-analyse og XYZ-klassifisering er deskriptive klassifiseringsregler som henholdsvis fanger verdi- og stabilitetsdimensjonen. EOQ (Wilson) er en klassisk optimeringsmodell som beregner optimal ordrefrekvens og det resulterende kostnadsavviket. K-means klyngeanalyse er en form for uovervåket maskinlæring som gir multivariat segmentering uten forhåndsdefinerte terskler. Regelmotoren er regelbasert beslutningslogikk som sekvensielt aggregerer de øvrige signalene til én anbefaling per artikkel.
+
+Arbeidet følger en faseinndelt prosjektlogikk fra problemavklaring via litteratur og modellering, til analyse, validering og rapportering — hvor hvert steg bygger på utfallet av det foregående.
+
 ## 4.2 Datainnsamling
 
 Alle data er hentet fra SAP S/4HANA via transaksjonen SE16H, som gir direkte lesetilgang til databasetabeller uten å gjøre endringer i systemet. Uttrekket er begrenset til WERKS 3300 og LGORT 3001, og dekker en analyseperiode på 24 måneder (januar 2024 til desember 2025). Perioden er valgt fordi den er lang nok til å fange sesongvariasjon og irregulære hendelser i forbruksmønsteret, uten å inkludere data fra perioder med vesentlig annerledes driftsforhold. Tabellen nedenfor gir en oversikt over de 14 SAP-tabellene som inngår i grunnlaget.
@@ -451,11 +455,11 @@ All dataforbehandling er gjennomført i Python 3.13 ved hjelp av bibliotekene pa
 | D-07 | ABC\_VALUE\_SOURCE | EKPO-verdi prioriteres | TOTAL\_NETWR > 0 kreves for EKPO-kilde |
 | D-08 | Annualisering av ordrefrekvens | ACTUAL\_FREQ = ORDER\_COUNT × 12/24 | 24 mnd data → årsbasis |
 
-Figur 4 nedenfor illustrerer den samlede datapipelinen fra rådata til analyseklart datasett.
+Figur 4 nedenfor illustrerer den samlede analyseprosessen som en sekvens i fem steg: (1) **data** — SAP-uttrekk via SE16H, (2) **forutsetninger og datavalg** — populasjonsavgrensning, PEINH-korrigering og åtte dokumenterte beslutninger (D-01–D-08), (3) **løsning og modellkjøring** — ABC, XYZ, EOQ og K-means kjørt på det forbehandlede datasettet, (4) **kontroll og validering** — kryssvalidering mot ZZXYZ, silhouette på trenings- og testsett, samt sensitivitetsanalyse, og (5) **anvendelse og anbefaling** — regelmotorens utfall per artikkel og besparelsesestimat.
 
 ---
 
-![Figur 4. Analysepipeline: fra SAP-rådata til HVFS-anbefaling. Generert med støtte fra Claude.](../006 Analyse/plots/Fig02_Analysepipeline.png)
+![Figur 4. Analysepipeline i fem steg: data → forutsetninger/datavalg → løsning/modellkjøring → kontroll/validering → anvendelse/anbefaling. Generert med støtte fra Claude.](../006 Analyse/plots/Fig02_Analysepipeline.png)
 
 ## 4.4 Etiske betraktninger og begrensninger
 
@@ -469,7 +473,7 @@ Standardverdien for leveringstid på 14 dager (D-05) dekker 94 % av artiklene, o
 
 ## 4.5 Bruk av kunstig intelligens
 
-Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med retningslinjene i kursets skrivekompendium. Claude ble anvendt til kodestøtte, generering av datavisualiseringer og språklig bearbeiding av rapportteksten. KI-verktøyet er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. All KI-generert kode og tekst er kritisk gjennomgått og revidert av forfatteren; en refleksjon over KI-brukens påvirkning på arbeidsprosessen er gitt i Vedlegg C.
+Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støtteverktøy gjennom hele prosjektperioden, i tråd med Høgskolen i Moldes retningslinjer for bruk av KI ved hjemmeeksamen. Claude ble anvendt til kodestøtte, generering av datavisualiseringer og språklig bearbeiding av rapportteksten. KI-verktøyet er ikke brukt som fagkilde og er ikke sitert som belegg for faglige påstander. All KI-generert kode og tekst er kritisk gjennomgått og revidert av forfatteren; en refleksjon over KI-brukens påvirkning på arbeidsprosessen er gitt i Vedlegg C.
 
 
 ---
@@ -478,7 +482,7 @@ Kunstig intelligens i form av store språkmodeller ble benyttet som faglig støt
 
 ## 5.1 ABC-modellen
 
-ABC-analyse er en rangerings- og klassifiseringsmetode basert på Pareto-prinsippet, som postulerer at en liten andel av artiklene i et lager typisk står for hoveddelen av den totale verdibindingen (Gupta et al., 2007). Metoden gir en strukturert tilnærming til å skille artikler som krever tett styring fra artikler der en enklere tilnærming er tilstrekkelig (van Kampen et al., 2012).
+ABC-analyse er en rangerings- og klassifiseringsmetode basert på Pareto-prinsippet, som postulerer at en liten andel av artiklene i et lager typisk står for hoveddelen av den totale verdibindingen (Gupta et al., 2007). Metoden gir en strukturert tilnærming til å skille artikler som krever tett styring fra artikler der en enklere tilnærming er tilstrekkelig (van Kampen et al., 2012). Modellformen er en **klassifiseringsregel**: én årsverdi per artikkel, to kumulative terskelverdier (80 % og 95 %), og ett beslutningskriterium som tilordner hver artikkel til klasse A, B eller C.
 
 For hver artikkel $i$ beregnes en årsverdi $v_i$ som produktet av årsforbruk og enhetspris:
 
@@ -514,7 +518,7 @@ Grensene 80 % og 95 % er i tråd med den klassiske Pareto-inndelingen og er kons
 
 ## 5.2 XYZ-modellen
 
-XYZ-klassifisering beskriver stabilitet i forbruksmønsteret over tid, og komplementerer ABC-analysen ved å skille artikler med forutsigbar etterspørsel fra artikler med uregelmessig forbruk (Nowotyńska, 2013). Grunnlaget for klassifiseringen er variasjonskoeffisienten CV (coefficient of variation), beregnet fra månedlig forbruk over analyseperioden på 24 måneder:
+XYZ-klassifisering beskriver stabilitet i forbruksmønsteret over tid, og komplementerer ABC-analysen ved å skille artikler med forutsigbar etterspørsel fra artikler med uregelmessig forbruk (Nowotyńska, 2013). Modellformen er en **klassifiseringsregel** med ett beregnet inngangsmål (CV) og to terskelverdier (0,5 og 1,0), som tilordner hver artikkel til klasse X, Y eller Z. Grunnlaget for klassifiseringen er variasjonskoeffisienten CV (coefficient of variation), beregnet fra månedlig forbruk over analyseperioden på 24 måneder:
 
 $$\text{CV}_i = \frac{\sigma_i}{\mu_i}$$
 
@@ -525,6 +529,8 @@ Kombinasjonen av ABC og XYZ gir en ni-felts matrise (AX, AY, AZ … CZ) som nyan
 Som beskrevet i avsnitt 4.3 (D-04) benyttes SAP-feltet ZZXYZ utelukkende til validering: systemklassen sammenlignes med den beregnede CV-klassen for å kvantifisere i hvilken grad den eksisterende SAP-klassifiseringen er i overensstemmelse med faktiske forbruksdata. Valideringsresultater presenteres i kapittel 6.
 
 ## 5.3 EOQ-modellen og besparelsesformelen
+
+EOQ er den eneste komponenten i rammeverket med en klassisk **optimeringsmodell**: parametrene er $D$ (årsforbruk), $S$ (ordrekostnad) og $H$ (holdekostnad per enhet); beslutningsvariabelen er ordrefrekvens $f$ (eller ekvivalent ordrekvantum $Q$); målfunksjonen er total årlig kostnad $TC(f) = f S + DH/(2f)$; og forutsetningene er konstant og kjent etterspørsel, øyeblikkelig leveranse, ingen kvantumsrabatter og lineær holdekostnad.
 
 **Wilson EOQ-modell.** Den klassiske Wilson-formelen gir den ordrekvantum $Q^*$ som minimerer den totale lagerholde- og ordrekostnaden per år (Hautaniemi & Pirttilä, 1999):
 
@@ -552,7 +558,7 @@ Parametervalgene S = 750 NOK og h = 20 % er begrunnet i avsnitt 1.4. Sensitivite
 
 $$B_{\text{HVFS}} = \sum_{i \in \text{OVERFØR}} \Delta TC_i \cdot g$$
 
-der $g$ er en gevinstrealiseringsgrad som reflekterer at ikke alle teoretiske besparelser lar seg realisere fullt ut i praksis — blant annet som følge av implementeringsfriksjon, endrede leverandøravtaler og SAP-parameterjusteringer. Tre scenarier er definert: worst case ($g = 50\,\%$), base case ($g = 75\,\%$) og best case ($g = 100\,\%$). Kun artikler som både er i OVERFØR\_HVFS-kategorien *og* har status FOR\_MANGE\_ORDRER inngår i besparelsesgrunnlaget, da $\Delta TC_i$ modellerer kostnadsavviket fra suboptimal ordrefrekvens — en avvik som nettopp adresseres ved sentralisering til HVFS. Sensitivitetsanalysen i kapittel 7 undersøker robustheten av dette estimatet ved systematisk variasjon i $S$, $h$ og $\tau_f$, mens $g$ varieres separat gjennom tre scenarier (worst/base/best).
+der $g$ er en gevinstrealiseringsgrad som reflekterer at ikke alle teoretiske besparelser lar seg realisere fullt ut i praksis — blant annet som følge av implementeringsfriksjon, endrede leverandøravtaler og SAP-parameterjusteringer. Tre scenarier er definert: worst case ($g = 50\,\%$), base case ($g = 75\,\%$) og best case ($g = 100\,\%$). Kun artikler som både er i OVERFØR\_HVFS-kategorien *og* har status FOR\_MANGE\_ORDRER inngår i besparelsesgrunnlaget, da $\Delta TC_i$ modellerer kostnadsavviket fra suboptimal ordrefrekvens — et avvik som nettopp adresseres ved sentralisering til HVFS. Sensitivitetsanalysen i kapittel 7 undersøker robustheten av dette estimatet ved systematisk variasjon i $S$, $h$ og $\tau_f$, mens $g$ varieres separat gjennom tre scenarier (worst/base/best).
 
 ## 5.4 K-means klyngemodellen
 
@@ -578,7 +584,7 @@ $$k^* = \arg\min_k \bigl[\text{rang}(\overline{\text{CV}}_k \uparrow) + \text{ra
 
 K\_OVERFØR er altså klyngen med lavest gjennomsnittlig CV (stabilt forbruksmønster) og høyest gjennomsnittlig artikkelverdi. Implementasjonen benytter `pandas.Series.rank()` på klyngeprofilens CV- og verdikolonner (se Vedlegg B). Ettersom $|\Delta TC|$ inngår i featurevektoren, påvirker den klyngestrukturen indirekte: artikler med høyt kostnadsavvik tenderer mot samme klynge som artikler med høy verdi og lav CV.
  
-**Designvalg.** K-means er inkludert i rammeverket av to begrunnede årsaker. For det første gir metoden *frihet fra forhåndsdefinerte terskelverdier*: ABC-grensene (80/95 %) og XYZ-grensene (0,5 og 1,0) er litteraturbaserte valg, mens K-means lar dataene selv avgjøre gruppestrukturen multivariat. For det andre bidrar metoden til *metodisk triangulering* — at tre analytiske tilnærminger med ulike antagelser konvergerer mot samme artikkelgruppe utgjør et validitetsargument, ikke en redundans. At K\_OVERFØR-klyngen bygger på de samme underliggende dimensjonene (verdi og forbruksstabilitet) som ABC/XYZ-klassifiseringen er dermed forventet og ettersøkt; sammenfallet bekrefter at de litteraturbaserte tersklene er rimelige for dette datasettet. Klyngen inngår som ett av inngangssignalene i regelmotoren beskrevet nedenfor.
+**Designvalg.** K-means er valgt som **uovervåket maskinlæring** fordi datasettet ikke inneholder merkede fasitklasser for HVFS-egnethet — en veiledet algoritme ville derfor ikke ha noe å trenes mot. Metoden er inkludert i rammeverket av to begrunnede årsaker. For det første gir den *frihet fra forhåndsdefinerte terskelverdier*: ABC-grensene (80/95 %) og XYZ-grensene (0,5 og 1,0) er litteraturbaserte valg, mens K-means lar dataene selv avgjøre gruppestrukturen multivariat. For det andre bidrar metoden til *metodisk triangulering* — at tre analytiske tilnærminger med ulike antagelser konvergerer mot samme artikkelgruppe utgjør et validitetsargument, ikke en redundans. At K\_OVERFØR-klyngen bygger på de samme underliggende dimensjonene (verdi og forbruksstabilitet) som ABC/XYZ-klassifiseringen er dermed forventet og ettersøkt; sammenfallet bekrefter at de litteraturbaserte tersklene er rimelige for dette datasettet. Klyngen inngår som ett av inngangssignalene i regelmotoren beskrevet nedenfor.
 
 ## 5.5 Regelmotor
 
@@ -901,7 +907,7 @@ Etter at pilotoverføringen er gjennomført og SAP-parametere er justert, bør a
 
 ## 9.3 Forslag til videre forskning
 
-Studien åpner for tre retninger innen videre forskning: (1) En **ROP-modul** som integrerer bestillingspunktberegning vil kreve at EINE-tabellen berikes med faktiske leveringstider, men vil gi anbefalinger om lagernivåer etter overføring. (2) **Leverandørkonsolidering** via analyse av EKKO/EKPO kan avdekke om HVFS-kandidatene leveres av felles leverandører, noe som kan gi ytterligere besparelser utover ordrefrekvensoptimalisering. (3) **Replikering** av rammeverket til andre WERKS i Helse Vest (Stavanger, Fonna, Førde) vil styrke den eksterne validiteten og gi grunnlag for differensiert HVFS-sentralisering per foretak.
+Studien åpner for fire retninger innen videre forskning: (1) En **ROP-modul** som integrerer bestillingspunktberegning vil kreve at EINE-tabellen berikes med faktiske leveringstider, men vil gi anbefalinger om lagernivåer etter overføring. (2) **Leverandørkonsolidering** via analyse av EKKO/EKPO kan avdekke om HVFS-kandidatene leveres av felles leverandører, noe som kan gi ytterligere besparelser utover ordrefrekvensoptimalisering. (3) **Replikering** av rammeverket til andre WERKS i Helse Vest (Stavanger, Fonna, Førde) vil styrke den eksterne validiteten og gi grunnlag for differensiert HVFS-sentralisering per foretak. (4) **Utvidet metoderepertoar innen innkjøpsoptimalisering** — flerkriterieteknikker som AHP/TOPSIS for leverandørvurdering, kombinatoriske auksjoner for porteføljeanskaffelser, og veiledet maskinlæring (når det foreligger merkede beslutningsdata fra pilotfasen) — er relevante videreføringer som faller utenfor denne oppgavens scope, men som kan gi ytterligere beslutningsgrunnlag for innkjøpsstrategien rundt HVFS.
 
 ---
 
