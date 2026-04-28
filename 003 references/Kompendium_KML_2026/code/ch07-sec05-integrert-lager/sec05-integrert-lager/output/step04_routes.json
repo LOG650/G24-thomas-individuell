@@ -1,0 +1,20 @@
+{
+  "kmedoids_largest_gap_total_m": 29496.800000000003,
+  "kmedoids_largest_gap_mean_m": 567.2461538461539,
+  "kmedoids_s_shape_total_m": 28136.0,
+  "kmedoids_random_total_m": 28136.0,
+  "random_batch_largest_gap_total_m": 35714.399999999994,
+  "random_batch_s_shape_total_m": 34807.99999999999,
+  "example_batch_order_ids": [
+    99,
+    110,
+    114,
+    122,
+    138,
+    141,
+    144,
+    145,
+    148,
+    154
+  ]
+}

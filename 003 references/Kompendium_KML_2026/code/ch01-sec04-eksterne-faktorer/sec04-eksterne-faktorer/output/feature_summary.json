@@ -1,0 +1,37 @@
+{
+  "x_kampanje": {
+    "antall_1": 56,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "x_rabatt": {
+    "antall_1": 56,
+    "min": 0.0,
+    "max": 30.0
+  },
+  "x_foer_1": {
+    "antall_1": 15,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "x_foer_2": {
+    "antall_1": 15,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "x_etter_1": {
+    "antall_1": 15,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "x_etter_2": {
+    "antall_1": 15,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "x_etter_3": {
+    "antall_1": 15,
+    "min": 0.0,
+    "max": 1.0
+  }
+}

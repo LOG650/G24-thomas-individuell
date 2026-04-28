@@ -1,0 +1,186 @@
+{
+  "horisont_dager": 14,
+  "kampanje_start": 6,
+  "kampanje_lengde": 5,
+  "base_rabatt_pct": 20,
+  "prognose": [
+    {
+      "dag": 1,
+      "baseline": 236.5,
+      "kampanje": 236.5,
+      "kampanje_nedre": 221.0,
+      "kampanje_ovre": 251.9,
+      "loeft_pct": 0.0
+    },
+    {
+      "dag": 2,
+      "baseline": 244.9,
+      "kampanje": 244.9,
+      "kampanje_nedre": 228.3,
+      "kampanje_ovre": 261.6,
+      "loeft_pct": 0.0
+    },
+    {
+      "dag": 3,
+      "baseline": 266.1,
+      "kampanje": 266.1,
+      "kampanje_nedre": 249.3,
+      "kampanje_ovre": 283.0,
+      "loeft_pct": 0.0
+    },
+    {
+      "dag": 4,
+      "baseline": 282.1,
+      "kampanje": 265.1,
+      "kampanje_nedre": 248.3,
+      "kampanje_ovre": 282.0,
+      "loeft_pct": -6.0
+    },
+    {
+      "dag": 5,
+      "baseline": 219.3,
+      "kampanje": 200.0,
+      "kampanje_nedre": 183.2,
+      "kampanje_ovre": 216.9,
+      "loeft_pct": -8.8
+    },
+    {
+      "dag": 6,
+      "baseline": 231.5,
+      "kampanje": 373.0,
+      "kampanje_nedre": 356.1,
+      "kampanje_ovre": 389.8,
+      "loeft_pct": 61.1
+    },
+    {
+      "dag": 7,
+      "baseline": 236.7,
+      "kampanje": 378.1,
+      "kampanje_nedre": 361.3,
+      "kampanje_ovre": 395.0,
+      "loeft_pct": 59.8
+    },
+    {
+      "dag": 8,
+      "baseline": 241.2,
+      "kampanje": 382.6,
+      "kampanje_nedre": 365.7,
+      "kampanje_ovre": 399.5,
+      "loeft_pct": 58.7
+    },
+    {
+      "dag": 9,
+      "baseline": 247.3,
+      "kampanje": 388.7,
+      "kampanje_nedre": 371.9,
+      "kampanje_ovre": 405.6,
+      "loeft_pct": 57.2
+    },
+    {
+      "dag": 10,
+      "baseline": 267.6,
+      "kampanje": 409.1,
+      "kampanje_nedre": 392.2,
+      "kampanje_ovre": 425.9,
+      "loeft_pct": 52.9
+    },
+    {
+      "dag": 11,
+      "baseline": 283.2,
+      "kampanje": 270.6,
+      "kampanje_nedre": 253.8,
+      "kampanje_ovre": 287.5,
+      "loeft_pct": -4.4
+    },
+    {
+      "dag": 12,
+      "baseline": 220.2,
+      "kampanje": 205.1,
+      "kampanje_nedre": 188.3,
+      "kampanje_ovre": 222.0,
+      "loeft_pct": -6.9
+    },
+    {
+      "dag": 13,
+      "baseline": 232.4,
+      "kampanje": 214.8,
+      "kampanje_nedre": 197.9,
+      "kampanje_ovre": 231.7,
+      "loeft_pct": -7.6
+    },
+    {
+      "dag": 14,
+      "baseline": 237.6,
+      "kampanje": 237.6,
+      "kampanje_nedre": 220.7,
+      "kampanje_ovre": 254.4,
+      "loeft_pct": 0.0
+    }
+  ],
+  "oppsummering": {
+    "baseline_total": 3446.6,
+    "kampanje_total": 4072.3,
+    "ekstra_enheter": 625.7,
+    "netto_loft_pct": 18.2
+  },
+  "scenarioer": [
+    {
+      "rabatt_pct": 0,
+      "total_14d": 3446.6,
+      "total_loeft_pct": 0.0,
+      "kampanjedager_sum": 1224.3,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 0.0,
+      "ekstra_enheter": 0.0
+    },
+    {
+      "rabatt_pct": 10,
+      "total_14d": 3861.9,
+      "total_loeft_pct": 12.0,
+      "kampanjedager_sum": 1721.1,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 40.6,
+      "ekstra_enheter": 496.8
+    },
+    {
+      "rabatt_pct": 15,
+      "total_14d": 3967.1,
+      "total_loeft_pct": 15.1,
+      "kampanjedager_sum": 1826.3,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 49.2,
+      "ekstra_enheter": 602.0
+    },
+    {
+      "rabatt_pct": 20,
+      "total_14d": 4072.3,
+      "total_loeft_pct": 18.2,
+      "kampanjedager_sum": 1931.5,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 57.8,
+      "ekstra_enheter": 707.2
+    },
+    {
+      "rabatt_pct": 25,
+      "total_14d": 4177.6,
+      "total_loeft_pct": 21.2,
+      "kampanjedager_sum": 2036.8,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 66.4,
+      "ekstra_enheter": 812.5
+    },
+    {
+      "rabatt_pct": 30,
+      "total_14d": 4282.8,
+      "total_loeft_pct": 24.3,
+      "kampanjedager_sum": 2142.0,
+      "kampanjedager_baseline": 1224.3,
+      "kampanje_loeft_pct": 75.0,
+      "ekstra_enheter": 917.7
+    }
+  ],
+  "priselastisitet": {
+    "beta_rabatt": 4.209,
+    "scenario_delta": 21.045
+  }
+}

@@ -1,0 +1,25 @@
+|--- condition <= 3.50
+|   |--- condition <= 2.50
+|   |   |--- brand_NordicTech <= 0.50
+|   |   |   |--- cosmetic_grade <= 2.50
+|   |   |   |   |--- class: recycle
+|   |   |   |--- cosmetic_grade >  2.50
+|   |   |   |   |--- class: recycle
+|   |   |--- brand_NordicTech >  0.50
+|   |   |   |--- functional_grade <= 1.50
+|   |   |   |   |--- class: recycle
+|   |   |   |--- functional_grade >  1.50
+|   |   |   |   |--- class: refurbish
+|   |--- condition >  2.50
+|   |   |--- class: refurbish
+|--- condition >  3.50
+|   |--- functional_grade <= 3.50
+|   |   |--- class: refurbish
+|   |--- functional_grade >  3.50
+|   |   |--- brand_FjordLine <= 0.50
+|   |   |   |--- cosmetic_grade <= 3.50
+|   |   |   |   |--- class: repair
+|   |   |   |--- cosmetic_grade >  3.50
+|   |   |   |   |--- class: repair
+|   |   |--- brand_FjordLine >  0.50
+|   |   |   |--- class: refurbish

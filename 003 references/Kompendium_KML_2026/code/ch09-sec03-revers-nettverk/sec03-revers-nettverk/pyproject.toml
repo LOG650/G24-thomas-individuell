@@ -1,0 +1,12 @@
+[project]
+name = "revers-nettverk"
+version = "0.1.0"
+description = "Code for example: Reverse Network Design (multi-tier MIP) for WEEE take-back"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pulp>=2.8",
+    "scipy>=1.12",
+]

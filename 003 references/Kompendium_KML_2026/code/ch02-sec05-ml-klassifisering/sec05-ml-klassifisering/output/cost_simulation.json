@@ -1,0 +1,10 @@
+{
+  "n_skus": 375,
+  "total_sann": 46045332.144943655,
+  "total_lgbm": 46671837.040846854,
+  "total_abc": 59286883.3759878,
+  "merkostnad_lgbm_pct": 1.3606262930866877,
+  "merkostnad_abc_pct": 28.757640816579993,
+  "besparelse_lgbm_vs_abc_kr": 12615046.335140944,
+  "besparelse_lgbm_vs_abc_pct": 21.27797181568538
+}

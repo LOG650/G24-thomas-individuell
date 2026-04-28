@@ -1,0 +1,175 @@
+[
+  {
+    "eps_emission_kg": 24138.556425000017,
+    "total_cost": 3371394.1299000033,
+    "emission_kg": 24138.556425000017,
+    "service": 2715596.5474999994,
+    "opened": [
+      "Oslo",
+      "Goteborg",
+      "Stockholm",
+      "Malmo",
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 0.0,
+      "rail": 0.0,
+      "ship": 6728.0
+    }
+  },
+  {
+    "eps_emission_kg": 24162.694981425015,
+    "total_cost": 3371333.7451937506,
+    "emission_kg": 24162.694981433793,
+    "service": 2714087.696147044,
+    "opened": [
+      "Oslo",
+      "Goteborg",
+      "Stockholm",
+      "Malmo",
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 0.0,
+      "rail": 38.3151689425,
+      "ship": 6689.6848310575
+    }
+  },
+  {
+    "eps_emission_kg": 46161.5672686843,
+    "total_cost": 1243096.0431555351,
+    "emission_kg": 46161.567268720864,
+    "service": 3253892.3656873517,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 634.85,
+      "rail": 3215.891332854647,
+      "ship": 2877.258667206599
+    }
+  },
+  {
+    "eps_emission_kg": 68160.4395559436,
+    "total_cost": 1230607.201437009,
+    "emission_kg": 68160.4395544065,
+    "service": 2667560.761996207,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 1335.5214870890002,
+      "rail": 5392.478512972245,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 90159.31184320287,
+    "total_cost": 1227508.4834740662,
+    "emission_kg": 90159.3118450534,
+    "service": 2574606.0417016693,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 2296.16817252681,
+      "rail": 4431.8318274933945,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 112158.18413046216,
+    "total_cost": 1224409.9002460898,
+    "emission_kg": 112158.18413250726,
+    "service": 2481650.222845274,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 3325.6089962826486,
+      "rail": 3402.3910037693963,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 134157.05641772147,
+    "total_cost": 1221311.4508313509,
+    "emission_kg": 134157.05641975693,
+    "service": 2388696.74040254,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 4226.778830874848,
+      "rail": 2501.221169179599,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 156155.92870498073,
+    "total_cost": 1218213.099966259,
+    "emission_kg": 156155.92870385761,
+    "service": 2295742.711425043,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 4994.900319367946,
+      "rail": 1733.0996807103998,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 178154.80099224002,
+    "total_cost": 1215114.860745418,
+    "emission_kg": 178154.80099444988,
+    "service": 2202788.8235816634,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 5755.619144367139,
+      "rail": 972.3808557384504,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 200153.67327949931,
+    "total_cost": 1212016.9158038727,
+    "emission_kg": 200153.6732808196,
+    "service": 2109834.3933926565,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 6713.759589961243,
+      "rail": 14.2404100736,
+      "ship": 0.0
+    }
+  },
+  {
+    "eps_emission_kg": 200354.02730680612,
+    "total_cost": 1211988.7055520923,
+    "emission_kg": 200354.02730680612,
+    "service": 2108987.801019012,
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "modal_volume": {
+      "truck": 6728.000000061245,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  }
+]

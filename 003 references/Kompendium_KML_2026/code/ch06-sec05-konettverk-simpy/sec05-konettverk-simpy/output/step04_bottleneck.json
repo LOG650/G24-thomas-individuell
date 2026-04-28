@@ -1,0 +1,26 @@
+{
+  "bottleneck": "pakking",
+  "bottleneck_rho": 0.9208225931024677,
+  "bottleneck_mean_wait": 11.286195924300008,
+  "bottleneck_mean_sojourn": 14.053948412660358,
+  "total_mean_sojourn": 26.141839902264287,
+  "bottleneck_share_of_sojourn": 0.5376036447780046,
+  "ranked_by_rho": [
+    [
+      "pakking",
+      0.9208225931024677
+    ],
+    [
+      "kvalitetskontroll",
+      0.7956388590205739
+    ],
+    [
+      "mottak",
+      0.7929015369231406
+    ],
+    [
+      "utsending",
+      0.7296994141589769
+    ]
+  ]
+}

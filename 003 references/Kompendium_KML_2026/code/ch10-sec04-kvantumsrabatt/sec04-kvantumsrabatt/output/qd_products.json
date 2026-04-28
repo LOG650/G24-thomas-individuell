@@ -1,0 +1,107 @@
+{
+  "n_products": 4,
+  "products": [
+    {
+      "sku": "A1",
+      "navn": "Elektrisk handverktoy",
+      "D": 2400,
+      "K": 400,
+      "i": 0.22
+    },
+    {
+      "sku": "B2",
+      "navn": "Sikkerhetshansker",
+      "D": 12000,
+      "K": 250,
+      "i": 0.18
+    },
+    {
+      "sku": "C3",
+      "navn": "Smorefett (5 kg)",
+      "D": 1800,
+      "K": 350,
+      "i": 0.25
+    },
+    {
+      "sku": "D4",
+      "navn": "LED-lyspaere 9 W",
+      "D": 9000,
+      "K": 300,
+      "i": 0.2
+    }
+  ],
+  "price_breaks": [
+    {
+      "sku": "A1",
+      "q_min": 0,
+      "q_max": 99,
+      "pris": 850.0
+    },
+    {
+      "sku": "A1",
+      "q_min": 100,
+      "q_max": 499,
+      "pris": 810.0
+    },
+    {
+      "sku": "A1",
+      "q_min": 500,
+      "q_max": null,
+      "pris": 770.0
+    },
+    {
+      "sku": "B2",
+      "q_min": 0,
+      "q_max": 199,
+      "pris": 42.0
+    },
+    {
+      "sku": "B2",
+      "q_min": 200,
+      "q_max": 999,
+      "pris": 39.0
+    },
+    {
+      "sku": "B2",
+      "q_min": 1000,
+      "q_max": null,
+      "pris": 36.5
+    },
+    {
+      "sku": "C3",
+      "q_min": 0,
+      "q_max": 49,
+      "pris": 320.0
+    },
+    {
+      "sku": "C3",
+      "q_min": 50,
+      "q_max": 199,
+      "pris": 300.0
+    },
+    {
+      "sku": "C3",
+      "q_min": 200,
+      "q_max": null,
+      "pris": 285.0
+    },
+    {
+      "sku": "D4",
+      "q_min": 0,
+      "q_max": 299,
+      "pris": 55.0
+    },
+    {
+      "sku": "D4",
+      "q_min": 300,
+      "q_max": 999,
+      "pris": 51.0
+    },
+    {
+      "sku": "D4",
+      "q_min": 1000,
+      "q_max": null,
+      "pris": 48.0
+    }
+  ]
+}

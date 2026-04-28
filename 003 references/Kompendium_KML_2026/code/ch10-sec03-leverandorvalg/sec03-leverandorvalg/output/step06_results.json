@@ -1,0 +1,121 @@
+{
+  "profiles": {
+    "Baseline (AHP)": [
+      0.256173,
+      0.412013,
+      0.15243,
+      0.102278,
+      0.077107
+    ],
+    "Kostnadsfokus": [
+      0.4,
+      0.2,
+      0.25,
+      0.08,
+      0.07
+    ],
+    "Kvalitetsfokus": [
+      0.15,
+      0.45,
+      0.1,
+      0.1,
+      0.2
+    ],
+    "Fleksibilitetsfokus": [
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.1
+    ]
+  },
+  "C": {
+    "Baseline (AHP)": [
+      0.648588,
+      0.356823,
+      0.699546,
+      0.50802,
+      0.71237,
+      0.300454
+    ],
+    "Kostnadsfokus": [
+      0.65368,
+      0.407762,
+      0.648206,
+      0.505364,
+      0.677671,
+      0.351794
+    ],
+    "Kvalitetsfokus": [
+      0.679078,
+      0.280595,
+      0.784203,
+      0.48752,
+      0.740371,
+      0.215797
+    ],
+    "Fleksibilitetsfokus": [
+      0.626322,
+      0.376044,
+      0.684433,
+      0.464227,
+      0.769296,
+      0.315567
+    ]
+  },
+  "rank": {
+    "Baseline (AHP)": [
+      3,
+      5,
+      2,
+      4,
+      1,
+      6
+    ],
+    "Kostnadsfokus": [
+      2,
+      5,
+      3,
+      4,
+      1,
+      6
+    ],
+    "Kvalitetsfokus": [
+      3,
+      5,
+      1,
+      4,
+      2,
+      6
+    ],
+    "Fleksibilitetsfokus": [
+      3,
+      5,
+      2,
+      4,
+      1,
+      6
+    ]
+  },
+  "winners": {
+    "Baseline (AHP)": "Epsilon",
+    "Kostnadsfokus": "Epsilon",
+    "Kvalitetsfokus": "Gamma",
+    "Fleksibilitetsfokus": "Epsilon"
+  },
+  "criteria": [
+    "Pris",
+    "Kvalitet",
+    "Leveringstid",
+    "Fleksibilitet",
+    "Bærekraft"
+  ],
+  "suppliers": [
+    "Alfa",
+    "Beta",
+    "Gamma",
+    "Delta",
+    "Epsilon",
+    "Zeta"
+  ]
+}

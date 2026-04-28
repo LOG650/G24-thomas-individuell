@@ -1,0 +1,65 @@
+[
+  {
+    "instans": "small",
+    "n": 15,
+    "metode": "Naermeste-nabo",
+    "total": 73.89,
+    "n_ruter": 2,
+    "tid_s": 0.001,
+    "gap_pct": 39.13
+  },
+  {
+    "instans": "small",
+    "n": 15,
+    "metode": "Clarke-Wright",
+    "total": 53.22,
+    "n_ruter": 2,
+    "tid_s": 0.001,
+    "gap_pct": 0.21
+  },
+  {
+    "instans": "small",
+    "n": 15,
+    "metode": "CW + 2-opt",
+    "total": 53.22,
+    "n_ruter": 2,
+    "tid_s": 0.001,
+    "gap_pct": 0.21
+  },
+  {
+    "instans": "large",
+    "n": 40,
+    "metode": "Naermeste-nabo",
+    "total": 136.42,
+    "n_ruter": 5,
+    "tid_s": 0.002,
+    "gap_pct": 42.79
+  },
+  {
+    "instans": "large",
+    "n": 40,
+    "metode": "Clarke-Wright",
+    "total": 95.56,
+    "n_ruter": 5,
+    "tid_s": 0.004,
+    "gap_pct": 0.02
+  },
+  {
+    "instans": "large",
+    "n": 40,
+    "metode": "CW + 2-opt",
+    "total": 95.54,
+    "n_ruter": 5,
+    "tid_s": 0.004,
+    "gap_pct": 0.0
+  },
+  {
+    "instans": "small",
+    "n": 15,
+    "metode": "MIP (CBC)",
+    "total": 53.11,
+    "n_ruter": 2,
+    "tid_s": 97.82,
+    "gap_pct": 0.0
+  }
+]

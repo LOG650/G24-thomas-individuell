@@ -1,0 +1,62 @@
+{
+  "A1": {
+    "allunits": {
+      "Q_star": 500,
+      "TC_star": 1892270.0,
+      "c": 770.0,
+      "interval": 3
+    },
+    "incremental": {
+      "Q_star": 829.4,
+      "TC_star": 1991135.0,
+      "c_avg": 798.79,
+      "interval": 3
+    },
+    "diff_TC": 98865.0
+  },
+  "B2": {
+    "allunits": {
+      "Q_star": 1000,
+      "TC_star": 444285.0,
+      "c": 36.5,
+      "interval": 3
+    },
+    "incremental": {
+      "Q_star": 3494.0,
+      "TC_star": 461234.0,
+      "c_avg": 37.385,
+      "interval": 3
+    },
+    "diff_TC": 16949.0
+  },
+  "C3": {
+    "allunits": {
+      "Q_star": 200,
+      "TC_star": 523275.0,
+      "c": 285.0,
+      "interval": 3
+    },
+    "incremental": {
+      "Q_star": 466.1,
+      "TC_star": 546704.0,
+      "c_avg": 293.474,
+      "interval": 3
+    },
+    "diff_TC": 23429.0
+  },
+  "D4": {
+    "allunits": {
+      "Q_star": 1000,
+      "TC_star": 439500.0,
+      "c": 48.0,
+      "interval": 3
+    },
+    "incremental": {
+      "Q_star": 2901.5,
+      "TC_star": 460273.0,
+      "c_avg": 49.444,
+      "interval": 3
+    },
+    "diff_TC": 20773.0
+  }
+}

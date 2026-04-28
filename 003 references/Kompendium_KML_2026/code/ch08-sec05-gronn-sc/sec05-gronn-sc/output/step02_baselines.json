@@ -1,0 +1,64 @@
+{
+  "cost": {
+    "opened": [
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "total_cost": 1211988.7055520923,
+    "fixed_cost": 980000,
+    "transport_cost": 231988.7055520915,
+    "carbon_cost": 0.0,
+    "emission_kg": 200354.02730680612,
+    "service": 2108987.801019012,
+    "modal_volume": {
+      "truck": 6728.000000061245,
+      "rail": 0.0,
+      "ship": 0.0
+    },
+    "solve_time_s": 64.77305746078491
+  },
+  "emission": {
+    "opened": [
+      "Oslo",
+      "Goteborg",
+      "Stockholm",
+      "Malmo",
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "total_cost": 3371394.1299000033,
+    "fixed_cost": 3160000,
+    "transport_cost": 211394.12990000006,
+    "carbon_cost": 0.0,
+    "emission_kg": 24138.556425000017,
+    "service": 2715596.5474999994,
+    "modal_volume": {
+      "truck": 0.0,
+      "rail": 0.0,
+      "ship": 6728.0
+    },
+    "solve_time_s": 1.0603854656219482
+  },
+  "service": {
+    "opened": [
+      "Oslo",
+      "Goteborg",
+      "Stockholm",
+      "Malmo",
+      "Trondheim",
+      "Kobenhavn"
+    ],
+    "total_cost": 3325952.8425499983,
+    "fixed_cost": 3160000,
+    "transport_cost": 165952.84255000018,
+    "carbon_cost": 0.0,
+    "emission_kg": 143322.90234000006,
+    "service": 1508663.3055000007,
+    "modal_volume": {
+      "truck": 6728.0,
+      "rail": 0.0,
+      "ship": 0.0
+    },
+    "solve_time_s": 1.0785512924194336
+  }
+}

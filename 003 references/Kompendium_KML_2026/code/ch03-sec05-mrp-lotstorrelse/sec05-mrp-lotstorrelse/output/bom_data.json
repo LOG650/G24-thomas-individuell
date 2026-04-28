@@ -1,0 +1,79 @@
+{
+  "components": {
+    "Sykkel": {
+      "level": 0,
+      "parent": null,
+      "qty_per_parent": 1,
+      "lead_time": 1,
+      "on_hand": 10,
+      "setup_cost": 200,
+      "holding_cost": 5.0,
+      "eoq_demand_wk": null
+    },
+    "Ramme": {
+      "level": 1,
+      "parent": "Sykkel",
+      "qty_per_parent": 1,
+      "lead_time": 2,
+      "on_hand": 15,
+      "setup_cost": 150,
+      "holding_cost": 2.5,
+      "eoq_demand_wk": null
+    },
+    "Hjul": {
+      "level": 1,
+      "parent": "Sykkel",
+      "qty_per_parent": 2,
+      "lead_time": 1,
+      "on_hand": 30,
+      "setup_cost": 100,
+      "holding_cost": 1.5,
+      "eoq_demand_wk": null
+    },
+    "Bremsesett": {
+      "level": 1,
+      "parent": "Sykkel",
+      "qty_per_parent": 1,
+      "lead_time": 1,
+      "on_hand": 20,
+      "setup_cost": 80,
+      "holding_cost": 1.2,
+      "eoq_demand_wk": null
+    },
+    "Stalrors": {
+      "level": 2,
+      "parent": "Ramme",
+      "qty_per_parent": 4,
+      "lead_time": 2,
+      "on_hand": 40,
+      "setup_cost": 60,
+      "holding_cost": 0.4,
+      "eoq_demand_wk": null
+    },
+    "Eik": {
+      "level": 2,
+      "parent": "Hjul",
+      "qty_per_parent": 32,
+      "lead_time": 1,
+      "on_hand": 300,
+      "setup_cost": 50,
+      "holding_cost": 0.05,
+      "eoq_demand_wk": null
+    }
+  },
+  "mps": {
+    "1": 20,
+    "2": 22,
+    "3": 23,
+    "4": 24,
+    "5": 23,
+    "6": 22,
+    "7": 30,
+    "8": 28,
+    "9": 27,
+    "10": 16,
+    "11": 17,
+    "12": 18
+  },
+  "n_weeks": 12
+}

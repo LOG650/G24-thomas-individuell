@@ -1,0 +1,11 @@
+{
+  "antall_ankomster": 500,
+  "observasjonsvindu_timer": 223.3886,
+  "gjennomsnittlig_mellomankomst_min": 26.8066,
+  "gjennomsnittlig_betjeningstid_min": 22.2688,
+  "stddev_mellomankomst_min": 28.4637,
+  "stddev_betjeningstid_min": 20.5641,
+  "estimert_lambda_per_time": 2.2383,
+  "estimert_mu_per_time": 2.6944,
+  "tilbudt_last_rho_total": 0.8307
+}

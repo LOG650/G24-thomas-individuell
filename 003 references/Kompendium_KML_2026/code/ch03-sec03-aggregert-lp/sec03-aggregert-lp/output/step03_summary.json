@@ -1,0 +1,15 @@
+{
+  "status": "Optimal",
+  "obj_cbc": 11414800.0,
+  "obj_scipy": 11414800.0,
+  "cost_prod": 11232000.0,
+  "cost_overtime": 88000.0,
+  "cost_inv": 94800.0,
+  "cost_hire": 0.0,
+  "cost_fire": 0.0,
+  "total_P": 1404.0,
+  "total_O": 8.0,
+  "total_I": 158.0,
+  "total_H": 0.0,
+  "total_F": 0.0
+}

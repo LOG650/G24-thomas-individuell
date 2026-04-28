@@ -1,0 +1,30 @@
+{
+  "totalkostnad_MNOK": 53.762,
+  "antall_IS_aapnes": 5,
+  "aapne_IS_navn": [
+    "Drammen",
+    "Kristiansand",
+    "Stavanger",
+    "Boedoe",
+    "Hamar"
+  ],
+  "antall_GV_aapnes": 2,
+  "aapne_GV_navn": [
+    "Grenland",
+    "Mo i Rana"
+  ],
+  "snitt_avstand_l1_km": 114.7,
+  "maks_avstand_l1_km": 427.9,
+  "snitt_avstand_l2_km": 230.8,
+  "total_retur_tonn": 8632,
+  "sensitivitet": {
+    "rho_0_50_IS_aapne": 2,
+    "rho_1_00_IS_aapne": 5,
+    "rho_1_50_IS_aapne": 6,
+    "rho_1_75_IS_aapne": 8,
+    "rho_1_75_GV_aapne": 3,
+    "beta_0_50_IS_aapne": 5,
+    "beta_2_00_IS_aapne": 5,
+    "beta_3_00_IS_aapne": 5
+  }
+}

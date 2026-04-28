@@ -1,0 +1,27 @@
+{
+  "n_full": 15,
+  "n_reduced": 10,
+  "reduced": {
+    "total_cost": 1200040.8399135335,
+    "emission_kg": 224580.6549397477,
+    "service": 2364007.8462412055,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "solve_time_s": 21.083871603012085
+  },
+  "baseline": {
+    "total_cost": 1200464.5297278273,
+    "emission_kg": 224946.5498552428,
+    "service": 2367859.465949929,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "solve_time_s": 50.3595826625824
+  },
+  "gap_cost_pct": -0.03529382199987344,
+  "gap_emission_pct": -0.16265860300171617,
+  "speedup": 2.3885358254310334
+}

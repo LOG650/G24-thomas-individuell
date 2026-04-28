@@ -1,0 +1,18 @@
+{
+  "bullwhip_decentralized": {
+    "Detaljist": 32.41,
+    "Grossist": 77.157,
+    "Distributor": 169.201,
+    "Fabrikk": 437.49
+  },
+  "bullwhip_shared": {
+    "Detaljist": 33.426,
+    "Grossist": 43.138,
+    "Distributor": 57.904,
+    "Fabrikk": 59.633
+  },
+  "total_cost_decentralized_kr": 182724.56,
+  "total_cost_shared_kr": 79182.58,
+  "cost_savings_pct": 56.7,
+  "cost_savings_kr": 103541.98
+}

@@ -1,0 +1,10 @@
+{
+  "heuristic": "Largest-gap",
+  "n_picklists": 500,
+  "mean_length_m": 249.26,
+  "min_length_m": 141.0,
+  "max_length_m": 327.0,
+  "example_id": 0,
+  "example_k": 15,
+  "example_length_m": 257.0
+}

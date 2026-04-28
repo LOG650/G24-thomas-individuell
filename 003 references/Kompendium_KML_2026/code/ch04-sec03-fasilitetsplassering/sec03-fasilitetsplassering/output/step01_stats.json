@@ -1,0 +1,11 @@
+{
+  "antall_kandidater": 15,
+  "antall_kunder": 80,
+  "total_etterspoersel": 50630,
+  "maks_etterspoersel": 1750,
+  "min_etterspoersel": 150,
+  "gj_etterspoersel": 632.9,
+  "median_etterspoersel": 580,
+  "sum_fast_kostnad_alle_aapne": 47200000,
+  "snitt_fast_kostnad": 3146666
+}

@@ -1,0 +1,14 @@
+{
+  "antall_kunder": 40,
+  "antall_innsamlingskandidater": 8,
+  "antall_gjenvinningskandidater": 3,
+  "total_returvolum_tonn": 8632,
+  "maks_returvolum_tonn": 457,
+  "min_returvolum_tonn": 68,
+  "gj_returvolum_tonn": 215.8,
+  "median_returvolum_tonn": 185,
+  "kapasitet_innsamling_total_tonn": 16100,
+  "kapasitet_gjenvinning_total_tonn": 19500,
+  "sum_fast_is_alle_aapne": 19000000,
+  "sum_fast_gv_alle_aapne": 22900000
+}

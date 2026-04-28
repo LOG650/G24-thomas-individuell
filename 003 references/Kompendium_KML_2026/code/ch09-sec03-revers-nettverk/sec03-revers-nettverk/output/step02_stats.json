@@ -1,0 +1,22 @@
+{
+  "l1_transport_sats_NOK_per_tkm": 3.8,
+  "l2_transport_sats_NOK_per_tkm": 2.2,
+  "l1_maks_km": 1112.2,
+  "l1_min_km": 12.2,
+  "l1_median_km": 295.7,
+  "l1_gj_km": 355.6,
+  "l1_naermest_IS_per_kunde_km_snitt": 46.7,
+  "l2_maks_km": 961.2,
+  "l2_min_km": 73.9,
+  "l2_median_km": 375.1,
+  "l2_gj_km": 449.9,
+  "l2_naermest_GV_per_IS_km_snitt": 166.8,
+  "dim_D1": [
+    8,
+    40
+  ],
+  "dim_D2": [
+    8,
+    3
+  ]
+}

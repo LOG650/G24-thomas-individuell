@@ -1,0 +1,11 @@
+[project]
+name = "green-vrp"
+version = "0.1.0"
+description = "Code for example: Groenn ruteplanlegging (Green VRP) med lasteavhengig utslippsfunksjon"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.13",
+]

@@ -1,0 +1,71 @@
+{
+  "rules": [
+    {
+      "condition": 1,
+      "n": 79,
+      "dominant_action": "recycle",
+      "dominant_share": 0.962,
+      "counts": {
+        "repair": 0,
+        "refurbish": 3,
+        "recycle": 76,
+        "dispose": 0
+      }
+    },
+    {
+      "condition": 2,
+      "n": 190,
+      "dominant_action": "recycle",
+      "dominant_share": 0.658,
+      "counts": {
+        "repair": 0,
+        "refurbish": 65,
+        "recycle": 125,
+        "dispose": 0
+      }
+    },
+    {
+      "condition": 3,
+      "n": 255,
+      "dominant_action": "refurbish",
+      "dominant_share": 1.0,
+      "counts": {
+        "repair": 0,
+        "refurbish": 255,
+        "recycle": 0,
+        "dispose": 0
+      }
+    },
+    {
+      "condition": 4,
+      "n": 184,
+      "dominant_action": "repair",
+      "dominant_share": 0.75,
+      "counts": {
+        "repair": 138,
+        "refurbish": 46,
+        "recycle": 0,
+        "dispose": 0
+      }
+    },
+    {
+      "condition": 5,
+      "n": 92,
+      "dominant_action": "repair",
+      "dominant_share": 0.87,
+      "counts": {
+        "repair": 80,
+        "refurbish": 12,
+        "recycle": 0,
+        "dispose": 0
+      }
+    }
+  ],
+  "headline": {
+    "naiv_ev": 203111.68,
+    "tre_ev": 916882.03,
+    "oracle_ev": 923768.25,
+    "uplift_tre_vs_naiv": 713770.35,
+    "pct_of_oracle": 99.25
+  }
+}

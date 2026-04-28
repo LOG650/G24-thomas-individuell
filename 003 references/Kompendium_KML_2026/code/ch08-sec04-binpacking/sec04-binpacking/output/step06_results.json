@@ -1,0 +1,54 @@
+{
+  "lower_bound": {
+    "sum_volum_l": 1612.92,
+    "sum_vekt_kg": 277.79,
+    "LB_volum": 22.4017,
+    "LB_vekt": 11.1116,
+    "LB_kontinuerlig": 22.4017,
+    "LB_heltall": 23
+  },
+  "results": [
+    {
+      "metode": "Naiv FF",
+      "antall_bins": 24,
+      "volumutnyttelse": 0.9334,
+      "gap_bins": 1,
+      "gap_rel": 0.0435,
+      "fyllingsgrad_mean": 0.9334
+    },
+    {
+      "metode": "FFD",
+      "antall_bins": 23,
+      "volumutnyttelse": 0.974,
+      "gap_bins": 0,
+      "gap_rel": 0.0,
+      "fyllingsgrad_mean": 0.974
+    },
+    {
+      "metode": "BFD",
+      "antall_bins": 23,
+      "volumutnyttelse": 0.974,
+      "gap_bins": 0,
+      "gap_rel": 0.0,
+      "fyllingsgrad_mean": 0.974
+    }
+  ],
+  "savings_naiv_vs_ffd": {
+    "bins_redusert": 1,
+    "prosent_redusert": 0.0417,
+    "co2_spart_kg": 1.3,
+    "handtering_spart_nok": 14.0
+  },
+  "savings_naiv_vs_bfd": {
+    "bins_redusert": 1,
+    "prosent_redusert": 0.0417,
+    "co2_spart_kg": 1.3,
+    "handtering_spart_nok": 14.0
+  },
+  "parametre": {
+    "co2_per_bin_kg": 1.3,
+    "handling_cost_per_bin_nok": 14.0,
+    "bin_volum_l": 72.0,
+    "bin_maks_vekt_kg": 25.0
+  }
+}

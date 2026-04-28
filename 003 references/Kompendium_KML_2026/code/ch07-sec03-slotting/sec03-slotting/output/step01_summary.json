@@ -1,0 +1,13 @@
+{
+  "antall_sku": 400,
+  "antall_slots": 400,
+  "antall_dager": 90,
+  "plukkhistorikk_total": 31561,
+  "gjennomsnitt_plukk_per_dag": 350.7,
+  "maks_sku_frekvens_90d": 3136,
+  "median_sku_frekvens_90d": 17,
+  "andel_plukk_top20": 83.5,
+  "maks_round_trip_m": 92.5,
+  "min_round_trip_m": 9.5,
+  "gj_round_trip_m": 51.0
+}

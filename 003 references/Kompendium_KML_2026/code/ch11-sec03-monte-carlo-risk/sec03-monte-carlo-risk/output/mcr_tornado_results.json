@@ -1,0 +1,77 @@
+{
+  "base_cvar_0_95": 854866.0,
+  "drivers": [
+    {
+      "name": "Kostnad hastekjoep",
+      "symbol": "$c_{ex}$",
+      "param": "cost_expedite",
+      "low": 450.0,
+      "high": 700.0,
+      "cvar_low": 661405.0,
+      "cvar_high": 1135342.0,
+      "effect_low": -193461.0,
+      "effect_high": 280476.0,
+      "span": 473937.0
+    },
+    {
+      "name": "Leverandorsviktsannsynlighet",
+      "symbol": "$p_F$",
+      "param": "supplier_fail_prob",
+      "low": 0.02,
+      "high": 0.15,
+      "cvar_low": 590154.0,
+      "cvar_high": 1048051.0,
+      "effect_low": -264712.0,
+      "effect_high": 193185.0,
+      "span": 457897.0
+    },
+    {
+      "name": "Gjennomsnittlig etterspoersel",
+      "symbol": "$\\mu_D$",
+      "param": "demand_mean",
+      "low": 10000,
+      "high": 14000,
+      "cvar_low": 712647.0,
+      "cvar_high": 949649.0,
+      "effect_low": -142219.0,
+      "effect_high": 94783.0,
+      "span": 237002.0
+    },
+    {
+      "name": "Leveringstid CV",
+      "symbol": "$\\sigma_{\\ln L}$",
+      "param": "lead_time_sdlog",
+      "low": 0.15,
+      "high": 0.45,
+      "cvar_low": 773394.0,
+      "cvar_high": 921084.0,
+      "effect_low": -81472.0,
+      "effect_high": 66218.0,
+      "span": 147690.0
+    },
+    {
+      "name": "Kostnad tapt salg",
+      "symbol": "$c_{ls}$",
+      "param": "cost_lost_sale",
+      "low": 250.0,
+      "high": 650.0,
+      "cvar_low": 794422.0,
+      "cvar_high": 872632.0,
+      "effect_low": -60444.0,
+      "effect_high": 17766.0,
+      "span": 78210.0
+    },
+    {
+      "name": "Etterspoersel std",
+      "symbol": "$\\sigma_D$",
+      "param": "demand_std",
+      "low": 1000,
+      "high": 3000,
+      "cvar_low": 812881.0,
+      "cvar_high": 855918.0,
+      "effect_low": -41985.0,
+      "effect_high": 1052.0,
+      "span": 43037.0
+    }
+  ]
+}

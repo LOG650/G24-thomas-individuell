@@ -1,0 +1,9 @@
+kategori,navn,volum,vinner,bud_id,bud_type,linjekost_NOK
+C1,Betong og moertel,1200,L1,B1,bundle,2460000.0
+C2,Armeringsstaal,180,L1,B1,bundle,2466000.0
+C3,Isolasjon,4000,L2,B2,bundle,1480000.0
+C4,Gips og plater,6500,L2,B2,bundle,1547000.0
+C5,Vinduer,420,L2,B2,bundle,2457000.0
+C6,Doerer,350,L2,E_L2_C6,enkelt,1697500.0
+C7,Elektro (kabel),12000,L3,B4,bundle,321600.0
+C8,Roer (VVS),9000,L3,B4,bundle,360000.0

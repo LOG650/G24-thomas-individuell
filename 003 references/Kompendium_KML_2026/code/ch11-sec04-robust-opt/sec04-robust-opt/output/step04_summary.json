@@ -1,0 +1,13 @@
+{
+  "antall_scenarioer": 50,
+  "E_obj_MNOK": 2.618,
+  "snitt_kostnad_MNOK": 2.618,
+  "verste_kostnad_MNOK": 3.641,
+  "sum_z_stoch": 8666.8,
+  "z_per_lager": {
+    "Stavanger": 3500.0,
+    "Tromsoe": 342.1,
+    "Rotterdam": 1707.0,
+    "Singapore": 3117.7
+  }
+}

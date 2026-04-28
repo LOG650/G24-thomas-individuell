@@ -1,0 +1,26 @@
+{
+  "shared_information": true,
+  "var_demand": 230.1,
+  "per_tier": {
+    "Detaljist": {
+      "bullwhip_decentralized": 32.41,
+      "bullwhip_shared": 33.426,
+      "reduction_pct": -3.1
+    },
+    "Grossist": {
+      "bullwhip_decentralized": 77.157,
+      "bullwhip_shared": 43.138,
+      "reduction_pct": 44.1
+    },
+    "Distributor": {
+      "bullwhip_decentralized": 169.201,
+      "bullwhip_shared": 57.904,
+      "reduction_pct": 65.8
+    },
+    "Fabrikk": {
+      "bullwhip_decentralized": 437.49,
+      "bullwhip_shared": 59.633,
+      "reduction_pct": 86.4
+    }
+  }
+}

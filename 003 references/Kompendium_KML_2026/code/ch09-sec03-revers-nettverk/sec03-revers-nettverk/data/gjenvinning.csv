@@ -1,0 +1,4 @@
+id,navn,lat,lon,fast_kostnad,kapasitet_tonn,prosess_kost_per_tonn
+GV01,Grenland,59.141,9.65,8500000,7500,2400
+GV02,Mo i Rana,66.314,14.139,6900000,5500,2800
+GV03,Aalesund,62.473,6.15,7500000,6500,2600

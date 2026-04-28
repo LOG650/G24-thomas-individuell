@@ -1,0 +1,30 @@
+{
+  "skranker": {
+    "V_max_m3": 160.0,
+    "B_max_NOK": 5000000.0
+  },
+  "feasibility_uavhengig": {
+    "V_max_m3": 160.0,
+    "B_max_NOK": 5000000.0,
+    "avg_volume_uavhengig_m3": 224.09,
+    "avg_value_uavhengig_NOK": 6579368.0,
+    "volume_overskridelse_m3": 64.09,
+    "budget_overskridelse_NOK": 1579368.0,
+    "volume_feasible": false,
+    "budget_feasible": false
+  },
+  "modell": {
+    "maalfunksjon": "min sum_i [ K_i D_i / Q_i + h_i c_i (Q_i/2 + k_i sigma_{DL,i}) + pi_i D_i sigma_{DL,i} L(k_i) / Q_i ]",
+    "skranker": {
+      "volum": "sum_i v_i (Q_i/2 + k_i sigma_{DL,i}) <= V_max",
+      "budsjett": "sum_i c_i (Q_i/2 + k_i sigma_{DL,i}) <= B_max",
+      "service": "Phi(k_i) >= alpha_i for alle i (type 1)"
+    },
+    "lagrange": "L = TC(Q,k) + lambda_V (sum v_i (Q_i/2 + k_i sigma_{DL,i}) - V_max) + lambda_B (sum c_i (Q_i/2 + k_i sigma_{DL,i}) - B_max)",
+    "KKT": {
+      "dL_dQi=0": "- K_i D_i / Q_i^2 + h_i c_i / 2 + lambda_V v_i/2 + lambda_B c_i/2 - pi_i D_i sigma_{DL,i} L(k_i) / Q_i^2 = 0",
+      "dL_dki=0": "h_i c_i sigma_{DL,i} - pi_i D_i sigma_{DL,i} (1 - Phi(k_i)) / Q_i + (lambda_V v_i + lambda_B c_i) sigma_{DL,i} = 0",
+      "komplementaritet": "lambda_V, lambda_B >= 0, skranker binder naar lambda > 0"
+    }
+  }
+}

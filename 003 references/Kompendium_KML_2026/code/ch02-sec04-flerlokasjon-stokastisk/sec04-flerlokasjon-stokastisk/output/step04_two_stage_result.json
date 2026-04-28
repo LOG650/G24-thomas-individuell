@@ -1,0 +1,17 @@
+{
+  "status": "Optimal",
+  "objective": 7848.07,
+  "orders": {
+    "L1": 138.0,
+    "L2": 170.0,
+    "L3": 111.0,
+    "L4": 203.0
+  },
+  "cost_order": 7464.0,
+  "cost_holding": 158.69,
+  "cost_backorder": 178.58,
+  "cost_transship": 46.8,
+  "avg_backorder_units": 1.88,
+  "avg_holding_units": 63.476,
+  "avg_transship_units": 5.85
+}

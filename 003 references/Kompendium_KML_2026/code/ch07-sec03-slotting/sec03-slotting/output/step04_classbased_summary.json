@@ -1,0 +1,9 @@
+{
+  "metode": "klassebasert",
+  "analytisk_forventet_m": 25.95,
+  "mc_gjennomsnitt_m": 26.09,
+  "mc_median_m": 21.5,
+  "mc_p95_m": 59.5,
+  "mc_std_m": 14.2,
+  "samples": 50000
+}

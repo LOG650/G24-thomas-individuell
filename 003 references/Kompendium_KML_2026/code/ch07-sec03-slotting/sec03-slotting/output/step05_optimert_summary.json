@@ -1,0 +1,14 @@
+{
+  "metode": "K3-sonebasert",
+  "n_zones": 3,
+  "E_kontinuerlig_m": 21.86,
+  "E_tilfeldig_m": 56.01,
+  "E_sonebasert_mean_m": 32.21,
+  "mc_gjennomsnitt_m": 34.45,
+  "mc_median_m": 35.5,
+  "mc_p95_m": 50.5,
+  "mc_std_m": 9.35,
+  "samples": 50000,
+  "reduksjon_vs_tilfeldig_pct": 38.5,
+  "gap_vs_kontinuerlig_pct": 57.6
+}

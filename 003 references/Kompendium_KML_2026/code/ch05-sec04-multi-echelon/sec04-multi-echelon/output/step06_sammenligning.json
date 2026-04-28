@@ -1,0 +1,18 @@
+{
+  "analytisk": {
+    "H_uav_NOK_per_aar": 3031909.3435494797,
+    "H_cs_NOK_per_aar": 604998.3611459524,
+    "saving_NOK_per_aar": 2426910.9824035275,
+    "saving_pct": 80.04563156107841
+  },
+  "simulert": {
+    "total_uav_NOK_per_aar": 3408225.9653845755,
+    "total_cs_NOK_per_aar": 981697.6172918923,
+    "saving_NOK_per_aar": 2426528.348092683,
+    "saving_pct": 71.19622855812847,
+    "type1_uav_mean": 1.0,
+    "type1_cs_mean": 0.9988214285714285
+  },
+  "inventory_total_uav": 2734.935223678046,
+  "inventory_total_cs": 1009.6746586987598
+}

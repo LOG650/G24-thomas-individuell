@@ -1,0 +1,30 @@
+{
+  "L1": {
+    "mean": 18.47,
+    "std": 5.58,
+    "min": 3,
+    "max": 36,
+    "leadtime_days": 2
+  },
+  "L2": {
+    "mean": 22.7,
+    "std": 6.21,
+    "min": 8,
+    "max": 41,
+    "leadtime_days": 3
+  },
+  "L3": {
+    "mean": 13.99,
+    "std": 4.65,
+    "min": 0,
+    "max": 28,
+    "leadtime_days": 2
+  },
+  "L4": {
+    "mean": 26.69,
+    "std": 7.71,
+    "min": 5,
+    "max": 46,
+    "leadtime_days": 4
+  }
+}

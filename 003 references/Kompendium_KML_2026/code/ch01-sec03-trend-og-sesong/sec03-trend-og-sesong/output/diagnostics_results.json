@@ -1,0 +1,38 @@
+{
+  "residual_statistikk": {
+    "n": 144,
+    "gjennomsnitt": 0.012351,
+    "standardavvik": 0.503236,
+    "skjevhet": 4.4559,
+    "kurtose": 79.905,
+    "shapiro_wilk": {
+      "statistikk": 0.1586,
+      "p_verdi": 0.0
+    },
+    "jarque_bera": {
+      "statistikk": 35962.7989,
+      "p_verdi": 0.0,
+      "normalfordelt": false
+    }
+  },
+  "ljung_box_test": [
+    {
+      "lag": 12,
+      "lb_statistikk": 35.0894,
+      "p_verdi": 0.000453,
+      "signifikant": true,
+      "konklusjon": "Autokorrelasjon påvist"
+    },
+    {
+      "lag": 24,
+      "lb_statistikk": 35.3913,
+      "p_verdi": 0.062805,
+      "signifikant": false,
+      "konklusjon": "Ingen signifikant autokorrelasjon"
+    }
+  ],
+  "konklusjon": {
+    "hvit_stoy": false,
+    "beskrivelse": "Det finnes signifikant autokorrelasjon i residualene"
+  }
+}

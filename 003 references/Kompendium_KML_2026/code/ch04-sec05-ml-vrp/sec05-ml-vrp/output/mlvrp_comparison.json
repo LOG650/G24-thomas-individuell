@@ -1,0 +1,33 @@
+{
+  "smaa": {
+    "n_customers": 6,
+    "n_instances": 30,
+    "mean_distance_cw": 2.6133626138060766,
+    "mean_distance_ml": 2.7656507277240356,
+    "mean_time_cw_ms": 1.8695899983868003,
+    "mean_time_ml_ms": 21.454203333996702,
+    "gap_ml_vs_cw_percent": 5.8272860074388255,
+    "mean_distance_opt": 2.6133626138060766,
+    "mean_time_opt_ms": 42.422560000947364,
+    "gap_cw_vs_opt_percent": 0.0,
+    "gap_ml_vs_opt_percent": 5.8272860074388255
+  },
+  "middels": {
+    "n_customers": 10,
+    "n_instances": 30,
+    "mean_distance_cw": 3.4121505163250756,
+    "mean_distance_ml": 3.9031377270817758,
+    "mean_time_cw_ms": 3.1565633330804608,
+    "mean_time_ml_ms": 31.691349999649294,
+    "gap_ml_vs_cw_percent": 14.389377268312854
+  },
+  "store": {
+    "n_customers": 20,
+    "n_instances": 30,
+    "mean_distance_cw": 5.450483274215502,
+    "mean_distance_ml": 6.5204805919900535,
+    "mean_time_cw_ms": 9.348476667461606,
+    "mean_time_ml_ms": 55.797489999774065,
+    "gap_ml_vs_cw_percent": 19.631237524136022
+  }
+}

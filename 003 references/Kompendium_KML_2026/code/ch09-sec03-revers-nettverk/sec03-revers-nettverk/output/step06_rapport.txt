@@ -1,0 +1,22 @@
+ANBEFALING: reverst nettverk for EE-avfall i Norge
+========================================================
+  Totalkostnad:       53.762 MNOK/aar
+   - fast innsamling: 10.600 MNOK
+   - fast gjenvinning: 15.400 MNOK
+   - transport ledd 1: 3.556 MNOK
+   - transport ledd 2: 3.037 MNOK
+   - prosesseringskost: 21.170 MNOK
+  Innsamlingssentre:  5 (Drammen, Kristiansand, Stavanger, Boedoe, Hamar)
+  Gjenvinningsanlegg: 2 (Grenland, Mo i Rana)
+  Snitt-/maks-avstand ledd 1: 114.7 / 427.9 km
+  Snitt-avstand ledd 2: 230.8 km
+  Total retur:        8632 tonn/aar
+
+Sensitivitet (antall aapne innsamlingssentre):
+  rho=0.50 (halvert volum)     -> 2
+  rho=1.00 (baseline)          -> 5
+  rho=1.50 (+50 % volum)       -> 6
+  rho=1.75 (+75 % volum)       -> 8
+  beta=0.50 (halvert fastkost) -> 5
+  beta=2.00 (doblet fastkost)  -> 5
+  beta=3.00 (tredoblet)        -> 5

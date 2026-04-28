@@ -1,0 +1,12 @@
+[project]
+name = "vrp-heuristikk"
+version = "0.1.0"
+description = "Code for example: Ruteplanlegging med CVRP, Clarke-Wright og MIP"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pulp>=2.9",
+    "scipy>=1.13",
+]

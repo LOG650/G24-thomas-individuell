@@ -1,0 +1,5 @@
+sku,navn,D,Q_anbefalt,c_oppnadd,n_orders_per_year,cycle_days,TC_anbefalt,TC_naiv_uten_rabatt,arlig_besparelse,besparelse_pct
+A1,Elektrisk handverktoy,2400,500,770.0,4.8,76.0,1892270.0,2058948.0,166678.0,8.1
+B2,Sikkerhetshansker,12000,1000,36.5,12.0,30.4,444285.0,510735.0,66450.0,13.01
+C3,Smorefett (5 kg),1800,200,285.0,9.0,40.6,523275.0,586040.0,62765.0,10.71
+D4,LED-lyspaere 9 W,9000,1000,48.0,9.0,40.6,439500.0,502707.0,63207.0,12.57

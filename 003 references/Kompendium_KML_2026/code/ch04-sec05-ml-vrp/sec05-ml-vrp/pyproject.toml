@@ -1,0 +1,14 @@
+[project]
+name = "ml-vrp"
+version = "0.1.0"
+description = "Code for example: ML-based VRP with attention / pointer network"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26,<2.3",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "torch>=2.2",
+    "pulp>=2.9",
+]

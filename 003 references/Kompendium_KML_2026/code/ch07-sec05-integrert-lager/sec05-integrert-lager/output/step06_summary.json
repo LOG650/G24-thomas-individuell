@@ -1,0 +1,38 @@
+[
+  {
+    "strategy": "A: Integrert",
+    "name": "A) Integrert MIP + k-medoids + largest-gap",
+    "completed": 250,
+    "on_time_share": 0.948,
+    "mean_completion_min": 377.73,
+    "mean_pack_queue": 0.344,
+    "max_pack_queue": 5.0
+  },
+  {
+    "strategy": "B: MIP+FIFO-batch",
+    "name": "B) Bare bolge-MIP + FIFO-batching",
+    "completed": 250,
+    "on_time_share": 0.924,
+    "mean_completion_min": 383.34,
+    "mean_pack_queue": 1.074,
+    "max_pack_queue": 10.0
+  },
+  {
+    "strategy": "C: FIFO+k-medoids",
+    "name": "C) FIFO-bolger + k-medoids + largest-gap",
+    "completed": 250,
+    "on_time_share": 0.824,
+    "mean_completion_min": 446.0,
+    "mean_pack_queue": 0.574,
+    "max_pack_queue": 8.0
+  },
+  {
+    "strategy": "D: Baseline",
+    "name": "D) Baseline: FIFO + tilfeldig + S-shape",
+    "completed": 250,
+    "on_time_share": 0.816,
+    "mean_completion_min": 450.91,
+    "mean_pack_queue": 1.446,
+    "max_pack_queue": 11.0
+  }
+]

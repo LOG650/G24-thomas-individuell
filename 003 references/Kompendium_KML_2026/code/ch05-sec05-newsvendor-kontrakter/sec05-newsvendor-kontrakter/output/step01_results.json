@@ -1,0 +1,11 @@
+{
+  "mu": 1000,
+  "sigma": 250,
+  "p_retail": 1500,
+  "c_supplier": 400,
+  "w_wholesale": 900,
+  "s_salvage": 200,
+  "kritisk_forhold_kjede": 0.8462,
+  "q_star_kjede": 1255.0,
+  "sikkerhetslager_kjede": 255.0
+}

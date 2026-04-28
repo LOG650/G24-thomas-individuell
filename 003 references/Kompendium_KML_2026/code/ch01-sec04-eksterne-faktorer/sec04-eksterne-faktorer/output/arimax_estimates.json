@@ -1,0 +1,92 @@
+{
+  "estimates": [
+    {
+      "parameter": "x_kampanje",
+      "estimat": 57.2631,
+      "std_feil": 6.304,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "x_rabatt",
+      "estimat": 4.2092,
+      "std_feil": 0.2748,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "x_foer_1",
+      "estimat": -19.2761,
+      "std_feil": 1.9289,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "x_foer_2",
+      "estimat": -16.956,
+      "std_feil": 1.8985,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "x_etter_1",
+      "estimat": -12.552,
+      "std_feil": 3.0789,
+      "p_verdi": 4.6e-05
+    },
+    {
+      "parameter": "x_etter_2",
+      "estimat": -15.0948,
+      "std_feil": 2.6193,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "x_etter_3",
+      "estimat": -17.615,
+      "std_feil": 2.0977,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "ar.L1",
+      "estimat": 0.3918,
+      "std_feil": 0.035,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "ma.L1",
+      "estimat": -1.005,
+      "std_feil": 0.0124,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "ar.S.L7",
+      "estimat": 1.0008,
+      "std_feil": 0.0006,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "ma.S.L7",
+      "estimat": -1.0092,
+      "std_feil": 0.0345,
+      "p_verdi": 0.0
+    },
+    {
+      "parameter": "sigma2",
+      "estimat": 60.2263,
+      "std_feil": 4.0686,
+      "p_verdi": 0.0
+    }
+  ],
+  "sammenligning": {
+    "ARIMAX": {
+      "AIC": 5071.96,
+      "BIC": 5126.92,
+      "loglik": -2523.98,
+      "sigma2": 60.23,
+      "antall_parametre": 12
+    },
+    "SARIMA": {
+      "AIC": 7036.25,
+      "BIC": 7059.15,
+      "loglik": -3513.13,
+      "sigma2": 952.4,
+      "antall_parametre": 5
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "demand_annual": 10413.8,
+  "avg_inventory": 1609.2,
+  "lost_sales_total_units": 0.0,
+  "n_failures": 1,
+  "holding_cost": 96554.0,
+  "expedite_cost": 216953.0,
+  "lost_sales_cost": 0.0,
+  "total_cost": 313507.0
+}

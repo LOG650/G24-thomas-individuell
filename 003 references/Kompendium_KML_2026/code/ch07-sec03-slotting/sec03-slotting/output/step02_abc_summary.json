@@ -1,0 +1,32 @@
+[
+  {
+    "klasse":"A",
+    "antall_sku":38,
+    "andel_sku_pct":9.5,
+    "total_plukk_90d":21995,
+    "andel_plukk_pct":69.7,
+    "min_plukk":162,
+    "max_plukk":3136,
+    "median_plukk":319
+  },
+  {
+    "klasse":"B",
+    "antall_sku":83,
+    "andel_sku_pct":20.8,
+    "total_plukk_90d":6407,
+    "andel_plukk_pct":20.3,
+    "min_plukk":40,
+    "max_plukk":160,
+    "median_plukk":66
+  },
+  {
+    "klasse":"C",
+    "antall_sku":279,
+    "andel_sku_pct":69.8,
+    "total_plukk_90d":3159,
+    "andel_plukk_pct":10.0,
+    "min_plukk":0,
+    "max_plukk":40,
+    "median_plukk":7
+  }
+]

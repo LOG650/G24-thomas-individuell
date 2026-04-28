@@ -1,0 +1,12 @@
+{
+  "transport_sats_per_km": 1.2,
+  "maks_avstand_km": 1638.5,
+  "min_avstand_km": 3.0,
+  "median_avstand_km": 523.9,
+  "gj_avstand_km": 561.3,
+  "naermest_DC_per_kunde_km_snitt": 41.6,
+  "dimensjoner_matrise": [
+    15,
+    80
+  ]
+}

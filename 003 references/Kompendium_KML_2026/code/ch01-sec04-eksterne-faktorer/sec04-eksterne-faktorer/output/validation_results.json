@@ -1,0 +1,35 @@
+{
+  "residualer": {
+    "antall": 716,
+    "gjennomsnitt": -0.0418,
+    "standardavvik": 0.9985
+  },
+  "ljung_box": {
+    "lag_7": {
+      "Q": 4.187,
+      "p": 0.75803
+    },
+    "lag_14": {
+      "Q": 8.532,
+      "p": 0.85982
+    },
+    "lag_21": {
+      "Q": 19.118,
+      "p": 0.57758
+    }
+  },
+  "backtest": {
+    "train_antall": 670,
+    "test_antall": 60,
+    "ARIMAX": {
+      "RMSE": 8.93,
+      "MAE": 7.24,
+      "MAPE_%": 3.03
+    },
+    "SARIMA": {
+      "RMSE": 33.09,
+      "MAE": 19.25,
+      "MAPE_%": 7.15
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "n_picklists": 500,
+  "mean_lengths": {
+    "S-shape": 275.52,
+    "Return": 329.91,
+    "Midpoint": 258.93,
+    "Largest-gap": 249.26,
+    "Ratliff-Rosenthal": 235.08
+  },
+  "gap_statistics_pct": {
+    "S-shape": {
+      "mean": 17.841,
+      "std": 9.284,
+      "median": 15.97,
+      "p5": 5.814,
+      "p95": 34.975,
+      "min": 0.0,
+      "max": 58.278
+    },
+    "Return": {
+      "mean": 40.361,
+      "std": 14.291,
+      "median": 38.888,
+      "p5": 18.34,
+      "p95": 65.434,
+      "min": 3.404,
+      "max": 92.576
+    },
+    "Midpoint": {
+      "mean": 9.87,
+      "std": 6.014,
+      "median": 9.019,
+      "p5": 0.904,
+      "p95": 20.397,
+      "min": 0.0,
+      "max": 28.112
+    },
+    "Largest-gap": {
+      "mean": 5.923,
+      "std": 3.679,
+      "median": 5.738,
+      "p5": 0.0,
+      "p95": 12.456,
+      "min": 0.0,
+      "max": 21.005
+    }
+  }
+}

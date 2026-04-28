@@ -1,0 +1,36 @@
+{
+  "eval_S": 500,
+  "rad": [
+    {
+      "Strategi": "Deterministisk",
+      "E_kostnad_MNOK": 2.744,
+      "worst_kostnad_MNOK": 4.606,
+      "std_kostnad_MNOK": 0.446,
+      "E_regret_MNOK": 0.3,
+      "maks_regret_MNOK": 1.803,
+      "sum_kapasitet": 8200.0
+    },
+    {
+      "Strategi": "Stokastisk",
+      "E_kostnad_MNOK": 2.609,
+      "worst_kostnad_MNOK": 3.776,
+      "std_kostnad_MNOK": 0.166,
+      "E_regret_MNOK": 0.164,
+      "maks_regret_MNOK": 0.972,
+      "sum_kapasitet": 8666.8
+    },
+    {
+      "Strategi": "Robust",
+      "E_kostnad_MNOK": 2.763,
+      "worst_kostnad_MNOK": 3.159,
+      "std_kostnad_MNOK": 0.08,
+      "E_regret_MNOK": 0.318,
+      "maks_regret_MNOK": 0.499,
+      "sum_kapasitet": 9125.7
+    }
+  ],
+  "forsikringspremie_abs_MNOK": 0.154,
+  "forsikringspremie_pct": 5.89,
+  "worst_case_reduksjon_abs_MNOK": 0.617,
+  "worst_case_reduksjon_pct": 16.34
+}

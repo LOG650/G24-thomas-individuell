@@ -1,0 +1,141 @@
+{
+  "best_params": {
+    "objective": "multiclass",
+    "num_class": 3,
+    "metric": "multi_logloss",
+    "verbose": -1,
+    "boosting_type": "gbdt",
+    "seed": 42,
+    "num_leaves": 127,
+    "learning_rate": 0.05,
+    "max_depth": -1,
+    "feature_fraction": 0.7,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 5,
+    "min_data_in_leaf": 40
+  },
+  "best_iteration": 73,
+  "val_macro_f1": 0.913887485315851,
+  "cv_results": [
+    {
+      "num_leaves": 127,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.7,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 40,
+      "f1_mean": 0.9122343144514975,
+      "f1_std": 0.019286587057915996,
+      "logloss_mean": 0.2176765025002932,
+      "logloss_std": 0.04309702532524657,
+      "best_iters": [
+        79,
+        64,
+        82,
+        115,
+        81
+      ]
+    },
+    {
+      "num_leaves": 31,
+      "learning_rate": 0.03,
+      "max_depth": 8,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 40,
+      "f1_mean": 0.9108705252182971,
+      "f1_std": 0.017826890184696017,
+      "logloss_mean": 0.21936340879036514,
+      "logloss_std": 0.04252524423677837,
+      "best_iters": [
+        141,
+        114,
+        175,
+        124,
+        125
+      ]
+    },
+    {
+      "num_leaves": 63,
+      "learning_rate": 0.03,
+      "max_depth": 10,
+      "feature_fraction": 0.85,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 30,
+      "f1_mean": 0.9104599433153012,
+      "f1_std": 0.01660009377161652,
+      "logloss_mean": 0.22134586717633123,
+      "logloss_std": 0.04633508102341095,
+      "best_iters": [
+        131,
+        114,
+        144,
+        135,
+        138
+      ]
+    },
+    {
+      "num_leaves": 63,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 30,
+      "f1_mean": 0.9075305186668825,
+      "f1_std": 0.013231771173102884,
+      "logloss_mean": 0.22105347896615699,
+      "logloss_std": 0.04402890130502998,
+      "best_iters": [
+        78,
+        55,
+        83,
+        104,
+        85
+      ]
+    },
+    {
+      "num_leaves": 15,
+      "learning_rate": 0.08,
+      "max_depth": 6,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 3,
+      "min_data_in_leaf": 20,
+      "f1_mean": 0.9069840036748685,
+      "f1_std": 0.017773302684591916,
+      "logloss_mean": 0.22554794649049398,
+      "logloss_std": 0.04869672038732613,
+      "best_iters": [
+        44,
+        33,
+        53,
+        73,
+        54
+      ]
+    },
+    {
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 20,
+      "f1_mean": 0.904520193723639,
+      "f1_std": 0.020269658121889897,
+      "logloss_mean": 0.23112857868855136,
+      "logloss_std": 0.04751896505135641,
+      "best_iters": [
+        55,
+        54,
+        85,
+        67,
+        95
+      ]
+    }
+  ]
+}

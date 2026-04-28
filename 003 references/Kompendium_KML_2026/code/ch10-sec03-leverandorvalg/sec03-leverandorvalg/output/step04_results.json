@@ -1,0 +1,60 @@
+{
+  "ranking": [
+    {
+      "rank": 1,
+      "supplier": "Epsilon",
+      "d_plus": 0.027347,
+      "d_minus": 0.06773,
+      "C": 0.71237
+    },
+    {
+      "rank": 2,
+      "supplier": "Gamma",
+      "d_plus": 0.034361,
+      "d_minus": 0.080004,
+      "C": 0.699546
+    },
+    {
+      "rank": 3,
+      "supplier": "Alfa",
+      "d_plus": 0.031486,
+      "d_minus": 0.058112,
+      "C": 0.648588
+    },
+    {
+      "rank": 4,
+      "supplier": "Delta",
+      "d_plus": 0.043134,
+      "d_minus": 0.044541,
+      "C": 0.50802
+    },
+    {
+      "rank": 5,
+      "supplier": "Beta",
+      "d_plus": 0.061278,
+      "d_minus": 0.033996,
+      "C": 0.356823
+    },
+    {
+      "rank": 6,
+      "supplier": "Zeta",
+      "d_plus": 0.080004,
+      "d_minus": 0.034361,
+      "C": 0.300454
+    }
+  ],
+  "weights": [
+    0.256173,
+    0.412013,
+    0.15243,
+    0.102278,
+    0.077107
+  ],
+  "criteria": [
+    "Pris",
+    "Kvalitet",
+    "Leveringstid",
+    "Fleksibilitet",
+    "Bærekraft"
+  ]
+}

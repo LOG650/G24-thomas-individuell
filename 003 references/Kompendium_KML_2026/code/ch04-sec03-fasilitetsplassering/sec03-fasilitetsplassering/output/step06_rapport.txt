@@ -1,0 +1,15 @@
+ANBEFALING: UFLP for skandinavisk distribusjonsnettverk
+========================================================
+  Totalkostnad:       20.393 MNOK/aar
+   - faste kostnader: 8.700 MNOK (42.7%)
+   - transport:       11.693 MNOK (57.3%)
+  Antall DC aapnes:   3
+  DC-lokasjoner:      Bergen, Oerebro, Umeaa
+  Snittavstand:       218.1 km
+  Maks avstand:       684.4 km
+
+Sensitivitet - faste kostnader skaleres:
+  beta=0.5  ->  5 aapne DC-er
+  beta=1.0  ->  3 aapne DC-er (basis)
+  beta=2.0  ->  3 aapne DC-er
+  beta=3.0  ->  1 aapne DC-er

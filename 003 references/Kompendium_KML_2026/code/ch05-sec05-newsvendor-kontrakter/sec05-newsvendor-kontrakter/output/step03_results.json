@@ -1,0 +1,12 @@
+{
+  "q_chain": 1255.0,
+  "q_retailer": 975.9,
+  "kritisk_forhold_kjede": 0.8462,
+  "kritisk_forhold_retailer": 0.4615,
+  "profitt_retailer_desentralisert": 470947.0,
+  "profitt_supplier_desentralisert": 487930.0,
+  "profitt_kjede_desentralisert": 958877.0,
+  "profitt_kjede_integrert": 1022938.0,
+  "tap_dobbelmarg": 64061.0,
+  "effektivitet": 0.9374
+}

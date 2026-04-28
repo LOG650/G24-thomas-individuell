@@ -1,0 +1,13 @@
+[project]
+name = "robust-opt"
+version = "0.1.0"
+description = "Code for example: Robust network design under demand uncertainty (minimax regret)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pulp>=2.8",
+    "scipy>=1.12",
+]

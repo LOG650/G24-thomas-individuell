@@ -1,0 +1,13 @@
+{
+  "policy": {
+    "1": "recycle",
+    "2": "recycle",
+    "3": "refurbish",
+    "4": "repair",
+    "5": "repair"
+  },
+  "total_ev": 908579.44,
+  "antall_politikker_evaluert": 1024,
+  "verste_policy_ev": -271238.7,
+  "beste_policy_ev": 908579.44
+}

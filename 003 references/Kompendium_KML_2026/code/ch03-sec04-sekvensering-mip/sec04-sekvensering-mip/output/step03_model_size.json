@@ -1,0 +1,16 @@
+{
+  "small": {
+    "n": 6,
+    "binary_y": 42,
+    "continuous": 18,
+    "total_variables": 60,
+    "constraints": 86
+  },
+  "large": {
+    "n": 50,
+    "binary_y": 2550,
+    "continuous": 150,
+    "total_variables": 2700,
+    "constraints": 5102
+  }
+}

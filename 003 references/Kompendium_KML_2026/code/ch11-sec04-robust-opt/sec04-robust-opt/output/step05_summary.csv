@@ -1,0 +1,4 @@
+Strategi,E_kostnad_MNOK,worst_kostnad_MNOK,std_kostnad_MNOK,E_regret_MNOK,maks_regret_MNOK,sum_kapasitet
+Deterministisk,2.744,4.606,0.446,0.3,1.803,8200.0
+Stokastisk,2.609,3.776,0.166,0.164,0.972,8666.8
+Robust,2.763,3.159,0.08,0.318,0.499,9125.7

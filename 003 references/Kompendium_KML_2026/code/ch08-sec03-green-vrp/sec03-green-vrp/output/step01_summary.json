@@ -1,0 +1,20 @@
+{
+  "n_customers": 25,
+  "total_demand_kg": 3727,
+  "mean_demand_kg": 149.1,
+  "max_demand_kg": 234,
+  "min_demand_kg": 63,
+  "vehicle_capacity_kg": 1800.0,
+  "kerb_weight_kg": 2500.0,
+  "emission_alpha_g_per_km": 375.0,
+  "emission_beta_g_per_kgkm": 0.21,
+  "emission_empty_g_per_km": 900.0,
+  "emission_full_g_per_km": 1278.0,
+  "lower_bound_vehicles": 3,
+  "mean_distance_to_depot_km": 4.96,
+  "max_distance_to_depot_km": 8.95,
+  "depot": {
+    "x": 0.0,
+    "y": 0.0
+  }
+}

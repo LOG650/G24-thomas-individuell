@@ -1,0 +1,10 @@
+{
+  "heuristic": "Ratliff-Rosenthal (eksakt)",
+  "n_picklists": 500,
+  "mean_length_m": 235.08,
+  "min_length_m": 131.0,
+  "max_length_m": 297.0,
+  "example_id": 0,
+  "example_k": 15,
+  "example_length_m": 241.0
+}

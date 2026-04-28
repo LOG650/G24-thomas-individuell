@@ -1,0 +1,44 @@
+{
+  "arrival_rate_per_hour": 40.0,
+  "arrival_rate_per_min": 0.6666666666666666,
+  "stations": {
+    "mottak": {
+      "servers": 1,
+      "service_dist": "exponential",
+      "service_mean_min": 1.2,
+      "service_params": {
+        "mean": 1.2
+      },
+      "utilization_theoretical": 0.8
+    },
+    "kvalitetskontroll": {
+      "servers": 1,
+      "service_dist": "lognormal",
+      "service_mean_min": 1.2,
+      "service_params": {
+        "mu": 0.0306,
+        "sigma": 0.55
+      },
+      "utilization_theoretical": 0.8
+    },
+    "pakking": {
+      "servers": 2,
+      "service_dist": "exponential",
+      "service_mean_min": 2.8,
+      "service_params": {
+        "mean": 2.8
+      },
+      "utilization_theoretical": 0.9333
+    },
+    "utsending": {
+      "servers": 1,
+      "service_dist": "uniform",
+      "service_mean_min": 1.1,
+      "service_params": {
+        "low": 0.8,
+        "high": 1.4
+      },
+      "utilization_theoretical": 0.7333
+    }
+  }
+}

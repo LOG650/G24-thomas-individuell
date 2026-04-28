@@ -1,0 +1,109 @@
+{
+  "prognoser": [
+    {
+      "maaned": "2015-01",
+      "maaned_navn": "January 2015",
+      "prognose": 453,
+      "nedre_95": 436,
+      "ovre_95": 470
+    },
+    {
+      "maaned": "2015-02",
+      "maaned_navn": "February 2015",
+      "prognose": 495,
+      "nedre_95": 475,
+      "ovre_95": 516
+    },
+    {
+      "maaned": "2015-03",
+      "maaned_navn": "March 2015",
+      "prognose": 538,
+      "nedre_95": 515,
+      "ovre_95": 562
+    },
+    {
+      "maaned": "2015-04",
+      "maaned_navn": "April 2015",
+      "prognose": 589,
+      "nedre_95": 562,
+      "ovre_95": 616
+    },
+    {
+      "maaned": "2015-05",
+      "maaned_navn": "May 2015",
+      "prognose": 612,
+      "nedre_95": 584,
+      "ovre_95": 642
+    },
+    {
+      "maaned": "2015-06",
+      "maaned_navn": "June 2015",
+      "prognose": 645,
+      "nedre_95": 614,
+      "ovre_95": 678
+    },
+    {
+      "maaned": "2015-07",
+      "maaned_navn": "July 2015",
+      "prognose": 665,
+      "nedre_95": 631,
+      "ovre_95": 700
+    },
+    {
+      "maaned": "2015-08",
+      "maaned_navn": "August 2015",
+      "prognose": 672,
+      "nedre_95": 637,
+      "ovre_95": 709
+    },
+    {
+      "maaned": "2015-09",
+      "maaned_navn": "September 2015",
+      "prognose": 586,
+      "nedre_95": 554,
+      "ovre_95": 619
+    },
+    {
+      "maaned": "2015-10",
+      "maaned_navn": "October 2015",
+      "prognose": 528,
+      "nedre_95": 499,
+      "ovre_95": 558
+    },
+    {
+      "maaned": "2015-11",
+      "maaned_navn": "November 2015",
+      "prognose": 470,
+      "nedre_95": 443,
+      "ovre_95": 498
+    },
+    {
+      "maaned": "2015-12",
+      "maaned_navn": "December 2015",
+      "prognose": 507,
+      "nedre_95": 478,
+      "ovre_95": 539
+    }
+  ],
+  "aarssammendrag": {
+    "aarlig_sum_prognose": 6759,
+    "aarlig_sum_nedre": 6428,
+    "aarlig_sum_ovre": 7107,
+    "gjennomsnittlig_maanedlig": 563,
+    "hoeyeste_maaned": {
+      "maaned": "August",
+      "verdi": 671
+    },
+    "laveste_maaned": {
+      "maaned": "January",
+      "verdi": 452
+    }
+  },
+  "sammenligning_2014": {
+    "salg_2014": 6333,
+    "prognose_2015": 6759,
+    "vekst_prosent": 6.7
+  },
+  "modell": "SARIMA(1,1,1)(0,1,1)[12]",
+  "konfidensnivu": "95%"
+}

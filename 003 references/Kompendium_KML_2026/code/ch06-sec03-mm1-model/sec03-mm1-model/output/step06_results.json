@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "lambda": 8.0,
+    "mu": 12.0,
+    "rho": 0.6667,
+    "Wq_min": 10.0
+  },
+  "servicemaal": {
+    "Wq_maks_min": 5.0,
+    "rho_kritisk": 0.5,
+    "lambda_maks": 6.0,
+    "kommentar": "Ved my = 12.0/time kan ankomstraten maksimalt vaere 6.00/time for aa holde Wq <= 5 min"
+  },
+  "scenario_hoysesong": {
+    "lambda_ny": 9.6,
+    "rho_ny": 0.8,
+    "Wq_min_uten_tiltak": 20.0,
+    "my_kreves": 16.558,
+    "kommentar": "Om lambda oker fra 8.0 til 9.6/time, maa my okes fra 12.0 til minst 16.56/time for aa holde servicemaalet (dvs. raskere betjening eller mer erfaren tollbetjent)."
+  },
+  "generell_regel": "For M/M/1: utnyttelse rho > 0,85 gir eksponentielt voksende ventetid. For rho = 0,90 er Wq = 45 min (my=12); for rho = 0,95 er Wq = 95 min. Operativt maal bor vaere rho <= 0,8-0,85 for aa sikre robusthet mot tilfeldig variasjon."
+}

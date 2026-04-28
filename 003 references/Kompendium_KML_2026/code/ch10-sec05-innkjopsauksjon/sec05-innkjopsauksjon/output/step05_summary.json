@@ -1,0 +1,11 @@
+{
+  "C_upper_NOK": 13353000.0,
+  "baseline_MNOK": 12.789,
+  "alpha_0p50_MNOK": 12.835,
+  "alpha_0p45_MNOK": 12.835,
+  "alpha_0p40_MNOK": 13.083,
+  "alpha_0p35_MNOK": 13.626,
+  "alpha_0p30_status": "Infeasible",
+  "kostnad_div_0p40_MNOK": 0.294,
+  "kostnad_div_0p35_MNOK": 0.837
+}

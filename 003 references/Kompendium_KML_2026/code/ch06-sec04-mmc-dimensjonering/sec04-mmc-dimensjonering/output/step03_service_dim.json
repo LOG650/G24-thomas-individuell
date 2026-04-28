@@ -1,0 +1,50 @@
+{
+  "valg_av_c": {
+    "c_optimal": 3,
+    "a": 0.7999999999999999,
+    "target_prob": 0.05,
+    "t_min": 10.0,
+    "p_wait_gt_t_at_c": 0.017320121428192756,
+    "p_wait_gt_t_at_c_minus_1": 0.1254426596786346
+  },
+  "sensitivitet": [
+    {
+      "t_min": 5.0,
+      "target_prob": 0.1,
+      "c_optimal": 3,
+      "p_wait_at_c": 0.030020152735244835
+    },
+    {
+      "t_min": 10.0,
+      "target_prob": 0.05,
+      "c_optimal": 3,
+      "p_wait_at_c": 0.017320121428192756
+    },
+    {
+      "t_min": 10.0,
+      "target_prob": 0.1,
+      "c_optimal": 3,
+      "p_wait_at_c": 0.017320121428192756
+    },
+    {
+      "t_min": 15.0,
+      "target_prob": 0.05,
+      "c_optimal": 3,
+      "p_wait_at_c": 0.009992840773762815
+    },
+    {
+      "t_min": 20.0,
+      "target_prob": 0.05,
+      "c_optimal": 3,
+      "p_wait_at_c": 0.005765367589584854
+    }
+  ],
+  "ytelse_ved_c_stjerne": {
+    "c_valgt": 3,
+    "rho": 0.26666666666666666,
+    "C_ca": 0.052032520325203245,
+    "Lq": 0.018920916481892088,
+    "Wq_min": 0.4730229120473022,
+    "W_min": 20.4730229120473
+  }
+}

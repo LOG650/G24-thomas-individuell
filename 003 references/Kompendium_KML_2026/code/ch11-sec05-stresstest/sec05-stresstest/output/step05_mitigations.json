@@ -1,0 +1,210 @@
+{
+  "simulation_results": {
+    "Status-quo": {
+      "annual_cost": 0.0,
+      "baseline_cost_mean": 5828963.429202615,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 188925944.4241515,
+          "service_level_mean": 0.5602107556677942
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 93154764.37379155,
+          "service_level_mean": 0.747174970554422
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 145616081.72034198,
+          "service_level_mean": 0.5397290308396611
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 68755502.01482758,
+          "service_level_mean": 0.8292576545552097
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 121835669.13933636,
+          "service_level_mean": 0.5970785076487393
+        }
+      }
+    },
+    "M1-Sikkerhetslager+50%": {
+      "annual_cost": 2850000.0,
+      "baseline_cost_mean": 6319803.284029112,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 185546007.04042974,
+          "service_level_mean": 0.5663572122728332
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 94944536.13052441,
+          "service_level_mean": 0.741766015363211
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 142593377.34144285,
+          "service_level_mean": 0.55084020332109
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 70924852.37489831,
+          "service_level_mean": 0.8244322795817388
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 119654826.06778012,
+          "service_level_mean": 0.6053977751088347
+        }
+      }
+    },
+    "M2-Alternativ-leverandor": {
+      "annual_cost": 1200000.0,
+      "baseline_cost_mean": 6697673.78910788,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 134324198.2901454,
+          "service_level_mean": 0.7194286264530803
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 43051203.37492108,
+          "service_level_mean": 0.8930791744081518
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 41048009.53059676,
+          "service_level_mean": 0.8960114812671583
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 68957262.56726937,
+          "service_level_mean": 0.8301318321661066
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 76641982.4407239,
+          "service_level_mean": 0.7827705571801045
+        }
+      }
+    },
+    "M3-Nearshoring": {
+      "annual_cost": 1432079.9999999998,
+      "baseline_cost_mean": 5828963.429202615,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 186459991.75049075,
+          "service_level_mean": 0.5670790673854553
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 86937736.00734058,
+          "service_level_mean": 0.7635115349528591
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 28171119.760443177,
+          "service_level_mean": 0.9315417169531427
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 68755502.01482758,
+          "service_level_mean": 0.8292576545552097
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 121545393.10153326,
+          "service_level_mean": 0.598269461983834
+        }
+      }
+    },
+    "M4-Dual-sourcing": {
+      "annual_cost": 707200.0000000001,
+      "baseline_cost_mean": 5828963.429202615,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 187894998.8317686,
+          "service_level_mean": 0.565673528084288
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 91326174.78539602,
+          "service_level_mean": 0.7535167957366918
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 54163332.199796505,
+          "service_level_mean": 0.8556601947319058
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 68755502.01482758,
+          "service_level_mean": 0.8292576545552097
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 118039393.18594365,
+          "service_level_mean": 0.6161056275100724
+        }
+      }
+    },
+    "M5-Fleksibel-fabrikk": {
+      "annual_cost": 2000000.0,
+      "baseline_cost_mean": 5828963.429202615,
+      "scenario_results": {
+        "S1-Pandemi": {
+          "cost_mean": 187991347.8051103,
+          "service_level_mean": 0.560133159541223
+        },
+        "S2-Havneblokkade": {
+          "cost_mean": 93284043.7079067,
+          "service_level_mean": 0.7452209019212462
+        },
+        "S3-Leverandorkonkurs": {
+          "cost_mean": 145666110.704373,
+          "service_level_mean": 0.5397290308396611
+        },
+        "S4-Naturkatastrofe": {
+          "cost_mean": 49495572.64348812,
+          "service_level_mean": 0.8798737115365914
+        },
+        "S5-Cyberangrep": {
+          "cost_mean": 121102684.81313306,
+          "service_level_mean": 0.5974765937332258
+        }
+      }
+    }
+  },
+  "cost_benefit": [
+    {
+      "mitigation": "Status-quo",
+      "annual_impl_cost": 0.0,
+      "expected_total_cost": 74768169.20498498,
+      "risk_reduction": 0.0,
+      "net_benefit": 0.0,
+      "cost_benefit_ratio": Infinity
+    },
+    {
+      "mitigation": "M1-Sikkerhetslager+50%",
+      "annual_impl_cost": 2850000.0,
+      "expected_total_cost": 74335276.52253023,
+      "risk_reduction": 432892.68245474994,
+      "net_benefit": -2417107.31754525,
+      "cost_benefit_ratio": 0.1518921692823684
+    },
+    {
+      "mitigation": "M2-Alternativ-leverandor",
+      "annual_impl_cost": 1200000.0,
+      "expected_total_cost": 44763223.705634,
+      "risk_reduction": 30004945.49935098,
+      "net_benefit": 28804945.49935098,
+      "cost_benefit_ratio": 25.00412124945915
+    },
+    {
+      "mitigation": "M3-Nearshoring",
+      "annual_impl_cost": 1432079.9999999998,
+      "expected_total_cost": 64135367.51829875,
+      "risk_reduction": 10632801.686686225,
+      "net_benefit": 9200721.686686225,
+      "cost_benefit_ratio": 7.42472605349298
+    },
+    {
+      "mitigation": "M4-Dual-sourcing",
+      "annual_impl_cost": 707200.0000000001,
+      "expected_total_cost": 66315311.055165194,
+      "risk_reduction": 8452858.149819784,
+      "net_benefit": 7745658.149819784,
+      "cost_benefit_ratio": 11.952570913206706
+    },
+    {
+      "mitigation": "M5-Fleksibel-fabrikk",
+      "annual_impl_cost": 2000000.0,
+      "expected_total_cost": 73588510.42811298,
+      "risk_reduction": 1179658.7768719941,
+      "net_benefit": -820341.2231280059,
+      "cost_benefit_ratio": 0.5898293884359971
+    }
+  ]
+}

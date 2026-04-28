@@ -1,0 +1,9 @@
+{
+  "antall_produkter": 10,
+  "total_ukentlig_etterspørsel": 2140.9,
+  "gjennomsnittlig_leveringstid_uker": 2.19,
+  "gjennomsnittlig_enhetspris_NOK": 1211.8,
+  "gjennomsnittlig_bestillingskost_NOK": 787.5,
+  "total_lagerverdi_uten_styring_NOK": 5388991.0,
+  "total_volum_per_uke_m3": 86.59
+}

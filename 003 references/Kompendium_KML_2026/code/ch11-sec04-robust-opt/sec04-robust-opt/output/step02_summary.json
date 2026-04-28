@@ -1,0 +1,16 @@
+{
+  "obj_NOK": 2451997.0,
+  "obj_MNOK": 2.452,
+  "fixed_cost_MNOK": 1.964,
+  "transport_cost_MNOK": 0.488,
+  "penalty_cost_MNOK": 0.0,
+  "sum_z": 8200.0,
+  "sum_d_bar": 8200.0,
+  "antall_apne": 4,
+  "z_per_lager": {
+    "Stavanger": 3500.0,
+    "Tromsoe": 260.0,
+    "Rotterdam": 1380.0,
+    "Singapore": 3060.0
+  }
+}

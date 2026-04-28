@@ -1,0 +1,21 @@
+{
+  "antall_enheter": 800,
+  "antall_merker": 4,
+  "gjennomsnittlig_tilstand": 3.02,
+  "median_tilstand": 3,
+  "gjennomsnittlig_alder_mnd": 20.0,
+  "gjennomsnittlig_nypris_nok": 4769.0,
+  "tilstandsfordeling": {
+    "1": 79,
+    "2": 190,
+    "3": 255,
+    "4": 184,
+    "5": 92
+  },
+  "merkefordeling": {
+    "NordicTech": 308,
+    "ElektroNor": 213,
+    "ViksTek": 178,
+    "FjordLine": 101
+  }
+}

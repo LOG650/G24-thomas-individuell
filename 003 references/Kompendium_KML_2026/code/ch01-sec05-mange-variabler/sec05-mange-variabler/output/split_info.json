@@ -1,0 +1,40 @@
+{
+  "t_max": 731,
+  "train_end": 611,
+  "val_start": 612,
+  "val_end": 671,
+  "test_start": 672,
+  "train_rader": 30550,
+  "val_rader": 3000,
+  "test_rader": 3000,
+  "folds": [
+    {
+      "fold": 1,
+      "train_start": 1,
+      "train_end": 400,
+      "val_start": 401,
+      "val_end": 430
+    },
+    {
+      "fold": 2,
+      "train_start": 1,
+      "train_end": 430,
+      "val_start": 431,
+      "val_end": 460
+    },
+    {
+      "fold": 3,
+      "train_start": 1,
+      "train_end": 460,
+      "val_start": 461,
+      "val_end": 490
+    },
+    {
+      "fold": 4,
+      "train_start": 1,
+      "train_end": 490,
+      "val_start": 491,
+      "val_end": 520
+    }
+  ]
+}

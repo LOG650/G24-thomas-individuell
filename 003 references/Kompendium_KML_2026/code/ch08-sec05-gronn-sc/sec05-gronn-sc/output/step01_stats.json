@@ -1,0 +1,9 @@
+{
+  "n_dc": 6,
+  "n_customers": 50,
+  "n_modes": 3,
+  "n_scenarios": 20,
+  "mean_demand_per_sc": 6728.0,
+  "std_demand_per_sc": 188.0573820602861,
+  "avg_dist_km": 479.446
+}

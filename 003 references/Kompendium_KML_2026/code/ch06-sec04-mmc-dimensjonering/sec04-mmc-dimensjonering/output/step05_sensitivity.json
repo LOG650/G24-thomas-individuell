@@ -1,0 +1,47 @@
+[
+  {
+    "scenario": "Lavseesong",
+    "lambda": 1.68,
+    "rho_ved_c1": 0.56,
+    "c_service": 3,
+    "c_kostnad": 2,
+    "Wq_min_service": 0.17,
+    "Wq_min_kost": 1.7
+  },
+  {
+    "scenario": "Skuldersesong",
+    "lambda": 2.16,
+    "rho_ved_c1": 0.72,
+    "c_service": 3,
+    "c_kostnad": 2,
+    "Wq_min_service": 0.35,
+    "Wq_min_kost": 2.98
+  },
+  {
+    "scenario": "Normal",
+    "lambda": 2.4,
+    "rho_ved_c1": 0.8,
+    "c_service": 3,
+    "c_kostnad": 2,
+    "Wq_min_service": 0.47,
+    "Wq_min_kost": 3.81
+  },
+  {
+    "scenario": "Travelt",
+    "lambda": 2.88,
+    "rho_ved_c1": 0.96,
+    "c_service": 3,
+    "c_kostnad": 2,
+    "Wq_min_service": 0.81,
+    "Wq_min_kost": 5.99
+  },
+  {
+    "scenario": "Topp",
+    "lambda": 3.12,
+    "rho_ved_c1": 1.04,
+    "c_service": 3,
+    "c_kostnad": 2,
+    "Wq_min_service": 1.02,
+    "Wq_min_kost": 7.41
+  }
+]

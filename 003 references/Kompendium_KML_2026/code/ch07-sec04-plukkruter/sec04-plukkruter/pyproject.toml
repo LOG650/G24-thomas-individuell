@@ -1,0 +1,13 @@
+[project]
+name = "plukkruter"
+version = "0.1.0"
+description = "Code for example: Plukkruteoptimering (TSP-heuristikker og Ratliff-Rosenthal)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8.0",
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "networkx>=3.2",
+    "scipy>=1.11.0",
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "carbon_price": 0,
+    "total_cost": 1200542.4358728123,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 25,
+    "total_cost": 1206167.7812277647,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 50,
+    "total_cost": 1211793.1265827173,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 75,
+    "total_cost": 1217418.4719376685,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 100,
+    "total_cost": 1223043.8172926204,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 125,
+    "total_cost": 1228669.1626475763,
+    "emission_kg": 225013.8141981108,
+    "service": 2368567.4162301105,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 1.0,
+    "share_rail": 0.0,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 6651.374999924749,
+      "rail": 0.0,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 150,
+    "total_cost": 1232779.777909418,
+    "emission_kg": 59546.27441202266,
+    "service": 3067731.4074741476,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 0.06801225310633034,
+    "share_rail": 0.9319877468936697,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 452.375,
+      "rail": 6198.999999924749,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 200,
+    "total_cost": 1235757.0916300192,
+    "emission_kg": 59546.27441202266,
+    "service": 3067731.4074741476,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 0.06801225310633034,
+    "share_rail": 0.9319877468936697,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 452.375,
+      "rail": 6198.999999924749,
+      "ship": 0.0
+    }
+  },
+  {
+    "carbon_price": 250,
+    "total_cost": 1238734.4053506192,
+    "emission_kg": 59546.27441202266,
+    "service": 3067731.4074741476,
+    "opened": [
+      "Oslo",
+      "Trondheim"
+    ],
+    "share_truck": 0.06801225310633034,
+    "share_rail": 0.9319877468936697,
+    "share_ship": 0.0,
+    "modal_volume": {
+      "truck": 452.375,
+      "rail": 6198.999999924749,
+      "ship": 0.0
+    }
+  }
+]

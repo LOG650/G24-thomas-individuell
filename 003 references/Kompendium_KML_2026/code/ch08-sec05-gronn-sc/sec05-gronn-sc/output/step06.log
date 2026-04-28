@@ -1,0 +1,19 @@
+============================================================
+STEG 6: Anbefaling og 3D Pareto
+============================================================
+Bruker 8 scenarier for 3D-punktsky
+
+>> service <= 2.15 Mkm, emission <= 94.6 tonn ...
+
+>> service <= 2.15 Mkm, emission <= 156.3 tonn ...
+
+>> service <= 3.19 Mkm, emission <= 94.6 tonn ...
+
+>> service <= 3.19 Mkm, emission <= 156.3 tonn ...
+Figur lagret: C:\Pytagoras\kvantitative-metoder-i-logistikk_COMP_NO\code\ch08-barekraftig-logistikk\sec05-gronn-sc\output\gronnsc_pareto_3d.png
+
+ANBEFALING (knee-point, minste normalisert avstand til utopi):
+  Kost:     1,622,778 EUR/ar (1.62 MEUR)
+  Utslipp:  94.6 tonn CO2/ar
+  Service:  2.05 Mkm
+  Apne DC:  ['Oslo', 'Malmo', 'Trondheim']

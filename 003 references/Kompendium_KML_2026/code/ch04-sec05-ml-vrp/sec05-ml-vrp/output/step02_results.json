@@ -1,0 +1,13 @@
+{
+  "n_feature_channels": 4,
+  "feature_names": [
+    "x",
+    "y",
+    "demand/capacity",
+    "is_depot"
+  ],
+  "max_tour_length": 10,
+  "min_tour_length": 6,
+  "avg_tour_length": 7.435,
+  "vocab_size": 8
+}

@@ -1,0 +1,7 @@
+IS_id,IS_navn,GV_id,GV_navn,volum_tonn,avstand_km
+IS02,Drammen,GV01,Grenland,2000.0,73.9
+IS03,Kristiansand,GV01,Grenland,1800.0,146.2
+IS04,Stavanger,GV01,Grenland,2200.0,224.7
+IS07,Boedoe,GV02,Mo i Rana,1032.0,108.0
+IS08,Hamar,GV01,Grenland,1500.0,200.1
+IS08,Hamar,GV02,Mo i Rana,100.0,632.1

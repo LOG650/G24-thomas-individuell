@@ -1,0 +1,26 @@
+{
+  "small": {
+    "n_jobs": 6,
+    "total_processing_time": 17.05,
+    "mean_p": 2.84,
+    "mean_d": 13.14,
+    "weights_dist": {
+      "2": 3,
+      "1": 2,
+      "5": 1
+    },
+    "mean_setup": 0.745
+  },
+  "large": {
+    "n_jobs": 50,
+    "total_processing_time": 152.49,
+    "mean_p": 3.05,
+    "mean_d": 116.87,
+    "weights_dist": {
+      "2": 22,
+      "1": 15,
+      "5": 13
+    },
+    "mean_setup": 0.881
+  }
+}

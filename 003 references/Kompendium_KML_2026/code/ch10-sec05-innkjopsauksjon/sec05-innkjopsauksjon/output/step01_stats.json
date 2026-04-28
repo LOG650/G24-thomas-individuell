@@ -1,0 +1,9 @@
+{
+  "antall_kategorier": 8,
+  "antall_leverandoerer": 4,
+  "antall_enkeltbud": 18,
+  "antall_bundler": 6,
+  "antall_bundle_linjer": 20,
+  "antall_kat_uten_alle_leverandoerer": 8,
+  "total_etterspurt_linjer": 8
+}

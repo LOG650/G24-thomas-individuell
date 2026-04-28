@@ -1,0 +1,40 @@
+{
+  "holdout_months": 6,
+  "train_beta": 2.207,
+  "train_eta": 18.0637,
+  "mae": 11.795,
+  "rmse": 13.614,
+  "mape_pct": 1.018,
+  "per_month": [
+    {
+      "t": 43,
+      "observert": 1150,
+      "prediksjon": 1131.9
+    },
+    {
+      "t": 44,
+      "observert": 1128,
+      "prediksjon": 1139.9
+    },
+    {
+      "t": 45,
+      "observert": 1174,
+      "prediksjon": 1151.8
+    },
+    {
+      "t": 46,
+      "observert": 1158,
+      "prediksjon": 1165.1
+    },
+    {
+      "t": 47,
+      "observert": 1170,
+      "prediksjon": 1179.7
+    },
+    {
+      "t": 48,
+      "observert": 1200,
+      "prediksjon": 1198.3
+    }
+  ]
+}

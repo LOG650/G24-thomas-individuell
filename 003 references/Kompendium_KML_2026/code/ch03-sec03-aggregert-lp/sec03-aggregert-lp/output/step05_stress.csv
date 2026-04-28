@@ -1,0 +1,8 @@
+scenario,detalj,obj,rel_endr_%
+Baseline (LP),Original etterspoersel og kapasitet,11414800.0,0.0
+Chase (heuristikk),Produser per mnd uten lageroppbygging,16656000.0,45.92
+Etterspoersel x 0.90,Likeverdig skalering alle maaneder,10156600.0,-11.02
+Etterspoersel x 1.10,Likeverdig skalering alle maaneder,12734600.0,11.56
+Kapasitet: alpha = 3,Produktiviteten reduseres med 25 %,11905600.0,4.3
+Kapasitet: alpha = 5,Produktiviteten oekes med 25 %,11296000.0,-1.04
+Overtid: $O_{max}$ = 20,Halvert overtidskapasitet,11414800.0,0.0

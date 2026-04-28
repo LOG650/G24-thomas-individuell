@@ -1,0 +1,23 @@
+{
+  "status": "Optimal",
+  "obj_NOK": 20393221.87,
+  "obj_MNOK": 20.393,
+  "fixed_cost_NOK": 8700000.0,
+  "transport_cost_NOK": 11693221.87,
+  "andel_fast": 42.66,
+  "andel_transport": 57.34,
+  "antall_aapne_DC": 3,
+  "aapne_DC_ids": [
+    "DC05",
+    "DC13",
+    "DC15"
+  ],
+  "aapne_DC_navn": [
+    "Bergen",
+    "Oerebro",
+    "Umeaa"
+  ],
+  "solve_time_s": 0.458,
+  "snitt_avstand_km": 218.1,
+  "maks_avstand_km": 684.4
+}

@@ -1,0 +1,16 @@
+{
+  "antall_skuer": 2500,
+  "antall_dager": 730,
+  "antall_kategorier": 8,
+  "antall_transaksjonsrader": 1825000,
+  "klassefordeling": {
+    "kontinuerlig": 495,
+    "periodisk": 1296,
+    "make_to_order": 709
+  },
+  "gj_salg_daglig": 7.826,
+  "maks_salg_daglig": 1687,
+  "andel_nulldager": 0.265,
+  "gj_pris": 402.98,
+  "median_leveringstid": 11.2
+}

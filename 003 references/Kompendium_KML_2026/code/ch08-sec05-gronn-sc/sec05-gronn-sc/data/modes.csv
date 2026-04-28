@@ -1,0 +1,4 @@
+mode,cost_per_tkm,emis_per_tkm,service_factor
+truck,0.11,0.095,1.0
+rail,0.12,0.024,1.3
+ship,0.13,0.016,1.8

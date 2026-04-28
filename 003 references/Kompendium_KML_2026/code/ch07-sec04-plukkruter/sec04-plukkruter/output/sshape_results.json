@@ -1,0 +1,10 @@
+{
+  "heuristic": "S-shape",
+  "n_picklists": 500,
+  "mean_length_m": 275.52,
+  "min_length_m": 169.0,
+  "max_length_m": 305.0,
+  "example_id": 0,
+  "example_k": 15,
+  "example_length_m": 263.0
+}

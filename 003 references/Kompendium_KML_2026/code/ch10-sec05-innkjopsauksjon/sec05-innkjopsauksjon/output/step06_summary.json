@@ -1,0 +1,27 @@
+{
+  "baseline_MNOK": 12.789,
+  "scen_A_MNOK": 12.889,
+  "scen_B_MNOK": 12.541,
+  "endring_A_MNOK": 0.1,
+  "endring_A_pct": 0.78,
+  "endring_B_MNOK": -0.248,
+  "endring_B_pct": -1.94,
+  "valgte_bud_baseline": [
+    "E_L2_C6",
+    "B1",
+    "B2",
+    "B4"
+  ],
+  "valgte_bud_A": [
+    "E_L2_C6",
+    "E_L4_C7",
+    "E_L4_C8",
+    "B1",
+    "B2"
+  ],
+  "valgte_bud_B": [
+    "B1",
+    "B4",
+    "B7"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "rad_indeks": 1850,
+  "base_value": 82.84398509962125,
+  "prediksjon": 398.75291707808606,
+  "topp_bidrag": [
+    {
+      "feature": "sku_ukedag_mean_4uk",
+      "verdi": 203.75,
+      "bidrag": 71.95975693651165
+    },
+    {
+      "feature": "pris_endring_1d",
+      "verdi": -0.28995185587824196,
+      "bidrag": 35.779507183516486
+    },
+    {
+      "feature": "salg_lag_7",
+      "verdi": 253.0,
+      "bidrag": 32.624529299339194
+    },
+    {
+      "feature": "rabatt_pct",
+      "verdi": 29.0,
+      "bidrag": 28.93237877308785
+    },
+    {
+      "feature": "rel_pris",
+      "verdi": 0.710048144121758,
+      "bidrag": 21.783892200490918
+    },
+    {
+      "feature": "sku_id_kode",
+      "verdi": 30.0,
+      "bidrag": 18.809646436108782
+    },
+    {
+      "feature": "kat_mean_lag_7",
+      "verdi": 264.8333333333333,
+      "bidrag": 16.788677097759553
+    },
+    {
+      "feature": "salg_lag_1",
+      "verdi": 195.0,
+      "bidrag": 13.683585041002232
+    },
+    {
+      "feature": "kat_mean_lag_1",
+      "verdi": 196.66666666666666,
+      "bidrag": 10.470981008711421
+    },
+    {
+      "feature": "prisendring",
+      "verdi": 0.289951855878242,
+      "bidrag": 9.500437305648417
+    }
+  ]
+}

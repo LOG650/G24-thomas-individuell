@@ -1,0 +1,70 @@
+{
+  "small_N15": [
+    {
+      "method": "MIP (CBC)",
+      "wtard": 7.97,
+      "makespan": 19.78,
+      "num_tardy": 1,
+      "solve_time_s": 19.674,
+      "gap_pct": 0.0
+    },
+    {
+      "method": "ATC",
+      "wtard": 10.2,
+      "makespan": 22.01,
+      "num_tardy": 1,
+      "solve_time_s": 0.0,
+      "gap_pct": 27.98
+    },
+    {
+      "method": "EDD",
+      "wtard": 27.66,
+      "makespan": 22.27,
+      "num_tardy": 4,
+      "solve_time_s": 0.0,
+      "gap_pct": 247.05
+    },
+    {
+      "method": "SPT",
+      "wtard": 23.55,
+      "makespan": 21.2,
+      "num_tardy": 2,
+      "solve_time_s": 0.0,
+      "gap_pct": 195.48
+    }
+  ],
+  "large_N50": [
+    {
+      "method": "SA (metaheur.)",
+      "wtard": 85.96,
+      "makespan": 174.2,
+      "num_tardy": 3,
+      "solve_time_s": 22.951,
+      "gap_pct": 0.0
+    },
+    {
+      "method": "ATC",
+      "wtard": 329.22,
+      "makespan": 195.05,
+      "num_tardy": 10,
+      "solve_time_s": 0.0,
+      "gap_pct": 282.99
+    },
+    {
+      "method": "EDD",
+      "wtard": 760.51,
+      "makespan": 198.88,
+      "num_tardy": 16,
+      "solve_time_s": 0.0,
+      "gap_pct": 784.73
+    },
+    {
+      "method": "SPT",
+      "wtard": 1056.44,
+      "makespan": 193.69,
+      "num_tardy": 15,
+      "solve_time_s": 0.0,
+      "gap_pct": 1128.99
+    }
+  ]
+}

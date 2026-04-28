@@ -1,0 +1,45 @@
+{
+  "status": "Optimal",
+  "obj_NOK": 53761975.14,
+  "obj_MNOK": 53.762,
+  "fixed_is_NOK": 10600000.0,
+  "fixed_gv_NOK": 15400000.0,
+  "trans_l1_NOK": 3555691.95,
+  "trans_l2_NOK": 3036683.2,
+  "proc_NOK": 21169600.0,
+  "fixed_is_MNOK": 10.6,
+  "fixed_gv_MNOK": 15.4,
+  "trans_l1_MNOK": 3.556,
+  "trans_l2_MNOK": 3.037,
+  "proc_MNOK": 21.17,
+  "antall_aapne_IS": 5,
+  "aapne_IS_ids": [
+    "IS02",
+    "IS03",
+    "IS04",
+    "IS07",
+    "IS08"
+  ],
+  "aapne_IS_navn": [
+    "Drammen",
+    "Kristiansand",
+    "Stavanger",
+    "Boedoe",
+    "Hamar"
+  ],
+  "antall_aapne_GV": 2,
+  "aapne_GV_ids": [
+    "GV01",
+    "GV02"
+  ],
+  "aapne_GV_navn": [
+    "Grenland",
+    "Mo i Rana"
+  ],
+  "solve_time_s": 1.002,
+  "snitt_avstand_l1_km": 114.7,
+  "maks_avstand_l1_km": 427.9,
+  "snitt_avstand_l2_km": 230.8,
+  "maks_avstand_l2_km": 632.1,
+  "total_retur_tonn": 8632
+}

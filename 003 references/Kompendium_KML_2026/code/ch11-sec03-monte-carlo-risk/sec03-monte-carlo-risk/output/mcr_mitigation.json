@@ -1,0 +1,89 @@
+{
+  "strategies": [
+    {
+      "name": "Baseline",
+      "overrides": {},
+      "metrics": {
+        "alpha": 0.95,
+        "n_runs": 6000,
+        "mean": 265902.0,
+        "std": 214055.0,
+        "min": 57836.0,
+        "max": 1736552.0,
+        "q05": 81919.0,
+        "q25": 100815.0,
+        "median": 146694.0,
+        "q75": 391159.0,
+        "q95": 689463.0,
+        "VaR_0_95": 689463.0,
+        "CVaR_0_95": 853105.0
+      }
+    },
+    {
+      "name": "Hoyere sikkerhetslager",
+      "overrides": {
+        "safety_stock_units": 800
+      },
+      "metrics": {
+        "alpha": 0.95,
+        "n_runs": 6000,
+        "mean": 259792.0,
+        "std": 190801.0,
+        "min": 79809.0,
+        "max": 1428749.0,
+        "q05": 104168.0,
+        "q25": 121032.0,
+        "median": 139682.0,
+        "q75": 395977.0,
+        "q95": 656120.0,
+        "VaR_0_95": 656120.0,
+        "CVaR_0_95": 784862.0
+      }
+    },
+    {
+      "name": "Dobbel sourcing",
+      "overrides": {
+        "supplier_fail_prob": 0.02,
+        "cost_expedite": 500.0
+      },
+      "metrics": {
+        "alpha": 0.95,
+        "n_runs": 6000,
+        "mean": 161094.0,
+        "std": 122032.0,
+        "min": 53336.0,
+        "max": 1340049.0,
+        "q05": 79440.0,
+        "q25": 94028.0,
+        "median": 108031.0,
+        "q75": 171001.0,
+        "q95": 409846.0,
+        "VaR_0_95": 409846.0,
+        "CVaR_0_95": 543628.0
+      }
+    },
+    {
+      "name": "Kombinert tiltak",
+      "overrides": {
+        "safety_stock_units": 800,
+        "supplier_fail_prob": 0.02,
+        "cost_expedite": 500.0
+      },
+      "metrics": {
+        "alpha": 0.95,
+        "n_runs": 6000,
+        "mean": 157598.0,
+        "std": 89806.0,
+        "min": 73355.0,
+        "max": 874228.0,
+        "q05": 101251.0,
+        "q25": 115632.0,
+        "median": 126765.0,
+        "q75": 142128.0,
+        "q95": 373987.0,
+        "VaR_0_95": 373987.0,
+        "CVaR_0_95": 449489.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "modell": "SARIMA(1, 1, 1)(0, 1, 1, 12)",
+  "koeffisienter": {
+    "ar.L1": {
+      "symbol": "phi_1",
+      "beskrivelse": "AR(1) koeffisient",
+      "estimat": 0.107,
+      "standardfeil": 0.097,
+      "z_verdi": 1.1029,
+      "p_verdi": 0.270084,
+      "signifikant": false
+    },
+    "ma.L1": {
+      "symbol": "theta_1",
+      "beskrivelse": "MA(1) koeffisient",
+      "estimat": -0.6803,
+      "standardfeil": 0.0896,
+      "z_verdi": -7.5941,
+      "p_verdi": 0.0,
+      "signifikant": true
+    },
+    "ma.S.L12": {
+      "symbol": "Theta_1",
+      "beskrivelse": "Sesong-MA(1) koeffisient",
+      "estimat": -0.4066,
+      "standardfeil": 0.0744,
+      "z_verdi": -5.4677,
+      "p_verdi": 0.0,
+      "signifikant": true
+    },
+    "sigma2": {
+      "symbol": "sigma^2",
+      "beskrivelse": "Residualvarians",
+      "estimat": 0.0004,
+      "standardfeil": 0.0,
+      "z_verdi": 10.3924,
+      "p_verdi": 0.0,
+      "signifikant": true
+    }
+  },
+  "tilpasning": {
+    "aic": -581.66,
+    "bic": -570.61,
+    "log_likelihood": 294.83,
+    "n_observasjoner": 144,
+    "n_parametere": 4
+  },
+  "beskrivelse": {
+    "metode": "Maximum Likelihood Estimation (MLE)",
+    "optimizer": "L-BFGS-B",
+    "log_transformasjon": true
+  }
+}

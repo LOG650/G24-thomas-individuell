@@ -1,0 +1,23 @@
+
+Aggregert produksjonsplanlegging (LP)
+-------------------------------------
+Beslutningsvariabler (for t = 1, ..., T):
+  P_t  = ordinaer produksjon i maaned t         [baater]
+  O_t  = overtidsproduksjon i maaned t          [baater]
+  I_t  = lagerbeholdning ved slutten av mnd t   [baater]
+  H_t  = antall ansatte som rekrutteres i mnd t [ansatte]
+  F_t  = antall ansatte som sies opp i mnd t    [ansatte]
+  W_t  = arbeidsstyrke ved slutten av mnd t     [ansatte]
+
+Objekt:
+  min  sum_t ( c_P * P_t + c_O * O_t + c_I * I_t
+             + c_H * H_t + c_F * F_t )
+
+Skranker:
+  (1) Lagerbalanse:     I_t = I_{t-1} + P_t + O_t - D_t        (t = 1..T)
+  (2) Arbeidsbalanse:   W_t = W_{t-1} + H_t - F_t              (t = 1..T)
+  (3) Produktivitet:    P_t <= alpha * W_t                     (t = 1..T)
+  (4) Overtidskapasit:  O_t <= O_max                           (t = 1..T)
+  (5) Ikke-negativ:     P_t, O_t, I_t, H_t, F_t, W_t >= 0      (t = 1..T)
+
+Startbetingelser: I_0, W_0 er gitt fra data.

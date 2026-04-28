@@ -1,0 +1,65 @@
+[
+  {
+    "alpha": 0.0,
+    "E_NOK": 2451997.0,
+    "worst_NOK": 2451997.0,
+    "E_MNOK": 2.452,
+    "worst_MNOK": 2.452,
+    "std_MNOK": 0.0,
+    "sum_z": 8200.0
+  },
+  {
+    "alpha": 0.25,
+    "E_NOK": 2543884.44,
+    "worst_NOK": 2594519.06,
+    "E_MNOK": 2.544,
+    "worst_MNOK": 2.595,
+    "std_MNOK": 0.02,
+    "sum_z": 8511.7
+  },
+  {
+    "alpha": 0.5,
+    "E_NOK": 2634832.82,
+    "worst_NOK": 2737515.67,
+    "E_MNOK": 2.635,
+    "worst_MNOK": 2.738,
+    "std_MNOK": 0.039,
+    "sum_z": 8822.5
+  },
+  {
+    "alpha": 0.75,
+    "E_NOK": 2724820.25,
+    "worst_NOK": 2883099.69,
+    "E_MNOK": 2.725,
+    "worst_MNOK": 2.883,
+    "std_MNOK": 0.059,
+    "sum_z": 9132.5
+  },
+  {
+    "alpha": 1.0,
+    "E_NOK": 2815739.67,
+    "worst_NOK": 3028442.55,
+    "E_MNOK": 2.816,
+    "worst_MNOK": 3.028,
+    "std_MNOK": 0.08,
+    "sum_z": 9443.2
+  },
+  {
+    "alpha": 1.25,
+    "E_NOK": 2899426.81,
+    "worst_NOK": 3175684.33,
+    "E_MNOK": 2.899,
+    "worst_MNOK": 3.176,
+    "std_MNOK": 0.098,
+    "sum_z": 9747.3
+  },
+  {
+    "alpha": 1.5,
+    "E_NOK": 2976022.44,
+    "worst_NOK": 3322765.35,
+    "E_MNOK": 2.976,
+    "worst_MNOK": 3.323,
+    "std_MNOK": 0.113,
+    "sum_z": 10043.4
+  }
+]

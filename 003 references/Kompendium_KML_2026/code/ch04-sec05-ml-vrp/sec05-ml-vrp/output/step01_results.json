@@ -1,0 +1,14 @@
+{
+  "n_train": 1200,
+  "n_eval": 200,
+  "n_customers_min": 5,
+  "n_customers_max": 7,
+  "capacity": 30,
+  "demand_min": 1,
+  "demand_max": 9,
+  "train_gen_time_s": 135.5,
+  "eval_gen_time_s": 22.93,
+  "avg_customers_train": 5.9925,
+  "avg_routes_train": 1.4425,
+  "avg_optimal_distance": 2.4668744394796054
+}

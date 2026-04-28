@@ -1,0 +1,19 @@
+============================================================
+STEG 4: Scenario-reduksjon
+============================================================
+
+Genererer 300 full-scenarier fra normalfordeling...
+Scenario-matrise: (300, 50)
+Kjorer fast-forward-reduksjon til 10 scenarier...
+  Valgte scenario-indekser: [143, 132, 147, 39, 164, 244, 0, 263, 165, 111]
+  Vekter: [0.12   0.1233 0.0933 0.1133 0.08   0.11   0.0867 0.11   0.1    0.0633]
+  Total vekt: 1.000000
+
+Loser MIP pa redusert scenariosett (10 scenarier)...
+  Redusert: cost=1,200,041 EUR, emis=224.6 tonn, tid=21.1s
+
+Loser MIP pa middelstort scenariosett (15 scenarier som 'full' baseline)...
+  Baseline: cost=1,200,465 EUR, emis=224.9 tonn, tid=50.4s
+
+ GAP: cost -0.04%, emis -0.16%, speedup x2.4
+Figur lagret: C:\Pytagoras\kvantitative-metoder-i-logistikk_COMP_NO\code\ch08-barekraftig-logistikk\sec05-gronn-sc\output\gronnsc_scenario_reduction.png

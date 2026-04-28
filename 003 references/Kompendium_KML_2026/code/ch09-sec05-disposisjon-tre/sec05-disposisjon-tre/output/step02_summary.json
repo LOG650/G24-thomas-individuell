@@ -1,0 +1,22 @@
+{
+  "repair": {
+    "mean_ev": 634.35,
+    "median_ev": 401.31,
+    "andel_valgt": 0.2625
+  },
+  "refurbish": {
+    "mean_ev": 950.12,
+    "median_ev": 884.48,
+    "andel_valgt": 0.495
+  },
+  "recycle": {
+    "mean_ev": 253.89,
+    "median_ev": 256.32,
+    "andel_valgt": 0.2425
+  },
+  "dispose": {
+    "mean_ev": -180.0,
+    "median_ev": -180.0,
+    "andel_valgt": 0.0
+  }
+}

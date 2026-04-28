@@ -1,0 +1,13 @@
+[project]
+name = "disposisjon-tre"
+version = "0.1.0"
+description = "Disposisjonsbeslutning for returnerte produkter med forventet-verdi-analyse og beslutningstre"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+]

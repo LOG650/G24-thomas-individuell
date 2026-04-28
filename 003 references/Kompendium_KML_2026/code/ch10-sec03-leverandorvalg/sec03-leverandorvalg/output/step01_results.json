@@ -1,0 +1,142 @@
+{
+  "suppliers": [
+    "Alfa",
+    "Beta",
+    "Gamma",
+    "Delta",
+    "Epsilon",
+    "Zeta"
+  ],
+  "criteria": [
+    "Pris",
+    "Kvalitet",
+    "Leveringstid",
+    "Fleksibilitet",
+    "Bærekraft"
+  ],
+  "criterion_types": {
+    "Pris": "cost",
+    "Kvalitet": "benefit",
+    "Leveringstid": "cost",
+    "Fleksibilitet": "benefit",
+    "Bærekraft": "benefit"
+  },
+  "performance": {
+    "Alfa": {
+      "Pris": 185.0,
+      "Kvalitet": 8.2,
+      "Leveringstid": 14.0,
+      "Fleksibilitet": 7.0,
+      "Bærekraft": 8.5
+    },
+    "Beta": {
+      "Pris": 165.0,
+      "Kvalitet": 7.0,
+      "Leveringstid": 21.0,
+      "Fleksibilitet": 8.5,
+      "Bærekraft": 6.0
+    },
+    "Gamma": {
+      "Pris": 210.0,
+      "Kvalitet": 9.1,
+      "Leveringstid": 10.0,
+      "Fleksibilitet": 6.5,
+      "Bærekraft": 9.2
+    },
+    "Delta": {
+      "Pris": 175.0,
+      "Kvalitet": 7.8,
+      "Leveringstid": 18.0,
+      "Fleksibilitet": 7.5,
+      "Bærekraft": 7.0
+    },
+    "Epsilon": {
+      "Pris": 195.0,
+      "Kvalitet": 8.6,
+      "Leveringstid": 12.0,
+      "Fleksibilitet": 8.0,
+      "Bærekraft": 8.0
+    },
+    "Zeta": {
+      "Pris": 155.0,
+      "Kvalitet": 6.4,
+      "Leveringstid": 25.0,
+      "Fleksibilitet": 9.0,
+      "Bærekraft": 5.5
+    }
+  },
+  "pairwise": {
+    "Pris": {
+      "Pris": 1.0,
+      "Kvalitet": 0.5,
+      "Leveringstid": 2.0,
+      "Fleksibilitet": 3.0,
+      "Bærekraft": 3.0
+    },
+    "Kvalitet": {
+      "Pris": 2.0,
+      "Kvalitet": 1.0,
+      "Leveringstid": 3.0,
+      "Fleksibilitet": 4.0,
+      "Bærekraft": 4.0
+    },
+    "Leveringstid": {
+      "Pris": 0.5,
+      "Kvalitet": 0.333333,
+      "Leveringstid": 1.0,
+      "Fleksibilitet": 2.0,
+      "Bærekraft": 2.0
+    },
+    "Fleksibilitet": {
+      "Pris": 0.333333,
+      "Kvalitet": 0.25,
+      "Leveringstid": 0.5,
+      "Fleksibilitet": 1.0,
+      "Bærekraft": 2.0
+    },
+    "Bærekraft": {
+      "Pris": 0.333333,
+      "Kvalitet": 0.25,
+      "Leveringstid": 0.5,
+      "Fleksibilitet": 0.5,
+      "Bærekraft": 1.0
+    }
+  },
+  "statistics": {
+    "Pris": {
+      "min": 155.0,
+      "max": 210.0,
+      "mean": 180.833,
+      "std": 18.352,
+      "type": "cost"
+    },
+    "Kvalitet": {
+      "min": 6.4,
+      "max": 9.1,
+      "mean": 7.85,
+      "std": 0.92,
+      "type": "benefit"
+    },
+    "Leveringstid": {
+      "min": 10.0,
+      "max": 25.0,
+      "mean": 16.667,
+      "std": 5.217,
+      "type": "cost"
+    },
+    "Fleksibilitet": {
+      "min": 6.5,
+      "max": 9.0,
+      "mean": 7.75,
+      "std": 0.854,
+      "type": "benefit"
+    },
+    "Bærekraft": {
+      "min": 5.5,
+      "max": 9.2,
+      "mean": 7.367,
+      "std": 1.325,
+      "type": "benefit"
+    }
+  }
+}

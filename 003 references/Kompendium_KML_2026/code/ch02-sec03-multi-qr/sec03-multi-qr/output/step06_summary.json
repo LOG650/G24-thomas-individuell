@@ -1,0 +1,7 @@
+{
+  "alpha_min": 0.8,
+  "alpha_max": 0.99,
+  "TC_delt_ved_0.95": 2943906.0,
+  "TC_uavhengig_ved_0.95": 2499032.0,
+  "alpha_feasible_uavhengig_max": -1.0
+}

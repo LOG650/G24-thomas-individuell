@@ -1,0 +1,26 @@
+{
+  "shared_information": false,
+  "var_demand": 230.1,
+  "per_tier": {
+    "Detaljist": {
+      "var_order": 7457.37,
+      "mean_order": 105.78,
+      "bullwhip_ratio": 32.41
+    },
+    "Grossist": {
+      "var_order": 17753.53,
+      "mean_order": 105.45,
+      "bullwhip_ratio": 77.157
+    },
+    "Distributor": {
+      "var_order": 38932.25,
+      "mean_order": 104.68,
+      "bullwhip_ratio": 169.201
+    },
+    "Fabrikk": {
+      "var_order": 100664.44,
+      "mean_order": 69.24,
+      "bullwhip_ratio": 437.49
+    }
+  }
+}

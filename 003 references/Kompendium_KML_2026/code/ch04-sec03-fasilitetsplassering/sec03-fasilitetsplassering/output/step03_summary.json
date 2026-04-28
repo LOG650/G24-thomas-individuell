@@ -1,0 +1,10 @@
+{
+  "antall_kandidater_n": 15,
+  "antall_kunder_m": 80,
+  "antall_variabler_total": 1215,
+  "antall_binaere_variabler": 15,
+  "antall_kontinuerlige_variabler": 1200,
+  "antall_skranker": 1280,
+  "antall_dekningsskranker": 80,
+  "antall_koblingsskranker": 1200
+}

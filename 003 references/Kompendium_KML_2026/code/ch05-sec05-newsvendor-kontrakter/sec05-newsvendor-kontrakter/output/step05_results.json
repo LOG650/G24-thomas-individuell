@@ -1,0 +1,10 @@
+{
+  "pareto_phi_min": 0.47,
+  "pareto_phi_max": 0.52,
+  "eff_ved_sigma_100": 0.976,
+  "eff_ved_sigma_250": 0.9374,
+  "eff_ved_sigma_500": 0.8645,
+  "q_gap_ved_sigma_100": 111.7,
+  "q_gap_ved_sigma_250": 279.2,
+  "q_gap_ved_sigma_500": 558.3
+}

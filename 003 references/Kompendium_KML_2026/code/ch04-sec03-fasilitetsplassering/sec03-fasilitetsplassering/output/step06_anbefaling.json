@@ -1,0 +1,20 @@
+{
+  "totalkostnad_MNOK": 20.393,
+  "antall_DC_aapnes": 3,
+  "aapne_DC_navn": [
+    "Bergen",
+    "Oerebro",
+    "Umeaa"
+  ],
+  "andel_fast_pct": 42.66,
+  "andel_transport_pct": 57.34,
+  "snittavstand_km": 218.1,
+  "maks_avstand_km": 684.4,
+  "p_star_fra_p_median_sveip": 3,
+  "sensitivitet": {
+    "beta_0_5_n_open": 5,
+    "beta_1_0_n_open": 3,
+    "beta_2_0_n_open": 3,
+    "beta_3_0_n_open": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "antall_lagre_n": 4,
+  "antall_kunder_m": 25,
+  "sum_d_bar": 8200,
+  "sum_delta": 3350,
+  "min_d_bar": 120,
+  "maks_d_bar": 640,
+  "snitt_d_bar": 328.0,
+  "snitt_rel_usikkerhet": 0.412,
+  "sum_maks_kap": 14500,
+  "snitt_kap_kostnad": 240.0,
+  "snitt_transport_c": 143.7,
+  "snitt_straff_p": 2431.0
+}

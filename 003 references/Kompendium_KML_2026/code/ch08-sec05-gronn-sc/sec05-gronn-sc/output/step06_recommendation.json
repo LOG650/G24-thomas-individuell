@@ -1,0 +1,15 @@
+{
+  "recommended_point": {
+    "total_cost": 1622778.2484997704,
+    "emission_kg": 94624.7447750325,
+    "service": 2054815.5562431074,
+    "opened": [
+      "Oslo",
+      "Malmo",
+      "Trondheim"
+    ]
+  },
+  "utopia_distance_normalized": 0.44321680026461086,
+  "n_pareto_points_2d": 11,
+  "n_total_explored": 15
+}

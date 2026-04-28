@@ -1,0 +1,25 @@
+{
+  "total_rader": 36550,
+  "antall_skuer": 50,
+  "antall_dager": 731,
+  "antall_kategorier": 8,
+  "antall_merker": 5,
+  "antall_butikker": 3,
+  "gj_salg_per_sku_dag": 83.74,
+  "std_salg": 58.01,
+  "maks_salg": 796,
+  "min_salg": 0,
+  "kampanjeandel_pct": 13.9,
+  "stockout_andel_pct": 14.67,
+  "gj_pris": 49.34,
+  "kategori_gj_salg": {
+    "bakevarer": 90.78,
+    "drikke": 71.6,
+    "frossen": 98.65,
+    "frukt_gronnsaker": 83.65,
+    "husholdning": 61.91,
+    "kjott": 98.46,
+    "meieri": 70.29,
+    "snacks": 95.68
+  }
+}

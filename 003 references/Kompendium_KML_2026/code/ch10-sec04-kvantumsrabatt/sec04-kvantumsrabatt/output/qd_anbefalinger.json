@@ -1,0 +1,59 @@
+{
+  "anbefalinger": [
+    {
+      "sku": "A1",
+      "navn": "Elektrisk handverktoy",
+      "D": 2400,
+      "Q_anbefalt": 500,
+      "c_oppnadd": 770.0,
+      "n_orders_per_year": 4.8,
+      "cycle_days": 76.0,
+      "TC_anbefalt": 1892270.0,
+      "TC_naiv_uten_rabatt": 2058948.0,
+      "arlig_besparelse": 166678.0,
+      "besparelse_pct": 8.1
+    },
+    {
+      "sku": "B2",
+      "navn": "Sikkerhetshansker",
+      "D": 12000,
+      "Q_anbefalt": 1000,
+      "c_oppnadd": 36.5,
+      "n_orders_per_year": 12.0,
+      "cycle_days": 30.4,
+      "TC_anbefalt": 444285.0,
+      "TC_naiv_uten_rabatt": 510735.0,
+      "arlig_besparelse": 66450.0,
+      "besparelse_pct": 13.01
+    },
+    {
+      "sku": "C3",
+      "navn": "Smorefett (5 kg)",
+      "D": 1800,
+      "Q_anbefalt": 200,
+      "c_oppnadd": 285.0,
+      "n_orders_per_year": 9.0,
+      "cycle_days": 40.6,
+      "TC_anbefalt": 523275.0,
+      "TC_naiv_uten_rabatt": 586040.0,
+      "arlig_besparelse": 62765.0,
+      "besparelse_pct": 10.71
+    },
+    {
+      "sku": "D4",
+      "navn": "LED-lyspaere 9 W",
+      "D": 9000,
+      "Q_anbefalt": 1000,
+      "c_oppnadd": 48.0,
+      "n_orders_per_year": 9.0,
+      "cycle_days": 40.6,
+      "TC_anbefalt": 439500.0,
+      "TC_naiv_uten_rabatt": 502707.0,
+      "arlig_besparelse": 63207.0,
+      "besparelse_pct": 12.57
+    }
+  ],
+  "total_saving_nok": 359100.0,
+  "total_base_nok": 3658430.0,
+  "relative_saving_pct": 9.815685963651074
+}

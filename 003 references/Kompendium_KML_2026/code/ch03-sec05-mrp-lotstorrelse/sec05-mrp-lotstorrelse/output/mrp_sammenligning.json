@@ -1,0 +1,164 @@
+{
+  "costs": {
+    "LFL": {
+      "oppstart_kr_totalt": 7070.0,
+      "lager_kr_totalt": 0.0,
+      "total_kr_totalt": 7070.0,
+      "per_komponent": {
+        "Sykkel": {
+          "oppstart_kr": 2400.0,
+          "lager_kr": 0.0,
+          "total_kr": 2400.0,
+          "antall_ordrer": 12,
+          "gj_lager": 0.0
+        },
+        "Ramme": {
+          "oppstart_kr": 1650.0,
+          "lager_kr": 0.0,
+          "total_kr": 1650.0,
+          "antall_ordrer": 11,
+          "gj_lager": 0.0
+        },
+        "Hjul": {
+          "oppstart_kr": 1100.0,
+          "lager_kr": 0.0,
+          "total_kr": 1100.0,
+          "antall_ordrer": 11,
+          "gj_lager": 0.0
+        },
+        "Bremsesett": {
+          "oppstart_kr": 880.0,
+          "lager_kr": 0.0,
+          "total_kr": 880.0,
+          "antall_ordrer": 11,
+          "gj_lager": 0.0
+        },
+        "Stalrors": {
+          "oppstart_kr": 540.0,
+          "lager_kr": 0.0,
+          "total_kr": 540.0,
+          "antall_ordrer": 9,
+          "gj_lager": 0.0
+        },
+        "Eik": {
+          "oppstart_kr": 500.0,
+          "lager_kr": 0.0,
+          "total_kr": 500.0,
+          "antall_ordrer": 10,
+          "gj_lager": 0.0
+        }
+      }
+    },
+    "EOQ": {
+      "oppstart_kr_totalt": 3690.0,
+      "lager_kr_totalt": 2356.9,
+      "total_kr_totalt": 6046.9,
+      "per_komponent": {
+        "Sykkel": {
+          "oppstart_kr": 1400.0,
+          "lager_kr": 1080.0,
+          "total_kr": 2480.0,
+          "antall_ordrer": 7,
+          "gj_lager": 18.0
+        },
+        "Ramme": {
+          "oppstart_kr": 750.0,
+          "lager_kr": 645.0,
+          "total_kr": 1395.0,
+          "antall_ordrer": 5,
+          "gj_lager": 21.5
+        },
+        "Hjul": {
+          "oppstart_kr": 600.0,
+          "lager_kr": 181.5,
+          "total_kr": 781.5,
+          "antall_ordrer": 6,
+          "gj_lager": 10.083333333333334
+        },
+        "Bremsesett": {
+          "oppstart_kr": 400.0,
+          "lager_kr": 434.40000000000003,
+          "total_kr": 834.4000000000001,
+          "antall_ordrer": 5,
+          "gj_lager": 30.166666666666668
+        },
+        "Stalrors": {
+          "oppstart_kr": 240.0,
+          "lager_kr": 16.0,
+          "total_kr": 256.0,
+          "antall_ordrer": 4,
+          "gj_lager": 3.3333333333333335
+        },
+        "Eik": {
+          "oppstart_kr": 300.0,
+          "lager_kr": 0.0,
+          "total_kr": 300.0,
+          "antall_ordrer": 6,
+          "gj_lager": 0.0
+        }
+      }
+    },
+    "Silver-Meal": {
+      "oppstart_kr_totalt": 3340.0,
+      "lager_kr_totalt": 772.5,
+      "total_kr_totalt": 4112.5,
+      "per_komponent": {
+        "Sykkel": {
+          "oppstart_kr": 1200.0,
+          "lager_kr": 650.0,
+          "total_kr": 1850.0,
+          "antall_ordrer": 6,
+          "gj_lager": 10.833333333333334
+        },
+        "Ramme": {
+          "oppstart_kr": 750.0,
+          "lager_kr": 37.5,
+          "total_kr": 787.5,
+          "antall_ordrer": 5,
+          "gj_lager": 1.25
+        },
+        "Hjul": {
+          "oppstart_kr": 500.0,
+          "lager_kr": 45.0,
+          "total_kr": 545.0,
+          "antall_ordrer": 5,
+          "gj_lager": 2.5
+        },
+        "Bremsesett": {
+          "oppstart_kr": 400.0,
+          "lager_kr": 24.0,
+          "total_kr": 424.0,
+          "antall_ordrer": 5,
+          "gj_lager": 1.6666666666666667
+        },
+        "Stalrors": {
+          "oppstart_kr": 240.0,
+          "lager_kr": 16.0,
+          "total_kr": 256.0,
+          "antall_ordrer": 4,
+          "gj_lager": 3.3333333333333335
+        },
+        "Eik": {
+          "oppstart_kr": 250.0,
+          "lager_kr": 0.0,
+          "total_kr": 250.0,
+          "antall_ordrer": 5,
+          "gj_lager": 0.0
+        }
+      }
+    }
+  },
+  "eoq_values": {
+    "Sykkel": 42,
+    "Ramme": 52,
+    "Hjul": 77,
+    "Bremsesett": 55,
+    "Stalrors": 164,
+    "Eik": 1697
+  },
+  "methods": [
+    "LFL",
+    "EOQ",
+    "Silver-Meal"
+  ]
+}

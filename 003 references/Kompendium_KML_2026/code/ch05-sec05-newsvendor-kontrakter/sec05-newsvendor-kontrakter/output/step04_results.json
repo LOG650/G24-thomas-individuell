@@ -1,0 +1,13 @@
+{
+  "q_koordinert": 1255.0,
+  "profitt_kjede_integrert": 1022938.0,
+  "desentralisert_retailer": 470947.0,
+  "desentralisert_supplier": 487930.0,
+  "pareto_phi_min": 0.47,
+  "pareto_phi_max": 0.52,
+  "valgt_phi": 0.5,
+  "valgt_w_prime": 200.0,
+  "valgt_retailer_profitt": 511469.0,
+  "valgt_supplier_profitt": 511469.0,
+  "kjede_profitt_kontrollsjekk": 1022938.0
+}

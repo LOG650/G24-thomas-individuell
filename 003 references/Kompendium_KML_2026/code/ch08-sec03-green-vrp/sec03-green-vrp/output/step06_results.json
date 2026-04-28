@@ -1,0 +1,62 @@
+{
+  "dist_scale_km": 59.525,
+  "em_scale_g": 62110.0,
+  "points": [
+    {
+      "lambda": 0.0,
+      "distance_km": 59.299,
+      "emissions_kg": 63.794,
+      "n_routes": 3,
+      "on_pareto_front": false
+    },
+    {
+      "lambda": 0.2,
+      "distance_km": 59.456,
+      "emissions_kg": 61.718,
+      "n_routes": 3,
+      "on_pareto_front": true
+    },
+    {
+      "lambda": 0.4,
+      "distance_km": 59.456,
+      "emissions_kg": 61.718,
+      "n_routes": 3,
+      "on_pareto_front": false
+    },
+    {
+      "lambda": 0.55,
+      "distance_km": 59.456,
+      "emissions_kg": 61.718,
+      "n_routes": 3,
+      "on_pareto_front": false
+    },
+    {
+      "lambda": 0.7,
+      "distance_km": 58.549,
+      "emissions_kg": 62.105,
+      "n_routes": 3,
+      "on_pareto_front": true
+    },
+    {
+      "lambda": 0.85,
+      "distance_km": 58.549,
+      "emissions_kg": 62.105,
+      "n_routes": 3,
+      "on_pareto_front": false
+    },
+    {
+      "lambda": 0.95,
+      "distance_km": 58.549,
+      "emissions_kg": 62.105,
+      "n_routes": 3,
+      "on_pareto_front": false
+    },
+    {
+      "lambda": 1.0,
+      "distance_km": 58.549,
+      "emissions_kg": 62.105,
+      "n_routes": 3,
+      "on_pareto_front": false
+    }
+  ]
+}

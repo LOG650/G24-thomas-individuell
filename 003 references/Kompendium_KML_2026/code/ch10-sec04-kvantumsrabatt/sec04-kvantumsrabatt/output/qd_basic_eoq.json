@@ -1,0 +1,41 @@
+{
+  "formula": "Q* = sqrt(2 D K / h),  h = i * c_ref",
+  "rows": [
+    {
+      "sku": "A1",
+      "c_ref": 810.0,
+      "h_ref": 178.2,
+      "Q_eoq": 103.8,
+      "TC_eoq": 1962497.0,
+      "n_orders_per_year": 23.12,
+      "cycle_days": 15.8
+    },
+    {
+      "sku": "B2",
+      "c_ref": 39.0,
+      "h_ref": 7.02,
+      "Q_eoq": 924.5,
+      "TC_eoq": 474490.0,
+      "n_orders_per_year": 12.98,
+      "cycle_days": 28.1
+    },
+    {
+      "sku": "C3",
+      "c_ref": 300.0,
+      "h_ref": 75.0,
+      "Q_eoq": 129.6,
+      "TC_eoq": 549721.0,
+      "n_orders_per_year": 13.89,
+      "cycle_days": 26.3
+    },
+    {
+      "sku": "D4",
+      "c_ref": 51.0,
+      "h_ref": 10.2,
+      "Q_eoq": 727.6,
+      "TC_eoq": 466422.0,
+      "n_orders_per_year": 12.37,
+      "cycle_days": 29.5
+    }
+  ]
+}

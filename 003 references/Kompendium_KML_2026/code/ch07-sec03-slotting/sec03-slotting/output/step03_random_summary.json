@@ -1,0 +1,11 @@
+{
+  "metode": "tilfeldig",
+  "analytisk_forventet_m": 51.0,
+  "mc_gjennomsnitt_m": 50.97,
+  "mc_median_m": 53.5,
+  "mc_p95_m": 75.5,
+  "mc_std_m": 16.99,
+  "mc_min_m": 9.5,
+  "mc_max_m": 92.5,
+  "samples": 50000
+}

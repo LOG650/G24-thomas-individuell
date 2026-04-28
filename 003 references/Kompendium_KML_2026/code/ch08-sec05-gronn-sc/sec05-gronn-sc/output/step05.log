@@ -1,0 +1,36 @@
+============================================================
+STEG 5: Karbonpris-tipping-punkter
+============================================================
+Bruker 8 scenarier for karbonpris-sveipet
+
+>> Karbonpris = 0 EUR/tonn ...
+   cost=1,200,542 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 25 EUR/tonn ...
+   cost=1,206,168 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 50 EUR/tonn ...
+   cost=1,211,793 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 75 EUR/tonn ...
+   cost=1,217,418 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 100 EUR/tonn ...
+   cost=1,223,044 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 125 EUR/tonn ...
+   cost=1,228,669 EUR, emis=225.0 t, moduser: truck=100.0%, rail=0.0%, ship=0.0%
+
+>> Karbonpris = 150 EUR/tonn ...
+   cost=1,232,780 EUR, emis=59.5 t, moduser: truck=6.8%, rail=93.2%, ship=0.0%
+
+>> Karbonpris = 200 EUR/tonn ...
+   cost=1,235,757 EUR, emis=59.5 t, moduser: truck=6.8%, rail=93.2%, ship=0.0%
+
+>> Karbonpris = 250 EUR/tonn ...
+   cost=1,238,734 EUR, emis=59.5 t, moduser: truck=6.8%, rail=93.2%, ship=0.0%
+Figur lagret: C:\Pytagoras\kvantitative-metoder-i-logistikk_COMP_NO\code\ch08-barekraftig-logistikk\sec05-gronn-sc\output\gronnsc_modal_shift.png
+
+Tipping-punkter (modal-endring > 5pp):
+  125 -> 150 EUR/t: d_truck=-93.2%, d_rail=+93.2%, d_ship=+0.0%
+Figur lagret: C:\Pytagoras\kvantitative-metoder-i-logistikk_COMP_NO\code\ch08-barekraftig-logistikk\sec05-gronn-sc\output\gronnsc_carbon_tipping.png

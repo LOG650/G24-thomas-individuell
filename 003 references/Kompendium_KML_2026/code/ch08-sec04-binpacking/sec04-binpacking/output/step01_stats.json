@@ -1,0 +1,18 @@
+{
+  "antall_produkter": 80,
+  "bin_lengde_cm": 60.0,
+  "bin_bredde_cm": 40.0,
+  "bin_hoyde_cm": 30.0,
+  "bin_volum_l": 72.0,
+  "bin_maks_vekt_kg": 25.0,
+  "volum_mean_l": 20.16,
+  "volum_std_l": 14.08,
+  "volum_min_l": 1.76,
+  "volum_max_l": 44.76,
+  "volum_sum_l": 1612.92,
+  "vekt_mean_kg": 3.47,
+  "vekt_sum_kg": 277.79,
+  "andel_smaa": 0.4,
+  "andel_medium": 0.3,
+  "andel_stor": 0.3
+}

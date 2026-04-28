@@ -1,0 +1,11 @@
+{
+  "independent_total_cost": 269269.5,
+  "coordinated_total_cost": 87253.5,
+  "savings_kr": 182016.0,
+  "savings_pct": 67.6,
+  "fill_rate_independent": 0.769,
+  "fill_rate_coordinated": 0.9943,
+  "backorder_independent": 1579.09,
+  "backorder_coordinated": 39.0,
+  "n_periods": 12
+}

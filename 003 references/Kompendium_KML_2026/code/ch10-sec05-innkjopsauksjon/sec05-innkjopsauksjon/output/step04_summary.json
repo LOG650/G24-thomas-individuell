@@ -1,0 +1,24 @@
+{
+  "status": "Optimal",
+  "obj_NOK": 12789100.0,
+  "total_faktisk_NOK": 12789100.0,
+  "total_MNOK": 12.789,
+  "naiv_total_NOK": 13353000.0,
+  "naiv_total_MNOK": 13.353,
+  "besparelse_NOK": 563900.0,
+  "besparelse_MNOK": 0.564,
+  "besparelse_pct": 4.22,
+  "antall_valgte_bud": 4,
+  "valgte_bud": [
+    "E_L2_C6",
+    "B1",
+    "B2",
+    "B4"
+  ],
+  "solve_time_s": 0.151,
+  "andel_per_leverandoer_MIP": {
+    "L1": 0.3852,
+    "L2": 0.5615,
+    "L3": 0.0533
+  }
+}

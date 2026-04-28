@@ -1,0 +1,16 @@
+{
+  "antall_scenarioer": 50,
+  "n_vertex": 40,
+  "n_interior": 10,
+  "maks_regret_MNOK": 0.64,
+  "snitt_regret_MNOK": 0.345,
+  "snitt_kostnad_robust_MNOK": 2.793,
+  "verste_kostnad_robust_MNOK": 3.486,
+  "sum_z_robust": 9125.7,
+  "z_per_lager": {
+    "Stavanger": 3500.0,
+    "Tromsoe": 2375.7,
+    "Rotterdam": 1060.0,
+    "Singapore": 2190.0
+  }
+}

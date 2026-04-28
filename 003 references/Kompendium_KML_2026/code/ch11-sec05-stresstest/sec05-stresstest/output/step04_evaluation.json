@@ -1,0 +1,104 @@
+[
+  {
+    "scenario": "Baseline",
+    "n_reps": 30,
+    "service_level_mean": 0.9987709886858932,
+    "service_level_sd": 0.0014480717698987964,
+    "total_cost_mean": 6042944.265052779,
+    "total_cost_sd": 554459.9499881285,
+    "delivery_delay_mean": 0.5666666666666667,
+    "shortfall_mean": 249.08712736035753,
+    "per_region_service_level_mean": {
+      "Troms": 1.0,
+      "Nordland": 1.0,
+      "Trondelag": 1.0,
+      "Vestland": 1.0,
+      "Oslo-Viken": 0.9961493829608306
+    }
+  },
+  {
+    "scenario": "S1-Pandemi",
+    "n_reps": 30,
+    "service_level_mean": 0.5537095085890744,
+    "service_level_sd": 0.026396272524687292,
+    "total_cost_mean": 189693135.67057386,
+    "total_cost_sd": 10270111.852803038,
+    "delivery_delay_mean": 1.0,
+    "shortfall_mean": 117975.87509899457,
+    "per_region_service_level_mean": {
+      "Troms": 0.8508339873008052,
+      "Nordland": 0.7683137064396497,
+      "Trondelag": 0.5651101442409624,
+      "Vestland": 0.4847454214765252,
+      "Oslo-Viken": 0.3877029383045067
+    }
+  },
+  {
+    "scenario": "S2-Havneblokkade",
+    "n_reps": 30,
+    "service_level_mean": 0.7558731605243715,
+    "service_level_sd": 0.01618907667511099,
+    "total_cost_mean": 90004696.5315574,
+    "total_cost_sd": 6203872.732122876,
+    "delivery_delay_mean": 1.0,
+    "shortfall_mean": 49643.55262150816,
+    "per_region_service_level_mean": {
+      "Troms": 0.9946836817118135,
+      "Nordland": 0.9819074995095306,
+      "Trondelag": 0.9026822315738781,
+      "Vestland": 0.6217979355217402,
+      "Oslo-Viken": 0.5752591006763985
+    }
+  },
+  {
+    "scenario": "S3-Leverandorkonkurs",
+    "n_reps": 30,
+    "service_level_mean": 0.5366754078741163,
+    "service_level_sd": 0.008632581247805096,
+    "total_cost_mean": 146471587.60075426,
+    "total_cost_sd": 3757610.301706779,
+    "delivery_delay_mean": 1.0,
+    "shortfall_mean": 94244.77174599686,
+    "per_region_service_level_mean": {
+      "Troms": 0.714445734494716,
+      "Nordland": 0.675585407663379,
+      "Trondelag": 0.5622188609996531,
+      "Vestland": 0.531209615705633,
+      "Oslo-Viken": 0.39446445738664143
+    }
+  },
+  {
+    "scenario": "S4-Naturkatastrofe",
+    "n_reps": 30,
+    "service_level_mean": 0.8280622921107669,
+    "service_level_sd": 0.006030322029675098,
+    "total_cost_mean": 69263415.92394662,
+    "total_cost_sd": 2628219.1437041163,
+    "delivery_delay_mean": 1.0,
+    "shortfall_mean": 34861.68615190036,
+    "per_region_service_level_mean": {
+      "Troms": 0.9856221317348223,
+      "Nordland": 0.9579151718367162,
+      "Trondelag": 0.9452327761517003,
+      "Vestland": 0.7418784285443711,
+      "Oslo-Viken": 0.7039259010342437
+    }
+  },
+  {
+    "scenario": "S5-Cyberangrep",
+    "n_reps": 30,
+    "service_level_mean": 0.5874001805243019,
+    "service_level_sd": 0.04561463080846136,
+    "total_cost_mean": 124454423.38678245,
+    "total_cost_sd": 11325951.985474858,
+    "delivery_delay_mean": 1.0,
+    "shortfall_mean": 83708.88446683835,
+    "per_region_service_level_mean": {
+      "Troms": 0.8931208727542764,
+      "Nordland": 0.8567253249099086,
+      "Trondelag": 0.6191150415535758,
+      "Vestland": 0.4595758343055115,
+      "Oslo-Viken": 0.42398362286493024
+    }
+  }
+]

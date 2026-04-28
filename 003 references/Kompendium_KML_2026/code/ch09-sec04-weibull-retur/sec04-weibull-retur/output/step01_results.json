@@ -1,0 +1,16 @@
+{
+  "n_months": 48,
+  "start_date": "2021-01-01",
+  "warranty_months": 24,
+  "true_beta": 2.2,
+  "true_eta": 18.0,
+  "total_sold": 56998,
+  "total_units_tracked": 56998,
+  "total_returned_observed": 29827,
+  "return_rate_pct": 52.33,
+  "avg_lifetime_observed_months": 12.391,
+  "sales_min": 26,
+  "sales_max": 1803,
+  "sales_mean": 1187.5,
+  "sales_std": 408.9
+}

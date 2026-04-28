@@ -1,0 +1,12 @@
+{
+  "antall_kategorier": 8,
+  "antall_leverandoerer": 4,
+  "antall_enkeltbud": 18,
+  "antall_bundler": 6,
+  "antall_bud_total": 24,
+  "antall_variabler": 24,
+  "antall_binaere_variabler": 24,
+  "antall_skranker": 8,
+  "antall_dekningsskranker": 8,
+  "teoretisk_kombinasjoner": 16777216
+}

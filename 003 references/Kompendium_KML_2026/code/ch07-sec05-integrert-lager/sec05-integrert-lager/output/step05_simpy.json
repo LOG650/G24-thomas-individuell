@@ -1,0 +1,50 @@
+[
+  {
+    "name": "A) Integrert MIP + k-medoids + largest-gap",
+    "completed": 250,
+    "total_orders": 250,
+    "on_time": 237,
+    "on_time_share": 0.948,
+    "throughput": 250,
+    "mean_completion_min": 377.726728,
+    "total_lines": 1118,
+    "mean_pack_queue": 0.34444444444444444,
+    "max_pack_queue": 5.0
+  },
+  {
+    "name": "B) Bare bolge-MIP + FIFO-batching",
+    "completed": 250,
+    "total_orders": 250,
+    "on_time": 231,
+    "on_time_share": 0.924,
+    "throughput": 250,
+    "mean_completion_min": 383.33576,
+    "total_lines": 1118,
+    "mean_pack_queue": 1.073611111111111,
+    "max_pack_queue": 10.0
+  },
+  {
+    "name": "C) FIFO-bolger + k-medoids + largest-gap",
+    "completed": 250,
+    "total_orders": 250,
+    "on_time": 206,
+    "on_time_share": 0.824,
+    "throughput": 250,
+    "mean_completion_min": 445.9993759999999,
+    "total_lines": 1118,
+    "mean_pack_queue": 0.5736111111111111,
+    "max_pack_queue": 8.0
+  },
+  {
+    "name": "D) Baseline: FIFO + tilfeldig + S-shape",
+    "completed": 250,
+    "total_orders": 250,
+    "on_time": 204,
+    "on_time_share": 0.816,
+    "throughput": 250,
+    "mean_completion_min": 450.907384,
+    "total_lines": 1118,
+    "mean_pack_queue": 1.4458333333333333,
+    "max_pack_queue": 11.0
+  }
+]

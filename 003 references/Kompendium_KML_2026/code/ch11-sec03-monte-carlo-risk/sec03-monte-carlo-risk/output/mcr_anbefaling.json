@@ -1,0 +1,49 @@
+{
+  "rows": [
+    {
+      "name": "Baseline",
+      "E_C": 265902.0,
+      "VaR_0_95": 689463.0,
+      "CVaR_0_95": 853105.0,
+      "tiltakskostnad": 0,
+      "CVaR_reduksjon": 0.0,
+      "E_C_reduksjon": 0.0,
+      "netto_nytte_CVaR": 0.0,
+      "netto_nytte_EC": 0.0
+    },
+    {
+      "name": "Hoyere sikkerhetslager",
+      "E_C": 259792.0,
+      "VaR_0_95": 656120.0,
+      "CVaR_0_95": 784862.0,
+      "tiltakskostnad": 24000,
+      "CVaR_reduksjon": 68243.0,
+      "E_C_reduksjon": 6110.0,
+      "netto_nytte_CVaR": 44243.0,
+      "netto_nytte_EC": -17890.0
+    },
+    {
+      "name": "Dobbel sourcing",
+      "E_C": 161094.0,
+      "VaR_0_95": 409846.0,
+      "CVaR_0_95": 543628.0,
+      "tiltakskostnad": 150000,
+      "CVaR_reduksjon": 309477.0,
+      "E_C_reduksjon": 104808.0,
+      "netto_nytte_CVaR": 159477.0,
+      "netto_nytte_EC": -45192.0
+    },
+    {
+      "name": "Kombinert tiltak",
+      "E_C": 157598.0,
+      "VaR_0_95": 373987.0,
+      "CVaR_0_95": 449489.0,
+      "tiltakskostnad": 174000,
+      "CVaR_reduksjon": 403616.0,
+      "E_C_reduksjon": 108304.0,
+      "netto_nytte_CVaR": 229616.0,
+      "netto_nytte_EC": -65696.0
+    }
+  ],
+  "recommendation": "Kombinert tiltak"
+}

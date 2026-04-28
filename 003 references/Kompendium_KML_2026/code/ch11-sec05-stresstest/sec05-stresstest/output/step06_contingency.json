@@ -1,0 +1,90 @@
+{
+  "mitigations": [
+    "M1-Sikkerhetslager+50%",
+    "M2-Alternativ-leverandor",
+    "M3-Nearshoring",
+    "M4-Dual-sourcing",
+    "M5-Fleksibel-fabrikk"
+  ],
+  "scenarios": [
+    "S1-Pandemi",
+    "S2-Havneblokkade",
+    "S3-Leverandorkonkurs",
+    "S4-Naturkatastrofe",
+    "S5-Cyberangrep"
+  ],
+  "reduction_matrix_pct": [
+    [
+      1.7890276499735691,
+      -1.9212884802662935,
+      2.075803951863146,
+      -3.1551661997943095,
+      1.7899873550676995
+    ],
+    [
+      28.901137056867903,
+      53.78529089271869,
+      71.81079929795796,
+      -0.29344641014806305,
+      37.0939701138975
+    ],
+    [
+      1.3052482977798565,
+      6.67387052958945,
+      80.65384027119596,
+      0.0,
+      0.23825209797233252
+    ],
+    [
+      0.5456876743558129,
+      1.9629587393492267,
+      62.804017550878726,
+      0.0,
+      3.115898636425704
+    ],
+    [
+      0.49468939900756664,
+      -0.13877908981273687,
+      -0.03435677120271857,
+      28.012200924932422,
+      0.6016171876275658
+    ]
+  ],
+  "contingency_plan": [
+    {
+      "scenario": "S1-Pandemi",
+      "primary_mitigation": "M2-Alternativ-leverandor",
+      "cost_reduction_pct": 28.901137056867903,
+      "annual_cost_mnok": 1.2,
+      "net_benefit_mnok": 28.80494549935098
+    },
+    {
+      "scenario": "S2-Havneblokkade",
+      "primary_mitigation": "M2-Alternativ-leverandor",
+      "cost_reduction_pct": 53.78529089271869,
+      "annual_cost_mnok": 1.2,
+      "net_benefit_mnok": 28.80494549935098
+    },
+    {
+      "scenario": "S3-Leverandorkonkurs",
+      "primary_mitigation": "M3-Nearshoring",
+      "cost_reduction_pct": 80.65384027119596,
+      "annual_cost_mnok": 1.4320799999999998,
+      "net_benefit_mnok": 9.200721686686226
+    },
+    {
+      "scenario": "S4-Naturkatastrofe",
+      "primary_mitigation": "M5-Fleksibel-fabrikk",
+      "cost_reduction_pct": 28.012200924932422,
+      "annual_cost_mnok": 2.0,
+      "net_benefit_mnok": -0.8203412231280058
+    },
+    {
+      "scenario": "S5-Cyberangrep",
+      "primary_mitigation": "M2-Alternativ-leverandor",
+      "cost_reduction_pct": 37.0939701138975,
+      "annual_cost_mnok": 1.2,
+      "net_benefit_mnok": 28.80494549935098
+    }
+  ]
+}

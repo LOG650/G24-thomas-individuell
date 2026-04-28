@@ -1,0 +1,10 @@
+{
+  "antall_bins": 23,
+  "total_volum_l": 1610.73,
+  "total_vekt_kg": 277.79,
+  "kapasitet_l": 1656.0,
+  "volumutnyttelse": 0.9727,
+  "fyllingsgrad_mean": 0.9727,
+  "fyllingsgrad_min": 0.5249,
+  "fyllingsgrad_max": 1.0
+}

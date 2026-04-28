@@ -1,0 +1,14 @@
+{
+  "lambda_sann": 8.0,
+  "mu_sann": 12.0,
+  "lambda_estimert": 7.917,
+  "mu_estimert": 11.611,
+  "rho_sann": 0.6667,
+  "rho_estimert": 0.6818,
+  "n": 1000,
+  "mellomankomst_mean": 0.1263,
+  "betjeningstid_mean": 0.0861,
+  "total_tid_timer": 126.3,
+  "ks_lambda_pvalue": 0.6891,
+  "ks_mu_pvalue": 0.2865
+}

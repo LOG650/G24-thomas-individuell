@@ -1,0 +1,21 @@
+{
+  "demand_mean": 12000,
+  "demand_std": 2000,
+  "lead_time_meanlog": 3.555348,
+  "lead_time_sdlog": 0.3,
+  "supplier_fail_prob": 0.08,
+  "n_orders_per_year": 6,
+  "price": 600.0,
+  "cost_unit": 300.0,
+  "cost_expedite": 550.0,
+  "cost_lost_sale": 450.0,
+  "holding_cost_rate": 0.2,
+  "safety_stock_units": 400,
+  "n_runs": 10000,
+  "seed": 2026,
+  "lead_time_stats": {
+    "mean": 36.61,
+    "median": 35.0,
+    "q95": 57.33
+  }
+}

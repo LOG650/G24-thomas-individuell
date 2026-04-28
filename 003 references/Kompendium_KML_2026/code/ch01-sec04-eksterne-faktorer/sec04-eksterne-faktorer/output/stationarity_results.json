@@ -1,0 +1,41 @@
+{
+  "original": {
+    "navn": "original",
+    "adf_statistikk": -3.0358,
+    "p_verdi": 0.03168,
+    "lag_brukt": 20,
+    "antall_obs": 709,
+    "kritisk_1": -3.4396,
+    "kritisk_5": -2.8656,
+    "kritisk_10": -2.5689,
+    "stasjonaer": true
+  },
+  "diff_d1": {
+    "navn": "diff_d1",
+    "adf_statistikk": -9.0809,
+    "p_verdi": 0.0,
+    "lag_brukt": 20,
+    "antall_obs": 708,
+    "kritisk_1": -3.4396,
+    "kritisk_5": -2.8656,
+    "kritisk_10": -2.5689,
+    "stasjonaer": true
+  },
+  "diff_d1_D1_m7": {
+    "navn": "diff_d1_D1_m7",
+    "adf_statistikk": -12.0841,
+    "p_verdi": 0.0,
+    "lag_brukt": 20,
+    "antall_obs": 701,
+    "kritisk_1": -3.4397,
+    "kritisk_5": -2.8657,
+    "kritisk_10": -2.569,
+    "stasjonaer": true
+  },
+  "valgt": {
+    "d": 1,
+    "D": 0,
+    "m": 7,
+    "begrunnelse": "Serien blir stasjonær allerede etter d=1; ukesesong håndteres i ARMA-delen via m=7."
+  }
+}

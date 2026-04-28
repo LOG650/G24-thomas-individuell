@@ -1,0 +1,88 @@
+{
+  "suppliers": [
+    {
+      "name": "L1-Kina",
+      "lead_time_mean": 35.0,
+      "lead_time_sd": 6.0,
+      "reliability": 0.97,
+      "capacity": 3200.0,
+      "unit_cost": 45.0
+    },
+    {
+      "name": "L2-Polen",
+      "lead_time_mean": 14.0,
+      "lead_time_sd": 3.0,
+      "reliability": 0.99,
+      "capacity": 1500.0,
+      "unit_cost": 62.0
+    }
+  ],
+  "factory": {
+    "name": "F-Oslo",
+    "throughput": 4200.0,
+    "safety_stock": 3500.0,
+    "holding_cost": 4.0
+  },
+  "warehouses": [
+    {
+      "name": "W-Nord",
+      "region": "Nord",
+      "capacity": 5500.0,
+      "safety_stock": 2100.0,
+      "holding_cost": 5.0
+    },
+    {
+      "name": "W-Midt",
+      "region": "Midt",
+      "capacity": 5500.0,
+      "safety_stock": 1500.0,
+      "holding_cost": 5.0
+    },
+    {
+      "name": "W-Sor",
+      "region": "Sor",
+      "capacity": 8500.0,
+      "safety_stock": 4300.0,
+      "holding_cost": 5.0
+    }
+  ],
+  "customers": [
+    {
+      "name": "Troms",
+      "demand_mean": 480.0,
+      "demand_sd": 110.0,
+      "warehouse": "W-Nord"
+    },
+    {
+      "name": "Nordland",
+      "demand_mean": 560.0,
+      "demand_sd": 130.0,
+      "warehouse": "W-Nord"
+    },
+    {
+      "name": "Trondelag",
+      "demand_mean": 720.0,
+      "demand_sd": 150.0,
+      "warehouse": "W-Midt"
+    },
+    {
+      "name": "Vestland",
+      "demand_mean": 900.0,
+      "demand_sd": 180.0,
+      "warehouse": "W-Sor"
+    },
+    {
+      "name": "Oslo-Viken",
+      "demand_mean": 1250.0,
+      "demand_sd": 220.0,
+      "warehouse": "W-Sor"
+    }
+  ],
+  "costs": {
+    "lost_sale_cost": 1200.0,
+    "expedite_cost": 650.0,
+    "setup_cost": 3500.0
+  },
+  "weeks": 52,
+  "seed": 2025
+}

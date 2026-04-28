@@ -1,0 +1,106 @@
+{
+  "horizon_months": 12,
+  "forecast_sum": 15444.9,
+  "forecast_sum_ci_low": 15374.6,
+  "forecast_sum_ci_high": 15513.9,
+  "forecast_by_month": [
+    {
+      "t": 49,
+      "salg_projisert": 1646,
+      "forventet_retur": 1217.0,
+      "ci_low": 1211.4,
+      "ci_high": 1222.3
+    },
+    {
+      "t": 50,
+      "salg_projisert": 1646,
+      "forventet_retur": 1234.8,
+      "ci_low": 1229.3,
+      "ci_high": 1240.2
+    },
+    {
+      "t": 51,
+      "salg_projisert": 1646,
+      "forventet_retur": 1249.7,
+      "ci_low": 1244.1,
+      "ci_high": 1255.1
+    },
+    {
+      "t": 52,
+      "salg_projisert": 1646,
+      "forventet_retur": 1266.4,
+      "ci_low": 1260.8,
+      "ci_high": 1271.9
+    },
+    {
+      "t": 53,
+      "salg_projisert": 1646,
+      "forventet_retur": 1277.0,
+      "ci_low": 1271.3,
+      "ci_high": 1282.6
+    },
+    {
+      "t": 54,
+      "salg_projisert": 1646,
+      "forventet_retur": 1289.2,
+      "ci_low": 1283.4,
+      "ci_high": 1294.8
+    },
+    {
+      "t": 55,
+      "salg_projisert": 1646,
+      "forventet_retur": 1297.2,
+      "ci_low": 1291.3,
+      "ci_high": 1302.9
+    },
+    {
+      "t": 56,
+      "salg_projisert": 1646,
+      "forventet_retur": 1306.5,
+      "ci_low": 1300.5,
+      "ci_high": 1312.4
+    },
+    {
+      "t": 57,
+      "salg_projisert": 1646,
+      "forventet_retur": 1312.3,
+      "ci_low": 1306.3,
+      "ci_high": 1318.3
+    },
+    {
+      "t": 58,
+      "salg_projisert": 1646,
+      "forventet_retur": 1320.5,
+      "ci_low": 1314.4,
+      "ci_high": 1326.7
+    },
+    {
+      "t": 59,
+      "salg_projisert": 1646,
+      "forventet_retur": 1330.1,
+      "ci_low": 1323.9,
+      "ci_high": 1336.3
+    },
+    {
+      "t": 60,
+      "salg_projisert": 1646,
+      "forventet_retur": 1344.2,
+      "ci_low": 1337.9,
+      "ci_high": 1350.4
+    }
+  ],
+  "projected_sales": [
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646,
+    1646
+  ]
+}

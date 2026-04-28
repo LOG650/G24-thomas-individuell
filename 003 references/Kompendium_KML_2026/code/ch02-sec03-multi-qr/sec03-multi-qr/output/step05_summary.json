@@ -1,0 +1,9 @@
+{
+  "maal_type1": 0.95,
+  "type1_gjennomsnitt": 0.9503,
+  "type1_min": 0.8425,
+  "fill_rate_gjennomsnitt": 0.9855,
+  "fill_rate_min": 0.9573,
+  "sim_weeks": 2000,
+  "seed": 4242
+}

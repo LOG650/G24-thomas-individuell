@@ -1,0 +1,37 @@
+{
+  "scenario": "baseline",
+  "weeks": 52,
+  "total_demand": 202143.19416071146,
+  "total_shortfall": 83.20332823286901,
+  "total_shipped": 202059.99083247856,
+  "service_level": 0.9995883941154767,
+  "mean_delivery_delay_weeks": 1.0,
+  "total_cost": 5368794.679649632,
+  "cost_breakdown": {
+    "holding": 4829168.522418825,
+    "lost_sale": 99843.99387944282,
+    "expedite": 54082.163351364856,
+    "setup": 385700.0
+  },
+  "per_region_service_level": {
+    "Troms": 1.0,
+    "Nordland": 1.0,
+    "Trondelag": 1.0,
+    "Vestland": 1.0,
+    "Oslo-Viken": 0.9987512905014347
+  },
+  "per_region_demand": {
+    "Troms": 25079.17349777311,
+    "Nordland": 28883.277117089256,
+    "Trondelag": 37616.397027700965,
+    "Vestland": 43932.893543321356,
+    "Oslo-Viken": 66631.45297482672
+  },
+  "per_region_shortfall": {
+    "Troms": 0.0,
+    "Nordland": 0.0,
+    "Trondelag": 0.0,
+    "Vestland": 0.0,
+    "Oslo-Viken": 83.20332823286901
+  }
+}

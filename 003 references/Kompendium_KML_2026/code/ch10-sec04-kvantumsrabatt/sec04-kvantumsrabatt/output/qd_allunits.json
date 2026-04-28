@@ -1,0 +1,154 @@
+{
+  "A1": {
+    "j_star": 3,
+    "Q_star": 500,
+    "c_star": 770.0,
+    "TC_star": 1892270.0,
+    "candidates": [
+      {
+        "interval": 1,
+        "q_min": 0,
+        "q_max": 99,
+        "pris": 850.0,
+        "Q_eoq": 101.3,
+        "Q_use": null,
+        "TC": null,
+        "status": "infeasible"
+      },
+      {
+        "interval": 2,
+        "q_min": 100,
+        "q_max": 499,
+        "pris": 810.0,
+        "Q_eoq": 103.8,
+        "Q_use": 103.8,
+        "TC": 1962497.0,
+        "status": "eoq_interior"
+      },
+      {
+        "interval": 3,
+        "q_min": 500,
+        "q_max": null,
+        "pris": 770.0,
+        "Q_eoq": 106.5,
+        "Q_use": 500,
+        "TC": 1892270.0,
+        "status": "corner_low"
+      }
+    ]
+  },
+  "B2": {
+    "j_star": 3,
+    "Q_star": 1000,
+    "c_star": 36.5,
+    "TC_star": 444285.0,
+    "candidates": [
+      {
+        "interval": 1,
+        "q_min": 0,
+        "q_max": 199,
+        "pris": 42.0,
+        "Q_eoq": 890.9,
+        "Q_use": null,
+        "TC": null,
+        "status": "infeasible"
+      },
+      {
+        "interval": 2,
+        "q_min": 200,
+        "q_max": 999,
+        "pris": 39.0,
+        "Q_eoq": 924.5,
+        "Q_use": 924.5,
+        "TC": 474490.0,
+        "status": "eoq_interior"
+      },
+      {
+        "interval": 3,
+        "q_min": 1000,
+        "q_max": null,
+        "pris": 36.5,
+        "Q_eoq": 955.6,
+        "Q_use": 1000,
+        "TC": 444285.0,
+        "status": "corner_low"
+      }
+    ]
+  },
+  "C3": {
+    "j_star": 3,
+    "Q_star": 200,
+    "c_star": 285.0,
+    "TC_star": 523275.0,
+    "candidates": [
+      {
+        "interval": 1,
+        "q_min": 0,
+        "q_max": 49,
+        "pris": 320.0,
+        "Q_eoq": 125.5,
+        "Q_use": null,
+        "TC": null,
+        "status": "infeasible"
+      },
+      {
+        "interval": 2,
+        "q_min": 50,
+        "q_max": 199,
+        "pris": 300.0,
+        "Q_eoq": 129.6,
+        "Q_use": 129.6,
+        "TC": 549721.0,
+        "status": "eoq_interior"
+      },
+      {
+        "interval": 3,
+        "q_min": 200,
+        "q_max": null,
+        "pris": 285.0,
+        "Q_eoq": 133.0,
+        "Q_use": 200,
+        "TC": 523275.0,
+        "status": "corner_low"
+      }
+    ]
+  },
+  "D4": {
+    "j_star": 3,
+    "Q_star": 1000,
+    "c_star": 48.0,
+    "TC_star": 439500.0,
+    "candidates": [
+      {
+        "interval": 1,
+        "q_min": 0,
+        "q_max": 299,
+        "pris": 55.0,
+        "Q_eoq": 700.6,
+        "Q_use": null,
+        "TC": null,
+        "status": "infeasible"
+      },
+      {
+        "interval": 2,
+        "q_min": 300,
+        "q_max": 999,
+        "pris": 51.0,
+        "Q_eoq": 727.6,
+        "Q_use": 727.6,
+        "TC": 466422.0,
+        "status": "eoq_interior"
+      },
+      {
+        "interval": 3,
+        "q_min": 1000,
+        "q_max": null,
+        "pris": 48.0,
+        "Q_eoq": 750.0,
+        "Q_use": 1000,
+        "TC": 439500.0,
+        "status": "corner_low"
+      }
+    ]
+  }
+}

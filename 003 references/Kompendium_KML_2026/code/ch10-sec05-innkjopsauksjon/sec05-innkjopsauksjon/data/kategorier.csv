@@ -1,0 +1,9 @@
+kategori,navn,enhet,volum
+C1,Betong og moertel,m3,1200
+C2,Armeringsstaal,tonn,180
+C3,Isolasjon,m2,4000
+C4,Gips og plater,m2,6500
+C5,Vinduer,stk,420
+C6,Doerer,stk,350
+C7,Elektro (kabel),m,12000
+C8,Roer (VVS),m,9000

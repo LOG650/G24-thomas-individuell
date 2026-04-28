@@ -1,0 +1,27 @@
+{
+  "vehicle_capacity": 45,
+  "depot": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "small": {
+    "n_customers": 15,
+    "total_demand": 66,
+    "mean_demand": 4.4,
+    "max_demand": 8,
+    "min_demand": 2,
+    "lower_bound_vehicles": 2,
+    "mean_distance_to_depot": 5.14,
+    "max_distance_to_depot": 10.97
+  },
+  "large": {
+    "n_customers": 40,
+    "total_demand": 184,
+    "mean_demand": 4.6,
+    "max_demand": 9,
+    "min_demand": 1,
+    "lower_bound_vehicles": 5,
+    "mean_distance_to_depot": 4.02,
+    "max_distance_to_depot": 12.68
+  }
+}

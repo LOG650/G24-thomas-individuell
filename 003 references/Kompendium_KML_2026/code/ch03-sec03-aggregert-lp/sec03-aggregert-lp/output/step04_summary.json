@@ -1,0 +1,10 @@
+{
+  "max_dual_invbal": 11000.0,
+  "mean_dual_invbal": 8750.0,
+  "max_dual_prodcap": 3000.0,
+  "base_obj": 11414800.0,
+  "obj_plus10": 12734600.0,
+  "obj_minus10": 10156600.0,
+  "obj_plus20": 14059400.0,
+  "obj_minus20": 8992000.0
+}

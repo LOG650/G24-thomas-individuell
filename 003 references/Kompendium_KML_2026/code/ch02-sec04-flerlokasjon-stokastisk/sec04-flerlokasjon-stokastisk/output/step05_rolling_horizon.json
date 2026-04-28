@@ -1,0 +1,444 @@
+{
+  "coordinated": {
+    "total_costs": {
+      "order": 81660.0,
+      "holding": 1472.5,
+      "backorder": 3705.0,
+      "transship": 416.0
+    },
+    "total_cost": 87253.5,
+    "total_backorder_units": 39.0,
+    "total_demand_units": 6837.0,
+    "service_level_fillrate": 0.9943,
+    "total_days": 84,
+    "stockout_days_approx": 2,
+    "history": [
+      {
+        "period": 1,
+        "orders": {
+          "L1": 143.0,
+          "L2": 166.0,
+          "L3": 103.0,
+          "L4": 199.0
+        },
+        "realization": {
+          "L1": 130.0,
+          "L2": 154.0,
+          "L3": 109.0,
+          "L4": 179.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 6.0,
+        "period_cost": 7477.5,
+        "ending_inventory": {
+          "L1": 13.0,
+          "L2": 6.0,
+          "L3": 0.0,
+          "L4": 20.0
+        }
+      },
+      {
+        "period": 2,
+        "orders": {
+          "L1": 125.0,
+          "L2": 164.0,
+          "L3": 109.0,
+          "L4": 181.0
+        },
+        "realization": {
+          "L1": 122.0,
+          "L2": 138.0,
+          "L3": 121.0,
+          "L4": 192.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 12.0,
+        "period_cost": 7156.5,
+        "ending_inventory": {
+          "L1": 16.0,
+          "L2": 20.0,
+          "L3": 0.0,
+          "L4": 9.0
+        }
+      },
+      {
+        "period": 3,
+        "orders": {
+          "L1": 119.0,
+          "L2": 156.0,
+          "L3": 112.0,
+          "L4": 193.0
+        },
+        "realization": {
+          "L1": 119.0,
+          "L2": 148.0,
+          "L3": 86.0,
+          "L4": 184.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 7180.0,
+        "ending_inventory": {
+          "L1": 16.0,
+          "L2": 28.0,
+          "L3": 26.0,
+          "L4": 18.0
+        }
+      },
+      {
+        "period": 4,
+        "orders": {
+          "L1": 121.0,
+          "L2": 145.0,
+          "L3": 85.0,
+          "L4": 180.0
+        },
+        "realization": {
+          "L1": 122.0,
+          "L2": 133.0,
+          "L3": 95.0,
+          "L4": 167.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 6627.0,
+        "ending_inventory": {
+          "L1": 15.0,
+          "L2": 40.0,
+          "L3": 16.0,
+          "L4": 31.0
+        }
+      },
+      {
+        "period": 5,
+        "orders": {
+          "L1": 119.0,
+          "L2": 132.0,
+          "L3": 93.0,
+          "L4": 165.0
+        },
+        "realization": {
+          "L1": 128.0,
+          "L2": 166.0,
+          "L3": 116.0,
+          "L4": 204.0
+        },
+        "backorder_units": 3.0,
+        "transship_units": 12.0,
+        "period_cost": 6489.0,
+        "ending_inventory": {
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0,
+          "L4": 0.0
+        }
+      },
+      {
+        "period": 6,
+        "orders": {
+          "L1": 134.0,
+          "L2": 170.0,
+          "L3": 108.0,
+          "L4": 202.0
+        },
+        "realization": {
+          "L1": 103.0,
+          "L2": 115.0,
+          "L3": 87.0,
+          "L4": 178.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 7695.5,
+        "ending_inventory": {
+          "L1": 31.0,
+          "L2": 55.0,
+          "L3": 21.0,
+          "L4": 24.0
+        }
+      },
+      {
+        "period": 7,
+        "orders": {
+          "L1": 108.0,
+          "L2": 109.0,
+          "L3": 86.0,
+          "L4": 175.0
+        },
+        "realization": {
+          "L1": 124.0,
+          "L2": 162.0,
+          "L3": 101.0,
+          "L4": 191.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 5813.5,
+        "ending_inventory": {
+          "L1": 15.0,
+          "L2": 2.0,
+          "L3": 6.0,
+          "L4": 8.0
+        }
+      },
+      {
+        "period": 8,
+        "orders": {
+          "L1": 127.0,
+          "L2": 174.0,
+          "L3": 104.0,
+          "L4": 187.0
+        },
+        "realization": {
+          "L1": 129.0,
+          "L2": 172.0,
+          "L3": 95.0,
+          "L4": 174.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 7236.5,
+        "ending_inventory": {
+          "L1": 13.0,
+          "L2": 4.0,
+          "L3": 15.0,
+          "L4": 21.0
+        }
+      },
+      {
+        "period": 9,
+        "orders": {
+          "L1": 125.0,
+          "L2": 167.0,
+          "L3": 89.0,
+          "L4": 182.0
+        },
+        "realization": {
+          "L1": 108.0,
+          "L2": 146.0,
+          "L3": 103.0,
+          "L4": 169.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 0.0,
+        "period_cost": 6981.0,
+        "ending_inventory": {
+          "L1": 30.0,
+          "L2": 25.0,
+          "L3": 1.0,
+          "L4": 34.0
+        }
+      },
+      {
+        "period": 10,
+        "orders": {
+          "L1": 107.0,
+          "L2": 146.0,
+          "L3": 109.0,
+          "L4": 165.0
+        },
+        "realization": {
+          "L1": 144.0,
+          "L2": 175.0,
+          "L3": 94.0,
+          "L4": 201.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 13.0,
+        "period_cost": 6435.5,
+        "ending_inventory": {
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 3.0,
+          "L4": 0.0
+        }
+      },
+      {
+        "period": 11,
+        "orders": {
+          "L1": 138.0,
+          "L2": 168.0,
+          "L3": 104.0,
+          "L4": 203.0
+        },
+        "realization": {
+          "L1": 164.0,
+          "L2": 172.0,
+          "L3": 107.0,
+          "L4": 209.0
+        },
+        "backorder_units": 36.0,
+        "transship_units": 0.0,
+        "period_cost": 10776.0,
+        "ending_inventory": {
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0,
+          "L4": 0.0
+        }
+      },
+      {
+        "period": 12,
+        "orders": {
+          "L1": 135.0,
+          "L2": 170.0,
+          "L3": 106.0,
+          "L4": 197.0
+        },
+        "realization": {
+          "L1": 131.0,
+          "L2": 173.0,
+          "L3": 112.0,
+          "L4": 185.0
+        },
+        "backorder_units": 0.0,
+        "transship_units": 9.0,
+        "period_cost": 7385.5,
+        "ending_inventory": {
+          "L1": 0.0,
+          "L2": 0.0,
+          "L3": 0.0,
+          "L4": 7.0
+        }
+      }
+    ]
+  },
+  "independent": {
+    "policies": {
+      "L1": {
+        "location": "L1",
+        "R": 7,
+        "L": 2,
+        "mu": 18.0,
+        "sigma": 5.5,
+        "z": 1.645,
+        "mu_RL": 162.0,
+        "sigma_RL": 16.5,
+        "S": 189.14,
+        "s": 48.79
+      },
+      "L2": {
+        "location": "L2",
+        "R": 7,
+        "L": 3,
+        "mu": 22.0,
+        "sigma": 6.5,
+        "z": 1.645,
+        "mu_RL": 220.0,
+        "sigma_RL": 20.55,
+        "S": 253.81,
+        "s": 84.52
+      },
+      "L3": {
+        "location": "L3",
+        "R": 7,
+        "L": 2,
+        "mu": 14.0,
+        "sigma": 4.5,
+        "z": 1.645,
+        "mu_RL": 126.0,
+        "sigma_RL": 13.5,
+        "S": 148.21,
+        "s": 38.47
+      },
+      "L4": {
+        "location": "L4",
+        "R": 7,
+        "L": 4,
+        "mu": 26.0,
+        "sigma": 7.5,
+        "z": 1.645,
+        "mu_RL": 286.0,
+        "sigma_RL": 24.87,
+        "S": 326.92,
+        "s": 128.67
+      }
+    },
+    "total_costs": {
+      "order": 52761.0,
+      "holding": 66494.95,
+      "backorder": 150013.55,
+      "transship": 0.0
+    },
+    "total_cost": 269269.5,
+    "total_backorder_units": 1579.09,
+    "total_demand_units": 6837.0,
+    "service_level_fillrate": 0.769,
+    "total_days": 84,
+    "stockout_days_approx": 86,
+    "history": [
+      {
+        "period": 1,
+        "units_ordered": 0.0,
+        "backorder_units": 0.0,
+        "period_cost": 10076.4
+      },
+      {
+        "period": 2,
+        "units_ordered": 0.0,
+        "backorder_units": 226.92,
+        "period_cost": 23403.98
+      },
+      {
+        "period": 3,
+        "units_ordered": 918.08,
+        "backorder_units": 234.0,
+        "period_cost": 40346.34
+      },
+      {
+        "period": 4,
+        "units_ordered": 0.0,
+        "backorder_units": 25.65,
+        "period_cost": 8199.43
+      },
+      {
+        "period": 5,
+        "units_ordered": 794.35,
+        "backorder_units": 108.27,
+        "period_cost": 25968.18
+      },
+      {
+        "period": 6,
+        "units_ordered": 0.0,
+        "backorder_units": 73.65,
+        "period_cost": 9702.0
+      },
+      {
+        "period": 7,
+        "units_ordered": 915.08,
+        "backorder_units": 210.0,
+        "period_cost": 37810.34
+      },
+      {
+        "period": 8,
+        "units_ordered": 0.0,
+        "backorder_units": 86.84,
+        "period_cost": 12780.4
+      },
+      {
+        "period": 9,
+        "units_ordered": 851.16,
+        "backorder_units": 151.08,
+        "period_cost": 31528.59
+      },
+      {
+        "period": 10,
+        "units_ordered": 0.0,
+        "backorder_units": 70.84,
+        "period_cost": 10258.83
+      },
+      {
+        "period": 11,
+        "units_ordered": 918.08,
+        "backorder_units": 280.0,
+        "period_cost": 44273.84
+      },
+      {
+        "period": 12,
+        "units_ordered": 0.0,
+        "backorder_units": 111.84,
+        "period_cost": 14921.2
+      }
+    ]
+  }
+}

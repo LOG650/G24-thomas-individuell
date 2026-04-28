@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "Baseline (LP)",
+    "detalj": "Original etterspoersel og kapasitet",
+    "obj": 11414800.0,
+    "rel_endr_%": 0.0
+  },
+  {
+    "scenario": "Chase (heuristikk)",
+    "detalj": "Produser per mnd uten lageroppbygging",
+    "obj": 16656000.0,
+    "rel_endr_%": 45.92
+  },
+  {
+    "scenario": "Etterspoersel x 0.90",
+    "detalj": "Likeverdig skalering alle maaneder",
+    "obj": 10156600.0,
+    "rel_endr_%": -11.02
+  },
+  {
+    "scenario": "Etterspoersel x 1.10",
+    "detalj": "Likeverdig skalering alle maaneder",
+    "obj": 12734600.0,
+    "rel_endr_%": 11.56
+  },
+  {
+    "scenario": "Kapasitet: alpha = 3",
+    "detalj": "Produktiviteten reduseres med 25 %",
+    "obj": 11905600.0,
+    "rel_endr_%": 4.3
+  },
+  {
+    "scenario": "Kapasitet: alpha = 5",
+    "detalj": "Produktiviteten oekes med 25 %",
+    "obj": 11296000.0,
+    "rel_endr_%": -1.04
+  },
+  {
+    "scenario": "Overtid: $O_{max}$ = 20",
+    "detalj": "Halvert overtidskapasitet",
+    "obj": 11414800.0,
+    "rel_endr_%": 0.0
+  }
+]

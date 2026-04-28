@@ -1,0 +1,15 @@
+{
+  "servicenivaa_type1": 0.95,
+  "V_max_m3": 160.0,
+  "B_max_NOK": 5000000.0,
+  "lambda_V": 23161.85178104881,
+  "lambda_B": 0.0,
+  "V_used_m3": 160.0,
+  "B_used_NOK": 4991516.0,
+  "total_cost_NOK": 2943906.0,
+  "total_cost_uavhengig_NOK": 2499032.0,
+  "kostnadsokning_NOK": 444874.0,
+  "kostnadsokning_pct": 17.8,
+  "iterations": 33,
+  "optimizer_message": "Subgradient ascent, 33 iter"
+}

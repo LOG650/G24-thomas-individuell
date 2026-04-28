@@ -1,0 +1,15 @@
+{
+  "antall_kunder": 40,
+  "antall_innsamlingskandidater": 8,
+  "antall_gjenvinningskandidater": 3,
+  "antall_variabler_total": 355,
+  "antall_binaere_variabler": 11,
+  "antall_kontinuerlige_variabler": 344,
+  "antall_skranker": 59,
+  "antall_dekningsskranker": 40,
+  "antall_kapasitet_IS": 8,
+  "antall_flytbalanse": 8,
+  "antall_kapasitet_GV": 3,
+  "antall_flytvariabler_l1": 320,
+  "antall_flytvariabler_l2": 24
+}

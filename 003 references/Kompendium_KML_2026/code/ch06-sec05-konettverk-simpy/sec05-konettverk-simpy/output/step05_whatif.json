@@ -1,0 +1,162 @@
+{
+  "baseline": {
+    "n_orders_completed": 5000,
+    "throughput_per_hour": 39.923624542654395,
+    "mean_sojourn": 26.141839902264287,
+    "p95_sojourn": 48.44449923941354,
+    "stations": {
+      "mottak": {
+        "n": 5000,
+        "mean_wait": 4.0744142303685305,
+        "p95_wait": 14.7547587126576,
+        "mean_service": 1.1916275829255059,
+        "mean_sojourn": 5.266041813294031,
+        "utilization": 0.7929015369231406
+      },
+      "kvalitetskontroll": {
+        "n": 5000,
+        "mean_wait": 2.9093866977060467,
+        "p95_wait": 9.844619345596142,
+        "mean_service": 1.1957414209782218,
+        "mean_sojourn": 4.105128118684265,
+        "utilization": 0.7956388590205739
+      },
+      "pakking": {
+        "n": 5000,
+        "mean_wait": 11.286195924300008,
+        "p95_wait": 33.726593523280734,
+        "mean_service": 2.7677524883603475,
+        "mean_sojourn": 14.053948412660358,
+        "utilization": 0.9208225931024677
+      },
+      "utsending": {
+        "n": 5000,
+        "mean_wait": 1.6200785210505888,
+        "p95_wait": 5.550776154925621,
+        "mean_service": 1.096643036575048,
+        "mean_sojourn": 2.7167215576256356,
+        "utilization": 0.7296994141589769
+      }
+    }
+  },
+  "A_extra_server": {
+    "n_orders_completed": 5000,
+    "throughput_per_hour": 40.20531016625313,
+    "mean_sojourn": 15.537805872592552,
+    "p95_sojourn": 29.108151906122547,
+    "stations": {
+      "mottak": {
+        "n": 5000,
+        "mean_wait": 4.737064772554764,
+        "p95_wait": 15.823817599996113,
+        "mean_service": 1.1998366216777847,
+        "mean_sojourn": 5.936901394232549,
+        "utilization": 0.8039967253897449
+      },
+      "kvalitetskontroll": {
+        "n": 5000,
+        "mean_wait": 2.870711134497777,
+        "p95_wait": 9.120606584515146,
+        "mean_service": 1.2000332053902472,
+        "mean_sojourn": 4.070744339888027,
+        "utilization": 0.8041284538752973
+      },
+      "pakking": {
+        "n": 5000,
+        "mean_wait": 0.5027230239982485,
+        "p95_wait": 2.953203466565265,
+        "mean_service": 2.717684077168829,
+        "mean_sojourn": 3.220407101167075,
+        "utilization": 0.6070296180914456
+      },
+      "utsending": {
+        "n": 5000,
+        "mean_wait": 1.2083324961555024,
+        "p95_wait": 4.153378811724861,
+        "mean_service": 1.101420541149395,
+        "mean_sojourn": 2.3097530373049,
+        "utilization": 0.7380492413398951
+      }
+    }
+  },
+  "B_less_var": {
+    "n_orders_completed": 5000,
+    "throughput_per_hour": 39.53375812063304,
+    "mean_sojourn": 30.200499710197974,
+    "p95_sojourn": 72.01116688014045,
+    "stations": {
+      "mottak": {
+        "n": 5000,
+        "mean_wait": 4.209696458522265,
+        "p95_wait": 14.458465315669313,
+        "mean_service": 1.1985816298059213,
+        "mean_sojourn": 5.408278088328184,
+        "utilization": 0.7897406040096898
+      },
+      "kvalitetskontroll": {
+        "n": 5000,
+        "mean_wait": 2.4941491094806008,
+        "p95_wait": 8.222501920124413,
+        "mean_service": 1.2012671648594668,
+        "mean_sojourn": 3.695416274340065,
+        "utilization": 0.791510092230213
+      },
+      "pakking": {
+        "n": 5000,
+        "mean_wait": 15.697518993914176,
+        "p95_wait": 52.0679219349921,
+        "mean_service": 2.7686876820979105,
+        "mean_sojourn": 18.466206676012092,
+        "utilization": 0.9121385761302895
+      },
+      "utsending": {
+        "n": 5000,
+        "mean_wait": 1.5359251368197988,
+        "p95_wait": 5.544025849198239,
+        "mean_service": 1.0946735346978342,
+        "mean_sojourn": 2.6305986715176353,
+        "utilization": 0.7212759790300439
+      }
+    }
+  },
+  "C_surge": {
+    "n_orders_completed": 5000,
+    "throughput_per_hour": 42.48176700998741,
+    "mean_sojourn": 62.305711931144494,
+    "p95_sojourn": 102.32502288770847,
+    "stations": {
+      "mottak": {
+        "n": 5000,
+        "mean_wait": 7.15596173880194,
+        "p95_wait": 23.467106949838005,
+        "mean_service": 1.2097421047393593,
+        "mean_sojourn": 8.365703843541299,
+        "utilization": 0.85653303726182
+      },
+      "kvalitetskontroll": {
+        "n": 5000,
+        "mean_wait": 4.641945463034682,
+        "p95_wait": 14.767385484075573,
+        "mean_service": 1.2071668624373835,
+        "mean_sojourn": 5.849112325472063,
+        "utilization": 0.8547096898707046
+      },
+      "pakking": {
+        "n": 5000,
+        "mean_wait": 42.179450273921525,
+        "p95_wait": 77.30065381258915,
+        "mean_service": 2.7812682673967077,
+        "mean_sojourn": 44.96071854131825,
+        "utilization": 0.9846099210651504
+      },
+      "utsending": {
+        "n": 5000,
+        "mean_wait": 2.0320028653153117,
+        "p95_wait": 6.627708415446297,
+        "mean_service": 1.0981743554975885,
+        "mean_sojourn": 3.1301772208128984,
+        "utilization": 0.7775397851098601
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "L1": {
+    "policy": {
+      "location": "L1",
+      "R": 7,
+      "L": 2,
+      "mu": 18.0,
+      "sigma": 5.5,
+      "z": 1.645,
+      "mu_RL": 162.0,
+      "sigma_RL": 16.5,
+      "S": 189.14,
+      "s": 48.79
+    },
+    "stats": {
+      "total_demand": 6650.0,
+      "total_units_ordered": 4728.5,
+      "total_backorder_units": 1778.5,
+      "stockout_days": 108,
+      "service_level": 0.7,
+      "cost_holding": 57323.2,
+      "cost_ordering": 10000.0,
+      "cost_backorder": 168957.5,
+      "cost_purchase": 56742.0,
+      "cost_total": 293022.7
+    }
+  },
+  "L2": {
+    "policy": {
+      "location": "L2",
+      "R": 7,
+      "L": 3,
+      "mu": 22.0,
+      "sigma": 6.5,
+      "z": 1.645,
+      "mu_RL": 220.0,
+      "sigma_RL": 20.55,
+      "S": 253.81,
+      "s": 84.52
+    },
+    "stats": {
+      "total_demand": 8172.0,
+      "total_units_ordered": 6274.2,
+      "total_backorder_units": 1737.8,
+      "stockout_days": 86,
+      "service_level": 0.7611,
+      "cost_holding": 84536.6,
+      "cost_ordering": 10000.0,
+      "cost_backorder": 165091.0,
+      "cost_purchase": 75290.4,
+      "cost_total": 334918.0
+    }
+  },
+  "L3": {
+    "policy": {
+      "location": "L3",
+      "R": 7,
+      "L": 2,
+      "mu": 14.0,
+      "sigma": 4.5,
+      "z": 1.645,
+      "mu_RL": 126.0,
+      "sigma_RL": 13.5,
+      "S": 148.21,
+      "s": 38.47
+    },
+    "stats": {
+      "total_demand": 5038.0,
+      "total_units_ordered": 3815.0,
+      "total_backorder_units": 1205.0,
+      "stockout_days": 94,
+      "service_level": 0.7389,
+      "cost_holding": 48363.9,
+      "cost_ordering": 10400.0,
+      "cost_backorder": 114471.2,
+      "cost_purchase": 45780.5,
+      "cost_total": 219015.6
+    }
+  },
+  "L4": {
+    "policy": {
+      "location": "L4",
+      "R": 7,
+      "L": 4,
+      "mu": 26.0,
+      "sigma": 7.5,
+      "z": 1.645,
+      "mu_RL": 286.0,
+      "sigma_RL": 24.87,
+      "S": 326.92,
+      "s": 128.67
+    },
+    "stats": {
+      "total_demand": 9610.0,
+      "total_units_ordered": 7929.8,
+      "total_backorder_units": 1680.2,
+      "stockout_days": 76,
+      "service_level": 0.7889,
+      "cost_holding": 106520.2,
+      "cost_ordering": 10400.0,
+      "cost_backorder": 159619.0,
+      "cost_purchase": 95157.6,
+      "cost_total": 371696.8
+    }
+  },
+  "total_cost": 1218653.1
+}

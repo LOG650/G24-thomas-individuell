@@ -1,0 +1,13 @@
+{
+  "n_locations": 2000,
+  "n_aisles": 20,
+  "n_levels": 50,
+  "n_orders": 250,
+  "n_lines_total": 1118,
+  "same_day_share": 0.748,
+  "mean_lines_per_order": 4.472,
+  "top20_coverage": 0.8033301519255728,
+  "day_hours": 10.0,
+  "n_pickers": 8,
+  "n_pack_stations": 2
+}

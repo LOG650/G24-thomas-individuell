@@ -1,0 +1,131 @@
+{
+  "best_params": {
+    "objective": "regression",
+    "metric": "rmse",
+    "verbose": -1,
+    "boosting_type": "gbdt",
+    "seed": 42,
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "max_depth": -1,
+    "feature_fraction": 0.9,
+    "bagging_fraction": 0.9,
+    "bagging_freq": 5,
+    "min_data_in_leaf": 20
+  },
+  "best_iteration": 1781,
+  "cv_results": [
+    {
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 20,
+      "rmse_mean": 20.408433830956884,
+      "rmse_std": 4.765053018909791,
+      "best_iters": [
+        795,
+        800,
+        800,
+        193
+      ]
+    },
+    {
+      "num_leaves": 63,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 20,
+      "rmse_mean": 20.458032624461538,
+      "rmse_std": 4.2504495694162605,
+      "best_iters": [
+        457,
+        800,
+        699,
+        165
+      ]
+    },
+    {
+      "num_leaves": 63,
+      "learning_rate": 0.03,
+      "max_depth": 10,
+      "feature_fraction": 0.85,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 3,
+      "min_data_in_leaf": 30,
+      "rmse_mean": 20.891367468471596,
+      "rmse_std": 4.546385549267451,
+      "best_iters": [
+        800,
+        797,
+        711,
+        456
+      ]
+    },
+    {
+      "num_leaves": 31,
+      "learning_rate": 0.03,
+      "max_depth": 8,
+      "feature_fraction": 0.9,
+      "bagging_fraction": 0.9,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 30,
+      "rmse_mean": 20.950389406883275,
+      "rmse_std": 4.556491936668614,
+      "best_iters": [
+        798,
+        799,
+        800,
+        796
+      ]
+    },
+    {
+      "num_leaves": 127,
+      "learning_rate": 0.05,
+      "max_depth": -1,
+      "feature_fraction": 0.7,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 40,
+      "rmse_mean": 21.958707206449308,
+      "rmse_std": 5.176536936145762,
+      "best_iters": [
+        271,
+        631,
+        230,
+        235
+      ]
+    },
+    {
+      "num_leaves": 127,
+      "learning_rate": 0.03,
+      "max_depth": 10,
+      "feature_fraction": 0.75,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "min_data_in_leaf": 50,
+      "rmse_mean": 22.71868473919804,
+      "rmse_std": 5.548196360121943,
+      "best_iters": [
+        796,
+        791,
+        230,
+        200
+      ]
+    }
+  ],
+  "n_features": 89,
+  "cat_features": [
+    "kategori_kode",
+    "merke_kode",
+    "butikk_kode",
+    "sku_id_kode",
+    "ukedag",
+    "maaned",
+    "kvartal"
+  ]
+}

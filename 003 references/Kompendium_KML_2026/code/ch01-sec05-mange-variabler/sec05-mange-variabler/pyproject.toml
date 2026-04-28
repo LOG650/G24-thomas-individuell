@@ -1,0 +1,16 @@
+[project]
+name = "lightgbm-demand"
+version = "0.1.0"
+description = "Code for example: LightGBM for demand forecasting with many variables"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.8",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.4",
+    "statsmodels>=0.14",
+    "lightgbm>=4.3",
+    "shap>=0.45",
+    "pyarrow>=23.0.1",
+]

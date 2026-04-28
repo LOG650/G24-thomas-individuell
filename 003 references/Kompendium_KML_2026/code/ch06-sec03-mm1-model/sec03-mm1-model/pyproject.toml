@@ -1,0 +1,13 @@
+[project]
+name = "mm1-model"
+version = "0.1.0"
+description = "Code for example: M/M/1-kømodell ved tollstasjon (Oslo havn)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "simpy",
+]

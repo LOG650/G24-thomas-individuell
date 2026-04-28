@@ -1,0 +1,15 @@
+{
+  "antall_trinn": 4,
+  "leveringstid_L": 2,
+  "gjennomgangsperiode_R": 1,
+  "servicenivaa_z": 1.65,
+  "servicenivaa_prosent": 95,
+  "startlager": 200,
+  "glatting_alpha": 0.3,
+  "trinn": [
+    "Detaljist",
+    "Grossist",
+    "Distributor",
+    "Fabrikk"
+  ]
+}

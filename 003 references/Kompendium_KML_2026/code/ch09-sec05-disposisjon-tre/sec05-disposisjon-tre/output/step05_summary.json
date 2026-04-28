@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "name": "naiv-recycle",
+      "total_ev": 203111.68,
+      "shares": {
+        "repair": 0.0,
+        "refurbish": 0.0,
+        "recycle": 1.0,
+        "dispose": 0.0
+      },
+      "delta_vs_naiv": 0.0,
+      "pct_of_oracle": 21.99
+    },
+    {
+      "name": "cut-off",
+      "total_ev": 908579.44,
+      "shares": {
+        "repair": 0.345,
+        "refurbish": 0.3187,
+        "recycle": 0.3362,
+        "dispose": 0.0
+      },
+      "delta_vs_naiv": 705467.76,
+      "pct_of_oracle": 98.36
+    },
+    {
+      "name": "tre",
+      "total_ev": 916882.03,
+      "shares": {
+        "repair": 0.2725,
+        "refurbish": 0.4763,
+        "recycle": 0.2512,
+        "dispose": 0.0
+      },
+      "delta_vs_naiv": 713770.35,
+      "pct_of_oracle": 99.25
+    },
+    {
+      "name": "oracle",
+      "total_ev": 923768.25,
+      "shares": {
+        "repair": 0.2625,
+        "refurbish": 0.495,
+        "recycle": 0.2425,
+        "dispose": 0.0
+      },
+      "delta_vs_naiv": 720656.57,
+      "pct_of_oracle": 100.0
+    }
+  ]
+}

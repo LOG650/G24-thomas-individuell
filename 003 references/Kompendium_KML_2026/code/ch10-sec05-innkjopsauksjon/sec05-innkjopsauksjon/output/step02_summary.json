@@ -1,0 +1,11 @@
+{
+  "total_kostnad_NOK": 13353000.0,
+  "total_kostnad_MNOK": 13.353,
+  "antall_kategorier": 8,
+  "antall_leverandoerer_brukt": 3,
+  "andel_per_leverandoer": {
+    "L1": 0.3846,
+    "L2": 0.5614,
+    "L3": 0.0539
+  }
+}

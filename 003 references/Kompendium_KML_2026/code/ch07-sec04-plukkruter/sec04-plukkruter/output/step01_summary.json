@@ -1,0 +1,14 @@
+{
+  "n_aisles": 10,
+  "n_shelves": 20,
+  "n_sides": 2,
+  "n_locations": 400,
+  "n_picklists": 500,
+  "pick_size_min": 10,
+  "pick_size_max": 30,
+  "pick_size_mean": 19.93,
+  "example_picklist_id": 0,
+  "example_picklist_k": 15,
+  "aisle_spacing_m": 5.0,
+  "shelf_spacing_m": 1.0
+}
