@@ -27,9 +27,11 @@ Hovedutfordringene ligger på fire områder: (a) hovedfunnet (+49,8 % marginvekt
 
 **Forbedring (anbefaling).** To punkter:
 - *Category-captain-rollen* er introdusert i §2.3, men bør kobles tydeligere til forhandlingssituasjonen: hvilke beslutninger leverandøren kan påvirke, hvilke data kjeden holder tilbake, og hvor grensen går mellom beslutningsstøtte og partsinnlegg.
-- *Verifiser referanselisten*: Et par oppføringer ser ut til å ha stavemåte- eller attribusjonsfeil som bør sjekkes. Eksempler: «Dösterhöft» bør antakelig være **Düsterhöft** (jf. Hübner, Düsterhöft & Ostermeier, 2021, *EJOR* 292(1)); FSMJ-paperet (2023) om assortment, shelf space og replenishment er av **Hübner & Kuhn**, ikke Klement & Hübner. Gå gjennom referanselisten med kilden i hånd før innlevering.
+- *To referanser bør verifiseres mot kildens metadata før innlevering*:
+  - «Dösterhöft, T., Hübner, A. & Schaal, K. (2021). Exact optimization and decomposition approaches for shelf space allocation. *EJOR*»: Tittelen *«Exact optimization and decomposition approaches for shelf space allocation»* (EJOR 299(2), 2022) er av **Çağlar Gençosman & Begen** — ikke Hübner-gruppen. Det finnes derimot en faktisk Hübner-paper fra 2021 av **Hübner, Düsterhöft & Ostermeier**, men den har tittelen *«Shelf space dimensioning and product allocation in retail stores»* (EJOR 292(1), pp. 155–171). To papers ser ut til å ha smeltet sammen i G22s oppføring.
+  - «Klement, N. & Hübner, A. (2023). Decision support for managing assortments, shelf space, and replenishment in retail. *FSMJ*»: Det FSMJ-paperet er av **Hübner & Kuhn (2023)**, ikke Klement & Hübner.
 
-**Forslag.** Vurder å utvide §2.3 med 2–4 setninger som kobler category-captain-teorien direkte til leverandørens informasjonsasymmetri og JBP-/hylleforhandling. Kjør en siste verifiseringsrunde på alle referanser (forfatter, år, tittel, journal) mot kildenes egne metadata.
+**Forslag.** Vurder å utvide §2.3 med 2–4 setninger som kobler category-captain-teorien direkte til leverandørens informasjonsasymmetri og JBP-/hylleforhandling. Sjekk i tillegg de to flaggede referansene mot DOI/publisher-metadata før innlevering, og kjør gjerne hele referanselisten gjennom et lignende verifiseringssjekk.
 
 ## 3. Metode
 
@@ -50,7 +52,7 @@ Hovedutfordringene ligger på fire områder: (a) hovedfunnet (+49,8 % marginvekt
 **Forbedring.**
 - *A4-anomali*: Reduksjonen fra 168 → 3 facings drives mekanisk av lav utnyttelse i et smalt 10-ukers vindu på et høyvolumprodukt. I en LP er dette korrekt, men 1-kolli-gulv på et volatilt A-produkt er en reell risiko for utsolgtsituasjoner. Bør drøftes med en eksplisitt advarsel om at modellen forutsetter stabilt forbruksmønster.
 - *Uke 15 / A2-spike*: Flagget som sannsynlig kampanjeuke (412 mot snitt 191), men beholdt uten å vise eksklusjonens effekt i sensitivitet.
-- *Manglende baseline*: LP-resultatet sammenlignes kun med status quo. En enkel "doble alle A, halver alle C"-heuristikk ville vist hvor mye av +49,8 % som faktisk krever LP-presisjon. Til kalibrering: Hübner et al. (2020) sin case-studie med data fra en stor tysk dagligvarekjede rapporterer 3,7 % omsetningsforbedring og opp til 15 % profittforbedring — flere ganger lavere enn G22s estimat.
+- *Manglende baseline*: LP-resultatet sammenlignes kun med status quo. En enkel "doble alle A, halver alle C"-heuristikk ville vist hvor mye av +49,8 % som faktisk krever LP-presisjon. Til kalibrering: Hübner et al. (2020) sin case-studie med data fra en av Tysklands største dagligvarekjeder rapporterer profittøkning på opp til 15 % — flere ganger lavere enn G22s estimat.
 - *Tabell 7.2*: 34 rader gjør at mønstre per ABC-klasse blir krevende å fange. En oppsummerende tabell per klasse kunne supplert.
 
 **Forslag.** Skriv et kort avsnitt om A4-tilfellet som flytter funnet fra "modellen sier" til "modellen + skjønn". Kjør én enkel ABC-heuristikk-baseline og vis kontrasten i Tabell 7.1, slik at leseren ser merverdien av LP framfor en enkel tommelfingerregel.
