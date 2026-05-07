@@ -111,7 +111,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 - **Content:** Parsed from `LOG650_Rapport_FINAL.md`
 - **Math:** LaTeX → MathML (`latex2mathml`) → OMML (`MML2OMML.XSL`) → Word equations
 - **Tables:** Three-line format (booktabs): top border, header-bottom border, table-bottom border, no vertical lines
-- **Table captions:** Italic, placed UNDER tables (per kompendiet kap. 3.5)
+- **Table captions:** Italic, placed OVER tables (APA 7-standard: tabellnummer + kursiv tittel over tabellen). Figurtekster plasseres UNDER figurer.
 - **Figures:** 12 PNGs from `006 Analyse/plots/` (Fig00–Fig11), caption under (italic)
 - **Run:** `cd "005 report" && py build_word.py`
 - **Workflow:** MD-filen er kilden. Ved endringer: oppdater MD først, kjør `build_word.py` etterpå.
