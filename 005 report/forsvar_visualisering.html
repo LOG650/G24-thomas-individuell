@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOG650 — Forsvarsvisualisering</title>
+<style>
+:root {
+  --gronn: #1E7D45;
+  --oransje: #D68910;
+  --rod: #B03A2E;
+  --bla: #0B3D8C;
+  --gra: #888888;
+  --tittel: #1A2A44;
+  --bakgrunn: #FAF8F4;
+  --kort: #FFFFFF;
+  --kant: #D9D4CB;
+  --tekst: #2C2C2C;
+  --dempet: #6B6B6B;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--tekst);
+  background: var(--bakgrunn);
+}
+
+header {
+  background: var(--tittel);
+  color: #FFF;
+  padding: 18px 24px;
+  border-bottom: 4px solid var(--bla);
+}
+header h1 { margin: 0; font-size: 22px; letter-spacing: 0.3px; }
+header p { margin: 4px 0 0; font-size: 13px; opacity: 0.85; }
+
+nav.faner {
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFF;
+  border-bottom: 1px solid var(--kant);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+nav.faner button {
+  flex: 1 1 auto;
+  min-width: 110px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 14px 16px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--dempet);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+nav.faner button:hover { background: #F4F1EA; color: var(--tittel); }
+nav.faner button.aktiv {
+  color: var(--tittel);
+  border-bottom-color: var(--bla);
+  font-weight: bold;
+}
+
+main { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.fane { display: none; }
+.fane.aktiv { display: block; }
+
+h2 {
+  color: var(--tittel);
+  font-size: 22px;
+  margin: 0 0 6px;
+  border-bottom: 2px solid var(--kant);
+  padding-bottom: 6px;
+}
+h2 + p.ingress { margin: 0 0 22px; color: var(--dempet); font-style: italic; }
+
+h3 { color: var(--tittel); font-size: 17px; margin: 24px 0 8px; }
+
+/* ---------- Pipeline ---------- */
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.pipe-rad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+.pipe-pil {
+  font-size: 28px;
+  color: var(--gra);
+  text-align: center;
+  margin: 4px 0;
+  line-height: 1;
+}
+.pipe-boks {
+  background: var(--kort);
+  border: 2px solid var(--kant);
+  border-radius: 8px;
+  padding: 14px 18px;
+  min-width: 150px;
+  max-width: 260px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.pipe-boks:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  border-color: var(--bla);
+}
+.pipe-boks .tall {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--tittel);
+  display: block;
+  margin-bottom: 4px;
+}
+.pipe-boks .label {
+  font-size: 12px;
+  color: var(--dempet);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.pipe-boks.kilde { border-color: var(--bla); }
+.pipe-boks.filter { border-color: var(--gra); background: #F4F1EA; }
+.pipe-boks.metode { border-color: var(--bla); }
+.pipe-boks.regel { border-color: var(--tittel); }
+.pipe-boks.overfor { border-color: var(--gronn); background: #EAF5EE; }
+.pipe-boks.behold { border-color: var(--rod); background: #FAEAE8; }
+.pipe-boks.vurder { border-color: var(--oransje); background: #FBF1DF; }
+.pipe-boks.mangler { border-color: var(--gra); background: #EFEDE8; }
+.pipe-boks.besparelse { border-color: var(--gronn); background: var(--gronn); color: #FFF; }
+.pipe-boks.besparelse .tall { color: #FFF; }
+.pipe-boks.besparelse .label { color: #E8F5EE; }
+
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+  max-width: 580px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+dialog::backdrop { background: rgba(26, 42, 68, 0.55); }
+.modal-topp {
+  background: var(--tittel);
+  color: #FFF;
+  padding: 14px 20px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-topp h3 { color: #FFF; margin: 0; font-size: 16px; }
+.modal-topp button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #FFF;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+}
+.modal-innhold { padding: 20px 24px 24px; }
+.modal-innhold p { margin: 0 0 12px; }
+.modal-innhold .meta {
+  background: #F4F1EA;
+  padding: 10px 14px;
+  border-left: 3px solid var(--bla);
+  font-size: 13px;
+  color: var(--dempet);
+  margin-top: 12px;
+}
+
+/* ---------- Tall-kort ---------- */
+.filterrad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.filterrad button {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 18px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--dempet);
+}
+.filterrad button.aktiv {
+  background: var(--bla);
+  color: #FFF;
+  border-color: var(--bla);
+}
+.tallgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.tallkort {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-left: 4px solid var(--bla);
+  border-radius: 6px;
+  padding: 14px;
+}
+.tallkort.datagrunnlag { border-left-color: var(--bla); }
+.tallkort.klassifisering { border-left-color: var(--oransje); }
+.tallkort.kmeans { border-left-color: #6A4C93; }
+.tallkort.regelmotor { border-left-color: var(--tittel); }
+.tallkort.besparelse { border-left-color: var(--gronn); }
+.tallkort.bifunn { border-left-color: var(--rod); }
+.tallkort .verdi {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--tittel);
+  line-height: 1.1;
+}
+.tallkort .forklaring {
+  font-size: 13px;
+  color: var(--dempet);
+  margin-top: 6px;
+}
+.tallkort .kategori {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--bla);
+  display: block;
+  margin-top: 8px;
+}
+
+/* ---------- Regelmotor ---------- */
+table.regler {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--kort);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+table.regler th, table.regler td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--kant);
+  font-size: 14px;
+  vertical-align: top;
+}
+table.regler th {
+  background: var(--tittel);
+  color: #FFF;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+}
+table.regler tr.regel-rad { cursor: pointer; transition: background 0.1s; }
+table.regler tr.regel-rad:hover { background: #F4F1EA; }
+table.regler tr.detalj td {
+  background: #F4F1EA;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--dempet);
+  border-bottom: 2px solid var(--kant);
+}
+.merke {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+.merke.overfor { background: var(--gronn); color: #FFF; }
+.merke.behold { background: var(--rod); color: #FFF; }
+.merke.vurder { background: var(--oransje); color: #FFF; }
+.merke.mangler { background: var(--gra); color: #FFF; }
+
+.fordelingsbar {
+  display: flex;
+  height: 50px;
+  margin: 20px 0 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--kant);
+}
+.fordelingsbar > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0 6px;
+}
+.fordelingsbar .b-overfor { background: var(--gronn); }
+.fordelingsbar .b-behold { background: var(--rod); }
+.fordelingsbar .b-vurder { background: var(--oransje); }
+.fordelingsbar .b-mangler { background: var(--gra); }
+
+/* ---------- Sensitivitet ---------- */
+.scenarier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.scenario {
+  background: var(--kort);
+  border-radius: 8px;
+  border: 2px solid var(--kant);
+  padding: 18px;
+  text-align: center;
+}
+.scenario .navn {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--dempet);
+}
+.scenario .belop {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--tittel);
+  margin: 6px 0 4px;
+}
+.scenario .g { font-size: 13px; color: var(--dempet); }
+.scenario.worst { border-color: var(--rod); }
+.scenario.base { border-color: var(--bla); background: #EEF3FA; }
+.scenario.best { border-color: var(--gronn); }
+
+.sensgrid {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  padding: 16px;
+}
+.sensgrid table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sensgrid th, .sensgrid td {
+  padding: 6px 10px;
+  border: 1px solid var(--kant);
+  text-align: center;
+}
+.sensgrid th { background: #F4F1EA; color: var(--tittel); }
+.sensgrid td.base-celle { background: var(--bla); color: #FFF; font-weight: bold; }
+.sensnote {
+  background: #EAF5EE;
+  border-left: 3px solid var(--gronn);
+  padding: 12px 16px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+/* ---------- Q&A ---------- */
+.qa-kontroll {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.qa-kontroll select, .qa-kontroll button {
+  font: inherit;
+  font-size: 14px;
+  padding: 7px 14px;
+  border: 1px solid var(--kant);
+  border-radius: 5px;
+  background: var(--kort);
+  cursor: pointer;
+}
+.qa-kontroll button:hover { background: #F4F1EA; }
+.qa-kontroll button.primaer {
+  background: var(--bla);
+  color: #FFF;
+  border-color: var(--bla);
+}
+.qa-kontroll .teller {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--dempet);
+}
+.qa-kort {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  padding: 22px 26px;
+  min-height: 240px;
+}
+.qa-kort .qa-tag {
+  display: inline-block;
+  background: var(--tittel);
+  color: #FFF;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.qa-kort .sporsmaal {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--tittel);
+  margin: 0 0 14px;
+}
+.qa-svar {
+  background: #EEF3FA;
+  border-left: 3px solid var(--bla);
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+  margin-top: 12px;
+}
+.qa-kort details {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--dempet);
+}
+.qa-kort details summary {
+  cursor: pointer;
+  color: var(--bla);
+  font-style: italic;
+  user-select: none;
+}
+.qa-kort details summary:hover { text-decoration: underline; }
+.qa-kort .coach {
+  background: #FBF1DF;
+  border-left: 3px solid var(--oransje);
+  padding: 10px 14px;
+  margin-top: 8px;
+  border-radius: 0 4px 4px 0;
+}
+.skjult { display: none; }
+
+/* ---------- Pitch ---------- */
+.pitchblokk {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.pitchblokk .tid {
+  display: inline-block;
+  background: var(--bla);
+  color: #FFF;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.pitchblokk .lang {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.pillar {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 14px 0;
+  padding: 14px;
+  border-left: 4px solid var(--bla);
+  background: #F4F1EA;
+  border-radius: 0 6px 6px 0;
+}
+.pillar .nr {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--bla);
+  line-height: 1;
+  min-width: 36px;
+}
+.pillar .innhold .tittel {
+  font-weight: bold;
+  color: var(--tittel);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.pillar .innhold .tekst { font-size: 14px; }
+
+.sjekkliste { list-style: none; padding: 0; margin: 0; }
+.sjekkliste li {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--kant);
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.sjekkliste li:last-child { border-bottom: none; }
+.sjekkliste li:hover { background: #F4F1EA; }
+.sjekkliste li .boks {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--kant);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+}
+.sjekkliste li.huket .boks {
+  background: var(--gronn);
+  border-color: var(--gronn);
+}
+.sjekkliste li.huket .boks::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid #FFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.sjekkliste li.huket { color: var(--dempet); text-decoration: line-through; }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--dempet);
+  font-size: 12px;
+  border-top: 1px solid var(--kant);
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  main { padding: 14px; }
+  .pipe-boks { min-width: 130px; padding: 10px 12px; }
+  .pipe-boks .tall { font-size: 18px; }
+  h2 { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>LOG650 — interaktivt forsvarsoppslag</h1>
+  <p>Thomas Ekrem Jensen · HiMolde vår 2026 · medisinsk forbruksmateriell, Helse Bergen → HVFS</p>
+</header>
+
+<nav class="faner" id="faner">
+  <button data-fane="pipeline" class="aktiv">Pipeline</button>
+  <button data-fane="tall">Hovedtall</button>
+  <button data-fane="regelmotor">Regelmotor</button>
+  <button data-fane="sensitivitet">Sensitivitet</button>
+  <button data-fane="qa">Q&amp;A-drill</button>
+  <button data-fane="pitch">Pitch &amp; sjekkliste</button>
+</nav>
+
+<main>
+
+<!-- ============== PIPELINE ============== -->
+<section class="fane aktiv" id="pipeline">
+  <h2>Analyse-pipelinen</h2>
+  <p class="ingress">Klikk på en boks for å se hva tallet betyr og hvorfor det står der.</p>
+
+  <div class="pipeline">
+
+    <div class="pipe-rad">
+      <div class="pipe-boks kilde" data-info="sap">
+        <span class="tall">14 tabeller</span>
+        <span class="label">SAP via SE16H</span>
+      </div>
+    </div>
+    <div class="pipe-pil">&#8595;</div>
+
+    <div class="pipe-rad">
+      <div class="pipe-boks filter" data-info="d01">
+        <span class="tall">1&#8239;006 &rarr; 709</span>
+        <span class="label">D-01 til D-08 filter</span>
+      </div>
+    </div>
+    <div class="pipe-pil">&#8595;</div>
+
+    <div class="pipe-rad">
+      <div class="pipe-boks metode" data-info="abc">
+        <span class="tall">182 / 184 / 338</span>
+        <span class="label">ABC (A/B/C)</span>
+      </div>
+      <div class="pipe-boks metode" data-info="xyz">
+        <span class="tall">350 / 193 / 144</span>
+        <span class="label">XYZ (X/Y/Z)</span>
+      </div>
+      <div class="pipe-boks metode" data-info="eoq">
+        <span class="tall">487</span>
+        <span class="label">EOQ-avvik</span>
+      </div>
+      <div class="pipe-boks metode" data-info="kmeans">
+        <span class="tall">K = 3</span>
+        <span class="label">K-means klynge</span>
+      </div>
+    </div>
+    <div class="pipe-pil">&#8595;</div>
+
+    <div class="pipe-rad">
+      <div class="pipe-boks regel" data-info="regelmotor">
+        <span class="tall">R1 &ndash; R8</span>
+        <span class="label">Regelmotor</span>
+      </div>
+    </div>
+    <div class="pipe-pil">&#8595;</div>
+
+    <div class="pipe-rad">
+      <div class="pipe-boks overfor" data-info="overfor">
+        <span class="tall">145</span>
+        <span class="label">OVERFØR</span>
+      </div>
+      <div class="pipe-boks behold" data-info="behold">
+        <span class="tall">257</span>
+        <span class="label">BEHOLD lokalt</span>
+      </div>
+      <div class="pipe-boks vurder" data-info="vurder">
+        <span class="tall">284</span>
+        <span class="label">VURDER nærmere</span>
+      </div>
+      <div class="pipe-boks mangler" data-info="mangler">
+        <span class="tall">23</span>
+        <span class="label">MANGLER data</span>
+      </div>
+    </div>
+    <div class="pipe-pil">&#8595;</div>
+
+    <div class="pipe-rad">
+      <div class="pipe-boks besparelse" data-info="besparelse">
+        <span class="tall">kr 451&#8239;515 / år</span>
+        <span class="label">Base case (intervall kr 176k–764k)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== TALL ============== -->
+<section class="fane" id="tall">
+  <h2>Hovedtall — pugge-kort</h2>
+  <p class="ingress">Filtrer på kategori. Disse tallene må sitte muntlig.</p>
+
+  <div class="filterrad" id="filterrad">
+    <button data-kat="alle" class="aktiv">Alle</button>
+    <button data-kat="datagrunnlag">Datagrunnlag</button>
+    <button data-kat="klassifisering">Klassifisering</button>
+    <button data-kat="kmeans">K-means</button>
+    <button data-kat="regelmotor">Regelmotor</button>
+    <button data-kat="besparelse">Besparelse</button>
+    <button data-kat="bifunn">Bifunn</button>
+  </div>
+
+  <div class="tallgrid" id="tallgrid"></div>
+</section>
+
+<!-- ============== REGELMOTOR ============== -->
+<section class="fane" id="regelmotor">
+  <h2>Regelmotor R1–R8</h2>
+  <p class="ingress">Klikk en regelrad for å se hvorfor den prioriteres slik den gjør.</p>
+
+  <table class="regler">
+    <thead>
+      <tr>
+        <th style="width: 60px;">Regel</th>
+        <th>Betingelse</th>
+        <th>Anbefaling</th>
+        <th style="width: 70px; text-align: right;">Antall</th>
+      </tr>
+    </thead>
+    <tbody id="reglertabell"></tbody>
+  </table>
+
+  <h3>Total fordeling (n = 709)</h3>
+  <div class="fordelingsbar" id="fordelingsbar">
+    <div class="b-overfor" style="flex: 145;">145 OVERFØR</div>
+    <div class="b-behold" style="flex: 257;">257 BEHOLD</div>
+    <div class="b-vurder" style="flex: 284;">284 VURDER</div>
+    <div class="b-mangler" style="flex: 23;">23 MANGLER</div>
+  </div>
+  <p style="font-size: 13px; color: var(--dempet);">Bredden er proporsjonal med antall artikler. 20,5 % anbefales overført til HVFS.</p>
+</section>
+
+<!-- ============== SENSITIVITET ============== -->
+<section class="fane" id="sensitivitet">
+  <h2>Sensitivitet og scenarier</h2>
+  <p class="ingress">Tre scenarier varierer gevinstrealiseringsgraden g. Sensitivitetsanalysen varierer S, h og τ<sub>f</sub>.</p>
+
+  <h3>Tre scenarier (varierer g)</h3>
+  <div class="scenarier">
+    <div class="scenario worst">
+      <div class="navn">Worst</div>
+      <div class="belop">kr 301&#8239;010</div>
+      <div class="g">g = 50 %</div>
+    </div>
+    <div class="scenario base">
+      <div class="navn">Base case</div>
+      <div class="belop">kr 451&#8239;515</div>
+      <div class="g">g = 75 %</div>
+    </div>
+    <div class="scenario best">
+      <div class="navn">Best</div>
+      <div class="belop">kr 602&#8239;020</div>
+      <div class="g">g = 100 %</div>
+    </div>
+  </div>
+
+  <h3>Sensitivitetsintervall (27 kombinasjoner av S, h, τ<sub>f</sub>)</h3>
+  <div class="sensgrid">
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Lavt</th>
+          <th>Base</th>
+          <th>Høyt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>S (bestillingskostnad)</strong></td><td>500 NOK</td><td class="base-celle">750 NOK</td><td>1&#8239;000 NOK</td></tr>
+        <tr><td><strong>h (holdekostnad)</strong></td><td>15 %</td><td class="base-celle">20 %</td><td>25 %</td></tr>
+        <tr><td><strong>τ<sub>f</sub> (frekvensterskel)</strong></td><td>1,25</td><td class="base-celle">1,50</td><td>2,00</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 14px; font-size: 14px;"><strong>Intervall over 27 scenarier:</strong> kr 176&#8239;374 – 763&#8239;903 per år.</p>
+    <p style="margin: 4px 0 0; font-size: 13px; color: var(--dempet);">Dominant variabel: S (lineær effekt). τ<sub>f</sub> påvirker antall kandidater. h har moderat effekt.</p>
+  </div>
+
+  <div class="sensnote">
+    <strong>Alle 27 scenarier gir positiv besparelse.</strong> Konklusjonen om at HVFS-overføring er økonomisk rasjonell, holder under all rimelig parameterusikkerhet. Robusthet, ikke presisjon.
+  </div>
+</section>
+
+<!-- ============== Q&A ============== -->
+<section class="fane" id="qa">
+  <h2>Q&amp;A-drill</h2>
+  <p class="ingress">25 sensorspørsmål + 10 feller. Parafraser svaret — ikke memorer ord for ord.</p>
+
+  <div class="qa-kontroll">
+    <select id="qa-kategori">
+      <option value="alle">Alle (35)</option>
+      <option value="problem">Problemstilling (Q1–Q4)</option>
+      <option value="metode">Metode og data (Q5–Q11)</option>
+      <option value="metodikk">Metodikk-kjerne (Q12–Q18)</option>
+      <option value="resultat">Resultater (Q19–Q22)</option>
+      <option value="diskusjon">Diskusjon (Q23–Q25)</option>
+      <option value="felle">Feller (1–10)</option>
+    </select>
+    <button id="qa-forrige">← Forrige</button>
+    <button id="qa-svar" class="primaer">Vis svar</button>
+    <button id="qa-neste">Neste →</button>
+    <button id="qa-tilfeldig">Tilfeldig</button>
+    <span class="teller" id="qa-teller">1 / 35</span>
+  </div>
+
+  <div class="qa-kort" id="qa-kort"></div>
+</section>
+
+<!-- ============== PITCH ============== -->
+<section class="fane" id="pitch">
+  <h2>Pitch og sjekkliste</h2>
+  <p class="ingress">Tre versjoner av samme historie. Velg lengden som passer.</p>
+
+  <div class="pitchblokk">
+    <span class="tid">10 sekunder</span>
+    <p class="lang">«Jeg har bygd et SAP-datadrevet rammeverk som identifiserer 145 av 709 artikler ved Helse Bergen som overføringskandidater til HVFS, med estimert besparelse kr 451 515/år base case og intervall kr 176k–764k.»</p>
+  </div>
+
+  <div class="pitchblokk">
+    <span class="tid">40 sekunder — rød tråd</span>
+    <p class="lang">«Oppgaven utvikler et reproduserbart, datadrevet beslutningsgrunnlag for å identifisere hvilke artikler ved Helse Bergens forsyningslager — WERKS 3300, LGORT 3001 — som bør overføres til det regionale sentrallageret HVFS. Jeg trekker ut 14 SAP-tabeller via SE16H for perioden 2024–2025, filtrerer til 709 aktive artikler gjennom åtte dokumenterte datavalg, og kjører fire komplementære analyser: ABC for verdi, XYZ for forbruksstabilitet, EOQ-avvik for bestillingseffektivitet og K-means klyngeanalyse for datadrevet validering. En regelmotor med åtte prioriterte regler aggregerer signalene og gir 145 OVERFØR-kandidater, 257 BEHOLD-LOKALT, 284 VURDER og 23 MANGLER DATA. Besparelsesestimatet er kr 451 515/år i base case (g = 75 %), med et sensitivitetsintervall på kr 176 000 – 764 000/år. Et empirisk bifunn er at SAPs eget ZZXYZ-felt bare samsvarer med beregnet CV-klasse i 33 % av tilfellene — et resultat som har umiddelbar operasjonell konsekvens for LIBRA-prosjektet.»</p>
+  </div>
+
+  <div class="pitchblokk">
+    <span class="tid">90 sekunder — elevator-pitch (fire pilarer)</span>
+
+    <div class="pillar">
+      <div class="nr">1</div>
+      <div class="innhold">
+        <div class="tittel">Hva</div>
+        <div class="tekst">Datadrevet beslutningsgrunnlag for hvilke artikler ved Helse Bergens forsyningslager (WERKS 3300, LGORT 3001) som bør overføres til HVFS. Bakteppet er HVFS-etableringen frem mot 2029 med NorEngros som operatør og avdelingspakkede leveranser, og LIBRA-prosjektet som ruller ut SAP S/4HANA på tvers av Helse Vest.</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="nr">2</div>
+      <div class="innhold">
+        <div class="tittel">Hvordan</div>
+        <div class="tekst">14 SAP-tabeller via SE16H for 2024–2025, åtte datavalgsbeslutninger fra D-01 til D-08 som tar uttrekket fra 1 006 til 709 aktive artikler, og fire komplementære analyser: ABC, XYZ, EOQ-avvik og K-means klyngeanalyse uten forhåndsterskler.</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="nr">3</div>
+      <div class="innhold">
+        <div class="tittel">Resultat</div>
+        <div class="tekst">Regelmotor med åtte prioriterte regler aggregerer signalene: 145 OVERFØR-kandidater, 257 BEHOLD-LOKALT, 284 VURDER og 23 MANGLER DATA. Besparelse kr 451 515/år base case, intervall kr 176k–764k over 27 parametervariasjoner. Empirisk bifunn: ZZXYZ samsvarer kun 33 %.</div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="nr">4</div>
+      <div class="innhold">
+        <div class="tittel">Bidrag og begrensning</div>
+        <div class="tekst">Metodisk transparens og reproduserbarhet (random_state=42), litteraturbaserte terskler eksplisitt testet i sensitivitet, hver anbefaling sporbar til én regel. Begrensninger erkjent — ingen ekstern validering, ikke-kalibrerte parametre, VED-dimensjonen krever klinisk gjennomgang — og dekkes av fire prioriterte anbefalinger for implementering.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Tre-minutters sjekkliste rett før eksamen</h3>
+  <p style="margin-top: 0; font-size: 13px; color: var(--dempet);">Klikk for å huke av. Status lagres ikke — kun visuell hjelp.</p>
+  <ul class="sjekkliste" id="sjekkliste"></ul>
+</section>
+
+</main>
+
+<!-- Modal for pipeline-detaljer -->
+<dialog id="modal">
+  <div class="modal-topp">
+    <h3 id="modal-tittel"></h3>
+    <button onclick="document.getElementById('modal').close()">Lukk ✕</button>
+  </div>
+  <div class="modal-innhold" id="modal-innhold"></div>
+</dialog>
+
+<footer>
+  Kilder: SENSORGUIDE_metodikk.md · MUNTLIG_FORSVAR_COACH.md · LOG650_Rapport_FINAL.md · Generert mai 2026
+</footer>
+
+<script>
+/* ============================================================
+   PIPELINE-INFO
+   ============================================================ */
+const pipelineInfo = {
+  sap: {
+    tittel: "14 SAP-tabeller via SE16H",
+    innhold: [
+      "Kjernetabeller: MARA/MAKT (identifikasjon), MBEW (pris), MSEG (forbruk, BWART 201 + 647), EKPO (innkjøp), EKBE (ordrefrekvens), MARC/MARD (lagerstruktur), MDMA (ZZABC/ZZXYZ), EINE (leveringstid), T023T/T024 (varegrupper/innkjøpsgrupper).",
+      "Periode: 24 måneder, 2024–2025 — lang nok til to sesongsykluser, kort nok til at COVID-aftermath ikke dominerer.",
+      "Avgrensning til WERKS 3300 / LGORT 3001 fordi det er eneste lagersted med komplett 24-mnd. transaksjonshistorikk for medisinsk forbruksmateriell."
+    ],
+    meta: "Kilde: kap. 3 i rapporten + Vedlegg A (SAP-feltspesifikasjon)"
+  },
+  d01: {
+    tittel: "Datavalg D-01 til D-08 → 1 006 → 709",
+    innhold: [
+      "Åtte eksplisitte datavalgsbeslutninger som dokumenterer hvert sted i pipelinen der analytikeren måtte velge mellom alternative behandlingsmåter.",
+      "D-01: populasjonsfilter D_ANNUAL > 0 ∨ TOTAL_STOCK > 0 → reduserer 1 006 til 709.",
+      "D-02: PEINH-korrigering. UNIT_PRICE = STPRS / PEINH. Uten denne ville verdier være feilskalert med faktor 10 eller 100.",
+      "D-03: beregnet ABC-verdi for 204 artikler uten EKPO-data (D_ANNUAL × UNIT_PRICE som proxy).",
+      "D-05: leveringstid-dekning kun 6 % → standardverdi 14 dager brukes; ROP-modul deaktivert."
+    ],
+    meta: "Kilde: kap. 4 + Vedlegg A i rapporten"
+  },
+  abc: {
+    tittel: "ABC — kapitalbinding (verdi)",
+    innhold: [
+      "Cumulativ Pareto-verdi: v_i = D_i × UNIT_PRICE_i, sortert synkende.",
+      "Terskler: A ≤ 80 %, B ≤ 95 %, C ellers — standardverdier fra Silaen et al. (2023).",
+      "Resultat: 182 A (25,7 %) / 184 B / 338 C. Bredere A-andel enn kanonisk 20 % er forventet i sykehussortiment (Gupta et al., 2007).",
+      "Blindsone: ABC ignorerer variabilitet og kritikalitet → trenger XYZ og EOQ."
+    ],
+    meta: "Kilde: kap. 5.1 + Tabell 8"
+  },
+  xyz: {
+    tittel: "XYZ — forbruksstabilitet (CV)",
+    innhold: [
+      "Variasjonskoeffisient CV_i = σ_i / μ_i, beregnet over 24 månedlige forbruksverdier fra MSEG (BWART 201 + 647).",
+      "Terskler: X < 0,5; Y 0,5–1,0; Z > 1,0 (Nowotyńska, 2013).",
+      "Resultat: 350 X (50,9 %) / 193 Y / 144 Z. MSEG brukes fordi HVFS leverer etter forbruksbehov via APL — ikke etter bestillingsmønster.",
+      "Kritisk bifunn: SAPs ZZXYZ-felt samsvarer kun 33 % med beregnet CV-klasse. ZZXYZ er systematisk underrapportert."
+    ],
+    meta: "Kilde: kap. 5.2 + Tabell 9 + Tabell 10"
+  },
+  eoq: {
+    tittel: "EOQ-avvik — bestillingseffektivitet",
+    innhold: [
+      "Wilson-modellen anvendt på frekvens i stedet for partistørrelse: f* = √(DH / 2S).",
+      "Parametre: S = 750 NOK (bestillingskostnad), H = h × UNIT_PRICE med h = 20 %.",
+      "Terskel τ_f = 1,5 (50 % avvik) skiller operasjonelt vesentlige fra statistisk merkbare avvik. EOQ-kostnadskurven er flat nær optimum.",
+      "Resultat: 487 artikler har komplett EOQ-data. 73,1 % er FOR_MANGE_ORDRER — strukturell overbestilling som HVFS-sentralisering kan adressere.",
+      "Sum ΔTC for alle 487: kr 2 333 441."
+    ],
+    meta: "Kilde: kap. 5.3 + Tabell 11"
+  },
+  kmeans: {
+    tittel: "K-means — datadrevet validering",
+    innhold: [
+      "Featurevektor: x = [z(ln CV), z(ln(v+1)), z(ln(|ΔTC|+1))]. Log-transformasjon før z-score for å håndtere høyreskjevhet.",
+      "Train/test-split 80/20 med random_state=42 → 389 trening / 98 test.",
+      "K = 3 valgt datadrevet via silhouette-søk K ∈ {2..7}. Silhouette: 0,383 trening / 0,368 test. Begge over 0,3-terskelen for eksplorativ gyldighet.",
+      "Klyngestørrelser: 31 / 175 / 281. K_OVERFØR-klyngen (n=281) har lavest CV (0,47) og høyest verdi (kr 167 267) — identifiseres deterministisk via dobbelranking.",
+      "Funksjon: triangulering, ikke uavhengig informasjon. Når regelbaserte og datadrevne signaler konvergerer, styrkes anbefalingen."
+    ],
+    meta: "Kilde: kap. 5.4 + Tabell 12"
+  },
+  regelmotor: {
+    tittel: "Regelmotor R1–R8",
+    innhold: [
+      "Sekvensiell prioritet: en artikkel havner i den strengeste kategorien som passer.",
+      "R1 (XYZ=Z) først som frastøtingsregel — beskytter høyvariable, ofte kritiske artikler mot OVERFØR.",
+      "R3 (A/B ∧ X ∧ FOR_MANGE_ORDRER) er sterkest: tre uavhengige signaler peker samme vei og gir estimerbart kostnadsavvik.",
+      "R4 og R5 bruker K_OVERFØR som bekreftelse — to regelbaserte + ett klyngebasert signal.",
+      "Konservativ design: når signaler er ambige, blir svaret VURDER, ikke OVERFØR. Høy presisjon, lavere recall."
+    ],
+    meta: "Kilde: kap. 5.5 + Tabell 13–14"
+  },
+  overfor: {
+    tittel: "145 OVERFØR (20,5 %)",
+    innhold: [
+      "Sum av R3 (71) + R4 (18) + R5 (56) = 145 anbefalte HVFS-kandidater.",
+      "Karakteristikk: A/B-verdiklasse, X/Y-stabilitetsklasse, dokumentert overbestilling eller K_OVERFØR-tilhørighet.",
+      "117 av 145 er i besparelsesgrunnlaget — de med målbart EOQ-kostnadsavvik (FOR_MANGE_ORDRER).",
+      "De resterende 28 R4/R5-artiklene anbefales overført på K_OVERFØR-signal alene, men har ikke direkte EOQ-besparelse å summere."
+    ],
+    meta: "Kilde: kap. 7.4 + Tabell 14"
+  },
+  behold: {
+    tittel: "257 BEHOLD lokalt (36,2 %)",
+    innhold: [
+      "R1 (143 Z-artikler) + R2 (114 CY-artikler) = 257.",
+      "Z-artikler holdes lokalt fordi høy variabilitet ofte korrelerer med klinisk uregelmessig bruk (proxy for VED-kritikalitet).",
+      "CY-artikler (lav verdi + middels stabilitet) er ikke verdt overføringskostnaden — ABC-rangeringen prioriterer høyverdige artikler først."
+    ],
+    meta: "Kilde: kap. 7.4 + Tabell 14"
+  },
+  vurder: {
+    tittel: "284 VURDER nærmere (40,1 %)",
+    innhold: [
+      "R6 (160) + R7 (23) + R8 (101) = 284. Bevisst stor kategori av presisjonshensyn.",
+      "R6: A/B ∧ X uten EOQ- eller K-means-bekreftelse — verdi og stabilitet, men ingen tilleggssignal.",
+      "Når regelbaserte og datadrevne signaler divergerer, faller artikkelen hit — bevisst metodisk forsiktighet.",
+      "Sekundærtriage anbefales: klinisk gjennomgang og leverandørspesifikk vurdering."
+    ],
+    meta: "Kilde: kap. 7.4 + Tabell 14"
+  },
+  mangler: {
+    tittel: "23 MANGLER data",
+    innhold: [
+      "Artikler med < 3 mnd. forbrukshistorikk eller manglende UNIT_PRICE.",
+      "Standardavvik degenererer ved < 3 observasjoner → CV ikke meningsfull → XYZ kan ikke beregnes.",
+      "Disse er ikke kandidat for noen anbefaling før datagrunnlaget er supplert."
+    ],
+    meta: "Kilde: kap. 4 (D-01-filter) + Tabell 13"
+  },
+  besparelse: {
+    tittel: "Besparelse — kr 451 515/år base case",
+    innhold: [
+      "Formel: B_HVFS = Σ (ΔTC_i) × g for i ∈ OVERFØR ∩ FOR_MANGE_ORDRER.",
+      "Tre scenarier: worst (g = 50 %) kr 301 010 · base (g = 75 %) kr 451 515 · best (g = 100 %) kr 602 020.",
+      "Sensitivitetsintervall over 27 kombinasjoner av (S, h, τ_f): kr 176 374 – 763 903 per år. Alle 27 scenarier positive.",
+      "Konservativt estimat: fanger kun transaksjonskostnader fra ordrefrekvens. Lagerbinding (5–15 %), transport og engangskostnader er utenfor scope.",
+      "Sensorpoeng: dette er et intervall, ikke et punktestimat. Reell realisering avhenger av SAP MM-justering og leverandørforhandlinger."
+    ],
+    meta: "Kilde: kap. 5.6 + kap. 7.5–7.6 + Tabell 15"
+  }
+};
+
+/* ============================================================
+   HOVEDTALL — pugge-kort
+   ============================================================ */
+const tallData = [
+  { v: "709",                f: "Aktive artikler etter D-01-filter",                      k: "datagrunnlag" },
+  { v: "1 006",              f: "Rå-uttrekk før filtrering",                              k: "datagrunnlag" },
+  { v: "14",                 f: "SAP-tabeller via SE16H",                                 k: "datagrunnlag" },
+  { v: "8",                  f: "Datavalgsbeslutninger (D-01 til D-08)",                  k: "datagrunnlag" },
+  { v: "24 mnd.",            f: "Analyseperiode 2024–2025",                               k: "datagrunnlag" },
+  { v: "204",                f: "Artikler med beregnet ABC-verdi (D-03 proxy)",           k: "datagrunnlag" },
+  { v: "94 %",               f: "LEAD_TIME-dekning (D-05 standardverdi 14 dager)",        k: "datagrunnlag" },
+
+  { v: "182 / 184 / 338",    f: "ABC: A / B / C (25,7 / 26,0 / 47,7 %)",                  k: "klassifisering" },
+  { v: "350 / 193 / 144",    f: "XYZ: X / Y / Z (50,9 / 28,1 / 20,9 %)",                  k: "klassifisering" },
+  { v: "487",                f: "Artikler med komplett EOQ-data",                         k: "klassifisering" },
+  { v: "356 / 100 / 31",     f: "EOQ: FOR_MANGE / OK / FOR_FÅ",                           k: "klassifisering" },
+  { v: "73,1 %",             f: "FOR_MANGE_ORDRER-andel",                                 k: "klassifisering" },
+
+  { v: "389 / 98",           f: "K-means train / test (random_state=42)",                 k: "kmeans" },
+  { v: "0,383 / 0,368",      f: "Silhouette train / test (begge > 0,3)",                  k: "kmeans" },
+  { v: "K = 3",              f: "Optimalt antall klynger (silhouette-søk)",               k: "kmeans" },
+  { v: "281 / 175 / 31",     f: "K-means klyngestørrelser",                               k: "kmeans" },
+  { v: "CV 0,47",            f: "K_OVERFØR-klyngens snitt-CV",                            k: "kmeans" },
+  { v: "kr 167 267",         f: "K_OVERFØR-klyngens snittverdi",                          k: "kmeans" },
+
+  { v: "143 / 114 / 71",     f: "R1 / R2 / R3 (BEHOLD / BEHOLD / OVERFØR)",               k: "regelmotor" },
+  { v: "18 / 56 / 160",      f: "R4 / R5 / R6 (OVERFØR / OVERFØR / VURDER)",              k: "regelmotor" },
+  { v: "23 / 101",           f: "R7 / R8 (VURDER / VURDER)",                              k: "regelmotor" },
+  { v: "145",                f: "OVERFØR_HVFS totalt (R3 + R4 + R5)",                     k: "regelmotor" },
+  { v: "257",                f: "BEHOLD_LOKALT (R1 + R2)",                                k: "regelmotor" },
+  { v: "284",                f: "VURDER_NÆRMERE (R6 + R7 + R8)",                          k: "regelmotor" },
+  { v: "23",                 f: "MANGLER_DATA",                                           k: "regelmotor" },
+
+  { v: "117",                f: "I besparelsesgrunnlag (av 145 OVERFØR)",                 k: "besparelse" },
+  { v: "kr 451 515",         f: "Base case (g = 75 %)",                                   k: "besparelse" },
+  { v: "kr 301 010",         f: "Worst case (g = 50 %)",                                  k: "besparelse" },
+  { v: "kr 602 020",         f: "Best case (g = 100 %)",                                  k: "besparelse" },
+  { v: "kr 176 374 – 763 903", f: "Sensitivitetsintervall (27 scenarier)",                k: "besparelse" },
+  { v: "kr 2 333 441",       f: "Σ ΔTC for alle 487 EOQ-artikler",                        k: "besparelse" },
+  { v: "S=750 · h=20 % · τ=1,5 · g=75 %", f: "Base case-parametre",                       k: "besparelse" },
+
+  { v: "33 %",               f: "ZZXYZ-samsvar (125 av 375)",                             k: "bifunn" },
+  { v: "7 vs. 79",           f: "SAP Z vs. beregnet Z",                                   k: "bifunn" }
+];
+
+/* ============================================================
+   REGELMOTOR
+   ============================================================ */
+const regler = [
+  { id: "R1", betingelse: "XYZ = Z",                        anbefaling: "BEHOLD_LOKALT", merke: "behold",  antall: 143,
+    forklaring: "Z-override som frastøtingsregel — beskytter høyvariable (ofte kritiske) artikler mot OVERFØR. Har prioritet over alt annet. Brukes som proxy for VED-kritikalitet siden klinisk vurdering ikke er maskinlesbar i SAP." },
+  { id: "R2", betingelse: "ABC = C ∧ XYZ = Y",              anbefaling: "BEHOLD_LOKALT", merke: "behold",  antall: 114,
+    forklaring: "Lav verdi kombinert med middels stabilitet er ikke verdt overføringskostnaden. ABC-rangeringen prioriterer høyverdige artikler først." },
+  { id: "R3", betingelse: "A/B ∧ X ∧ FOR_MANGE_ORDRER",     anbefaling: "OVERFØR_HVFS",  merke: "overfor", antall: 71,
+    forklaring: "Den sterkeste anbefalingsregelen. Tre uavhengige signaler peker samme vei: høy verdi (ABC), stabilt forbruk (XYZ) og dokumentert overbestilling (EOQ). Gir både anbefaling og estimerbart kostnadsavvik." },
+  { id: "R4", betingelse: "A/B ∧ X ∧ K_OVERFØR",            anbefaling: "OVERFØR_HVFS",  merke: "overfor", antall: 18,
+    forklaring: "To regelbaserte signaler (verdi + stabilitet) bekreftet av datadrevet klyngeanalyse. K-means bekrefter mønsteret uten forhåndsterskler — triangulering styrker anbefalingen. Ingen direkte EOQ-besparelse å summere." },
+  { id: "R5", betingelse: "A/B ∧ Y ∧ K_OVERFØR",            anbefaling: "OVERFØR_HVFS",  merke: "overfor", antall: 56,
+    forklaring: "Verdi + middels stabilitet, men datadrevet klyngeanalyse plasserer artikkelen sammen med høyverdi-/lavvariasjons-mønsteret. Litt svakere enn R3/R4, men fortsatt en konvergens av signaler." },
+  { id: "R6", betingelse: "A/B ∧ X (ellers)",               anbefaling: "VURDER_NÆRMERE", merke: "vurder", antall: 160,
+    forklaring: "Verdi og stabilitet er der, men ingen tilleggsbekreftelse fra EOQ eller K-means. Krever sekundærtriage — klinisk gjennomgang eller leverandørspesifikk vurdering." },
+  { id: "R7", betingelse: "A/B ∧ Y (ellers)",               anbefaling: "VURDER_NÆRMERE", merke: "vurder", antall: 23,
+    forklaring: "Verdi til stede, men variabiliteten er på grenseland. Ambig signalmønster → konservativt VURDER-svar." },
+  { id: "R8", betingelse: "Øvrig (inkl. CX)",               anbefaling: "VURDER_NÆRMERE", merke: "vurder", antall: 101,
+    forklaring: "Fanger restpopulasjonen. Bevisst stor kategori av presisjonshensyn — heller for mange i VURDER enn falske positiver i OVERFØR." },
+  { id: "—",  betingelse: "Manglende ABC/XYZ",              anbefaling: "MANGLER_DATA",   merke: "mangler", antall: 23,
+    forklaring: "Mindre enn 3 måneders forbrukshistorikk eller manglende UNIT_PRICE. Datasupplering kreves før noen anbefaling kan gis." }
+];
+
+/* ============================================================
+   Q&A
+   ============================================================ */
+const qaData = [
+  // Problemstilling
+  { kat: "problem", nr: "Q1", sp: "Hva er problemstillingen din?",
+    sv: "Identifikasjon av artikler ved Helse Bergens forsyningslager (WERKS 3300, LGORT 3001) som er kandidater for HVFS-overføring, kombinert med kvantifisering av besparelsespotensialet." },
+  { kat: "problem", nr: "Q2", sp: "Hvorfor akkurat dette problemet?",
+    sv: "HVFS er under etablering med APL-leveranser frem mot 2029, og LIBRA gjør SAP S/4HANA-data harmonisert på tvers av Helse Vest. Det skaper en operasjonell beslutningssituasjon som krever datadrevet underlag." },
+  { kat: "problem", nr: "Q3", sp: "Hva avgrenset du bort?",
+    sv: "Legemidler, implantater, dyrt utstyr, andre lagre enn LGORT 3001, inaktive artikler (D-01), og bestillingspunkt-beregninger (ROP utelatt pga. dårlig leveringstidsdata)." },
+  { kat: "problem", nr: "Q4", sp: "Hvorfor kvantitativ casestudie?",
+    sv: "Datatilgangen er kvantitativ og automatisk registrert; problemet er operasjonelt definerbart; reproduserbarhet er et primært designkrav; kvalitativt skjønn legges på i implementeringsfasen via pilotvalidering." },
+
+  // Metode
+  { kat: "metode", nr: "Q5", sp: "Hvor mange SAP-tabeller, og hvilke er kjernen?",
+    sv: "14 tabeller via SE16H. Kjerne: MARA + MAKT for ID, MBEW for pris (med PEINH-korreksjon), MSEG (BWART 201, 647) for forbruk, EKPO for ABC-verdi, EKBE for ordrefrekvens, MDMA for ZZABC/ZZXYZ til validering." },
+  { kat: "metode", nr: "Q6", sp: "Hva er D-01 til D-08?",
+    sv: "Åtte eksplisitte datavalgsbeslutninger som dokumenterer hvert sted i datapipelinen der analytikeren måtte velge mellom alternative behandlingsmåter. D-01 er populasjonsfilteret som reduserer 1 006 → 709, D-02 er PEINH-korreksjonen, D-03 er beregnet ABC-verdi for 204 artikler uten EKPO, osv." },
+  { kat: "metode", nr: "Q7", sp: "Hva er 709, og hvor kommer det fra?",
+    sv: "709 er antall aktive artikler etter D-01-filteret D_ANNUAL > 0 OR TOTAL_STOCK > 0 anvendt på rå-uttrekkets 1 006. Det er populasjonen som hele studien analyserer." },
+  { kat: "metode", nr: "Q8", sp: "Hva er PEINH-korreksjonen?",
+    sv: "STPRS i MBEW er ikke pris per stykk, men pris per PEINH-enheter. UNIT_PRICE = STPRS / PEINH. Uten denne ville verdier vært feilskalert med faktor 10 eller 100 for medisinsk forbruksmateriell." },
+  { kat: "metode", nr: "Q9", sp: "Hvorfor 24 mnd. analyseperiode?",
+    sv: "Lang nok til å fange sesongvariasjon over to fulle sykluser. Kort nok til at COVID-aftermath og dataforringelse i eldre data ikke dominerer. Det er den perioden med best komplett MSEG/EKBE-dekning." },
+  { kat: "metode", nr: "Q10", sp: "Hvorfor random_state=42?",
+    sv: "De facto akademisk standard for reproduserbart pseudo-tilfeldig output. Garantert at to kjøringer med samme inputdata gir samme split og samme K-means-initialisering." },
+  { kat: "metode", nr: "Q11", sp: "Hvordan ville du sjekket at scriptet ditt er riktig?",
+    sv: "Tre måter: (1) deterministisk output med samme seed; (2) manuell utregning av enkeltartikler mot scriptets verdier; (3) kryssjekk av aggregerte tall mot tabellene i rapporten — 709, 145, 117, 33 %, 0,383." },
+
+  // Metodikk-kjerne
+  { kat: "metodikk", nr: "Q12", sp: "Hvorfor 80/95-grensene i ABC?",
+    sv: "Standard Pareto-grenser fra Silaen et al. (2023) og bredt akseptert i lagerstyringslitteraturen. Sykehussortiment gir 25,7 % A-andel (noe bredere enn 20 %), konsistent med Gupta et al. (2007)." },
+  { kat: "metodikk", nr: "Q13", sp: "Hvorfor 0,5 og 1,0 i XYZ?",
+    sv: "Nowotyńska (2013) — empirisk kalibrert for industrielle og helsesektor-sortimenter. Suryaputri et al. (2022) bekrefter samme grenser i helseindustrien." },
+  { kat: "metodikk", nr: "Q14", sp: "Hvorfor S = 750 NOK?",
+    sv: "Bransjestandard fra Bijvank & Vis (2012) og Kelle et al. (2012). Lokal kalibrering ville krevd egen ABC-kalkyle av innkjøpsprosessen. Sensitivitetsanalysen tester {500, 750, 1000} og viser robust konklusjon." },
+  { kat: "metodikk", nr: "Q15", sp: "Hvorfor τ_f = 1,5?",
+    sv: "Operasjonell skjønnsbeslutning — EOQ-kostnadskurven er flat nær optimum, så små avvik gir små besparelser. 50 % overskridelse skiller operasjonelt vesentlige fra statistisk merkbare avvik. Testet i sensitivitet over {1,25; 1,50; 2,00}." },
+  { kat: "metodikk", nr: "Q16", sp: "Hvordan finner du f*?",
+    sv: "Deriver TC(f) = fS + DH/(2f) med hensyn til f. Sett deriverte lik null: S = DH/(2f*²). Trekk kvadratrot: f* = √(DH/(2S)). Andre deriverte er positiv, så minimum." },
+  { kat: "metodikk", nr: "Q17", sp: "Hva er K-means' featurevektor?",
+    sv: "x = [z(ln CV), z(ln(v+1)), z(ln(|ΔTC|+1))]. Log-transformasjon før z-score for å håndtere høyreskjevhet. Konstantledd +1 hindrer ln(0)." },
+  { kat: "metodikk", nr: "Q18", sp: "Hvorfor K = 3?",
+    sv: "Datadrevet via silhouette-søk K ∈ {2..7}. K = 3 ga høyeste score (0,383 trening, 0,368 test). For K ≥ 4 monotont synkende — K = 3 er tydelig optimum, ikke lokal topp." },
+
+  // Resultater
+  { kat: "resultat", nr: "Q19", sp: "Hva er hovedfunnet?",
+    sv: "145 av 709 artikler (20,5 %) identifisert som HVFS-kandidater, fordelt på tre regelkategorier R3 (71) + R4 (18) + R5 (56). Besparelsesintervall kr 176k–764k/år, base case kr 451 515." },
+  { kat: "resultat", nr: "Q20", sp: "Hva er ZZXYZ-funnet?",
+    sv: "Kun 33 % samsvar mellom SAPs eget ZZXYZ-felt og beregnet CV-klasse. SAP klassifiserer 7 artikler som Z, beregnet finner 79. ZZXYZ er systematisk underrapportert og kan ikke brukes som uavhengig beslutningsgrunnlag uten rekalkulering." },
+  { kat: "resultat", nr: "Q21", sp: "Hvor stort er sensitivitetsintervallet?",
+    sv: "27 scenarier (3 × 3 × 3 av S, h, τ_f) gir kr 176 374 til kr 763 903 per år. Dominant variabel er S (lineær effekt). Alle 27 gir positiv besparelse." },
+  { kat: "resultat", nr: "Q22", sp: "Hvorfor 117 og ikke 145 i besparelsen?",
+    sv: "Besparelsesformelen summerer ΔTC kun for artikler som både er anbefalt OVERFØR (145) og har FOR_MANGE_ORDRER (kostnadsavvik kan kvantifiseres). 28 R4/R5-artikler er anbefalt OVERFØR uten FOR_MANGE_ORDRER-status — disse anbefales på K_OVERFØR-signal alene, uten direkte EOQ-besparelse å summere." },
+
+  // Diskusjon
+  { kat: "diskusjon", nr: "Q23", sp: "Hva er den største svakheten ved studien?",
+    sv: "Manglende ekstern validering. Det finnes ingen fasit-datasett over korrekte HVFS-beslutninger ved Helse Bergen, så vi kan ikke beregne presisjon eller recall for regelmotoren. Mitigasjon: anbefaling 1 om pilotvalidering vil generere det første empiriske fasit-datasettet." },
+  { kat: "diskusjon", nr: "Q24", sp: "Hvorfor er ikke VED operasjonalisert?",
+    sv: "VED-kritikalitet er klinisk vurdering, ikke maskinlesbar i SAP MARA/MARC. Operasjonalisering ville krevd manuell innhenting fra kliniske avdelinger utenfor scope. R1 (Z = BEHOLD) brukes som delvis proxy; anbefaling 1 spesifiserer klinisk VED-vurdering før implementering." },
+  { kat: "diskusjon", nr: "Q25", sp: "Hva ville du gjort annerledes?",
+    sv: "Tre konkrete forbedringer: (1) Lokal kalibrering av S og h gjennom ABC-kalkyle av innkjøpsprosessen, slik at parametere er empirisk fundert; (2) Berikning av EINE med faktiske leveringstider for å aktivere ROP-modulen; (3) Inkludering av VED-data fra klinisk gjennomgang av topp-100 artiklene som tilleggsfeature i K-means." },
+
+  // Feller
+  { kat: "felle", nr: "Felle 1", sp: "Du har funnet kr 451 515 besparelse — er ikke det presist tall?",
+    sv: "Nei — kr 451 515 er base case innenfor et sensitivitetsintervall på kr 176k–764k. Det er den forventede midtverdien gitt antagelsen om g = 75 %, ikke et presist estimat.",
+    coach: "Sensor leter etter om du selger base case som svaret. Bruk ordet intervall." },
+  { kat: "felle", nr: "Felle 2", sp: "K-means gir lite uavhengig informasjon — er den da overflødig?",
+    sv: "K-means' rolle er triangulering, ikke uavhengig informasjon. At regelbasert og datadrevet metode konvergerer er et validitetsargument for at terskelvalgene 80/95 og 0,5/1,0 ikke er vilkårlige. Den er ikke overflødig — dens funksjon er bekreftende.",
+    coach: "Sensor vil at du skal si 'ja, jeg burde tatt den ut'. Hold fast i triangulering-argumentet." },
+  { kat: "felle", nr: "Felle 3", sp: "Hva om du brukte K = 4 i stedet for K = 3?",
+    sv: "K = 3 ga høyest silhouette (0,383). For K = 4 og oppover var silhouette monotont synkende. K = 3 var tydelig optimum, ikke en lokal topp. Hadde silhouette toppet seg ved både K = 3 og K = 4, ville jeg testet begge i parallelle regelmotorer.",
+    coach: "Sensor sjekker om K-valget var begrunnet. Vis at du forstår 'monotont synkende' og 'tydelig optimum'." },
+  { kat: "felle", nr: "Felle 4", sp: "Du har bare brukt KI til kodestøtte og språk, ikke til faglig analyse?",
+    sv: "Korrekt — KI er brukt til kodestøtte, layout og språk. Den faglige retningen — metodevalg, regelutforming, tolkning av resultater — er mitt eget arbeid. Vedlegg C deklarerer dette eksplisitt i tre kategorier. Rådata fra SAP er aldri lagt inn i KI-verktøyet.",
+    coach: "Sensor vil at du skal si 'vel, kanskje litt på analysen også'. Hold deg til Vedlegg C-deklarasjonen." },
+  { kat: "felle", nr: "Felle 5", sp: "ZZXYZ er bare 33 % samsvar — kan det være at din CV-beregning er feil?",
+    sv: "Min CV-beregning bruker MSEG-data direkte med transparent formel σ/μ over 24 mnd. forbruksverdier. ZZXYZ oppdateres via SAP MRP og kan bruke andre terskler eller perioder. Når SAP klassifiserer kun 7 av 375 som Z mens den uavhengige CV-beregningen finner 79, er det åpenbart at SAPs verdi er underrapportert — ikke at min beregning er overrapportert.",
+    coach: "Sensor snur funnet på hodet. Pek på transparensen i din egen formel og kategoriforskjellen 7 vs. 79." },
+  { kat: "felle", nr: "Felle 6", sp: "Hvorfor ikke bare bruke den anerkjente EDAS-metoden?",
+    sv: "EDAS krever subjektiv vekting av kriterier — for eksempel hvor mye vekt skal verdi ha mot variabilitet. Det undergraver reproduserbarheten. Jeg har valgt objektivt beregnbare kriterier (verdi, CV, EOQ-avvik) for å sikre at en annen analytiker får samme klassifisering. EDAS ville krevd ekspertintervjuer — utenfor scope.",
+    coach: "Sensor tester om du kjenner alternative metoder. Begrunn valg bort med 'reproduserbarhet' og 'objektive kriterier'." },
+  { kat: "felle", nr: "Felle 7", sp: "Du sier 73 % av artiklene er FOR_MANGE_ORDRER. Da er hele bestillingspraksisen feil?",
+    sv: "Ikke nødvendigvis 'feil' — kan reflektere lagringsbegrensninger, forsyningssikkerhetspolitikk eller leverandørrutiner. Det indikerer strukturell overbestilling sammenlignet med Wilson-optimum, som HVFS-sentralisering kan adressere via APL. Men EOQ er en stilisert modell; det er ikke fasit.",
+    coach: "Sensor inviterer til normativ overkonklusjon. Bruk 'strukturell' og 'stilisert modell' — ikke kall det feil." },
+  { kat: "felle", nr: "Felle 8", sp: "Ville ikke en Monte Carlo-simulering vært bedre enn analytisk besparelsesestimat?",
+    sv: "Ja — Monte Carlo ville gitt et dynamisk estimat som fanger samspill mellom ordrefrekvens, lagernivå og servicenivå over tid. Det er foreslått som videre forskning i kap. 8.4. Den analytiske tilnærmingen ble valgt fordi den er transparent og reproduserbar, og fordi besparelsesintervallet kr 176k–764k allerede dekker den vesentlige usikkerheten.",
+    coach: "Sensor foreslår avansert metode for å teste om du anerkjenner begrensningen. Erkjenn + henvis til videre forskning." },
+  { kat: "felle", nr: "Felle 9", sp: "Du har bare 22 referanser — er ikke det litt tynt?",
+    sv: "22 referanser er i nedre sjikt for bacheloroppgaver. Hver er aktivt brukt i metodologisk eller empirisk argumentasjon — ingen er pyntereferanser. Bredere base, særlig innen generell lagerstyringsteori og klyngeanalyse, ville styrket litteraturgjennomgangen. Jeg eier den svakheten.",
+    coach: "Sensor utfordrer referansebredden. Ikke forsvar — eier svakheten og forklar hvorfor hver referanse er der." },
+  { kat: "felle", nr: "Felle 10", sp: "Hvis dette er så enkelt — fire metoder og en regelmotor — hvorfor har ingen gjort det før?",
+    sv: "Saha & Ray (2019) sin review av 137 artikler konstaterer at empiriske casestudier som kombinerer ABC, XYZ, EOQ og klyngeanalyse på faktiske ERP-data er underrepresentert. Hver metode er kjent isolert; kombinasjonen og operasjonaliseringen på SAP S/4HANA-data fra et faktisk sykehus med eksplisitt besparelsesestimat er nettopp gapet jeg adresserer. Det er ikke metodisk nyhet — det er empirisk anvendelse i et felt der ERP-datacasestudier mangler.",
+    coach: "Sensor tester originalitetskravet. Saha & Ray (2019) er ankerreferansen. Skill 'metodisk nyhet' fra 'empirisk anvendelse'." }
+];
+
+/* ============================================================
+   SJEKKLISTE
+   ============================================================ */
+const sjekklisten = [
+  "Jeg kan resitere elevator-pitch fra hodet (90 sek)",
+  "Jeg kan tegne analysepipelinen på papir (SAP → D-01–D-08 → fire metoder → regelmotor → output)",
+  "Jeg vet at hovedtallet er 145 OVERFØR, base case kr 451 515, intervall kr 176k–764k, ZZXYZ-samsvar 33 %",
+  "Jeg kan utlede f* = √(DH/(2S)) i fire trinn",
+  "Jeg kan forklare PEINH-korreksjonen med ett eksempel (hanske 150/100 = 1,50)",
+  "Jeg vet hvorfor 117 ≠ 145 (FOR_MANGE_ORDRER-krav)",
+  "Jeg vet hvorfor R1 er først (Z-override som beskytter forsyningssikkerhet)",
+  "Jeg vet hvorfor K-means' bidrag er triangulering, ikke uavhengig informasjon",
+  "Jeg vet at den største svakheten er ingen ekstern validering — mitigert av pilot",
+  "Jeg vet at VED ikke er operasjonalisert — kompensert av R1 og anbefaling 1",
+  "Jeg har en setning klar hvis jeg blir blank: «La meg tenke et øyeblikk. Hvis jeg forstår spørsmålet rett, så handler det om…»"
+];
+
+/* ============================================================
+   FANER
+   ============================================================ */
+document.getElementById("faner").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  const navn = e.target.dataset.fane;
+  document.querySelectorAll("nav.faner button").forEach(b => b.classList.toggle("aktiv", b.dataset.fane === navn));
+  document.querySelectorAll(".fane").forEach(s => s.classList.toggle("aktiv", s.id === navn));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* ============================================================
+   PIPELINE: modal
+   ============================================================ */
+const modal = document.getElementById("modal");
+const modalTittel = document.getElementById("modal-tittel");
+const modalInnhold = document.getElementById("modal-innhold");
+document.querySelectorAll(".pipe-boks").forEach(boks => {
+  boks.addEventListener("click", () => {
+    const data = pipelineInfo[boks.dataset.info];
+    if (!data) return;
+    modalTittel.textContent = data.tittel;
+    modalInnhold.innerHTML = data.innhold.map(p => `<p>${p}</p>`).join("") +
+      (data.meta ? `<div class="meta">${data.meta}</div>` : "");
+    modal.showModal();
+  });
+});
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) modal.close();
+});
+
+/* ============================================================
+   TALL-grid
+   ============================================================ */
+const tallgrid = document.getElementById("tallgrid");
+function renderTall(kategori) {
+  const data = kategori === "alle" ? tallData : tallData.filter(t => t.k === kategori);
+  tallgrid.innerHTML = data.map(t => `
+    <div class="tallkort ${t.k}">
+      <div class="verdi">${t.v}</div>
+      <div class="forklaring">${t.f}</div>
+      <span class="kategori">${t.k}</span>
+    </div>
+  `).join("");
+}
+renderTall("alle");
+document.getElementById("filterrad").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#filterrad button").forEach(b => b.classList.remove("aktiv"));
+  e.target.classList.add("aktiv");
+  renderTall(e.target.dataset.kat);
+});
+
+/* ============================================================
+   REGELMOTOR-tabell
+   ============================================================ */
+const reglertabell = document.getElementById("reglertabell");
+reglertabell.innerHTML = regler.map((r, i) => `
+  <tr class="regel-rad" data-i="${i}">
+    <td><strong>${r.id}</strong></td>
+    <td>${r.betingelse}</td>
+    <td><span class="merke ${r.merke}">${r.anbefaling}</span></td>
+    <td style="text-align: right;"><strong>${r.antall}</strong></td>
+  </tr>
+  <tr class="detalj skjult" id="detalj-${i}">
+    <td colspan="4">${r.forklaring}</td>
+  </tr>
+`).join("");
+reglertabell.addEventListener("click", (e) => {
+  const rad = e.target.closest(".regel-rad");
+  if (!rad) return;
+  document.getElementById("detalj-" + rad.dataset.i).classList.toggle("skjult");
+});
+
+/* ============================================================
+   Q&A-drill
+   ============================================================ */
+let qaIndeks = 0;
+let qaVisning = qaData;
+let svarVist = false;
+
+const qaKort = document.getElementById("qa-kort");
+const qaTeller = document.getElementById("qa-teller");
+const qaKategori = document.getElementById("qa-kategori");
+
+function renderQa() {
+  if (qaVisning.length === 0) {
+    qaKort.innerHTML = "<p>Ingen spørsmål i denne kategorien.</p>";
+    qaTeller.textContent = "0 / 0";
+    return;
+  }
+  const q = qaVisning[qaIndeks];
+  qaKort.innerHTML = `
+    <span class="qa-tag">${q.nr}</span>
+    <p class="sporsmaal">${q.sp}</p>
+    <div class="qa-svar ${svarVist ? "" : "skjult"}">
+      <p style="margin: 0;"><strong>Du:</strong> ${q.sv}</p>
+      ${q.coach ? `<details><summary>Coach-kommentar</summary><div class="coach">${q.coach}</div></details>` : ""}
+    </div>
+  `;
+  qaTeller.textContent = `${qaIndeks + 1} / ${qaVisning.length}`;
+  document.getElementById("qa-svar").textContent = svarVist ? "Skjul svar" : "Vis svar";
+}
+
+qaKategori.addEventListener("change", () => {
+  const k = qaKategori.value;
+  qaVisning = k === "alle" ? qaData : qaData.filter(q => q.kat === k);
+  qaIndeks = 0;
+  svarVist = false;
+  renderQa();
+});
+document.getElementById("qa-neste").addEventListener("click", () => {
+  if (qaVisning.length === 0) return;
+  qaIndeks = (qaIndeks + 1) % qaVisning.length;
+  svarVist = false;
+  renderQa();
+});
+document.getElementById("qa-forrige").addEventListener("click", () => {
+  if (qaVisning.length === 0) return;
+  qaIndeks = (qaIndeks - 1 + qaVisning.length) % qaVisning.length;
+  svarVist = false;
+  renderQa();
+});
+document.getElementById("qa-svar").addEventListener("click", () => {
+  svarVist = !svarVist;
+  renderQa();
+});
+document.getElementById("qa-tilfeldig").addEventListener("click", () => {
+  if (qaVisning.length === 0) return;
+  qaIndeks = Math.floor(Math.random() * qaVisning.length);
+  svarVist = false;
+  renderQa();
+});
+renderQa();
+
+/* ============================================================
+   SJEKKLISTE
+   ============================================================ */
+const sjekklisteUl = document.getElementById("sjekkliste");
+sjekklisteUl.innerHTML = sjekklisten.map(t => `
+  <li><span class="boks"></span><span>${t}</span></li>
+`).join("");
+sjekklisteUl.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (li) li.classList.toggle("huket");
+});
+</script>
+
+</body>
+</html>
