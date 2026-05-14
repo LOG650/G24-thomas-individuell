@@ -536,6 +536,149 @@ table.regler tr.detalj td {
 }
 .sjekkliste li.huket { color: var(--dempet); text-decoration: line-through; }
 
+/* ---------- Referansefaner (matte, litteratur, figurer, tabeller) ---------- */
+.referansegrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.refkort {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.refkort .nr {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  color: var(--bla);
+  text-transform: uppercase;
+}
+.refkort .tittel {
+  color: var(--tittel);
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0;
+}
+.refkort .plassering {
+  font-size: 12px;
+  color: var(--dempet);
+  font-style: italic;
+}
+.refkort .felt {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.refkort .felt strong { color: var(--tittel); }
+.refkort .hvorfor {
+  background: #EEF3FA;
+  border-left: 3px solid var(--bla);
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 0 4px 4px 0;
+}
+.refkort .hvorfor strong { color: var(--bla); }
+.refkort .funn {
+  background: #FFF6E6;
+  border-left: 3px solid var(--oransje);
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 0 4px 4px 0;
+}
+.refkort .funn strong { color: var(--oransje); }
+
+/* Matematikk */
+.formelkort {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.formelkort h3 { margin-top: 0; }
+.formel {
+  background: #F4F1EA;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  font-family: "Cambria Math", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.85;
+  text-align: center;
+  color: var(--tittel);
+  overflow-x: auto;
+}
+.formel .liten { font-size: 14px; color: var(--dempet); display: block; margin-top: 4px; }
+.formel-detalj { display: grid; grid-template-columns: 90px 1fr; gap: 6px 14px; margin-top: 10px; font-size: 13.5px; }
+.formel-detalj dt { font-weight: bold; color: var(--bla); }
+.formel-detalj dd { margin: 0; }
+
+.symboltabell {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.symboltabell thead th {
+  background: var(--tittel);
+  color: #FFF;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+.symboltabell td {
+  padding: 9px 12px;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--kant);
+  vertical-align: top;
+}
+.symboltabell td:first-child {
+  font-family: "Cambria Math", Georgia, serif;
+  font-weight: bold;
+  width: 110px;
+  color: var(--bla);
+}
+.symboltabell tr:last-child td { border-bottom: none; }
+
+/* Litteratur — gjenbruker filterrad-stil fra Hovedtall */
+.kildekort .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+.kildekort .tags span {
+  font-size: 11px;
+  background: var(--kant);
+  color: var(--tittel);
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+.kildekort .tags span.t-abc { background: #DDEBF7; color: var(--bla); }
+.kildekort .tags span.t-xyz { background: #FCE9D2; color: #8A5A00; }
+.kildekort .tags span.t-eoq { background: #E7F2DD; color: #2E6B1F; }
+.kildekort .tags span.t-kmeans { background: #F2DDE9; color: #7A2A55; }
+.kildekort .tags span.t-hospital { background: #F8D7D2; color: #842018; }
+.kildekort .tags span.t-metode { background: #E5E5E5; color: #444; }
+.kildekort .tags span.t-data { background: #D9F0F2; color: #1F5F66; }
+.kildekort .ref-apa {
+  font-size: 12.5px;
+  color: var(--dempet);
+  font-style: italic;
+  margin-top: 2px;
+}
+
 footer {
   text-align: center;
   padding: 20px;
@@ -567,6 +710,10 @@ footer {
   <button data-fane="sensitivitet">Sensitivitet</button>
   <button data-fane="qa">Q&amp;A-drill</button>
   <button data-fane="pitch">Pitch &amp; sjekkliste</button>
+  <button data-fane="matte">Matematikk</button>
+  <button data-fane="litteratur">Litteratur</button>
+  <button data-fane="figurer">Figurer</button>
+  <button data-fane="tabeller">Tabeller</button>
 </nav>
 
 <main>
@@ -828,6 +975,480 @@ footer {
   <ul class="sjekkliste" id="sjekkliste"></ul>
 </section>
 
+<!-- ============== MATEMATIKK ============== -->
+<section class="fane" id="matte">
+  <h2>Matematisk notasjon</h2>
+  <p class="ingress">Alle formler bak ABC, XYZ, EOQ, K-means, silhouette, besparelse og sensitivitet. Symboltabell nederst.</p>
+
+  <div class="formelkort">
+    <h3>1. ABC — verdi per artikkel (Pareto-basis)</h3>
+    <div class="formel">
+      v<sub>i</sub> = D<sub>i</sub> × UNIT_PRICE<sub>i</sub>
+      <span class="liten">v<sub>i</sub> kalles også ABC_VALUE — årlig kjøpsverdi i kr.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Årlig kapitalbinding per artikkel — produkt av etterspørsel og enhetspris.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Grunnvariabelen for hele ABC-sorteringen. Uten denne har vi ingen rangering, og dermed ingen klasseskiller.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Gir verdidimensjonen i regelmotor R3–R8. Inngår også i K-means feature-vektor.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>2. ABC — kumulativ verdiandel (Pareto-klassifisering)</h3>
+    <div class="formel">
+      C<sub>i</sub> = ( ∑<sub>j=1..i</sub> v<sub>j</sub> ) / V<sub>tot</sub>
+      <span class="liten">Artikler sorteres synkende på v<sub>i</sub>; klasseskille ved C<sub>i</sub> ≤ 0,80 (A), 0,80 &lt; C<sub>i</sub> ≤ 0,95 (B), C<sub>i</sub> &gt; 0,95 (C).</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Andel av total årsverdi som er dekket etter artikkel <em>i</em> i synkende rangering.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Operasjonaliserer Pareto-prinsippet. Terskler 80 / 95 % er standardverdier (Silaen et al. 2023).</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Resultat: 182 A (25,7 %) / 184 B / 338 C av 709 artikler. A-andelen er bredere enn kanoniske 20 % — typisk for sykehus-sortiment (Gupta et al. 2007).</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>3. XYZ — variasjonskoeffisient (etterspørselsstabilitet)</h3>
+    <div class="formel">
+      CV<sub>i</sub> = σ<sub>i</sub> / μ<sub>i</sub>
+      <span class="liten">σ og μ beregnes over månedlig D<sub>i,m</sub> for 24 måneder (2024–2025).</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Relativ etterspørselsvariasjon. X = CV &lt; 0,50 (stabil), Y = 0,50 ≤ CV &lt; 1,00 (moderat), Z = CV ≥ 1,00 (uregelmessig).</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Stabilitet er forsyningssikkerhetens andre dimensjon. Z-artikler tåler ikke transportbuffer og bør forbli lokalt. Tersklene følger Nowotyńska (2013).</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> R1 (Z-override) lar uregelmessig etterspørsel veto-blokke HVFS-overføring. Resultat: 350 X / 193 Y / 144 Z av 687 klassifiserte.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>4. EOQ — Wilson-modellen (optimal bestilling)</h3>
+    <div class="formel">
+      H<sub>i</sub> = UNIT_PRICE<sub>i</sub> × h<br>
+      Q*<sub>i</sub> = √(2 · D<sub>i</sub> · S / H<sub>i</sub>)<br>
+      f*<sub>i</sub> = D<sub>i</sub> / Q*<sub>i</sub> = √(D<sub>i</sub> · H<sub>i</sub> / (2 · S))<br>
+      TC*<sub>i</sub> = √(2 · D<sub>i</sub> · S · H<sub>i</sub>)
+      <span class="liten">Begge formene for f* er algebraisk ekvivalente — den andre lar deg beregne f* direkte uten å gå via Q*. S = 750 kr (Bijvank &amp; Vis 2012; Kelle et al. 2012). h = 20 % (bredt anvendt konvensjon i lagerstyringslitteraturen).</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Optimal ordrestørrelse Q*, optimal frekvens f* (to ekvivalente uttrykk), og minimumskostnad TC* for hver artikkel.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Analytisk optimum gir et nøytralt referansepunkt mot dagens faktiske bestillingsmønster — viser hvor mye "fett" som ligger i bestillingsfrekvensen.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Grunnlag for regel R3 (FOR_MANGE_ORDRER). 487 artikler hadde tilstrekkelig EKPO-data; av disse er 73,1 % FOR_MANGE_ORDRER.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>5. Totalkostnadsfunksjon TC(f) — universell for alle frekvenser</h3>
+    <div class="formel">
+      TC(f) = f · S + ( D / (2 · f) ) · H
+      <span class="liten">Funksjonen evalueres ved både f* (gir TC*) og f<sub>obs</sub> (gir TC<sub>actual</sub>). Konvex med minimum i f*.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Årlig totalkostnad for vilkårlig bestillingsfrekvens f — sum av bestillingskostnad og holdekostnad.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Felles funksjonsform som lar oss måle hvor "dyrt" et avvik fra f* er, i kroner — ikke bare i antall ordrer.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Fundamentet for ΔTC i neste kort. Uten denne hadde vi kun en relativ avviksprosent uten kronebeløp.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>6. EOQ-avvik og kostnadsgap ΔTC</h3>
+    <div class="formel">
+      f<sub>obs,i</sub> = ORDER_COUNT<sub>i</sub> × 12 / 24<br>
+      FREQ_AVVIK<sub>i</sub> = ( f<sub>obs</sub> − f* ) / f*<br>
+      ΔTC<sub>i</sub> = TC(f<sub>obs,i</sub>) − TC(f*<sub>i</sub>)
+      <span class="liten">Terskel τ<sub>f</sub> = 1,5 ⇔ FREQ_AVVIK &gt; 0,5 (50 %). f<sub>obs</sub> annualiseres med faktor 12/24 fordi datagrunnlaget dekker 24 mnd.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Faktisk årlig bestillingsfrekvens fra EKBE, det relative avviket fra optimum, og det monetære gapet ΔTC.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> ΔTC kvantifiserer ineffektivitet i kroner. Det er denne størrelsen som omsettes til besparelse i formel 10.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Σ ΔTC over 117 OVERFØR ∩ FOR_MANGE_ORDRER gir det monetære fundamentet for besparelsesestimatet kr 451 515/år (base case).</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>7. K-means klyngeanalyse (datadrevet triangulering)</h3>
+    <div class="formel">
+      x<sub>i</sub> = [ z(ln CV<sub>i</sub>), z(ln(v<sub>i</sub>+1)), z(ln(|ΔTC<sub>i</sub>|+1)) ]
+      <span class="liten">K ∈ {2…7}; n_init = 50; random_state = 42; 80/20 train/test-splitt.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Klyngetilhørighet for hver artikkel i et tre-dimensjonalt standardisert feature-rom (CV, verdi, kostnadsgap).</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Logaritmer demper outliers, z-score gjør de tre ulike enhetene sammenlignbare. K-means leter etter struktur uten å bruke forhåndsdefinerte terskler — derfor uavhengig av ABC/XYZ-grenser.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> K_OVERFØR-klyngen (lav CV + høy verdi) bekrefter R4/R5-kandidater datadrevet. Bidraget er <em>triangulering</em>, ikke uavhengig informasjon.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>8. K_OVERFØR-utvelgelse — deterministisk klyngevalg</h3>
+    <div class="formel">
+      k* = argmin<sub>k</sub> [ rang( CV̄<sub>k</sub> ↑ ) + rang( v̄<sub>k</sub> ↓ ) ]
+      <span class="liten">For hver klynge k beregnes gjennomsnittlig CV (stigende rang) og gjennomsnittlig verdi (synkende rang). Klyngen med lavest rangsum velges som K_OVERFØR.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Indeksen til den klyngen som skal merkes som overføringskandidat-klyngen.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Deterministisk regel — ingen skjønnsmessig tolkning av klyngenummer etter at K-means har konvergert. Sikrer reproduserbarhet ved hver kjøring.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Implementeres med <code>pandas.Series.rank()</code>. Garantier at K_OVERFØR alltid er klyngen med lavest CV-snitt og høyest verdi-snitt — uavhengig av tilfeldige klyngenummer.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>9. Silhouette-score (klyngekvalitet)</h3>
+    <div class="formel">
+      s(i) = ( b(i) − a(i) ) / max( a(i), b(i) )
+      <span class="liten">a(i) = gj.snittlig avstand til egen klynge, b(i) = til nærmeste fremmede klynge. Verdier nær 1 = god separasjon.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Hvor godt artikler ligger i sin klynge sammenlignet med nest beste. Rousseeuw (1987).</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Objektivt kriterium for valg av K. Sammenligner train og test for å avdekke overtilpassing.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> K = 3 valgt med 0,383 (train) / 0,368 (test); differanse ≤ 0,015 → modellen generaliserer.</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>10. Besparelsesformel (v2.7 — base case)</h3>
+    <div class="formel">
+      B<sub>HVFS</sub> = ∑<sub>i ∈ OVERFØR ∩ FOR_MANGE</sub> ΔTC<sub>i</sub> · g
+      <span class="liten">g = realisasjonsgrad ∈ {0,50; 0,75; 1,00}. Base case g = 0,75.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> Forventet årlig besparelse fra ordrefrekvensoptimalisering for de 117 artiklene som er både OVERFØR-kandidater <em>og</em> FOR_MANGE_ORDRER.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> g modellerer at ikke hele det teoretiske ΔTC kan realiseres i praksis (transaksjonsfriksjon, koordinering). 75 % er konservativt midtpunkt.</div>
+    <div class="felt"><strong>Støtter konklusjon:</strong> Base case kr 451 515/år. Worst kr 301 010 (g = 50 %), best kr 602 020 (g = 100 %).</div>
+  </div>
+
+  <div class="formelkort">
+    <h3>11. Sensitivitetsgrid — 27 scenarier</h3>
+    <div class="formel">
+      ( S, h, τ<sub>f</sub> ) ∈ { 500, 750, 1000 } × { 0,15; 0,20; 0,25 } × { 1,25; 1,50; 2,00 }
+      <span class="liten">For hver kombinasjon: regn ut H, Q*, f*, TC*, ΔTC og B<sub>HVFS</sub> på nytt.</span>
+    </div>
+    <div class="felt"><strong>Hva den beregner:</strong> 27 alternative besparelsesestimater under varierende kostparametre og terskler.</div>
+    <div class="hvorfor"><strong>Hvorfor brukt:</strong> Tester robusthet — ikke presisjon. Konklusjonen skal holde under all rimelig parameterusikkerhet.</div>
+    <div class="funn"><strong>Sentralt funn:</strong> Alle 27 scenarier gir positiv besparelse. Intervall kr 176 374 – 763 903/år. S er dominant variabel (lineær effekt).</div>
+  </div>
+
+  <h3>Symboltabell</h3>
+  <table class="symboltabell">
+    <thead><tr><th>Symbol</th><th>Betydning</th><th>Verdi / kilde</th></tr></thead>
+    <tbody>
+      <tr><td>D<sub>i</sub></td><td>Årlig etterspørsel for artikkel <em>i</em></td><td>Beregnet fra MSEG, 12 mnd ekvivalent</td></tr>
+      <tr><td>μ<sub>i</sub>, σ<sub>i</sub></td><td>Månedlig gjennomsnitt og standardavvik</td><td>24 måneder, 2024–2025</td></tr>
+      <tr><td>CV<sub>i</sub></td><td>Variasjonskoeffisient (XYZ-basis)</td><td>σ / μ — Nowotyńska (2013)</td></tr>
+      <tr><td>v<sub>i</sub></td><td>Årsverdi (= ABC_VALUE)</td><td>D × UNIT_PRICE</td></tr>
+      <tr><td>V<sub>tot</sub></td><td>Total årsverdi for alle artikler</td><td>∑ v<sub>i</sub></td></tr>
+      <tr><td>C<sub>i</sub></td><td>Kumulativ verdiandel (ABC-klassifisering)</td><td>Klasseskille 80 % / 95 % — Silaen (2023)</td></tr>
+      <tr><td>UNIT_PRICE<sub>i</sub></td><td>Enhetspris</td><td>STPRS / PEINH (D-02-korreksjon)</td></tr>
+      <tr><td>S</td><td>Bestillingskostnad per ordre</td><td>750 kr — Bijvank &amp; Vis (2012)</td></tr>
+      <tr><td>h</td><td>Holdekostnadsrate (% av enhetspris)</td><td>0,20 (konvensjon)</td></tr>
+      <tr><td>H<sub>i</sub></td><td>Holdekostnad i kr per enhet/år</td><td>UNIT_PRICE × h</td></tr>
+      <tr><td>Q*<sub>i</sub></td><td>Optimal ordrestørrelse (EOQ)</td><td>Wilson-formelen</td></tr>
+      <tr><td>f*<sub>i</sub></td><td>Optimal ordrefrekvens</td><td>D / Q*</td></tr>
+      <tr><td>f<sub>obs,i</sub></td><td>Observert årsfrekvens</td><td>ORDER_COUNT × 12/24</td></tr>
+      <tr><td>TC*<sub>i</sub></td><td>Optimal årlig totalkostnad</td><td>√(2 D S H)</td></tr>
+      <tr><td>ΔTC<sub>i</sub></td><td>Kostnadsgap mot optimum</td><td>TC<sub>actual</sub> − TC*</td></tr>
+      <tr><td>τ<sub>f</sub></td><td>Frekvensterskel for FOR_MANGE_ORDRER</td><td>1,5 (base); 1,25 / 2,00 (sens.)</td></tr>
+      <tr><td>g</td><td>Realisasjonsgrad for besparelse</td><td>0,50 / 0,75 / 1,00</td></tr>
+      <tr><td>B<sub>HVFS</sub></td><td>Estimert årlig besparelse</td><td>Σ ΔTC · g</td></tr>
+      <tr><td>z(·)</td><td>Standardisering (μ=0, σ=1)</td><td>StandardScaler, fittet på trening</td></tr>
+      <tr><td>K</td><td>Antall klynger i K-means</td><td>K = 3 (silhouette-optimal)</td></tr>
+      <tr><td>k*</td><td>Indeks for K_OVERFØR-klyngen</td><td>argmin av rangsum (CV ↑ + v ↓)</td></tr>
+      <tr><td>s(i)</td><td>Silhouette-score</td><td>Rousseeuw (1987)</td></tr>
+      <tr><td>n_init, random_state</td><td>Reproduserbarhet-parametre</td><td>50, 42</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== LITTERATUR ============== -->
+<section class="fane" id="litteratur">
+  <h2>Litteraturgrunnlag</h2>
+  <p class="ingress">22 kilder — filtrer på tema. Hver kilde forklart kort: hva den bidrar med, og hvorfor den er relevant for problemstillingen.</p>
+
+  <div class="filterrad" id="kildefilter">
+    <button data-kat="alle" class="aktiv">Alle</button>
+    <button data-kat="abc">ABC</button>
+    <button data-kat="xyz">XYZ</button>
+    <button data-kat="eoq">EOQ</button>
+    <button data-kat="kmeans">K-means</button>
+    <button data-kat="hospital">Sykehus-kontekst</button>
+    <button data-kat="metode">Metode/review</button>
+    <button data-kat="data">Data/verktøy</button>
+  </div>
+
+  <div class="referansegrid" id="kildegrid"></div>
+</section>
+
+<!-- ============== FIGURER ============== -->
+<section class="fane" id="figurer">
+  <h2>Figuroversikt</h2>
+  <p class="ingress">Tolv figurer i rapporten. Hver figur har et kort som forklarer hva den viser, datagrunnlag, hvorfor den er inkludert, og hvordan den skal tolkes.</p>
+
+  <div class="referansegrid">
+
+    <div class="refkort">
+      <div class="nr">Figur 1 — Fig00</div>
+      <p class="tittel">Konseptuelt rammeverk</p>
+      <p class="plassering">Kapittel 2 — Teori og rammeverk</p>
+      <div class="felt"><strong>Hva viser:</strong> Helhetlig flytdiagram fra SAP-uttrekk → datagrunnlag → fire analysemoduler (ABC/XYZ/EOQ/K-means) → regelmotor → HVFS-anbefaling.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Konseptuell — bygger på van Kampen et al. (2012) sin tre-dimensjonale klassifiseringsramme.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Etablerer hele oppgavens metodiske scope i ett bilde. Brukes som referansepunkt under hele forsvaret.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Følg pilene venstre→høyre. Vis at hver boks tilsvarer et kapittel: hver dimensjon er forankret i litteratur og operasjonalisert i kode.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 2 — Fig01</div>
+      <p class="tittel">Lagerstruktur Helse Vest</p>
+      <p class="plassering">Kapittel 3 — Casevirksomhet</p>
+      <div class="felt"><strong>Hva viser:</strong> Forsyningskjeden fra leverandør → HVFS (NorEngros) → Helse Bergens forsyningslager WERKS 3300/LGORT 3001 → kliniske avdelinger.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Organisasjonskart, ikke datadrevet.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Forankrer det abstrakte begrepet "overføring til HVFS" i konkret lagerhierarki. Forklarer hvorfor WERKS 3300 / LGORT 3001 er studieenheten.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Pek på lagerstedet i midten — det er der utvalget på 709 artikler ligger i dag. HVFS over, klinikk under.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 3 — Fig02</div>
+      <p class="tittel">Analysepipeline</p>
+      <p class="plassering">Kapittel 4 — Datagrunnlag og forbehandling</p>
+      <div class="felt"><strong>Hva viser:</strong> Detaljert prosess: SE16H-uttrekk → datavalg D-01–D-08 → fire metoder parallelt → validering → regelmotor → output.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Implementert i <code>LOG650_analyse_v2_7.py</code>.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Operasjonaliserer det konseptuelle rammeverket (Fig 1). Viser sporbarhet fra rådata til anbefaling.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> 1 006 → 709 artikler er D-01-filteret. Fire parallelle metoder møtes i regelmotor — det er der signalene aggregeres.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 4 — Fig03</div>
+      <p class="tittel">Regelmotor R1–R8</p>
+      <p class="plassering">Kapittel 5 — Metode</p>
+      <div class="felt"><strong>Hva viser:</strong> Sekvensiell beslutningstre der hver artikkel testes mot R1 først, deretter R2, … til en regel slår til.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Tabell 7 i rapporten — 8 regler med betingelser og output.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Gjør hver anbefaling sporbar til <em>én</em> regel. Kritisk for revisor-tillit og forsvarbarhet.</div>
+      <div class="funn"><strong>Hvordan tolke:</strong> R1 først (Z-override) er ikke tilfeldig — det beskytter forsyningssikkerhet. R3 er kjernen som gir 71 av 145 OVERFØR-kandidater.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 5 — Fig04</div>
+      <p class="tittel">Dataoversikt — fordeling av nøkkelvariabler</p>
+      <p class="plassering">Kapittel 4 — Datagrunnlag</p>
+      <div class="felt"><strong>Hva viser:</strong> Fordelingsplott for D_ANNUAL, UNIT_PRICE, CV og ORDER_COUNT på 709 artikler.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> MASTERFILE V1.xlsx, n = 709.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Dokumenterer datakvalitet, spredning og potensielle outliers før modellering.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Skjeve fordelinger (særlig D_ANNUAL og UNIT_PRICE) begrunner logaritmen i K-means feature-vektor.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 6 — Fig05</div>
+      <p class="tittel">ABC Pareto-kurve</p>
+      <p class="plassering">Kapittel 6 / 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> 709 artikler rangert synkende etter årsverdi; stolper farget A/B/C; kumulativ kurve med 80/95-streker.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> ABC_VALUE = D × UNIT_PRICE, sortert.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Visualiserer Pareto-prinsippet i egne data — 25,7 % A-andel er bredere enn kanoniske 20 % og må forklares (Gupta et al. 2007).</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Knekkpunktet ved 80 %-linja er der A-klassen slutter. Den lange C-halen til høyre er volummessig stor, men verdimessig liten.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 7 — Fig06</div>
+      <p class="tittel">ABC/XYZ-kryssmatrise (3×3)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> 9-felts matrise med antall artikler per kombinasjon for 687 klassifiserte. Grønne, oransje og røde celler.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Krysstabell ABC × XYZ.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Operasjonaliserer Suryaputri et al. (2022) sin to-kriterie-segmentering. Viser at AX/AY/BX-cellene (grønt) er primære HVFS-kandidater.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Diagonalen øverst venstre = "passer HVFS". Diagonalen nederst høyre = "bli lokalt". Mellomcellene = vurder.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 8 — Fig07</div>
+      <p class="tittel">EOQ-avvik (FREQ_AVVIK_PCT)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> Spredningsplott av relativt frekvensavvik for 487 artikler med EKPO-data; vertikal terskellinje ved τ<sub>f</sub> = 1,5.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> (f<sub>obs</sub> − f*) / f* per artikkel.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Dokumenterer omfanget av over-bestilling — kvantitativt bevis for at det finnes en effektiviseringsgevinst.</div>
+      <div class="funn"><strong>Hvordan tolke:</strong> Majoriteten ligger over rødstreken (FOR_MANGE_ORDRER). 73,1 % av 487 artikler bestilles oftere enn EOQ-optimum.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 9 — Fig08</div>
+      <p class="tittel">Silhouette-score for K = 2–7</p>
+      <p class="plassering">Kapittel 6 — Metode (K-means validering)</p>
+      <div class="felt"><strong>Hva viser:</strong> Linjediagram der silhouette-score plottes mot K for både trenings- og testsett.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> n_train = 389, n_test = 98.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Objektiv begrunnelse for K = 3. Viser at modellen generaliserer (train vs. test nær hverandre).</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> Toppen ligger på K = 3 (0,383 train / 0,368 test). Liten gap = ingen overtilpassing.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 10 — Fig09</div>
+      <p class="tittel">K-means klyngeresultat (2 paneler)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> Tospunktsdiagram i feature-rommet z(ln CV) × z(ln verdi); farger = klynger, ★ = K_OVERFØR-flagget klynge.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> K = 3, K-means trent på 389 artikler.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Visualiserer at klyngestrukturen er <em>genuint datadrevet</em> — ikke en omformulering av ABC/XYZ-terskler.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> K_OVERFØR-klyngen ligger i nedre venstre (lav CV, høy verdi). Tester (høyre panel) lander i samme områder.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 11 — Fig10</div>
+      <p class="tittel">Klyngeprofiler — gjennomsnittlig z per feature</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> Linje- eller stolpediagram med gjennomsnittsverdi per klynge for de tre features.</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Cluster centers, K = 3.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Tolker hva hver klynge "betyr" — gir mening til klyngenummer 0/1/2.</div>
+      <div class="felt"><strong>Hvordan tolke:</strong> K_OVERFØR (grønn) har lavest CV-z og høyest verdi-z. Det er denne klyngen som mater R4/R5.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Figur 12 — Fig11</div>
+      <p class="tittel">Regelmotor-resultat og besparelse</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Hva viser:</strong> To paneler — venstre: fordeling 145/257/284/23 av regelmotorens utfall; høyre: tre besparelsesscenarier (worst/base/best).</div>
+      <div class="felt"><strong>Datagrunnlag:</strong> Tabell 13 + Tabell 15.</div>
+      <div class="hvorfor"><strong>Hvorfor inkludert:</strong> Den ene oppsummeringsfiguren som leverer hovedresultatet. Skal kunne stå alene som plakat.</div>
+      <div class="funn"><strong>Hvordan tolke:</strong> 20,5 % OVERFØR, kr 451 515/år base case. Intervall i sensitivitet er kr 176k–764k — robust positiv konklusjon.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== TABELLER ============== -->
+<section class="fane" id="tabeller">
+  <h2>Tabelloversikt</h2>
+  <p class="ingress">17 tabeller (Tabell 1–16 + Vedlegg A1). For hver: hva den viser, hvor tallene kommer fra, og rollen i analysen.</p>
+
+  <div class="referansegrid">
+
+    <div class="refkort">
+      <div class="nr">Tabell 1</div>
+      <p class="tittel">Litteraturoversikt — sentrale kilder</p>
+      <p class="plassering">Kapittel 2 — Teori og rammeverk</p>
+      <div class="felt"><strong>Innhold:</strong> Forfatter, år, tema, relevans for oppgavens problemstilling.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Litteraturgjennomgang, organisert per ABC/XYZ/EOQ/K-means/sykehus.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Forankrer alle metodevalg i kjent litteratur. Brukes som sannhetstabell for "hvorfor akkurat disse fire metodene?".</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 2</div>
+      <p class="tittel">Sammenligning av analysemetoder</p>
+      <p class="plassering">Kapittel 2 — Teori og rammeverk</p>
+      <div class="felt"><strong>Innhold:</strong> 4 rader (ABC, XYZ, EOQ, K-means) × kolonner: styrker, svakheter, datakrav, referanse.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Komparativ litteraturlesning.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Begrunner kombinasjonen. Hver metode har en blindsone som andre metoder dekker opp — kjernen i argumentet for "fire komplementære analyser".</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 3</div>
+      <p class="tittel">Nøkkeltall for casevirksomheten</p>
+      <p class="plassering">Kapittel 3 — Casevirksomhet</p>
+      <div class="felt"><strong>Innhold:</strong> Helse Bergen HF, WERKS 3300, LGORT 3001, n = 709, 14 SAP-tabeller, periode 2024–2025, SAP S/4HANA, HVFS, NorEngros, EKGRP 3000.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Organisasjonsdata + SAP-konfigurasjon.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Definerer scope og styringskontekst. Etablerer ekstern referansabilitet for andre Helse Vest-foretak.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 4</div>
+      <p class="tittel">14 SAP-tabeller hentet via SE16H</p>
+      <p class="plassering">Kapittel 4 — Datagrunnlag</p>
+      <div class="felt"><strong>Innhold:</strong> Tabellnavn (MARA, MAKT, MBEW, MSEG, EKPO, EKBE, MARC, MARD, MDMA, EINE, T023T, T024, …), antall rader, formål.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> SAP SE16H, 24 mnd 2024–2025.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Fullstendig datadeklarasjon — gjør oppgaven reproduserbar for en annen SAP MM-konsulent.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 5</div>
+      <p class="tittel">Datavalgsbeslutninger D-01 til D-08</p>
+      <p class="plassering">Kapittel 4 — Datagrunnlag</p>
+      <div class="felt"><strong>Innhold:</strong> D-01 populasjonsfilter (1 006→709) · D-02 PEINH-korreksjon · D-03 ABC-verdi-proxy for 204 artikler uten EKPO · D-04 CV-basert XYZ (ikke ZZXYZ) · D-05 leveringstid 14 d (kun 6 % dekning) · D-06 blank MSEG_STATUS → AKTIV · D-07 EKPO-kildeprioritering · D-08 årsannualisering ×12/24.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Hver beslutning eksplisitt med begrunnelse og alternativ.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Sentralt for forsvarbarhet — dokumenterer hvert sted analytikeren måtte velge. D-04 begrunner hvorfor SAPs ZZXYZ ikke ble brukt (jf. 33 %-funnet i Tabell 10).</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 6</div>
+      <p class="tittel">Modellparametere (ABC-grenser m.m.)</p>
+      <p class="plassering">Kapittel 5 — Metode</p>
+      <div class="felt"><strong>Innhold:</strong> ABC 80/95 % (Silaen 2023), XYZ 0,50/1,00 (Nowotyńska 2013), S = 750 (Bijvank &amp; Vis; Kelle), h = 20 % (konvensjon), τ<sub>f</sub> = 1,5, leveringstid 14 d, K ∈ {2…7}, n_init = 50, random_state = 42, 80/20-splitt.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Hver parameter sporet til kilde.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Reproduserbarhetsbevis og sensitivitetsgrunnlag — tabellen muliggjør 27-scenario-grid (Tabell 15).</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 7</div>
+      <p class="tittel">Regelmotor — 8 regler i prioritert rekkefølge</p>
+      <p class="plassering">Kapittel 5 — Metode</p>
+      <div class="felt"><strong>Innhold:</strong> R1 (XYZ=Z → BEHOLD) · R2 (C+Y → BEHOLD) · R3 (A/B+X+for mange ordrer → OVERFØR) · R4 (A/B+X+K_OVERFØR → OVERFØR) · R5 (A/B+Y+K_OVERFØR → OVERFØR) · R6/R7 (A/B uten K → VURDER) · R8 (residual → VURDER).</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Designet bottom-up fra litteraturanbefalinger og datavalg.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Operasjonaliserer aggregeringen av fire signaler. Rekkefølgen er ikke vilkårlig — R1 først beskytter forsyningssikkerhet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 8</div>
+      <p class="tittel">ABC-fordeling (n = 709)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> A 182 (25,7 %) — 80 % av verdi · B 184 (26,0 %) · C 338 (47,7 %) · uklassifisert 5.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Pareto-sortering etter ABC_VALUE.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Dokumenterer at Pareto holder i sykehus-sortiment (jf. Gupta et al. 2007 — A-andel bredere enn kanoniske 20 %).</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 9</div>
+      <p class="tittel">XYZ-fordeling (n = 687 klassifiserte)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> X 350 (50,9 %) · Y 193 (28,1 %) · Z 144 (20,9 %) · uklassifisert 22.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> CV-beregning over 24 mnd.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Halvparten av sortimentet er stabilt → grunnlag for sentralisering. Z-andelen på 20,9 % styrer hvor R1 slår til.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 10</div>
+      <p class="tittel">SAP ZZXYZ-validering (n = 375)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> Krysstabell SAP-klasse × beregnet CV-klasse. Diagonalsamsvar 125/375.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> MDMA-tabell vs. egen CV.</div>
+      <div class="funn"><strong>Sentralt funn:</strong> 33 % samsvar — SAPs eget ZZXYZ-felt er foreldet og kan ikke brukes som beslutningsgrunnlag. Empirisk hovedfunn med direkte konsekvens for LIBRA-prosjektet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 11</div>
+      <p class="tittel">EOQ-avviksresultater (n = 487)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> FOR_MANGE_ORDRER 356 (73,1 %) · OK 100 (20,5 %) · FOR_FÅ_ORDRER 31 (6,4 %). Σ ΔTC ≈ kr 2,33 mill/år.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> EKPO + EKBE → f<sub>obs</sub> mot Wilson-EOQ.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Dokumenterer omfanget av overbestilling i organisasjonen. Fundamentet under besparelsesestimatet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 12</div>
+      <p class="tittel">K-means klyngeprofiler (K = 3)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> Per klynge: antall (train/test), gj.snitt CV/verdi/|ΔTC|, silhouette train/test.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Cluster centers + tilhørighet.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Tolker hver klynge. Viser at K_OVERFØR (lav CV + høy verdi) er en klart distinkt gruppe — datadrevet bekreftelse av regelmotorens A/B+X-prioritet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 13</div>
+      <p class="tittel">HVFS-anbefalinger fra regelmotor (n = 709)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> OVERFØR_HVFS 145 (20,5 %) · BEHOLD_LOKALT 257 (36,2 %) · VURDER_NÆRMERE 284 (40,1 %) · MANGLER_DATA 23 (3,2 %).</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Regelmotor anvendt på 709 artikler.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Hovedresultatet — én linje med tall. 40,1 % VURDER reflekterer bevisst valg av presisjon over full automatisering.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 14</div>
+      <p class="tittel">Regelmotor R1–R8 — antall per regel</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> R1 143 BEHOLD · R2 114 BEHOLD · R3 71 OVERFØR · R4 18 OVERFØR · R5 56 OVERFØR · R6 160 VURDER · R7 23 VURDER · R8 101 VURDER.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Telling av regel-treff.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Viser hvilken regel som bærer hvert utfall. R3 alene gir 71 av 145 OVERFØR — strongest signal-prinsippet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 15</div>
+      <p class="tittel">Besparelsesestimater — 3 scenarier (n = 117)</p>
+      <p class="plassering">Kapittel 7 — Resultater</p>
+      <div class="felt"><strong>Innhold:</strong> Worst kr 301 010 (g = 50 %) · Base kr 451 515 (g = 75 %) · Best kr 602 020 (g = 100 %). Basis = 117 artikler i OVERFØR ∩ FOR_MANGE_ORDRER.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Σ ΔTC · g.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Det monetære hovedfunnet. Brukes til å forsvare at HVFS-overføring er økonomisk rasjonell selv under konservativ realisasjonsgrad.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell 16</div>
+      <p class="tittel">Sammenstilling mot eksisterende litteratur</p>
+      <p class="plassering">Kapittel 8 — Diskusjon</p>
+      <div class="felt"><strong>Innhold:</strong> Egne funn (A-andel, 33 % ZZXYZ-samsvar, X-andel, silhouette, besparelsesmagnitude, FOR_MANGE-prevalens, matrise-verdi, K-means-bidrag) mot litteraturforventning + konsistens-vurdering.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> Egne resultater × Gupta, Nowotyńska, Ketkar, Srinivasan, Moons, Volland, Suryaputri.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Plasserer egne resultater i internasjonal kontekst. Viser at funnene er konsistente med peer-litteratur — bygger ekstern validitet.</div>
+    </div>
+
+    <div class="refkort">
+      <div class="nr">Tabell A1</div>
+      <p class="tittel">Feltforklaring — SAP MM- og MDMA-felter</p>
+      <p class="plassering">Vedlegg A</p>
+      <div class="felt"><strong>Innhold:</strong> MATNR, MAKTX, MTART, WGBEZ, MEINS, WERKS, LGORT, STPRS, PEINH, MARC_ABC, ZZABC, ZZXYZ, EKGRP, BWART, NETWR, PLIFZ, MSEG_STATUS.</div>
+      <div class="felt"><strong>Datagrunnlag/metode:</strong> SAP-konfigurasjon ved Helse Vest IKT.</div>
+      <div class="hvorfor"><strong>Rolle:</strong> Gjør oppgaven lesbar for ikke-SAP-konsulenter (sensor, veileder, NorEngros). Sentral for ekstern reproduserbarhet.</div>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
 <!-- Modal for pipeline-detaljer -->
@@ -965,7 +1586,7 @@ const pipelineInfo = {
       "Formel: B_HVFS = Σ (ΔTC_i) × g for i ∈ OVERFØR ∩ FOR_MANGE_ORDRER.",
       "Tre scenarier: worst (g = 50 %) kr 301 010 · base (g = 75 %) kr 451 515 · best (g = 100 %) kr 602 020.",
       "Sensitivitetsintervall over 27 kombinasjoner av (S, h, τ_f): kr 176 374 – 763 903 per år. Alle 27 scenarier positive.",
-      "Konservativt estimat: fanger kun transaksjonskostnader fra ordrefrekvens. Lagerbinding (5–15 %), transport og engangskostnader er utenfor scope.",
+      "Konservativt estimat: fanger kun transaksjonskostnader fra ordrefrekvens. Lagerbindingsgevinst, transport og engangskostnader er utenfor scope.",
       "Sensorpoeng: dette er et intervall, ikke et punktestimat. Reell realisering avhenger av SAP MM-justering og leverandørforhandlinger."
     ],
     meta: "Kilde: kap. 5.6 + kap. 7.5–7.6 + Tabell 15"
@@ -1134,9 +1755,63 @@ const qaData = [
     sv: "22 referanser er i nedre sjikt for bacheloroppgaver. Hver er aktivt brukt i metodologisk eller empirisk argumentasjon — ingen er pyntereferanser. Bredere base, særlig innen generell lagerstyringsteori og klyngeanalyse, ville styrket litteraturgjennomgangen. Jeg eier den svakheten.",
     coach: "Sensor utfordrer referansebredden. Ikke forsvar — eier svakheten og forklar hvorfor hver referanse er der." },
   { kat: "felle", nr: "Felle 10", sp: "Hvis dette er så enkelt — fire metoder og en regelmotor — hvorfor har ingen gjort det før?",
-    sv: "Saha & Ray (2019) sin review av 137 artikler konstaterer at empiriske casestudier som kombinerer ABC, XYZ, EOQ og klyngeanalyse på faktiske ERP-data er underrepresentert. Hver metode er kjent isolert; kombinasjonen og operasjonaliseringen på SAP S/4HANA-data fra et faktisk sykehus med eksplisitt besparelsesestimat er nettopp gapet jeg adresserer. Det er ikke metodisk nyhet — det er empirisk anvendelse i et felt der ERP-datacasestudier mangler.",
+    sv: "Saha & Ray (2019) sin systematiske gjennomgang av forskning på lagerstyring i helsesektoren konstaterer at empiriske casestudier som kombinerer ABC, XYZ, EOQ og klyngeanalyse på faktiske ERP-data er underrepresentert. Hver metode er kjent isolert; kombinasjonen og operasjonaliseringen på SAP S/4HANA-data fra et faktisk sykehus med eksplisitt besparelsesestimat er nettopp gapet jeg adresserer. Det er ikke metodisk nyhet — det er empirisk anvendelse i et felt der ERP-datacasestudier mangler.",
     coach: "Sensor tester originalitetskravet. Saha & Ray (2019) er ankerreferansen. Skill 'metodisk nyhet' fra 'empirisk anvendelse'." }
 ];
+
+/* ============================================================
+   LITTERATUR
+   ============================================================ */
+const kildeData = [
+  { f: "Bijvank & Vis", aar: 2012, apa: "Bijvank, M., & Vis, I. F. A. (2012). Inventory control for point-of-use locations in hospitals. <em>Journal of the Operational Research Society, 63</em>(4), 497–510.", bidrag: "Lost-sales modell og bestillingskostnad i sykehus-kontekst.", kat: ["hospital","eoq"], hvorfor: "Empirisk grunnlag for S = 750 kr og for hvorfor sentralt-vs-lokalt-balanse må modelleres.", bruk: "Tabell 6 (modellparametere), kap. 5.3 EOQ." },
+  { f: "de Vries", aar: 2011, apa: "de Vries, J. (2011). The shaping of inventory systems in health services: A stakeholder analysis. <em>International Journal of Production Economics, 133</em>(1), 60–69.", bidrag: "Organisatoriske barrierer ved sentralisering i helsetjenesten.", kat: ["hospital","metode"], hvorfor: "Advarer mot å undervurdere stakeholder-motstand. Informerer diskusjonen om implementeringsrisiko.", bruk: "Kap. 2, kap. 8 diskusjon." },
+  { f: "Fragapane et al.", aar: 2019, apa: "Fragapane, G. I., Bertnum, A. B., Hvolby, H.-H., & Strandhagen, J. O. (2019). Medical supplies to the point-of-use in hospitals. <em>IFIP APMS</em>.", bidrag: "APL (Automatic Point-of-use Logistics) krever systematisk klassifiseringsgrunnlag.", kat: ["hospital"], hvorfor: "Kjerneargument for at HVFS-modellen trenger akkurat denne typen klassifisering.", bruk: "Kap. 1 motivasjon, kap. 3 case." },
+  { f: "Gupta et al.", aar: 2007, apa: "Gupta, R., Gupta, K. K., Jain, B. R., & Garg, R. K. (2007). ABC and VED analysis in medical stores inventory control. <em>Medical Journal Armed Forces India, 63</em>(4), 325–327.", bidrag: "ABC-VED i sykehus: kombinasjon av verdi og klinisk kritikalitet.", kat: ["abc","hospital"], hvorfor: "Validerer ABC-VED-tilnærming i helsekontekst og motiverer kritikalitetsdimensjonen.", bruk: "Tabell 1, Tabell 16, kap. 7 (Fig 6 tolkning)." },
+  { f: "Gurumurthy et al.", aar: 2021, apa: "Gurumurthy, A., Nair, V. K., & Vinodh, S. (2021). Application of a hybrid selective inventory control technique in a hospital. <em>The TQM Journal, 33</em>(3), 568–595.", bidrag: "Klynging støtter lean-drevet lagerreduksjon i sykehus.", kat: ["kmeans","hospital"], hvorfor: "Begrunner valg av K-means som komplement til ABC/XYZ i sykehuskontekst.", bruk: "Kap. 5.4." },
+  { f: "Hautaniemi & Pirttilä", aar: 1999, apa: "Hautaniemi, P., & Pirttilä, T. (1999). The choice of replenishment policies in an MRP environment. <em>International Journal of Production Economics, 59</em>(1–3), 85–92.", bidrag: "EOQ-antakelser i MRP-miljø.", kat: ["eoq"], hvorfor: "Fundament for EOQ-parametervalg og lot-sizing-rasjonale.", bruk: "Kap. 5.3 EOQ-formulering." },
+  { f: "Kelle et al.", aar: 2012, apa: "Kelle, P., Woosley, J., & Schneider, H. (2012). Pharmaceutical supply chain specifics and inventory solutions for a hospital case. <em>Operations Research for Health Care, 1</em>(2–3), 54–63.", bidrag: "Empirisk S = 750 kr fra sykehus-case.", kat: ["eoq","hospital"], hvorfor: "Andre kilde til S-parameteren — gir konvergens mellom to uavhengige sykehusstudier.", bruk: "Tabell 6." },
+  { f: "Keshavarz Ghorabaee et al.", aar: 2015, apa: "Keshavarz Ghorabaee, M., Zavadskas, E. K., Olfat, L., & Turskis, Z. (2015). Multi-criteria inventory classification using EDAS. <em>Informatica, 26</em>(3), 435–451.", bidrag: "EDAS som distanse-basert alternativ til ABC.", kat: ["metode"], hvorfor: "Konkurrerende MCDM-tilnærming. Bevisst valgt bort — denne oppgaven prioriterer objektive, auditerbare kriterier.", bruk: "Kap. 2 metodevalg, kap. 8 begrensninger." },
+  { f: "Ketkar & Vaidya", aar: 2014, apa: "Ketkar, M., & Vaidya, O. S. (2014). Developing ordering policy based on multiple inventory classification schemes. <em>Procedia – Social and Behavioral Sciences, 133</em>, 180–188.", bidrag: "Multi-klassifisering; differensiert ordrepolicy etter ABC/XYZ-celler.", kat: ["abc","xyz"], hvorfor: "Kilde for differensiert styring i AX-til-CZ-matrisen.", bruk: "Kap. 5.2 (AX/CZ-eksempel)." },
+  { f: "McKinney", aar: 2010, apa: "McKinney, W. (2010). Data structures for statistical computing in Python. <em>Proceedings of the 9th Python in Science Conference</em>, 56–61.", bidrag: "pandas-biblioteket.", kat: ["data"], hvorfor: "Sitert som verktøyreferanse — alle datatransformasjoner er kodet i pandas.", bruk: "Vedlegg B, kap. 5 programvare." },
+  { f: "Moons et al.", aar: 2019, apa: "Moons, K., Waeyenbergh, G., & Pintelon, L. (2019). Measuring the logistics performance of internal hospital supply chains. <em>Omega, 82</em>, 205–217.", bidrag: "Ytelsesmål for sykehus-interne forsyningskjeder.", kat: ["hospital","metode"], hvorfor: "Validerer at base case kr 451 515 ligger i forventet «moderat gevinst»-område.", bruk: "Tabell 16, kap. 8 diskusjon." },
+  { f: "Nowotyńska", aar: 2013, apa: "Nowotyńska, I. (2013). An application of XYZ analysis in company stock management. <em>Modern Management Review, XVIII</em>(20), 77–86.", bidrag: "XYZ-tersklene CV &lt; 0,5 / 0,5–1,0 / ≥ 1,0.", kat: ["xyz"], hvorfor: "Primærkilde for CV-basert XYZ-grenseverdier.", bruk: "Tabell 6, kap. 5.2." },
+  { f: "Partovi & Burton", aar: 1993, apa: "Partovi, F. Y., & Burton, J. (1993). Using the analytic hierarchy process for ABC analysis. <em>International Journal of Operations and Production Management, 13</em>(9), 29–44.", bidrag: "AHP for vektet ABC-klassifisering.", kat: ["abc","metode"], hvorfor: "Tidlig multikriterie-ABC. Brukes til å begrunne at oppgavens enklere, ettkriterie-tilnærming er bevisst valgt for sporbarhet.", bruk: "Kap. 2, kap. 8 begrensninger." },
+  { f: "Pedregosa et al.", aar: 2011, apa: "Pedregosa, F., Varoquaux, G., Gramfort, A., et al. (2011). Scikit-learn: Machine learning in Python. <em>JMLR, 12</em>, 2825–2830.", bidrag: "scikit-learn-biblioteket.", kat: ["data","kmeans"], hvorfor: "Verktøy for KMeans, StandardScaler og silhouette_score. Reproduserbarhet-hjørnestein.", bruk: "Vedlegg B, kap. 5.4." },
+  { f: "Pujawan", aar: 2004, apa: "Pujawan, I. N. (2004). The effect of lot sizing rules on order variability. <em>European Journal of Operational Research, 159</em>(3), 617–635.", bidrag: "Lot sizing skaper ordrevariabilitet (bullwhip).", kat: ["eoq"], hvorfor: "Forsterker EOQ-relevans — feilbestilling forplanter seg oppstrøms.", bruk: "Kap. 5.3, kap. 8." },
+  { f: "Rousseeuw", aar: 1987, apa: "Rousseeuw, P. J. (1987). Silhouettes: A graphical aid to the interpretation and validation of cluster analysis. <em>Journal of Computational and Applied Mathematics, 20</em>, 53–65.", bidrag: "Silhouette-koeffisient — grafisk klyngevaliderings-mål.", kat: ["kmeans","metode"], hvorfor: "Kanonisk kilde for det objektive K-valg-kriteriet.", bruk: "Kap. 5.4, Fig 9." },
+  { f: "Saha & Ray", aar: 2019, apa: "Saha, E., & Ray, P. K. (2019). Modelling and analysis of inventory management systems in healthcare. <em>Computers & Industrial Engineering, 137</em>, 106051.", bidrag: "Systematisk gjennomgang: empiriske ERP-case er underrepresentert.", kat: ["hospital","metode"], hvorfor: "Identifiserer gapet denne oppgaven fyller — empirisk SAP-basert sykehus-case.", bruk: "Kap. 1 motivasjon, kap. 2." },
+  { f: "Silaen et al.", aar: 2023, apa: "Silaen, B. R., Nasution, M., & Muti'ah, R. (2023). Implementation of the ABC analysis to the inventory management. <em>IJSTM, 4</em>(4), 815–822.", bidrag: "Moderne kilde for standard ABC-grenser 80/95 %.", kat: ["abc"], hvorfor: "Primærkilde for terskelvalget. Validerer Pareto-prinsippet i operasjonell anvendelse.", bruk: "Tabell 6, kap. 5.1." },
+  { f: "Srinivasan & Moon", aar: 1999, apa: "Srinivasan, M., & Moon, Y. B. (1999). A comprehensive clustering algorithm for strategic analysis of supply chain networks. <em>Computers & Industrial Engineering, 36</em>, 615–633.", bidrag: "K-means i SCM-strategisk analyse.", kat: ["kmeans"], hvorfor: "Fundamental kilde for K-means-anvendelse i supply chain — kobler metode til forsyningskontekst.", bruk: "Kap. 5.4." },
+  { f: "Suryaputri et al.", aar: 2022, apa: "Suryaputri, Z., Gabriel, D. S., & Nurcahyo, R. (2022). Integration of ABC-XYZ analysis in inventory management optimization. <em>IEOM Proceedings</em>.", bidrag: "ABC/XYZ-matrise i helsekontekst gir bedre segmentering enn ettkriterie-ABC alene.", kat: ["abc","xyz","hospital"], hvorfor: "Direkte forløper for 9-felts-matrisen (Fig 7) — sykehus-case bekrefter relevansen.", bruk: "Kap. 2, Fig 7, Tabell 16." },
+  { f: "van Kampen et al.", aar: 2012, apa: "van Kampen, T. J., Akkerman, R., & van Donk, D. P. (2012). SKU classification: A literature review and conceptual framework. <em>IJOPM, 32</em>(7), 850–876.", bidrag: "Tre dimensjoner: karakteristikker, teknikk, operasjonalisering.", kat: ["metode"], hvorfor: "Det konseptuelle kartet for hele oppgaven (jf. Fig 1).", bruk: "Kap. 2 hovedrammeverk." },
+  { f: "Volland et al.", aar: 2017, apa: "Volland, J., Fügener, A., Schoenfelder, J., & Brunner, J. O. (2017). Material logistics in hospitals: A literature review. <em>Omega, 69</em>, 82–101.", bidrag: "Lagerstyring utgjør 30–40 % av sykehus driftskostnader (145-artikkel-review).", kat: ["hospital","metode"], hvorfor: "Etablerer domene-viktighet og at 73,1 % FOR_MANGE_ORDRER-funn er konsistent med kjent dysfunksjon.", bruk: "Kap. 1, Tabell 16." }
+];
+
+const kildegrid = document.getElementById("kildegrid");
+function renderKilder(kategori) {
+  const data = kategori === "alle" ? kildeData : kildeData.filter(k => k.kat.includes(kategori));
+  if (data.length === 0) {
+    kildegrid.innerHTML = "<p>Ingen kilder i denne kategorien.</p>";
+    return;
+  }
+  kildegrid.innerHTML = data.map(k => `
+    <div class="refkort kildekort">
+      <div class="nr">${k.f} (${k.aar})</div>
+      <div class="ref-apa">${k.apa}</div>
+      <div class="felt"><strong>Bidrag:</strong> ${k.bidrag}</div>
+      <div class="hvorfor"><strong>Hvorfor relevant:</strong> ${k.hvorfor}</div>
+      <div class="felt"><strong>Hvor brukt:</strong> ${k.bruk}</div>
+      <div class="tags">${k.kat.map(t => `<span class="t-${t}">${t.toUpperCase()}</span>`).join("")}</div>
+    </div>
+  `).join("");
+}
+renderKilder("alle");
+document.getElementById("kildefilter").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#kildefilter button").forEach(b => b.classList.remove("aktiv"));
+  e.target.classList.add("aktiv");
+  renderKilder(e.target.dataset.kat);
+});
 
 /* ============================================================
    SJEKKLISTE

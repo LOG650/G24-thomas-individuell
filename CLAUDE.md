@@ -16,12 +16,21 @@ This is a **LOG650 bachelor thesis project** (Høgskolen i Molde, spring 2026) b
 000 templates/          – Report templates (Word), reference style guide (APA 7 Norwegian)
 003 references/         – Academic PDFs (23 stk) with per-source .md summaries and OVERSIKT.md
 004 data/               – SAP data exports (original MASTERFILE)
-005 report/             – Final report source (MD) and Word output
-  LOG650_Rapport_FINAL.md          – Master source (Markdown), includes reference list
-  LOG650_Rapport.docx              – Final Word document (generated from template)
+005 report/             – Final report source (MD) and Word output (lev.klar)
+  LOG650_Rapport_100.docx          – ✅ GJELDENDE lev.klar versjon (2026-05-14)
+  LOG650_Rapport_FINAL.md          – Master source (Markdown), brukes av build_word.py
   build_word.py                    – Script: builds DOCX from template + MD
   wordcount.py                     – Script: counts words in report
+  forsvar_visualisering.html       – Interaktiv visualisering for muntlig forsvar
+  MUNTLIG_FORSVAR_COACH.md         – Coach-notater for muntlig forsvar
+  SENSORGUIDE_metodikk.md          – Sensor-kriterier og forventninger
+  SENSORSIMULERING.md              – Resultat fra sensor-simulering
   retningslinjer-ki-hjemmeeksamen.md – HiMolde KI guidelines
+  Kompendium_KML_2026.md           – Kurspensum (Rekdal & Pettersen, HiMolde)
+  peer-review/                     – Peer review av Thomas' oppgave
+  G22/                             – Peer review av annen gruppe
+  Bachelor- og masteroppgaver/     – Referansebibliotek
+  arkiv/                           – Eldre versjoner og debug-artefakter
 006 Analyse/            – Python analysis scripts, MASTERFILE, and generated figures
   LOG650_analyse_v2_7.py – Main analysis script (ABC, XYZ, EOQ, K-means, regelmotor)
   plot_*.py             – 12 figure-generating scripts (Fig00–Fig11)
@@ -93,7 +102,7 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 | Fase 1 – Initiering | ✅ Complete | Approved proposal |
 | Fase 2 – Planlegging | ✅ Complete | Project management plan |
 | Fase 3 – Gjennomføring | ✅ Complete | Analysis pipeline, all figures, results |
-| Fase 4 – Avslutning | In progress | Final report editing, submission |
+| Fase 4 – Avslutning | ✅ Complete | LOG650_Rapport_100.docx er lev.klar (2026-05-14); muntlig forsvar gjenstår |
 
 ## Report Structure
 
@@ -115,6 +124,21 @@ All scripts use the same style: serif font (DejaVu Serif), `font.size: 10`, titl
 - **Figures:** 12 PNGs from `006 Analyse/plots/` (Fig00–Fig11), caption under (italic)
 - **Run:** `cd "005 report" && py build_word.py`
 - **Workflow:** MD-filen er kilden. Ved endringer: oppdater MD først, kjør `build_word.py` etterpå.
+
+## Reference Attribution Notes (corrected in v100)
+
+Following references in `LOG650_Rapport_100.docx` were verified against source PDFs and rettet. Future edits MUST NOT re-introduce these misattributions:
+
+- **Wilson/EOQ formula** (avsn 299): no inline citation — Wilson is foundational; do not attribute to Ketkar & Vaidya
+- **Holding rate h = 20 %** (avsn 241): treat as convention, no inline citation
+- **Silhouette > 0.3 threshold** (avsn 533, 761): cite **Rousseeuw (1987)**, NOT Ketkar & Vaidya
+- **ABC value kr 34.3 mill.** (avsn 578): use exact figure, ikke "i overkant av 34 millioner"
+- **Saha & Ray (2019)** (avsn 280): "systematisk gjennomgang", no article count (137 was journal volume, NOT antall artikler)
+- **Gupta et al. (2007)** (avsn 313): structured ABC-VED approach — INGEN 10–15 % reduksjonspåstand (fabrikkert tall fjernet)
+- **Kelle et al. (2012)** (avsn 783, 804): qualitative source for capital reduction — INGEN 5–15 % figure (fabrikkert tall fjernet)
+- **Moons et al. (2019)** (avsn 763): balanced KPI framework — IKKE "rapporterer gevinster" (de er en litteraturstudie, ikke empirisk gevinstrapport)
+
+Bekreftet korrekte tall fra Volland et al. (2017): 30–40 % driftskostnader, 145 publikasjoner, 66 artikler.
 
 ## Critical Constraints
 

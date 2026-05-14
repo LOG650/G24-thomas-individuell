@@ -332,7 +332,7 @@ Litteraturgjennomgangen har tre funksjoner: (a) demonstrere fagforankring, (b) p
 
 #### Nøkkelbegreper
 
-- **Gap-identifikasjon:** Saha & Ray (2019) — review av 137 artikler — konstaterer at *empiriske casestudier som kombinerer ABC + XYZ + EOQ + K-means på faktiske ERP-data* er underrepresentert. Det er gapet studien adresserer.
+- **Gap-identifikasjon:** Saha & Ray (2019) — systematisk gjennomgang av forskningen på lagerstyring i helsesektoren — konstaterer at *empiriske casestudier som kombinerer ABC + XYZ + EOQ + K-means på faktiske ERP-data* er underrepresentert. Det er gapet studien adresserer.
 - **Volland-tallet (30–40 %):** systematisk gjennomgang av 145 publikasjoner. Bekrefter at lagerstyring er det dominerende forskningsområdet innen sykehuslogistikk.
 
 #### Styrker sensor vil rose
@@ -353,7 +353,7 @@ Litteraturgjennomgangen har tre funksjoner: (a) demonstrere fagforankring, (b) p
 #### Sensor-Q&A
 
 > **Sensor:** Hva er gapet i litteraturen, helt konkret?
-> **Du:** Saha & Ray (2019), som er en systematisk review av 137 artikler, konstaterer at det mangler empiriske casestudier som anvender flere klassifiseringsmetoder samlet på faktiske ERP-data i sykehuskontekst — og som leverer et eksplisitt besparelsesestimat som output. Min studie fyller dette ved å kombinere ABC, XYZ, EOQ-avvik og K-means på 14 SAP-tabeller fra Helse Bergen, med en regelmotor som aggregerer signalene og en besparelsesformel som kvantifiserer effekten. Det er ikke metodisk nyhet i hvert enkelt verktøy, men kombinasjonen og operasjonaliseringen.
+> **Du:** Saha & Ray (2019), som er en systematisk systematisk gjennomgang av forskningen på lagerstyring i helsesektoren, konstaterer at det mangler empiriske casestudier som anvender flere klassifiseringsmetoder samlet på faktiske ERP-data i sykehuskontekst — og som leverer et eksplisitt besparelsesestimat som output. Min studie fyller dette ved å kombinere ABC, XYZ, EOQ-avvik og K-means på 14 SAP-tabeller fra Helse Bergen, med en regelmotor som aggregerer signalene og en besparelsesformel som kvantifiserer effekten. Det er ikke metodisk nyhet i hvert enkelt verktøy, men kombinasjonen og operasjonaliseringen.
 > **Coach-kommentar:** "Saha & Ray" er navnet du må ha klart. Det er din kjernereferanse for gap-argumentet.
 
 > **Sensor:** Du nevner Partovi & Burton (1993) i teksten, men de er knapt integrert i analysen?
@@ -1409,7 +1409,7 @@ Anbefaling 1 i kap. 9.2 spesifiserer at pilotfasen genererer det første fasit-d
 > **Coach-kommentar:** "Strukturert støtte, ikke autorisert beslutning" er kjerneformuleringen. Reciterer du den, signaliserer du at du forstår epistemisk status.
 
 > **Sensor:** Snever besparelsesmodell — hvor mye undervurderer du faktisk?
-> **Du:** Modellen fanger kun **transaksjonskostnadsavviket** fra suboptimal ordrefrekvens for 117 artikler. Den utelater tre kostnadselementer: (1) **redusert lokal lagerkapitalbinding** — Kelle et al. (2012) anslår 5–15 % av lagerverdien; (2) **transportkostnader** fra HVFS til avdeling via APL — en motpost som må kartlegges; (3) **engangskostnader** for SAP MM-konfigurering og prosessomstilling. Nettogevinsten ligger sannsynligvis høyere enn base case isolert sett, men intervallet er ikke kvantifisert i denne studien. Estimatet er **konservativt**.
+> **Du:** Modellen fanger kun **transaksjonskostnadsavviket** fra suboptimal ordrefrekvens for 117 artikler. Den utelater tre kostnadselementer: (1) **redusert lokal lagerkapitalbinding** — Kelle et al. (2012) trekker frem som en sentral driver bak sentralisering; (2) **transportkostnader** fra HVFS til avdeling via APL — en motpost som må kartlegges; (3) **engangskostnader** for SAP MM-konfigurering og prosessomstilling. Nettogevinsten ligger sannsynligvis høyere enn base case isolert sett, men intervallet er ikke kvantifisert i denne studien. Estimatet er **konservativt**.
 > **Coach-kommentar:** "Konservativt" er nøkkelordet. Sensor vil rose at du underestimerer fremfor å overselge.
 
 > **Sensor:** Du sier studien er reproduserbar. Hvor lett kan jeg faktisk reprodusere den?
@@ -1555,7 +1555,8 @@ Pugg disse fem gruppene. Sensor vil spørre "hvorfor brukte du akkurat denne kil
 | **Silaen et al. (2023)** | ABC-grensene 80/95 %, Pareto-prinsippet |
 | **Nowotyńska (2013)** | XYZ-grensene 0,5 / 1,0 for CV |
 | **Hautaniemi & Pirttilä (1999)** | EOQ-anvendelse, Wilson-modellens forutsetninger |
-| **Ketkar & Vaidya (2014)** | Holdesats $h = 20\,\%$, silhouette-terskel > 0,3 |
+| **Ketkar & Vaidya (2014)** | Differensiert ordrepolicy etter ABC/XYZ-celler (AX–CZ-eksempel) |
+| **Rousseeuw (1987)** | Silhouette-score og terskel > 0,3 for eksplorativ klyngegyldighet |
 | **Srinivasan & Moon (1999)** | K-means i SCM, klyngeanalyse for forsyningskjede |
 | **Rousseeuw (1987)** | Silhouette-score-definisjonen $s = (b-a)/\max(a,b)$ |
 
@@ -1566,16 +1567,16 @@ Pugg disse fem gruppene. Sensor vil spørre "hvorfor brukte du akkurat denne kil
 | **Bijvank & Vis (2012)** | Lost-sales-modell, $S = 750$ NOK, lager ved brukssted |
 | **de Vries (2011)** | Interessentanalyse, organisatoriske barrierer mot sentralisering |
 | **Fragapane et al. (2019)** | APL-leveranser, sentraliseringskrav |
-| **Gupta et al. (2007)** | ABC + VED, SAP i sykehus, A-andel 25–30 % |
+| **Gupta et al. (2007)** | ABC + VED i militær sykehuskontekst (manuell klassifisering, ikke SAP) |
 | **Gurumurthy et al. (2021)** | K-means i sykehuslogistikk (eneste direktekilde) |
-| **Kelle et al. (2012)** | $S = 750$ NOK, farmasøytisk forsyningskjede, kapitalbinding 5–15 % |
+| **Kelle et al. (2012)** | $S = 750$ NOK, farmasøytisk forsyningskjede, kapitalbinding som driver for sentralisering |
 | **Moons et al. (2019)** | Ytelsesmåling i intern sykehusforsyning |
 
 #### Gruppe 3: Reviews / gap-identifikasjon
 
 | Referanse | Hvor mye den dekker | Hva den brukes til |
 |---|---|---|
-| **Saha & Ray (2019)** | Review av 137 artikler | **Kjernen i gap-argumentet** — ERP-baserte casestudier mangler |
+| **Saha & Ray (2019)** | Systematisk gjennomgang av lagerstyringsforskning i helsesektoren | **Kjernen i gap-argumentet** — ERP-baserte casestudier mangler |
 | **Volland et al. (2017)** | Review av 145 publikasjoner | 30–40 %-tallet for sykehuslogistikkens driftskostnadsandel |
 | **van Kampen et al. (2012)** | Konseptuelt rammeverk | Tre SKU-dimensjoner: karakteristikker, teknikk, operasjonalisering |
 
@@ -1618,7 +1619,7 @@ Sensor kan stille "hvor kommer X fra?" Du må kunne svare på ett pust:
 | Wilson EOQ | Hautaniemi & Pirttilä (1999) |
 | APL-egnethetskrav (stabilt forbruk) | Fragapane et al. (2019) |
 | Lost-sales-modell | Bijvank & Vis (2012) |
-| Lagerkapitalbinding 5–15 % | Kelle et al. (2012) |
+| Lagerkapitalbinding som motivasjon for sentralisering | Kelle et al. (2012) |
 | 30–40 % driftskostnader | Volland et al. (2017) |
 | Gap-argumentet | Saha & Ray (2019) |
 | Tre-dimensjonsrammeverket | van Kampen et al. (2012) |
@@ -1628,7 +1629,7 @@ Sensor kan stille "hvor kommer X fra?" Du må kunne svare på ett pust:
 ### 12b.4 Sensor-Q&A for referanselisten
 
 > **Sensor:** Kan du nevne dine tre viktigste kilder, og hvorfor de er viktige?
-> **Du:** Tre kandidater. (1) **Saha & Ray (2019)** — review av 137 artikler — er kjernen i gap-argumentet: de konstaterer at empiriske ERP-baserte casestudier som kombinerer flere klassifiseringsmetoder mangler. (2) **van Kampen et al. (2012)** gir det konseptuelle SKU-rammeverket med tre dimensjoner (karakteristikker, teknikk, operasjonalisering) som mitt arbeid plasserer seg i krysningen av. (3) **Silaen et al. (2023)** og **Nowotyńska (2013)** sammen er kanonkildene for ABC- og XYZ-tersklene — de er metodologiske ankre uten hvilke jeg ikke kunne forsvart 80/95 og 0,5/1,0 grensene.
+> **Du:** Tre kandidater. (1) **Saha & Ray (2019)** — systematisk gjennomgang av forskningen på lagerstyring i helsesektoren — er kjernen i gap-argumentet: de konstaterer at empiriske ERP-baserte casestudier som kombinerer flere klassifiseringsmetoder mangler. (2) **van Kampen et al. (2012)** gir det konseptuelle SKU-rammeverket med tre dimensjoner (karakteristikker, teknikk, operasjonalisering) som mitt arbeid plasserer seg i krysningen av. (3) **Silaen et al. (2023)** og **Nowotyńska (2013)** sammen er kanonkildene for ABC- og XYZ-tersklene — de er metodologiske ankre uten hvilke jeg ikke kunne forsvart 80/95 og 0,5/1,0 grensene.
 > **Coach-kommentar:** Saha & Ray er obligatorisk-svaret. De to andre kan varieres etter spørsmålet.
 
 > **Sensor:** Hvor kommer $S = 750$ NOK fra?
@@ -1644,7 +1645,7 @@ Sensor kan stille "hvor kommer X fra?" Du må kunne svare på ett pust:
 > **Coach-kommentar:** Konkret pugg-svar. Sensor straffer "alt er fint" og roser "her er det jeg ville lagt til".
 
 > **Sensor:** Hva sier Saha & Ray (2019) konkret, og hvorfor er det viktig?
-> **Du:** Saha & Ray gjennomfører en systematisk gjennomgang av 137 artikler om lagerstyringsmodeller i helsesektoren publisert frem til 2019. Hovedkonklusjonen er at det er behov for empiriske studier som kobler kvantitative klassifiseringsmodeller til konkrete beslutninger i reelle sykehussystemer — særlig casestudier basert på ERP-data. Min studie adresserer eksakt det gapet: SAP S/4HANA-transaksjonsdata kombinert med fire klassifiseringsmetoder i en regelmotor med eksplisitt besparelsesestimat. Saha & Ray er dermed både motivasjonen for studien og målestokken jeg leverer mot.
+> **Du:** Saha & Ray gjennomfører en systematisk gjennomgang av forskningen på lagerstyringsmodeller i helsesektoren publisert frem til 2019. Hovedkonklusjonen er at det er behov for empiriske studier som kobler kvantitative klassifiseringsmodeller til konkrete beslutninger i reelle sykehussystemer — særlig casestudier basert på ERP-data. Min studie adresserer eksakt det gapet: SAP S/4HANA-transaksjonsdata kombinert med fire klassifiseringsmetoder i en regelmotor med eksplisitt besparelsesestimat. Saha & Ray er dermed både motivasjonen for studien og målestokken jeg leverer mot.
 > **Coach-kommentar:** "Motivasjon + målestokk" — fin formulering for hva en gap-referanse gjør.
 
 > **Sensor:** Du bruker referanser fra 1987 (Rousseeuw), 1993 (Partovi & Burton) og 1999 (Hautaniemi, Srinivasan & Moon). Er ikke det utdaterte kilder?
@@ -1890,7 +1891,7 @@ Disse spørsmålene har en innebygd metodisk felle. Forsvarsstrategien er å gje
 ### Felle 10: "Hvis dette er så enkelt — fire metoder og en regelmotor — hvorfor har ingen gjort det før?"
 
 **Fellen:** Sensor tester originalitetskravet.
-**Riktig svar:** "Saha & Ray (2019) sin review av 137 artikler konstaterer at empiriske casestudier som kombinerer ABC, XYZ, EOQ og klyngeanalyse på faktiske ERP-data er underrepresentert. Hver metode er kjent isolert; kombinasjonen og operasjonaliseringen på SAP S/4HANA-data fra et faktisk sykehus med eksplisitt besparelsesestimat er nettopp gapet jeg adresserer. Det er ikke metodisk nyhet — det er empirisk anvendelse i et felt der ERP-datacasestudier mangler."
+**Riktig svar:** "Saha & Ray (2019) sin systematisk gjennomgang av forskningen på lagerstyring i helsesektoren konstaterer at empiriske casestudier som kombinerer ABC, XYZ, EOQ og klyngeanalyse på faktiske ERP-data er underrepresentert. Hver metode er kjent isolert; kombinasjonen og operasjonaliseringen på SAP S/4HANA-data fra et faktisk sykehus med eksplisitt besparelsesestimat er nettopp gapet jeg adresserer. Det er ikke metodisk nyhet — det er empirisk anvendelse i et felt der ERP-datacasestudier mangler."
 
 ---
 
