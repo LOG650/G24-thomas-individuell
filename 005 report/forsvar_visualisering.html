@@ -498,6 +498,100 @@ table.regler tr.detalj td {
 }
 .pillar .innhold .tekst { font-size: 14px; }
 
+/* ---------- Forsvar 30 min ---------- */
+.forsvar-undertittel {
+  color: var(--tittel);
+  font-size: 18px;
+  margin: 28px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--bla);
+}
+.forsvarblokk {
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-left: 4px solid var(--bla);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.forsvarblokk.qa { border-left-color: var(--oransje); }
+.forsvarblokk.intro { border-left-color: var(--gronn); }
+.forsvarblokk-topp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.forsvarblokk .tid {
+  display: inline-block;
+  background: var(--bla);
+  color: #FFF;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+.forsvarblokk.qa .tid { background: var(--oransje); }
+.forsvarblokk.intro .tid { background: var(--gronn); }
+.forsvarblokk .blokk-tittel {
+  font-weight: bold;
+  color: var(--tittel);
+  font-size: 15px;
+}
+.forsvarblokk ul {
+  margin: 8px 0 12px;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.forsvarblokk ul li { margin-bottom: 4px; }
+.nokkelsetning {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-left: 3px solid var(--bla);
+  background: #F4F1EA;
+  font-style: italic;
+  color: var(--tittel);
+  font-size: 14px;
+  border-radius: 0 4px 4px 0;
+}
+.nokkelsetning::before {
+  content: "Si ordrett: ";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--bla);
+}
+.prop-knapp {
+  display: inline-block;
+  background: var(--tittel);
+  color: #FFF;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s ease;
+}
+.prop-knapp:hover { background: var(--bla); }
+.prop-knapp::before { content: "→ "; font-weight: bold; }
+.forsvar-tips {
+  background: #F4F1EA;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 13px;
+  border-left: 3px solid var(--gra);
+}
+.forsvar-tips strong { color: var(--tittel); }
+
 .sjekkliste { list-style: none; padding: 0; margin: 0; }
 .sjekkliste li {
   padding: 10px 12px;
@@ -710,6 +804,7 @@ footer {
   <button data-fane="sensitivitet">Sensitivitet</button>
   <button data-fane="qa">Q&amp;A-drill</button>
   <button data-fane="pitch">Pitch &amp; sjekkliste</button>
+  <button data-fane="forsvar30">Forsvar 30 min</button>
   <button data-fane="matte">Matematikk</button>
   <button data-fane="litteratur">Litteratur</button>
   <button data-fane="figurer">Figurer</button>
@@ -973,6 +1068,228 @@ footer {
   <h3>Tre-minutters sjekkliste rett før eksamen</h3>
   <p style="margin-top: 0; font-size: 13px; color: var(--dempet);">Klikk for å huke av. Status lagres ikke — kun visuell hjelp.</p>
   <ul class="sjekkliste" id="sjekkliste"></ul>
+</section>
+
+<!-- ============== FORSVAR 30 MIN ============== -->
+<section class="fane" id="forsvar30">
+  <h2>Forsvar — 30 minutter</h2>
+  <p class="ingress">Minutt-for-minutt-script for muntlig sensor-forsvar. 20 min presentasjon + 10 min Q&amp;A. Klikk «Åpne tab» i hver blokk for å bytte til riktig prop på skjermen.</p>
+
+  <div class="forsvar-tips">
+    <strong>Generelle tips:</strong> Snakk i ditt eget tempo — sensor har lest rapporten. Hvis du blir blank: «La meg tenke et øyeblikk. Hvis jeg forstår spørsmålet rett, så handler det om…». Aldri unnskyld deg for svakheter — erkjenn dem og forklar mitigasjonen. Hovedtallene som <em>må</em> sitte: 709, 145, 257, 284, 23, kr 451 515, kr 176k–764k, 33 %, 0,383 / 0,368.
+  </div>
+
+  <h3 class="forsvar-undertittel">Presentasjon (0–20 min)</h3>
+
+  <div class="forsvarblokk intro">
+    <div class="forsvarblokk-topp">
+      <span class="tid">00:00–00:30</span>
+      <span class="blokk-tittel">0 — Hilsen og rammeverk</span>
+    </div>
+    <ul>
+      <li>Hils. Navn, kursnavn, partnerorganisasjon.</li>
+      <li>Si i én setning hva forsvaret skal dekke: kort presentasjon, så Q&amp;A.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Thomas Ekrem Jensen, LOG650 vår 2026. Oppgaven er gjort i samarbeid med Helse Vest IKT og Helse Bergen Forsyningssenter — fokus på medisinsk forbruksmateriell og overføring til HVFS.</blockquote>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">00:30–02:00</span>
+      <span class="blokk-tittel">1 — Rød tråd (40-sek-versjon)</span>
+    </div>
+    <ul>
+      <li>Lever 40-sek-pitchen rolig — den er din kontrakt med sensor.</li>
+      <li>Nevn de fire nøkkeltallene: 145, kr 451 515, intervall, 33 %.</li>
+      <li>Inkluder ZZXYZ-bifunnet allerede her — ta brodden av spørsmålet.</li>
+    </ul>
+    <blockquote class="nokkelsetning">145 av 709 artikler er overføringskandidater til HVFS, med estimert besparelse kr 451 515/år base case og sensitivitetsintervall kr 176 000 – 764 000/år. Et empirisk bifunn er at SAPs ZZXYZ-felt bare samsvarer med beregnet CV-klasse i 33 % av tilfellene.</blockquote>
+    <button class="prop-knapp" data-fane="pipeline">Åpne Pipeline-tab</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">02:00–05:00</span>
+      <span class="blokk-tittel">2 — Problemstilling og avgrensning</span>
+    </div>
+    <ul>
+      <li>Resiter forskningsspørsmålet fra hodet — todelt: «hvilke artikler» og «hva er besparelsen».</li>
+      <li>WERKS 3300, LGORT 3001, medisinsk forbruksmateriell (ikke legemidler / implantater / dyrt utstyr).</li>
+      <li>To eksplisitte avgrensninger: identifikasjon, ikke implementering. Anbefaling, ikke autoritativ beslutning.</li>
+      <li>Periode 2024–2025 — to sesongsykluser, kort nok til at COVID-aftermath ikke dominerer.</li>
+    </ul>
+    <blockquote class="nokkelsetning">WERKS 3300, LGORT 3001 — eneste lagersted med 24 mnd. komplett transaksjonshistorikk. Oppgaven leverer beslutningsgrunnlag, ikke beslutning.</blockquote>
+    <button class="prop-knapp" data-fane="pipeline">Åpne Pipeline-tab</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">05:00–08:00</span>
+      <span class="blokk-tittel">3 — Datagrunnlag og D-01 til D-08</span>
+    </div>
+    <ul>
+      <li>14 SAP-tabeller via SE16H — nevn kjernen: MARA, MBEW, MSEG (BWART 201 + 647), EKPO, EKBE.</li>
+      <li>Åtte datavalg D-01 til D-08 reduserer 1 006 → 709 aktive artikler.</li>
+      <li>Nevn ett konkret eksempel: PEINH-korreksjon (UNIT_PRICE = STPRS / PEINH). Hanske 150/100 = kr 1,50.</li>
+      <li>Erkjenn datakvalitetshull: 204 uten EKPO (D-03), LEAD_TIME-dekning 6 % (D-05).</li>
+    </ul>
+    <blockquote class="nokkelsetning">14 SAP-tabeller via SE16H, filtrert gjennom åtte dokumenterte datavalg fra 1 006 til 709 aktive artikler.</blockquote>
+    <button class="prop-knapp" data-fane="pipeline">Åpne Pipeline (klikk SAP- og D-filter-boksene)</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">08:00–13:00</span>
+      <span class="blokk-tittel">4 — De fire analysene og trianguleringslogikken</span>
+    </div>
+    <ul>
+      <li>Resiter trianguleringskjeden: ABC (verdi) → blindsone variabilitet → XYZ (CV) → blindsone bestillingsmønster → EOQ-avvik → blindsone multivariat → K-means.</li>
+      <li>ABC: 182 / 184 / 338 (A/B/C). Bredere A enn kanonisk 20 % — typisk for sykehus (Gupta et al., 2007).</li>
+      <li>XYZ: 350 / 193 / 144. CV beregnet over 24 månedlige forbruksverdier (MSEG BWART 201+647).</li>
+      <li>EOQ: Wilson-modell på frekvens, ikke partistørrelse. f* = √(DH/2S). S = 750 NOK, h = 20 %. Terskel τ_f = 1,5.</li>
+      <li>K-means: K = 3 valgt datadrevet via silhouette (0,383 trening / 0,368 test — begge over 0,3-terskelen). Triangulering, ikke uavhengig informasjon.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Hver metode har en blindsone som motiverer neste. Når regelbaserte og datadrevne signaler konvergerer, styrkes anbefalingen — når de divergerer, faller artikkelen i VURDER NÆRMERE.</blockquote>
+    <button class="prop-knapp" data-fane="matte">Åpne Matematikk-tab (vis formelkortene)</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">13:00–16:00</span>
+      <span class="blokk-tittel">5 — Regelmotor R1–R8 og hovedresultat</span>
+    </div>
+    <ul>
+      <li>Åtte regler i sekvensiell prioritet. R1 (Z-override) først som frastøtingsregel.</li>
+      <li>R3 sterkest: A/B ∧ X ∧ FOR_MANGE_ORDRER — tre uavhengige signaler peker samme vei (71 artikler).</li>
+      <li>R4 + R5 bruker K_OVERFØR som bekreftelse (18 + 56 = 74 artikler).</li>
+      <li>Resultat: 145 OVERFØR (20,5 %) / 257 BEHOLD (36,2 %) / 284 VURDER (40,1 %) / 23 MANGLER DATA.</li>
+      <li>Nøkkelegenskap: hver artikkel sporbar til én konkret regel — auditerbar beslutningsstøtte.</li>
+    </ul>
+    <blockquote class="nokkelsetning">145 OVERFØR, 257 BEHOLD lokalt, 284 VURDER nærmere, 23 MANGLER DATA. Hver anbefaling kan spores til én konkret regel — det er den modne forskjellen mellom datadrevet og skjønnsbasert.</blockquote>
+    <button class="prop-knapp" data-fane="regelmotor">Åpne Regelmotor-tab</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">16:00–18:00</span>
+      <span class="blokk-tittel">6 — Besparelse, scenarier og sensitivitet</span>
+    </div>
+    <ul>
+      <li>Forklar 145 vs. 117: 117 har målbart EOQ-kostnadsavvik å summere; 28 R4/R5-artikler anbefales på K_OVERFØR-signal alene.</li>
+      <li>Base case kr 451 515/år ved g = 75 %. Worst kr 301 T, best kr 602 T.</li>
+      <li>Tre scenarier (g) = implementeringsantagelse. 27 sensitivitetskombinasjoner (S, h, τ_f) = modellantagelse.</li>
+      <li>Sensitivitetsintervall: kr 176 374 – kr 763 903/år. Alle 27 scenarier gir positiv besparelse → robusthet, ikke presisjon.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Tre scenarier varierer implementeringen, 27 sensitivitetskombinasjoner varierer modellen. Alle gir positiv besparelse — konklusjonen om at det finnes en gevinst, holder.</blockquote>
+    <button class="prop-knapp" data-fane="sensitivitet">Åpne Sensitivitet-tab</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">18:00–19:30</span>
+      <span class="blokk-tittel">7 — Bifunn (ZZXYZ 33 %) og begrensninger</span>
+    </div>
+    <ul>
+      <li>ZZXYZ-funnet: bare 125 av 375 artikler stemmer mellom SAP-feltet og beregnet CV-klasse (33 %).</li>
+      <li>Operasjonell konsekvens: MRP-logikk som hviler på ZZXYZ er upålitelig. Direkte input til LIBRA.</li>
+      <li>Erkjenn begrensninger uten å unnskylde: ingen ekstern validering, ikke-kalibrerte parametre, VED ikke maskinlesbar.</li>
+      <li>22 referanser — i nedre sjikt. Bredere base ville styrket litteraturgjennomgangen.</li>
+    </ul>
+    <blockquote class="nokkelsetning">SAPs eget ZZXYZ-felt samsvarer kun 33 % med beregnet CV-klasse — et selvstendig empirisk funn med direkte operasjonell konsekvens for LIBRA-prosjektet.</blockquote>
+    <button class="prop-knapp" data-fane="tall">Åpne Hovedtall-tab (filter: bifunn)</button>
+  </div>
+
+  <div class="forsvarblokk">
+    <div class="forsvarblokk-topp">
+      <span class="tid">19:30–20:00</span>
+      <span class="blokk-tittel">8 — Konklusjon og fire anbefalinger</span>
+    </div>
+    <ul>
+      <li>Lukk loopen: kom tilbake til forskningsspørsmålet og si at det er besvart todelt.</li>
+      <li>Fire prioriterte anbefalinger: (1) klinisk pilot før implementering, (2) ZZXYZ-revisjon i LIBRA, (3) lokal parameterkalibrering (S, h, g), (4) replikering til Stavanger / Fonna / Førde.</li>
+      <li>Avslutt med invitasjon til Q&amp;A.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Studien gir beslutningsgrunnlag, ikke beslutning. Klinisk pilot, ZZXYZ-revisjon, lokal kalibrering, og replikering til de andre helseforetakene er de fire anbefalingene som operasjonaliserer funnet videre.</blockquote>
+    <button class="prop-knapp" data-fane="pitch">Åpne Pitch (4-pilar-versjonen)</button>
+  </div>
+
+  <h3 class="forsvar-undertittel">Sensor-Q&amp;A (20–30 min)</h3>
+  <p style="margin-top: 0; font-size: 13px; color: var(--dempet);">Topp 5 mest sannsynlige sensorvinklinger — med tab-prop og 1-setnings-forsvar. Full drill i Q&amp;A-fanen.</p>
+
+  <div class="forsvarblokk qa">
+    <div class="forsvarblokk-topp">
+      <span class="tid">Q1</span>
+      <span class="blokk-tittel">«Hvorfor 145 OVERFØR, men bare 117 i besparelsen?»</span>
+    </div>
+    <ul>
+      <li>Konservativ konstruksjon — ikke avrundingsfeil.</li>
+      <li>Besparelsen summerer ΔTC kun for artikler med målbart EOQ-kostnadsavvik (FOR_MANGE_ORDRER).</li>
+      <li>R3-artikler oppfyller per definisjon. R4/R5 bruker K_OVERFØR-signal som tilstrekkelig — 28 av disse har ikke et målbart kostnadsavvik å summere.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Bevisst konservativt: de 28 differanseartiklene anbefales overført, men har ikke et EOQ-kostnadsavvik å summere — derfor utelates de fra besparelsen, ikke fra OVERFØR.</blockquote>
+    <button class="prop-knapp" data-fane="tall">Åpne Hovedtall-tab (filter: besparelse)</button>
+  </div>
+
+  <div class="forsvarblokk qa">
+    <div class="forsvarblokk-topp">
+      <span class="tid">Q2</span>
+      <span class="blokk-tittel">«Er ikke litteraturparametrene S, h og g en svakhet?»</span>
+    </div>
+    <ul>
+      <li>Erkjenn: ja, ikke lokalt kalibrert. Lokal kalibrering ligger utenfor bachelorscopen (krever aktivitetsbasert kostnadsanalyse).</li>
+      <li>Distinksjon: g er implementeringsantagelse (tre scenarier); S, h, τ_f er modellantagelser (27 kombinasjoner).</li>
+      <li>Alle 27 scenarier gir positiv besparelse — robusthet over hele parameterspennvidden.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Sensitivitetsanalysen kompenserer for at parametrene ikke er lokalt kalibrerte — den viser at konklusjonen om positiv besparelse holder over alle 27 parametervariasjoner.</blockquote>
+    <button class="prop-knapp" data-fane="sensitivitet">Åpne Sensitivitet-tab</button>
+  </div>
+
+  <div class="forsvarblokk qa">
+    <div class="forsvarblokk-topp">
+      <span class="tid">Q3</span>
+      <span class="blokk-tittel">«Hvorfor utelot du VED-dimensjonen?»</span>
+    </div>
+    <ul>
+      <li>VED er ikke maskinlesbar i SAP MARA/MARC — krever manuell klinisk innhenting.</li>
+      <li>Regelmotorens R1 (Z = BEHOLD lokalt) fungerer som delvis proxy — høy CV korrelerer ofte med akutt klinisk bruk.</li>
+      <li>Anbefaling 1 sier eksplisitt at klinisk VED-vurdering må gjennomføres før noen artikkel faktisk overføres.</li>
+    </ul>
+    <blockquote class="nokkelsetning">VED er ikke utelatt — den er erkjent som ikke-operasjonaliserbar og kompensert gjennom R1-regelen og anbefaling 1 om klinisk pilotvalidering før implementering.</blockquote>
+    <button class="prop-knapp" data-fane="regelmotor">Åpne Regelmotor (R1)</button>
+  </div>
+
+  <div class="forsvarblokk qa">
+    <div class="forsvarblokk-topp">
+      <span class="tid">Q4</span>
+      <span class="blokk-tittel">«K-means — hvorfor ikke DBSCAN eller hierarkisk klynging?»</span>
+    </div>
+    <ul>
+      <li>K-means er dominerende i SCM-litteraturen (Srinivasan &amp; Moon, 1999).</li>
+      <li>Gir tolkbar partisjonering med én klynge per artikkel — regelmotoren krever det.</li>
+      <li>K = 3 valgt datadrevet via silhouette — ikke subjektivt valgt kuttenivå som i hierarkisk klynging.</li>
+      <li>Sammenligning med DBSCAN foreslått som videre forskning (kap. 8.4).</li>
+    </ul>
+    <blockquote class="nokkelsetning">K-means er ikke valgt fordi den er best generelt, men fordi den passer denne kombinasjonen av krav: tolkbar partisjonering, reproduserbart K-valg via silhouette, og kompatibilitet med regelmotorens input.</blockquote>
+    <button class="prop-knapp" data-fane="matte">Åpne Matematikk (K-means-formelkort)</button>
+  </div>
+
+  <div class="forsvarblokk qa">
+    <div class="forsvarblokk-topp">
+      <span class="tid">Q5</span>
+      <span class="blokk-tittel">«Hvor mye av oppgaven er ditt eget arbeid? Hva er KI-bruken?»</span>
+    </div>
+    <ul>
+      <li>Hele den faglige retningen — metodevalg, regelutforming, tolkning, konklusjon — er ditt arbeid.</li>
+      <li>KI (Claude) brukt til kodestøtte, figurer og språkbearbeiding. Deklarert eksplisitt i Vedlegg C.</li>
+      <li>Rådata fra SAP er aldri lagt inn i KI-verktøy.</li>
+      <li>Reproducerbarhet: random_state=42 gjennom hele pipelinen.</li>
+    </ul>
+    <blockquote class="nokkelsetning">Eget arbeid faglig sett. Deklarert KI-bruk på kode, figurlayout og språk. Rådata aldri eksponert mot KI-verktøy. Reproduserbar med random_state lik 42.</blockquote>
+  </div>
+
+  <div class="forsvar-tips">
+    <strong>Når sensor avslutter:</strong> Takk for spørsmålene. Hvis du har et åpent punkt du gjerne ville sagt men ikke fikk plass til, si det nå i én setning. Eksempel: «Hvis jeg fikk gjort dette på nytt med mer tid, ville jeg validert VED-proxien empirisk mot en klinisk pilot — det er anbefaling 1.»
+  </div>
 </section>
 
 <!-- ============== MATEMATIKK ============== -->
@@ -1833,12 +2150,19 @@ const sjekklisten = [
 /* ============================================================
    FANER
    ============================================================ */
-document.getElementById("faner").addEventListener("click", (e) => {
-  if (e.target.tagName !== "BUTTON") return;
-  const navn = e.target.dataset.fane;
+function aktiverFane(navn) {
+  if (!navn) return;
   document.querySelectorAll("nav.faner button").forEach(b => b.classList.toggle("aktiv", b.dataset.fane === navn));
   document.querySelectorAll(".fane").forEach(s => s.classList.toggle("aktiv", s.id === navn));
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.getElementById("faner").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  aktiverFane(e.target.dataset.fane);
+});
+document.addEventListener("click", (e) => {
+  const knapp = e.target.closest(".prop-knapp");
+  if (knapp) aktiverFane(knapp.dataset.fane);
 });
 
 /* ============================================================
